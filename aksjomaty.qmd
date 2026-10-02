@@ -830,11 +830,57 @@ Jeżeli natomiast $\Omega$ jest nieskończona i $\Omega = \{ \omega_k \: : \: k 
 
 ::: {#exm-geometryczny2}
   Rzucamy kostką aż do momentu otrzymania pierwszego orła. Wówczas 
-  $\Omega = \{R\}^{\mathbb{N}} \cup \bigcup_{k=0}^\infty\{R \}^k \times \{O\}$, jak w  @exm-geometryczny. 
+  $\Omega = \{R\}^{\mathbb{N}} \cup \bigcup_{k=0}^\infty\{R \}^k \times \{O\}$, 
+  jak w  @exm-geometryczny1. 
   Funkcją prawdopodobieństwa jest $p(O)=\frac 12$, $p(OR)=\frac 14$ oraz ogólnie 
   $p(\omega_k)=2^{-k}$, gdzie $\omega_k$ składa się z $k-1$ reszek i orła, oraz $p(\omega_\infty)=0$, gdzie $\omega_\infty$ 
   składa się z samych reszek. Rzeczywiście, wystarczy sprawdzić
-	\begin{equation*}
+  \begin{equation*}
 	  \sum_{\omega \in \Omega}p(\omega) = p(\omega_\infty) + \sum_{k=1}^\infty p(\omega_k) =0+1.
   \end{equation*}
 :::
+
+## Problem Monty’ego Halla raz jeszcze
+
+Stosując poznany przez nas formalizm chcemy rozstrzygnąć problem wylosowania samochodu.
+Zaczniemy od konstrukcji odpowiedniej przestrzeni probabilistycznej. Możemy przyjąć, że
+nagroda znajduje się za bramką z numerem $1$. Natomiast bramki $2$ oraz $3$ zawierają zonka.
+Naszymi zdarzeniami elementarnymi będą pary liczb $(n,k)$, gdzie
+$n$ to numer bramki wybranej przez uczestnika, a $k$ to numer bramki, którą odsłania prowadzący.
+Zauważmy, że jeżeli początkowo wybierzemy bramkę za którą jest zonk, to prowadzący nie może odsłonić 
+bramki z samochodem.
+Mamy zatem
+\begin{equation*}
+  \Omega =\{(1,2), (1,3), (2,3), (3,2) \}.
+\end{equation*}
+Jakie prawdopodobieństwo należy przypisać każdemu możliwemu zdarzeniu?
+Uczestnik nie ma żadnych przesłanek w której bramce jest nagroda, więc
+każdą z nich wybierze z takim samym prawdopodobieństwem. Mamy
+\begin{align*}
+  \{ \mbox{Uczestnik wybrał bramkę $1$} \} & = \{ (1,2), (1,3)\} \\
+  \{ \mbox{Uczestnik wybrał bramkę $2$} \} & = \{ (2,3)\} \\
+  \{ \mbox{Uczestnik wybrał bramkę $3$} \} &= \{ (3,2)\}
+\end{align*}
+Skoro wszystkie zdarzenia mają to samo prawdopodobieństwo, to
+\begin{equation*}
+   p((2,3)) = p(3,2) = p((1,2)) + p((1,3)) =1/3.
+\end{equation*}
+W przypadku, gdy gracz wybiera bramkę $1$, która kryje samochód, prowadzący musi wybrać jedną z
+bramek do odkrycia. Jak się zaraz okaże nie ma żadnego znaczenia w jaki sposób to robi. Możemy 
+przyjąć $p((1,2)) =a$ i $p((1,3))=b$ dla dowolnej pary liczb $a,b$ takich, że $a+b=1/3$.
+
+Zauważmy, że wybór konkretnej strategii nie wpływa na nasz opis tego zdarzenia losowego.
+Niech teraz $A$ oznacza zdarzenie, że uczestnik, który zawsze zmienia bramkę wygra samochód.
+Mamy
+\begin{equation*}
+  A =\{(2,3), (3,2)\}.
+\end{equation*}
+Wówczas
+\begin{equation*}
+  \mathbb{P}[A] = p((2,3)) + p((3,2)) =2/3..
+\end{equation*}
+Niech teraz $B$ oznacza zdarzenie, że uczestnik, który nigdy nie zmienia bramki wygra samochód.
+Wtedy
+\begin{equation*}
+  \mathbb{P}[B] =a+b=1/3.
+\end{equation*}
