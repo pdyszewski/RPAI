@@ -1,0 +1,10 @@
+# Słowo wstępne {.unnumbered}
+
+Notatki te powstają na potrzeby kursu o tym samym tytule, 
+zaplanowanego w semestrze zimowym roku akademickiego 2026/2027 w 
+Instytucie Matematycznym Uniwersytetu Wrocławskiego.
+
+Notatki mają charakter roboczy i (jak wszystko we wstępnych fazach rozwoju) mogą zawierać błędy. 
+Będę wdzięczny za zgłoszenie każdej usterki znalezionej w tekście.
+
+Notatki są przygotowywane w Quarto, otwartym systemie do tworzenia publikacji naukowych i technicznych. Więcej informacji o Quarto można znaleźć na stronie <https://quarto.org/>.

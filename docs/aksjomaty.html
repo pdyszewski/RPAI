@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Aksjomatyka rachunku prawdopodobieństwa – Rachunek prawdopodobieństwa (AI)</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./klasyczne.html" rel="next">
+<link href="./intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4d174a927e64a7b5d77cac81bb67e0a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Brak wyników",
+    "search-matching-documents-text": "dopasowane dokumenty",
+    "search-copy-link-title": "Kopiuj link do wyszukiwania",
+    "search-hide-matches-text": "Ukryj dodatkowe dopasowania",
+    "search-more-match-text": "więcej dopasowań w tym dokumencie",
+    "search-more-matches-text": "więcej dopasowań w tym dokumencie",
+    "search-clear-button-title": "Wyczyść",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Anuluj",
+    "search-submit-button-title": "Zatwierdź",
+    "search-label": "Szukaj"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./aksjomaty.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aksjomatyka rachunku prawdopodobieństwa</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Szukaj" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Rachunek prawdopodobieństwa (AI)</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/pdyszewski/" title="Kod źródłowy" class="quarto-navigation-tool px-1" aria-label="Kod źródłowy"><i class="bi bi-github"></i></a>
+    <a href="./Rachunek-prawdopodobieństwa--AI-.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Szukaj"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Słowo wstępne</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sylabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sylabus</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Wstęp</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./aksjomaty.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aksjomatyka rachunku prawdopodobieństwa</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./klasyczne.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo klasyczne</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Spis treści</h2>
+   
+  <ul>
+  <li><a href="#problem-montyego-halla" id="toc-problem-montyego-halla" class="nav-link active" data-scroll-target="#problem-montyego-halla"><span class="header-section-number">3.1</span> Problem Monty’ego Halla</a></li>
+  <li><a href="#odrobina-historii" id="toc-odrobina-historii" class="nav-link" data-scroll-target="#odrobina-historii"><span class="header-section-number">3.2</span> Odrobina historii</a></li>
+  <li><a href="#opis-doświadczenia-losowego" id="toc-opis-doświadczenia-losowego" class="nav-link" data-scroll-target="#opis-doświadczenia-losowego"><span class="header-section-number">3.3</span> Opis doświadczenia losowego</a></li>
+  <li><a href="#miara-probabilistyczna" id="toc-miara-probabilistyczna" class="nav-link" data-scroll-target="#miara-probabilistyczna"><span class="header-section-number">3.4</span> Miara probabilistyczna</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aksjomatyka rachunku prawdopodobieństwa</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Zanim przejdziemy do badania zjawisk losowych wprowadzimy podstawowy język teorii prawdopodobieństwa. Zaczniemy jednak od przykładu obrazującego potrzebę jego wprowadzenia.</p>
+<section id="problem-montyego-halla" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="problem-montyego-halla"><span class="header-section-number">3.1</span> Problem Monty’ego Halla</h2>
+<p>W latach sześćdziesiątych w stanach zjednoczonych zaczęto nadawać <em>Let’s Make a Deal</em>. W teleturnieju wybrani widzowie ze studia zawierają umowy z prowadzącym. Uczestnik otrzymuje nagrodę i decyduje, czy ją zatrzymać, czy wymienić na inną, której zawartość pozostaje ukryta do momentu podjęcia decyzji.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/2Sxuw9Xe_GU" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>Dopiero po odsłonięciu nagrody okazuje się, czy wymiana była korzystna, czy też uczestnik trafił na bezwartościową, żartobliwą nagrodę zwaną „zonkiem”.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Fig/LMAD.jpg" class="img-fluid figure-img"></p>
+<figcaption>jedną z „zonkowych” nagród w wersji programu stacji CBS była żywa lama</figcaption>
+</figure>
+</div>
+<p>Rozważmy następujący problem. To dla ciebie decydujący moment. Prowadzący teleturniej stawia cię przed trojgiem zamkniętych drzwi. Za jednymi z nich kryje się samochód twoich marzeń — nowy, lśniący. Za każdymi z pozostałych dwojga drzwi stoi natomiast sympatyczna, choć niezbyt lśniąca i nieco cuchnąca koza.</p>
+<p>Masz wybrać drzwi i wygrać to, co się za nimi znajduje. Wskazujesz jedne z nich i ogłaszasz swój wybór. Wtedy prowadzący otwiera jedne z pozostałych dwojga drzwi i pokazuje kozę. Następnie pyta, czy chcesz zmienić wybór i wskazać nieotwarte drzwi, których początkowo nie wybrałeś.</p>
+<p>Czy zmiana decyzji jest dla ciebie korzystna — zakładając oczywiście, że zależy ci na samochodzie, a nie na kozie?</p>
+<p>Jakie jest dokładnie prawdopodobieństwo wygrania samochodu przy każdej z tych strategii? Ta popularna zagadka wywołała spore zamieszanie, gdy w 1991 roku ukazała się w prasie <span class="citation" data-cites="john1991behind">John (<a href="references.html#ref-john1991behind" role="doc-biblioref">1991</a>)</span>. Wielu czytelników, w tym także matematycy, podało błędną odpowiedź. Najczęściej twierdzono, że zmiana drzwi nie ma znaczenia, ponieważ samochód z jednakowym prawdopodobieństwem znajduje się za każdymi z dwojga nieotwartych drzwi.</p>
+<p>Jednym ze sposobów zapoznania się z tym problemem jest wielokrotne powtórzenie eskperymantu. Sam Monty Hall przeprowadził eksperyment w swoim domu w Beverly Hills. W swojej jadalni ustawił na stole trzy miniaturowe kartonowe drzwi. Samochód zastąpił kluczykiem do stacyjki a Kozy symbolizowały paczka rodzynek i rolka cukierków. Po przeprowadzeniu trzydziestu prób odpowiedź była jasne. Możnmy wykonać podobny eksperymant wykorzystując symulację poniżej.</p>
+<div class="cell">
+<details class="code-fold hidden">
+<summary>Pokaż kod</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="46" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 45;"><span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>monty_hall <span class="op">=</span> {</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> <span class="bu">root</span> <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="monty-root"&gt;</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;style&gt;</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-root {</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="vs">        width: 100%;</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="vs">        max-width: 760px;</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="vs">        margin: 0 auto;</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-controls,</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-decision {</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="vs">        display: flex;</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="vs">        justify-content: center;</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="vs">        gap: 0.5rem;</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="vs">        flex-wrap: wrap;</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="vs">        margin: 0.75rem 0;</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-root button {</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="vs">        padding: 0.45rem 0.8rem;</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="vs">        border: 1px solid #98a2b3;</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-radius: 0.4rem;</span></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: var(--bs-body-bg, white);</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="vs">        color: var(--bs-body-color, #222);</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="vs">        cursor: pointer;</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-root button.primary {</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="vs">        color: white;</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: #2563eb;</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-color: #2563eb;</span></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-instruction {</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="vs">        min-height: 1.6em;</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="vs">        margin: 0.8rem 0;</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="vs">        text-align: center;</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-doors {</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="vs">        display: grid;</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="vs">        grid-template-columns: repeat(3, minmax(0, 1fr));</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="vs">        gap: clamp(0.5rem, 3vw, 1.5rem);</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="vs">        max-width: 660px;</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="vs">        margin: 0 auto;</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-door {</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="vs">        position: relative;</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="vs">        aspect-ratio: 3 / 4;</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="vs">        overflow: hidden;</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="vs">        border: 3px solid #98a2b3 !important;</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-radius: 0.5rem 0.5rem 0 0 !important;</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: #dbeafe !important;</span></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="vs">        color: #1e293b !important;</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="vs">        transition:</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="vs">          transform 0.2s ease,</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="vs">          border-color 0.2s ease,</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="vs">          background 0.2s ease;</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-door:hover:not(:disabled) {</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="vs">        transform: translateY(-4px);</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-door.is-chosen {</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-color: #2563eb !important;</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: #bfdbfe !important;</span></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-door.is-open {</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-color: #94a3b8 !important;</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: #e2e8f0 !important;</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-door.is-winner {</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-color: #16a34a !important;</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: #bbf7d0 !important;</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-number {</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="vs">        position: absolute;</span></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="vs">        top: 8%;</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="vs">        left: 50%;</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="vs">        transform: translateX(-50%);</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-size: clamp(1.25rem, 4vw, 2rem);</span></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-weight: bold;</span></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-content {</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="vs">        position: absolute;</span></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="vs">        inset: 28% 8% 8%;</span></span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="vs">        display: grid;</span></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="vs">        place-items: center;</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-size: clamp(2rem, 8vw, 4.5rem);</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-stats {</span></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="vs">        max-width: 660px;</span></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="vs">        margin: 1.4rem auto 0;</span></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-row {</span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a><span class="vs">        display: grid;</span></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="vs">        grid-template-columns: 5rem 1fr 9rem;</span></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a><span class="vs">        align-items: center;</span></span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="vs">        gap: 0.75rem;</span></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a><span class="vs">        margin: 0.7rem 0;</span></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-track {</span></span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="vs">        height: 1rem;</span></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="vs">        overflow: hidden;</span></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-radius: 999px;</span></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: #e2e8f0;</span></span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-bar {</span></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="vs">        width: 0;</span></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="vs">        height: 100%;</span></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-radius: 999px;</span></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="vs">        transition: width 0.35s ease;</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-stay-bar {</span></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: #f59e0b;</span></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-switch-bar {</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: #2563eb;</span></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-result {</span></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="vs">        text-align: right;</span></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-variant-numeric: tabular-nums;</span></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="vs">      .monty-total {</span></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="vs">        margin-top: 0.75rem;</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="vs">        color: #667085;</span></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="vs">        text-align: center;</span></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a><span class="vs">      [hidden] {</span></span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a><span class="vs">        display: none !important;</span></span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a><span class="vs">      @media (max-width: 480px) {</span></span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a><span class="vs">        .monty-row {</span></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="vs">          grid-template-columns: 4.5rem 1fr;</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="vs">        .monty-result {</span></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="vs">          grid-column: 2;</span></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a><span class="vs">        }</span></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/style&gt;</span></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="monty-controls"&gt;</span></span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button data-new&gt;Nowa rozgrywka&lt;/button&gt;</span></span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button class="primary" data-many="10"&gt;</span></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a><span class="vs">        Symuluj 10 prób</span></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/button&gt;</span></span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button class="primary" data-many="100"&gt;</span></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a><span class="vs">        Symuluj 100 prób</span></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/button&gt;</span></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button data-reset&gt;</span></span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a><span class="vs">        Wyzeruj statystyki</span></span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/button&gt;</span></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;p class="monty-instruction" data-instruction&gt;</span></span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a><span class="vs">      Wybierz jedne drzwi.</span></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/p&gt;</span></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div</span></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a><span class="vs">      class="monty-doors"</span></span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="vs">      role="group"</span></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="vs">      aria-label="Wybierz jedne z trzech drzwi"</span></span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a><span class="vs">    &gt;</span></span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button</span></span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a><span class="vs">        class="monty-door"</span></span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a><span class="vs">        data-door="0"</span></span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="vs">        aria-label="Drzwi 1"</span></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a><span class="vs">      &gt;</span></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;span class="monty-number"&gt;1&lt;/span&gt;</span></span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;span class="monty-content"&gt;&lt;/span&gt;</span></span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/button&gt;</span></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button</span></span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a><span class="vs">        class="monty-door"</span></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a><span class="vs">        data-door="1"</span></span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a><span class="vs">        aria-label="Drzwi 2"</span></span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a><span class="vs">      &gt;</span></span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;span class="monty-number"&gt;2&lt;/span&gt;</span></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;span class="monty-content"&gt;&lt;/span&gt;</span></span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/button&gt;</span></span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button</span></span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a><span class="vs">        class="monty-door"</span></span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a><span class="vs">        data-door="2"</span></span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a><span class="vs">        aria-label="Drzwi 3"</span></span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a><span class="vs">      &gt;</span></span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;span class="monty-number"&gt;3&lt;/span&gt;</span></span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;span class="monty-content"&gt;&lt;/span&gt;</span></span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/button&gt;</span></span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="monty-decision" data-decision hidden&gt;</span></span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button data-stay&gt;</span></span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="vs">        Zostań przy wyborze</span></span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/button&gt;</span></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button class="primary" data-switch&gt;</span></span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a><span class="vs">        Zmień drzwi</span></span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/button&gt;</span></span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="monty-stats"&gt;</span></span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="monty-row"&gt;</span></span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;span&gt;Zostań&lt;/span&gt;</span></span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="monty-track"&gt;</span></span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a><span class="vs">          &lt;div</span></span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a><span class="vs">            class="monty-bar monty-stay-bar"</span></span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a><span class="vs">            data-stay-bar</span></span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a><span class="vs">          &gt;&lt;/div&gt;</span></span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;strong</span></span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a><span class="vs">          class="monty-result"</span></span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a><span class="vs">          data-stay-result</span></span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a><span class="vs">        &gt;—&lt;/strong&gt;</span></span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="monty-row"&gt;</span></span>
+<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;span&gt;Zmień&lt;/span&gt;</span></span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;div class="monty-track"&gt;</span></span>
+<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a><span class="vs">          &lt;div</span></span>
+<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a><span class="vs">            class="monty-bar monty-switch-bar"</span></span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a><span class="vs">            data-switch-bar</span></span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a><span class="vs">          &gt;&lt;/div&gt;</span></span>
+<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;/div&gt;</span></span>
+<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a><span class="vs">        &lt;strong</span></span>
+<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a><span class="vs">          class="monty-result"</span></span>
+<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a><span class="vs">          data-switch-result</span></span>
+<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a><span class="vs">        &gt;—&lt;/strong&gt;</span></span>
+<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/div&gt;</span></span>
+<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;p class="monty-total" data-total&gt;</span></span>
+<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a><span class="vs">        Brak rozegranych prób</span></span>
+<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/p&gt;</span></span>
+<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> doors <span class="op">=</span> [</span>
+<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span><span class="bu">root</span><span class="op">.</span><span class="fu">querySelectorAll</span>(<span class="st">"[data-door]"</span>)</span>
+<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">;</span></span>
+<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> instruction <span class="op">=</span></span>
+<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a>    <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"[data-instruction]"</span>)<span class="op">;</span></span>
+<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> decision <span class="op">=</span></span>
+<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a>    <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"[data-decision]"</span>)<span class="op">;</span></span>
+<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> prize<span class="op">;</span></span>
+<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> chosen<span class="op">;</span></span>
+<span id="cb1-315"><a href="#cb1-315" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> opened<span class="op">;</span></span>
+<span id="cb1-316"><a href="#cb1-316" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> stage<span class="op">;</span></span>
+<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> stayTrials <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> stayWins <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-321"><a href="#cb1-321" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> switchTrials <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-322"><a href="#cb1-322" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> switchWins <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">randomInt</span>(n) {</span>
+<span id="cb1-325"><a href="#cb1-325" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> n)<span class="op">;</span></span>
+<span id="cb1-326"><a href="#cb1-326" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-327"><a href="#cb1-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-328"><a href="#cb1-328" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">startRound</span>() {</span>
+<span id="cb1-329"><a href="#cb1-329" aria-hidden="true" tabindex="-1"></a>    prize <span class="op">=</span> <span class="fu">randomInt</span>(<span class="dv">3</span>)<span class="op">;</span></span>
+<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a>    chosen <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a>    opened <span class="op">=</span> <span class="kw">null</span><span class="op">;</span></span>
+<span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a>    stage <span class="op">=</span> <span class="st">"choose"</span><span class="op">;</span></span>
+<span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-334"><a href="#cb1-334" aria-hidden="true" tabindex="-1"></a>    instruction<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span></span>
+<span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Wybierz jedne drzwi."</span><span class="op">;</span></span>
+<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a>    decision<span class="op">.</span><span class="at">hidden</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a>    doors<span class="op">.</span><span class="fu">forEach</span>(door <span class="kw">=&gt;</span> {</span>
+<span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a>      door<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a>      door<span class="op">.</span><span class="at">className</span> <span class="op">=</span> <span class="st">"monty-door"</span><span class="op">;</span></span>
+<span id="cb1-342"><a href="#cb1-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a>      door<span class="op">.</span><span class="fu">querySelector</span>(</span>
+<span id="cb1-344"><a href="#cb1-344" aria-hidden="true" tabindex="-1"></a>        <span class="st">".monty-content"</span></span>
+<span id="cb1-345"><a href="#cb1-345" aria-hidden="true" tabindex="-1"></a>      )<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">""</span><span class="op">;</span></span>
+<span id="cb1-346"><a href="#cb1-346" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb1-347"><a href="#cb1-347" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-348"><a href="#cb1-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-349"><a href="#cb1-349" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">chooseDoor</span>(index) {</span>
+<span id="cb1-350"><a href="#cb1-350" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (stage <span class="op">!==</span> <span class="st">"choose"</span>) {</span>
+<span id="cb1-351"><a href="#cb1-351" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb1-352"><a href="#cb1-352" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-353"><a href="#cb1-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-354"><a href="#cb1-354" aria-hidden="true" tabindex="-1"></a>    chosen <span class="op">=</span> index<span class="op">;</span></span>
+<span id="cb1-355"><a href="#cb1-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-356"><a href="#cb1-356" aria-hidden="true" tabindex="-1"></a>    doors[chosen]<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(</span>
+<span id="cb1-357"><a href="#cb1-357" aria-hidden="true" tabindex="-1"></a>      <span class="st">"is-chosen"</span></span>
+<span id="cb1-358"><a href="#cb1-358" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span>
+<span id="cb1-359"><a href="#cb1-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a>    doors<span class="op">.</span><span class="fu">forEach</span>(door <span class="kw">=&gt;</span> {</span>
+<span id="cb1-361"><a href="#cb1-361" aria-hidden="true" tabindex="-1"></a>      door<span class="op">.</span><span class="at">disabled</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-362"><a href="#cb1-362" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb1-363"><a href="#cb1-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-364"><a href="#cb1-364" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Prowadzący może otworzyć tylko drzwi,</span></span>
+<span id="cb1-365"><a href="#cb1-365" aria-hidden="true" tabindex="-1"></a>    <span class="co">// których gracz nie wybrał i za którymi</span></span>
+<span id="cb1-366"><a href="#cb1-366" aria-hidden="true" tabindex="-1"></a>    <span class="co">// nie znajduje się samochód.</span></span>
+<span id="cb1-367"><a href="#cb1-367" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> possibleDoors <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">.</span><span class="fu">filter</span>(</span>
+<span id="cb1-368"><a href="#cb1-368" aria-hidden="true" tabindex="-1"></a>      index <span class="kw">=&gt;</span></span>
+<span id="cb1-369"><a href="#cb1-369" aria-hidden="true" tabindex="-1"></a>        index <span class="op">!==</span> chosen <span class="op">&amp;&amp;</span></span>
+<span id="cb1-370"><a href="#cb1-370" aria-hidden="true" tabindex="-1"></a>        index <span class="op">!==</span> prize</span>
+<span id="cb1-371"><a href="#cb1-371" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span>
+<span id="cb1-372"><a href="#cb1-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-373"><a href="#cb1-373" aria-hidden="true" tabindex="-1"></a>    opened <span class="op">=</span></span>
+<span id="cb1-374"><a href="#cb1-374" aria-hidden="true" tabindex="-1"></a>      possibleDoors[</span>
+<span id="cb1-375"><a href="#cb1-375" aria-hidden="true" tabindex="-1"></a>        <span class="fu">randomInt</span>(possibleDoors<span class="op">.</span><span class="at">length</span>)</span>
+<span id="cb1-376"><a href="#cb1-376" aria-hidden="true" tabindex="-1"></a>      ]<span class="op">;</span></span>
+<span id="cb1-377"><a href="#cb1-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-378"><a href="#cb1-378" aria-hidden="true" tabindex="-1"></a>    doors[opened]<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(</span>
+<span id="cb1-379"><a href="#cb1-379" aria-hidden="true" tabindex="-1"></a>      <span class="st">"is-open"</span></span>
+<span id="cb1-380"><a href="#cb1-380" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span>
+<span id="cb1-381"><a href="#cb1-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-382"><a href="#cb1-382" aria-hidden="true" tabindex="-1"></a>    doors[opened]<span class="op">.</span><span class="fu">querySelector</span>(</span>
+<span id="cb1-383"><a href="#cb1-383" aria-hidden="true" tabindex="-1"></a>      <span class="st">".monty-content"</span></span>
+<span id="cb1-384"><a href="#cb1-384" aria-hidden="true" tabindex="-1"></a>    )<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">"🐐"</span><span class="op">;</span></span>
+<span id="cb1-385"><a href="#cb1-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-386"><a href="#cb1-386" aria-hidden="true" tabindex="-1"></a>    instruction<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span></span>
+<span id="cb1-387"><a href="#cb1-387" aria-hidden="true" tabindex="-1"></a>      <span class="vs">`Prowadzący otworzył drzwi </span><span class="sc">${</span>opened <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="vs"> `</span> <span class="op">+</span></span>
+<span id="cb1-388"><a href="#cb1-388" aria-hidden="true" tabindex="-1"></a>      <span class="st">"i pokazał kozę. Zostajesz czy zmieniasz?"</span><span class="op">;</span></span>
+<span id="cb1-389"><a href="#cb1-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-390"><a href="#cb1-390" aria-hidden="true" tabindex="-1"></a>    decision<span class="op">.</span><span class="at">hidden</span> <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb1-391"><a href="#cb1-391" aria-hidden="true" tabindex="-1"></a>    stage <span class="op">=</span> <span class="st">"decide"</span><span class="op">;</span></span>
+<span id="cb1-392"><a href="#cb1-392" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-393"><a href="#cb1-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-394"><a href="#cb1-394" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">finishRound</span>(strategy) {</span>
+<span id="cb1-395"><a href="#cb1-395" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (stage <span class="op">!==</span> <span class="st">"decide"</span>) {</span>
+<span id="cb1-396"><a href="#cb1-396" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb1-397"><a href="#cb1-397" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-398"><a href="#cb1-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-399"><a href="#cb1-399" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> finalChoice<span class="op">;</span></span>
+<span id="cb1-400"><a href="#cb1-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-401"><a href="#cb1-401" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (strategy <span class="op">===</span> <span class="st">"stay"</span>) {</span>
+<span id="cb1-402"><a href="#cb1-402" aria-hidden="true" tabindex="-1"></a>      finalChoice <span class="op">=</span> chosen<span class="op">;</span></span>
+<span id="cb1-403"><a href="#cb1-403" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb1-404"><a href="#cb1-404" aria-hidden="true" tabindex="-1"></a>      finalChoice <span class="op">=</span> [<span class="dv">0</span><span class="op">,</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">2</span>]<span class="op">.</span><span class="fu">find</span>(</span>
+<span id="cb1-405"><a href="#cb1-405" aria-hidden="true" tabindex="-1"></a>        index <span class="kw">=&gt;</span></span>
+<span id="cb1-406"><a href="#cb1-406" aria-hidden="true" tabindex="-1"></a>          index <span class="op">!==</span> chosen <span class="op">&amp;&amp;</span></span>
+<span id="cb1-407"><a href="#cb1-407" aria-hidden="true" tabindex="-1"></a>          index <span class="op">!==</span> opened</span>
+<span id="cb1-408"><a href="#cb1-408" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
+<span id="cb1-409"><a href="#cb1-409" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-410"><a href="#cb1-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-411"><a href="#cb1-411" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> win <span class="op">=</span> finalChoice <span class="op">===</span> prize<span class="op">;</span></span>
+<span id="cb1-412"><a href="#cb1-412" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-413"><a href="#cb1-413" aria-hidden="true" tabindex="-1"></a>    doors<span class="op">.</span><span class="fu">forEach</span>((door<span class="op">,</span> index) <span class="kw">=&gt;</span> {</span>
+<span id="cb1-414"><a href="#cb1-414" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> content <span class="op">=</span></span>
+<span id="cb1-415"><a href="#cb1-415" aria-hidden="true" tabindex="-1"></a>        door<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".monty-content"</span>)<span class="op">;</span></span>
+<span id="cb1-416"><a href="#cb1-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-417"><a href="#cb1-417" aria-hidden="true" tabindex="-1"></a>      content<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span></span>
+<span id="cb1-418"><a href="#cb1-418" aria-hidden="true" tabindex="-1"></a>        index <span class="op">===</span> prize <span class="op">?</span> <span class="st">"🚗"</span> <span class="op">:</span> <span class="st">"🐐"</span><span class="op">;</span></span>
+<span id="cb1-419"><a href="#cb1-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-420"><a href="#cb1-420" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (index <span class="op">===</span> prize) {</span>
+<span id="cb1-421"><a href="#cb1-421" aria-hidden="true" tabindex="-1"></a>        door<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(<span class="st">"is-winner"</span>)<span class="op">;</span></span>
+<span id="cb1-422"><a href="#cb1-422" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb1-423"><a href="#cb1-423" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span>
+<span id="cb1-424"><a href="#cb1-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-425"><a href="#cb1-425" aria-hidden="true" tabindex="-1"></a>    doors[finalChoice]<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(</span>
+<span id="cb1-426"><a href="#cb1-426" aria-hidden="true" tabindex="-1"></a>      <span class="st">"is-chosen"</span></span>
+<span id="cb1-427"><a href="#cb1-427" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span>
+<span id="cb1-428"><a href="#cb1-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-429"><a href="#cb1-429" aria-hidden="true" tabindex="-1"></a>    instruction<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> win</span>
+<span id="cb1-430"><a href="#cb1-430" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> <span class="st">"Wygrana — samochód!"</span></span>
+<span id="cb1-431"><a href="#cb1-431" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> <span class="st">"Przegrana — samochód był za innymi drzwiami."</span><span class="op">;</span></span>
+<span id="cb1-432"><a href="#cb1-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-433"><a href="#cb1-433" aria-hidden="true" tabindex="-1"></a>    decision<span class="op">.</span><span class="at">hidden</span> <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb1-434"><a href="#cb1-434" aria-hidden="true" tabindex="-1"></a>    stage <span class="op">=</span> <span class="st">"finished"</span><span class="op">;</span></span>
+<span id="cb1-435"><a href="#cb1-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-436"><a href="#cb1-436" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Ręczna próba jest doliczana do strategii,</span></span>
+<span id="cb1-437"><a href="#cb1-437" aria-hidden="true" tabindex="-1"></a>    <span class="co">// którą wybrał użytkownik.</span></span>
+<span id="cb1-438"><a href="#cb1-438" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (strategy <span class="op">===</span> <span class="st">"stay"</span>) {</span>
+<span id="cb1-439"><a href="#cb1-439" aria-hidden="true" tabindex="-1"></a>      stayTrials <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-440"><a href="#cb1-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-441"><a href="#cb1-441" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (win) {</span>
+<span id="cb1-442"><a href="#cb1-442" aria-hidden="true" tabindex="-1"></a>        stayWins <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-443"><a href="#cb1-443" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb1-444"><a href="#cb1-444" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb1-445"><a href="#cb1-445" aria-hidden="true" tabindex="-1"></a>      switchTrials <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-446"><a href="#cb1-446" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-447"><a href="#cb1-447" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (win) {</span>
+<span id="cb1-448"><a href="#cb1-448" aria-hidden="true" tabindex="-1"></a>        switchWins <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-449"><a href="#cb1-449" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb1-450"><a href="#cb1-450" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-451"><a href="#cb1-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-452"><a href="#cb1-452" aria-hidden="true" tabindex="-1"></a>    <span class="fu">updateStatistics</span>()<span class="op">;</span></span>
+<span id="cb1-453"><a href="#cb1-453" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-454"><a href="#cb1-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-455"><a href="#cb1-455" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">simulateMany</span>(numberOfTrials) {</span>
+<span id="cb1-456"><a href="#cb1-456" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (</span>
+<span id="cb1-457"><a href="#cb1-457" aria-hidden="true" tabindex="-1"></a>      <span class="kw">let</span> trial <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-458"><a href="#cb1-458" aria-hidden="true" tabindex="-1"></a>      trial <span class="op">&lt;</span> numberOfTrials<span class="op">;</span></span>
+<span id="cb1-459"><a href="#cb1-459" aria-hidden="true" tabindex="-1"></a>      trial <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-460"><a href="#cb1-460" aria-hidden="true" tabindex="-1"></a>    ) {</span>
+<span id="cb1-461"><a href="#cb1-461" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> simulatedPrize <span class="op">=</span> <span class="fu">randomInt</span>(<span class="dv">3</span>)<span class="op">;</span></span>
+<span id="cb1-462"><a href="#cb1-462" aria-hidden="true" tabindex="-1"></a>      <span class="kw">const</span> simulatedChoice <span class="op">=</span> <span class="fu">randomInt</span>(<span class="dv">3</span>)<span class="op">;</span></span>
+<span id="cb1-463"><a href="#cb1-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-464"><a href="#cb1-464" aria-hidden="true" tabindex="-1"></a>      stayTrials <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-465"><a href="#cb1-465" aria-hidden="true" tabindex="-1"></a>      switchTrials <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-466"><a href="#cb1-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-467"><a href="#cb1-467" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Pozostanie wygrywa dokładnie wtedy,</span></span>
+<span id="cb1-468"><a href="#cb1-468" aria-hidden="true" tabindex="-1"></a>      <span class="co">// gdy pierwszy wybór był poprawny.</span></span>
+<span id="cb1-469"><a href="#cb1-469" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (</span>
+<span id="cb1-470"><a href="#cb1-470" aria-hidden="true" tabindex="-1"></a>        simulatedChoice <span class="op">===</span> simulatedPrize</span>
+<span id="cb1-471"><a href="#cb1-471" aria-hidden="true" tabindex="-1"></a>      ) {</span>
+<span id="cb1-472"><a href="#cb1-472" aria-hidden="true" tabindex="-1"></a>        stayWins <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-473"><a href="#cb1-473" aria-hidden="true" tabindex="-1"></a>      } <span class="cf">else</span> {</span>
+<span id="cb1-474"><a href="#cb1-474" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Jeśli pierwszy wybór był błędny,</span></span>
+<span id="cb1-475"><a href="#cb1-475" aria-hidden="true" tabindex="-1"></a>        <span class="co">// zmiana zawsze prowadzi do samochodu.</span></span>
+<span id="cb1-476"><a href="#cb1-476" aria-hidden="true" tabindex="-1"></a>        switchWins <span class="op">+=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb1-477"><a href="#cb1-477" aria-hidden="true" tabindex="-1"></a>      }</span>
+<span id="cb1-478"><a href="#cb1-478" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-479"><a href="#cb1-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-480"><a href="#cb1-480" aria-hidden="true" tabindex="-1"></a>    <span class="fu">updateStatistics</span>()<span class="op">;</span></span>
+<span id="cb1-481"><a href="#cb1-481" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-482"><a href="#cb1-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-483"><a href="#cb1-483" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">updateStatistics</span>() {</span>
+<span id="cb1-484"><a href="#cb1-484" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> stayRate <span class="op">=</span> stayTrials</span>
+<span id="cb1-485"><a href="#cb1-485" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> <span class="dv">100</span> <span class="op">*</span> stayWins <span class="op">/</span> stayTrials</span>
+<span id="cb1-486"><a href="#cb1-486" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-487"><a href="#cb1-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-488"><a href="#cb1-488" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> switchRate <span class="op">=</span> switchTrials</span>
+<span id="cb1-489"><a href="#cb1-489" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> <span class="dv">100</span> <span class="op">*</span> switchWins <span class="op">/</span> switchTrials</span>
+<span id="cb1-490"><a href="#cb1-490" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-491"><a href="#cb1-491" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-492"><a href="#cb1-492" aria-hidden="true" tabindex="-1"></a>    <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(</span>
+<span id="cb1-493"><a href="#cb1-493" aria-hidden="true" tabindex="-1"></a>      <span class="st">"[data-stay-bar]"</span></span>
+<span id="cb1-494"><a href="#cb1-494" aria-hidden="true" tabindex="-1"></a>    )<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>stayRate<span class="sc">}</span><span class="vs">%`</span><span class="op">;</span></span>
+<span id="cb1-495"><a href="#cb1-495" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-496"><a href="#cb1-496" aria-hidden="true" tabindex="-1"></a>    <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(</span>
+<span id="cb1-497"><a href="#cb1-497" aria-hidden="true" tabindex="-1"></a>      <span class="st">"[data-switch-bar]"</span></span>
+<span id="cb1-498"><a href="#cb1-498" aria-hidden="true" tabindex="-1"></a>    )<span class="op">.</span><span class="at">style</span><span class="op">.</span><span class="at">width</span> <span class="op">=</span> <span class="vs">`</span><span class="sc">${</span>switchRate<span class="sc">}</span><span class="vs">%`</span><span class="op">;</span></span>
+<span id="cb1-499"><a href="#cb1-499" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-500"><a href="#cb1-500" aria-hidden="true" tabindex="-1"></a>    <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(</span>
+<span id="cb1-501"><a href="#cb1-501" aria-hidden="true" tabindex="-1"></a>      <span class="st">"[data-stay-result]"</span></span>
+<span id="cb1-502"><a href="#cb1-502" aria-hidden="true" tabindex="-1"></a>    )<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> stayTrials</span>
+<span id="cb1-503"><a href="#cb1-503" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> <span class="vs">`</span><span class="sc">${</span>stayRate<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">% `</span> <span class="op">+</span></span>
+<span id="cb1-504"><a href="#cb1-504" aria-hidden="true" tabindex="-1"></a>        <span class="vs">`(</span><span class="sc">${</span>stayWins<span class="sc">}</span><span class="vs">/</span><span class="sc">${</span>stayTrials<span class="sc">}</span><span class="vs">)`</span></span>
+<span id="cb1-505"><a href="#cb1-505" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> <span class="st">"—"</span><span class="op">;</span></span>
+<span id="cb1-506"><a href="#cb1-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-507"><a href="#cb1-507" aria-hidden="true" tabindex="-1"></a>    <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(</span>
+<span id="cb1-508"><a href="#cb1-508" aria-hidden="true" tabindex="-1"></a>      <span class="st">"[data-switch-result]"</span></span>
+<span id="cb1-509"><a href="#cb1-509" aria-hidden="true" tabindex="-1"></a>    )<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> switchTrials</span>
+<span id="cb1-510"><a href="#cb1-510" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> <span class="vs">`</span><span class="sc">${</span>switchRate<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">% `</span> <span class="op">+</span></span>
+<span id="cb1-511"><a href="#cb1-511" aria-hidden="true" tabindex="-1"></a>        <span class="vs">`(</span><span class="sc">${</span>switchWins<span class="sc">}</span><span class="vs">/</span><span class="sc">${</span>switchTrials<span class="sc">}</span><span class="vs">)`</span></span>
+<span id="cb1-512"><a href="#cb1-512" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> <span class="st">"—"</span><span class="op">;</span></span>
+<span id="cb1-513"><a href="#cb1-513" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-514"><a href="#cb1-514" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> totalDecisions <span class="op">=</span></span>
+<span id="cb1-515"><a href="#cb1-515" aria-hidden="true" tabindex="-1"></a>      stayTrials <span class="op">+</span> switchTrials<span class="op">;</span></span>
+<span id="cb1-516"><a href="#cb1-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-517"><a href="#cb1-517" aria-hidden="true" tabindex="-1"></a>    <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(</span>
+<span id="cb1-518"><a href="#cb1-518" aria-hidden="true" tabindex="-1"></a>      <span class="st">"[data-total]"</span></span>
+<span id="cb1-519"><a href="#cb1-519" aria-hidden="true" tabindex="-1"></a>    )<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> totalDecisions</span>
+<span id="cb1-520"><a href="#cb1-520" aria-hidden="true" tabindex="-1"></a>      <span class="op">?</span> <span class="vs">`Łączna liczba decyzji: </span><span class="sc">${</span>totalDecisions<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb1-521"><a href="#cb1-521" aria-hidden="true" tabindex="-1"></a>      <span class="op">:</span> <span class="st">"Brak rozegranych prób"</span><span class="op">;</span></span>
+<span id="cb1-522"><a href="#cb1-522" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-523"><a href="#cb1-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-524"><a href="#cb1-524" aria-hidden="true" tabindex="-1"></a>  doors<span class="op">.</span><span class="fu">forEach</span>(door <span class="kw">=&gt;</span> {</span>
+<span id="cb1-525"><a href="#cb1-525" aria-hidden="true" tabindex="-1"></a>    door<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-526"><a href="#cb1-526" aria-hidden="true" tabindex="-1"></a>      <span class="fu">chooseDoor</span>(</span>
+<span id="cb1-527"><a href="#cb1-527" aria-hidden="true" tabindex="-1"></a>        <span class="bu">Number</span>(door<span class="op">.</span><span class="at">dataset</span><span class="op">.</span><span class="at">door</span>)</span>
+<span id="cb1-528"><a href="#cb1-528" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
+<span id="cb1-529"><a href="#cb1-529" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb1-530"><a href="#cb1-530" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb1-531"><a href="#cb1-531" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-532"><a href="#cb1-532" aria-hidden="true" tabindex="-1"></a>  <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(</span>
+<span id="cb1-533"><a href="#cb1-533" aria-hidden="true" tabindex="-1"></a>    <span class="st">"[data-stay]"</span></span>
+<span id="cb1-534"><a href="#cb1-534" aria-hidden="true" tabindex="-1"></a>  )<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-535"><a href="#cb1-535" aria-hidden="true" tabindex="-1"></a>    <span class="fu">finishRound</span>(<span class="st">"stay"</span>)<span class="op">;</span></span>
+<span id="cb1-536"><a href="#cb1-536" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb1-537"><a href="#cb1-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-538"><a href="#cb1-538" aria-hidden="true" tabindex="-1"></a>  <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(</span>
+<span id="cb1-539"><a href="#cb1-539" aria-hidden="true" tabindex="-1"></a>    <span class="st">"[data-switch]"</span></span>
+<span id="cb1-540"><a href="#cb1-540" aria-hidden="true" tabindex="-1"></a>  )<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-541"><a href="#cb1-541" aria-hidden="true" tabindex="-1"></a>    <span class="fu">finishRound</span>(<span class="st">"switch"</span>)<span class="op">;</span></span>
+<span id="cb1-542"><a href="#cb1-542" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb1-543"><a href="#cb1-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-544"><a href="#cb1-544" aria-hidden="true" tabindex="-1"></a>  <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(</span>
+<span id="cb1-545"><a href="#cb1-545" aria-hidden="true" tabindex="-1"></a>    <span class="st">"[data-new]"</span></span>
+<span id="cb1-546"><a href="#cb1-546" aria-hidden="true" tabindex="-1"></a>  )<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> startRound<span class="op">;</span></span>
+<span id="cb1-547"><a href="#cb1-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-548"><a href="#cb1-548" aria-hidden="true" tabindex="-1"></a>  <span class="bu">root</span><span class="op">.</span><span class="fu">querySelectorAll</span>(</span>
+<span id="cb1-549"><a href="#cb1-549" aria-hidden="true" tabindex="-1"></a>    <span class="st">"[data-many]"</span></span>
+<span id="cb1-550"><a href="#cb1-550" aria-hidden="true" tabindex="-1"></a>  )<span class="op">.</span><span class="fu">forEach</span>(button <span class="kw">=&gt;</span> {</span>
+<span id="cb1-551"><a href="#cb1-551" aria-hidden="true" tabindex="-1"></a>    button<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-552"><a href="#cb1-552" aria-hidden="true" tabindex="-1"></a>      <span class="fu">simulateMany</span>(</span>
+<span id="cb1-553"><a href="#cb1-553" aria-hidden="true" tabindex="-1"></a>        <span class="bu">Number</span>(button<span class="op">.</span><span class="at">dataset</span><span class="op">.</span><span class="at">many</span>)</span>
+<span id="cb1-554"><a href="#cb1-554" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
+<span id="cb1-555"><a href="#cb1-555" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb1-556"><a href="#cb1-556" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb1-557"><a href="#cb1-557" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-558"><a href="#cb1-558" aria-hidden="true" tabindex="-1"></a>  <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(</span>
+<span id="cb1-559"><a href="#cb1-559" aria-hidden="true" tabindex="-1"></a>    <span class="st">"[data-reset]"</span></span>
+<span id="cb1-560"><a href="#cb1-560" aria-hidden="true" tabindex="-1"></a>  )<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb1-561"><a href="#cb1-561" aria-hidden="true" tabindex="-1"></a>    stayTrials <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-562"><a href="#cb1-562" aria-hidden="true" tabindex="-1"></a>    stayWins <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-563"><a href="#cb1-563" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-564"><a href="#cb1-564" aria-hidden="true" tabindex="-1"></a>    switchTrials <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-565"><a href="#cb1-565" aria-hidden="true" tabindex="-1"></a>    switchWins <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-566"><a href="#cb1-566" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-567"><a href="#cb1-567" aria-hidden="true" tabindex="-1"></a>    <span class="fu">updateStatistics</span>()<span class="op">;</span></span>
+<span id="cb1-568"><a href="#cb1-568" aria-hidden="true" tabindex="-1"></a>  }<span class="op">;</span></span>
+<span id="cb1-569"><a href="#cb1-569" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-570"><a href="#cb1-570" aria-hidden="true" tabindex="-1"></a>  <span class="fu">startRound</span>()<span class="op">;</span></span>
+<span id="cb1-571"><a href="#cb1-571" aria-hidden="true" tabindex="-1"></a>  <span class="fu">updateStatistics</span>()<span class="op">;</span></span>
+<span id="cb1-572"><a href="#cb1-572" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-573"><a href="#cb1-573" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">root</span><span class="op">;</span></span>
+<span id="cb1-574"><a href="#cb1-574" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<p>Dlaczego ten problem jest tak podchwytliwy i jak należy o nim myśleć? Posłuży nam on jako wprowadzenie do rachunku prawdopodobieństwa. Po przeczytaniu tego rozdziału łatwiej będzie poprawnie analizować zarówno problem samochodu i kóz, jak i wiele innych podobnych zagadnień. Zaczniemy od krótkiego omówienia teorii prawdopodobieństwa, jej znaczenia i historii.</p>
+</section>
+<section id="odrobina-historii" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="odrobina-historii"><span class="header-section-number">3.2</span> Odrobina historii</h2>
+<p>Rachunek prawdopodobieństwa można określić jako matematyczną teorię niepewności. Jego intuicyjne podstawy są bardzo stare: już człowiek obserwujący niebo, by przewidzieć pogodę, posługiwał się prymitywnym rozumowaniem probabilistycznym. Na przykład widząc ciemne chmury, uznawał deszcz za bardziej prawdopodobny i zabierał parasol.</p>
+<p>Takie intuicyjne szacowanie różni się jednak od formalnej teorii matematycznej. Za początek nowoczesnego rachunku prawdopodobieństwa często uznaje się XVII-wieczną korespondencję Blaise’a Pascala i Pierre’a de Fermata, dotyczącą problemów związanych z grami hazardowymi.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Fig/Blaise_Pascal_Versailles.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>Blaise Pascal (19 czerwca 1623 – 19 sierpnia 1662) był francuskim matematykiem, fizykiem, wynalazcą, filozofem i pisarzem katolickim.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Fig/Pierre_de_Fermat.jpg" class="img-fluid figure-img"></p>
+<figcaption>Pierre de Fermat (1601–1665) był francuskim prawnikiem, matematykiem amatorem i fizykiem matematycznym. Od 1631 roku pełnił funkcję radcy parlamentu, czyli ówczesnego sądu, w Tuluzie.</figcaption>
+</figure>
+</div>
+<p>Kasyno jest naturalnym laboratorium prawdopodobieństwa: rozsądny gracz musi umieć oceniać ryzyko, a więc prędzej czy później sam staje się matematykiem albo korzysta z jego pomocy.</p>
+<p>Z tych dość rozrywkowych początków wyrosła teoria stosowana dziś we wszystkich dziedzinach nauki i techniki, a także na rynkach finansowych. Szczególnego znaczenia nabrała ona w XX wieku wraz z rozwojem fizyki kwantowej.</p>
+</section>
+<section id="opis-doświadczenia-losowego" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="opis-doświadczenia-losowego"><span class="header-section-number">3.3</span> Opis doświadczenia losowego</h2>
+<p>Za każdym razem kiedy rzucamy kością czy losujemy kartę z talii wykonujemy pewnien eksperyment losowy. W pierwszej części wykładu zajmiemy się badaniem tego typu eksperymantów. Zaczniemy od sposobu matematycznej reprezentacji wyniku naszego losowania. Każdy możliwy wynik eksperymentu nazywać będziemy zdarzeniem elementarnym. Przykładowo dla rzutu kością sześcienną zdarzeniem elementarnym będzie liczba wyrzuconych oczek, czyli dowolna z liczb 1,2, … 6. Zbiór wszystkich zdarzeń elementarnych oznaczać będziemy przez <span class="math inline">\(\Omega\)</span> i będziemy nazywać <em>przestrzenią zdarzeń elementarnych</em>. <strong>Zakładać będziemy, że <span class="math inline">\(\Omega\)</span> jest zbiorem co najwyżej przeliczalnym</strong>, czyli skończonym bądź nieskończonym o przeliczalnej liczbie elementów. Wówczas elementy <span class="math inline">\(\Omega\)</span> można wpisać w następujący sposób <span class="math display">\[\begin{equation*}
+    \Omega = \left\{ \omega_k \: :\: k \in \mathbb{N}\right\}, \qquad \mathbb{N} = \{1,2,3, \ldots \}
+\end{equation*}\]</span> jeżeli <span class="math inline">\(\Omega\)</span> jest nieskończona oraz <span class="math display">\[\begin{equation*}
+    \Omega = \left\{  \omega_k \: : \: k \leq N\right\}, \qquad N \in \mathbb{N}
+\end{equation*}\]</span> jeśli <span class="math inline">\(\Omega\)</span> jest skończona. Wybór przestrzeni <span class="math inline">\(\Omega\)</span> zależy zawsze od rodzaju eksperymentu losowego, który chcemy opisać. Na tym etapie przestrzeń zdarzeń elementarnych jest zbiorem wszystkich możliwych wyników naszego eksperymentu i nie mówi jeszcze nic o prawdopodobieństwach tych wyników.</p>
+<div id="exm-kosci1" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.1</strong></span> Powiedzmy, że nasz eksperyment losowy polega na rzucie parą kości sześciennych. Wynikiem naszego eksperymentu jest para elementów zbioru<br>
+<span class="math inline">\(D = \{ 1, 2, \ldots , 6\}\)</span>. Istotne jest aby rozróżnić wyniki otrzymane na obu kościach, wszak kości nie muszą być symetryczne. Zbiorem zdarzeń elementarnych jest <span class="math display">\[
+      \Omega = D^2=  \{ (1,1), (1,2),(1,3),  \ldots , (6,6) \}.
+  \]</span> W tym przypadku przestrzeń zdarzeń elementarnych jest skończona i składa się z <span class="math inline">\(|\Omega| = 36\)</span> elementów.</p>
+</div>
+<div id="exm-geometryczny1" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.2</strong></span> Tym razem rzucamy monetą do momentu otrzymania orła. Przestrzeń zdarzeń elementarnych <span class="math inline">\(\Omega\)</span> składa się ze skończonych ciągów <span class="math inline">\(\{O, R\}\)</span> kończących się znakiem <span class="math inline">\(O\)</span> i jednego nieskończonego ciągu <span class="math inline">\(R\)</span>. Dokładniej <span class="math display">\[
+      \Omega = \{ RRRR \ldots\} \cup \{ O, RO, RRO, RRRO, \ldots  \}.
+    \]</span> Tutaj niekończony ciąg <span class="math inline">\(RRR\ldots\)</span> opisuje scenariusz, w którym nigdy nie wyrzucimy orła.</p>
+</div>
+<p>W większości eksperymentów losowych nie interesują nas poszczególne jego wyniki, lecz pewien ich wspólny aspekt. Dla przykładu w rzucie kością sześcienną istotna dla nas może być tylko parzystość uzyskanego wyniku. Innymi słowy bardziej od poszczególnych zdarzeń elementarnych interesować nas będę ich zbiory.</p>
+<div id="def-zdarzenie" class="theorem definition">
+<p><span class="theorem-title"><strong>Definicja 3.1</strong></span> Niech <span class="math inline">\(\Omega\)</span> będzie co najwyżej przeliczalną przestrzenią zdarzeń elementarnych. <em>Zdarzeniem</em> nazywać będziemy dowolny podzbiór <span class="math inline">\(A \subseteq \Omega\)</span>.</p>
+</div>
+<p>Duch wprowadzanego formalizmu wymaga od nas ścisłego definiowania zdarzeń. Należy pamiętać jednak, że formalizm nie jest celem samym w sobie. Często będziemy pozwalać sobie na definiowanie zdarzeń w sposób opisowy o ile nie będzie prowadziło to do nieścisłości.</p>
+<div id="exm-dublet" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.3</strong></span> Wróćmy do rzutu parą kości, gdzie przestrzenią zdarzeń elementarnych jest <span class="math inline">\(\Omega = D^2\)</span>. Wówczas zdarzeniem jest <span class="math display">\[\begin{align*}
+      A = &amp; \{ \mbox{suma oczek na obu kościach jest równa 7} \} \\
+      = &amp; \{ (1,6), (2,5),  \ldots ,(6,1)  \} \subseteq \Omega = D^2.
+    \end{align*}\]</span> Natomiast zbiór <span class="math display">\[
+            \{ (1,1), (2,2) , \ldots , (6,6)\}
+    \]</span> jest zdarzeniem <span class="math inline">\(\{\mbox{wypadł dublet}\}\)</span>.</p>
+</div>
+<p>Wprowadzone przez nas <a href="#def-zdarzenie" class="quarto-xref">Definicja&nbsp;<span>3.1</span></a> zdarzenia jest niezwykle pojemna. W skutek czego jeżeli <span class="math inline">\(A_1, A_2 \ldots\)</span> jest ciągiem zdarzeń, czyli dla każdego <span class="math inline">\(k \in \mathbb{N}\)</span>, <span class="math inline">\(A_k\)</span> jest zdarzeniem, to zdarzeniem jest również <span class="math inline">\(\bigcup_{k=1}^{\infty} A_k\)</span> oraz <span class="math inline">\(\bigcap_{k=1}^\infty A_k\)</span>. Dodatkowo, jeżeli <span class="math inline">\(A\)</span> jest zdarzeniem, to jest nie również <strong>zdarzenie przeciwne do zdarzenia <span class="math inline">\(A\)</span></strong>, zadane wzorem <span class="math display">\[
+  A' = \Omega \setminus A.
+\]</span> Zdarzenie <span class="math inline">\(A'\)</span> polega na tym, że nie zachodzi zdarzenie <span class="math inline">\(A\)</span>. Jest jeszcze jedna relacja teoriomnogościowa, z której będziemy korzystać. Powiemy, że <strong>zdarzenie <span class="math inline">\(B\)</span> pociąga zdarzenie <span class="math inline">\(A\)</span></strong>, jeżeli <span class="math inline">\(B \subseteq A\)</span>.</p>
+<div id="exm-pociaga" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.4</strong></span> Powiedzmy, że rzucamy tylko jedną kością. Wówczas <span class="math inline">\(\Omega = D = \{ 1,2 \ldots , 6\}\)</span>. Niech <span class="math display">\[
+  A = \{\mbox{wypadła liczba parzysta} \} = \{ 2,4,6\}.
+\]</span> Zdarzenie przeciwne do zdarzenia <span class="math inline">\(A\)</span> to <span class="math display">\[
+  A' = \{\mbox{wypadła liczba nieparzysta} \} = \{ 1,3,5\}.
+\]</span> Z kolei zdarzenie <span class="math display">\[
+  B = \{\mbox{wypadła szóstka} \} = \{6\}
+\]</span> pociąga zdarzenie <span class="math inline">\(A\)</span>, czyli <span class="math inline">\(B \subseteq A\)</span>.</p>
+</div>
+</section>
+<section id="miara-probabilistyczna" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="miara-probabilistyczna"><span class="header-section-number">3.4</span> Miara probabilistyczna</h2>
+<p>Jesteśmy przyzwyczajeni do intuicyjnego mylenia o prawdopodobieństwie. Dla przykładu w eksperymencie polegającym na rzucie dwoma monetami od razu napiszemy, że <span class="math display">\[\begin{equation*}
+        \mathbb{P}\left[ \mbox{pierwszej kości wypadnie $3$ a na drugiej $5$} \right] = \frac 16 \cdot \frac 16 = \frac 1{36}.
+\end{equation*}\]</span> W pewnym sensie o liczbie <span class="math inline">\(\mathbb{P}[A]\)</span> myślimy jak o prawdopodobieństwie zdarzenia <span class="math inline">\(A\)</span> opierając się na słownym opisie darzenia <span class="math inline">\(A\)</span>. Zauważmy, że <span class="math inline">\(\mathbb{P}\)</span> staje się funkcją, która jako argumenty przyjmuje podzbiory <span class="math inline">\(\Omega\)</span>. Formalnie <span class="math display">\[\begin{equation*}
+   \mathbb{P} \colon 2^\Omega \to [0,1],
+\end{equation*}\]</span> gdzie <span class="math inline">\(2^\Omega\)</span> jest zbiorem potęgowym <span class="math inline">\(\Omega\)</span>, czyli zbiorem wszystkich podzbiorów <span class="math inline">\(\Omega\)</span>. Dokładniej <span class="math display">\[\begin{equation*}
+   2^\Omega = \{ B \: : \: B \subseteq \Omega \}.
+\end{equation*}\]</span></p>
+<div id="exm-potega" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.5</strong></span> Załóżmy, że rzucamy monetą. Wówczas <span class="math inline">\(\Omega = \{ O, R\}\)</span> oraz <span class="math display">\[\begin{equation*}
+    2^\Omega = \{ \emptyset, \{O\}, \{R \}, \{O, R\} \}.
+  \end{equation*}\]</span></p>
+</div>
+<p>Zauważmy, że jeżeli <span class="math inline">\(\Omega\)</span> ma <span class="math inline">\(n\)</span> elementów, to <span class="math inline">\(2^\Omega\)</span> ma <span class="math inline">\(2^n\)</span> elementów.</p>
+<p>W wielu przypadkach wygodnie jest myśleć o zdarzeniu <span class="math inline">\(A\)</span> jak o podzbiorze <span class="math inline">\(\Omega\)</span> a o liczbie <span class="math inline">\(\mathbb{P}[A]\)</span> jak o masie zbioru <span class="math inline">\(A\)</span>. Przyjęta przez nas definicja będzie odzwierciedlała ten sposób myślenia.</p>
+<div id="def-miara-probabilistyczna" class="theorem definition">
+<p><span class="theorem-title"><strong>Definicja 3.2</strong></span> Niech <span class="math inline">\(\Omega\)</span> będzie co najwyżej przeliczalną przestrzenią zdarzeń elementarnych. <em>Funkcją prawdopodobieństwa</em> nazywamy odwzorowanie <span class="math inline">\(p \colon \Omega \to [0,1]\)</span> takie, że <span id="eq-prob"><span class="math display">\[
+            \sum_{\omega \in \Omega} p(\omega) =1.
+     \tag{3.1}\]</span></span> <em>Miarą probabilistyczną</em> nazywamy odwzorowanie <span class="math inline">\(\mathbb{P} \colon 2^\Omega \to [0,1]\)</span> zadane wzorem <span class="math display">\[\begin{equation*}
+      \mathbb{P}[A]=\sum_{\omega \in A} p(\omega),
+    \end{equation*}\]</span> dla zdarzenia <span class="math inline">\(A\)</span>.</p>
+</div>
+<p>W tym momencie warto zwrócić uwagę na notację pojawiającą się w <a href="#eq-prob" class="quarto-xref">Równanie&nbsp;<span>3.1</span></a> . Jeżeli <span class="math inline">\(\Omega\)</span> jest skończoną przestrzenią i <span class="math inline">\(\Omega = \{\omega_1, \omega_2, \ldots , \omega_N\}\)</span> dla pewnego naturalnego <span class="math inline">\(N\)</span>, to <span class="math display">\[\begin{equation*}
+   \sum_{\omega \in \Omega} p(\omega) = \sum_{k=1}^N p(\omega_k).
+\end{equation*}\]</span> Jeżeli natomiast <span class="math inline">\(\Omega\)</span> jest nieskończona i <span class="math inline">\(\Omega = \{ \omega_k \: : \: k \in \mathbb{N}\}\)</span>, to <span class="math display">\[\begin{equation*}
+   \sum_{\omega \in \Omega} p(\omega) = \sum_{k=1}^\infty p(\omega_k).
+\end{equation*}\]</span></p>
+<div id="exm-kostka1" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.6</strong></span> Rzucamy jedną kostką. Wówczas <span class="math inline">\(\Omega = \{1, 2, \ldots, 6\}\)</span>. Jeżeli kostka jest dobrze wyważona to otrzymanie każdej liczby oczek jest jednakowo prawdopodobne. Dokładniej <span class="math display">\[\begin{equation*}
+     p(1) = p(2) = \ldots = p(6) = 1/6
+  \end{equation*}\]</span> jest odpowiadającą funkcją prawdopodobieństwa. Istotnie <span class="math display">\[\begin{equation*}
+    \sum_{\omega \in \Omega} p(\omega) = p(1) + p(2) + \ldots + p(6)=1.
+  \end{equation*}\]</span> Przykładowo <span class="math display">\[\begin{equation*}
+    \mathbb{P}[ \mbox{ wypadła liczba parzysta }] = p(2) + p(4) + p(6)=1/2.
+  \end{equation*}\]</span></p>
+</div>
+<div id="exm-kostka2" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.7</strong></span> Załóżmy teraz, że rzucamy kostką, na której ktoś domalował piątą kropkę na ścianie pokazującej <span class="math inline">\(4\)</span>. W dalszym ciągu możemy przyjąć <span class="math inline">\(\Omega = \{1, 2, \ldots, 6\}\)</span>. Tym razem jednak funkcja prawdopodobieństwa to <span class="math display">\[\begin{equation*}
+    p(1)=p(2)=p(3)=p(6)=1/6
+  \end{equation*}\]</span> oraz <span class="math display">\[\begin{equation*}
+    p(4) =0, \quad p(5)=2/6.
+  \end{equation*}\]</span> W tym wypadku <span class="math display">\[\begin{equation*}
+    \mathbb{P}[ \mbox{ wypadła liczba parzysta }] = p(2) + p(4) + p(6)=1/3.
+  \end{equation*}\]</span></p>
+</div>
+<div id="exm-kosci2" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.8</strong></span> Rzucamy parą kości sześciennych. Przyjmujemy <span class="math display">\[\begin{equation*}
+    \Omega = \{ (1,1), (1,2) , \ldots, (6,5), (6,6)\}.
+  \end{equation*}\]</span> oraz <span class="math display">\[\begin{equation*}
+    p((1,1))= \ldots = p((6,6))=1/36.
+  \end{equation*}\]</span> Innymi słowy każdy wynik jest jednakowo prawdopodobny. Rozważmy <span class="math display">\[\begin{align*}
+    A &amp; = \{ \mbox{ na pierwszej kości wypadła piątka}\} \\
+      &amp; = \{ (5,1), (5,2), \ldots , (5,6) \}.
+  \end{align*}\]</span> Wtedy <span class="math display">\[\begin{equation*}
+    \mathbb{P}[A] = 1/6.
+  \end{equation*}\]</span></p>
+</div>
+<div id="exm-geometryczny2" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.9</strong></span> Rzucamy kostką aż do momentu otrzymania pierwszego orła. Wówczas <span class="math inline">\(\Omega = \{R\}^{\mathbb{N}} \cup \bigcup_{k=0}^\infty\{R \}^k \times \{O\}\)</span>, jak w <span class="quarto-unresolved-ref">?exm-geometryczny</span>. Funkcją prawdopodobieństwa jest <span class="math inline">\(p(O)=\frac 12\)</span>, <span class="math inline">\(p(OR)=\frac 14\)</span> oraz ogólnie <span class="math inline">\(p(\omega_k)=2^{-k}\)</span>, gdzie <span class="math inline">\(\omega_k\)</span> składa się z <span class="math inline">\(k-1\)</span> reszek i orła, oraz <span class="math inline">\(p(\omega_\infty)=0\)</span>, gdzie <span class="math inline">\(\omega_\infty\)</span> składa się z samych reszek. Rzeczywiście, wystarczy sprawdzić <span class="math display">\[\begin{equation*}
+      \sum_{\omega \in \Omega}p(\omega) = p(\omega_\infty) + \sum_{k=1}^\infty p(\omega_k) =0+1.
+  \end{equation*}\]</span></p>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-john1991behind" class="csl-entry" role="listitem">
+John, Tierney. 1991. <span>„Behind Monty Hall’s doors: puzzle, debate and answer”</span>. <em>The New York Times</em> 21. <a href="https://www.nytimes.com/1991/07/21/us/behind-monty-hall-s-doors-puzzle-debate-and-answer.html">https://www.nytimes.com/1991/07/21/us/behind-monty-hall-s-doors-puzzle-debate-and-answer.html</a>.
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxyXG5tb250eV9oYWxsID0ge1xyXG4gIGNvbnN0IHJvb3QgPSBodG1sYDxkaXYgY2xhc3M9XCJtb250eS1yb290XCI+XHJcbiAgICA8c3R5bGU+XHJcbiAgICAgIC5tb250eS1yb290IHtcclxuICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgICBtYXgtd2lkdGg6IDc2MHB4O1xyXG4gICAgICAgIG1hcmdpbjogMCBhdXRvO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAubW9udHktY29udHJvbHMsXHJcbiAgICAgIC5tb250eS1kZWNpc2lvbiB7XHJcbiAgICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgICAgICBnYXA6IDAuNXJlbTtcclxuICAgICAgICBmbGV4LXdyYXA6IHdyYXA7XHJcbiAgICAgICAgbWFyZ2luOiAwLjc1cmVtIDA7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgIC5tb250eS1yb290IGJ1dHRvbiB7XHJcbiAgICAgICAgcGFkZGluZzogMC40NXJlbSAwLjhyZW07XHJcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgIzk4YTJiMztcclxuICAgICAgICBib3JkZXItcmFkaXVzOiAwLjRyZW07XHJcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tYnMtYm9keS1iZywgd2hpdGUpO1xyXG4gICAgICAgIGNvbG9yOiB2YXIoLS1icy1ib2R5LWNvbG9yLCAjMjIyKTtcclxuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgIC5tb250eS1yb290IGJ1dHRvbi5wcmltYXJ5IHtcclxuICAgICAgICBjb2xvcjogd2hpdGU7XHJcbiAgICAgICAgYmFja2dyb3VuZDogIzI1NjNlYjtcclxuICAgICAgICBib3JkZXItY29sb3I6ICMyNTYzZWI7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgIC5tb250eS1pbnN0cnVjdGlvbiB7XHJcbiAgICAgICAgbWluLWhlaWdodDogMS42ZW07XHJcbiAgICAgICAgbWFyZ2luOiAwLjhyZW0gMDtcclxuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgIC5tb250eS1kb29ycyB7XHJcbiAgICAgICAgZGlzcGxheTogZ3JpZDtcclxuICAgICAgICBncmlkLXRlbXBsYXRlLWNvbHVtbnM6IHJlcGVhdCgzLCBtaW5tYXgoMCwgMWZyKSk7XHJcbiAgICAgICAgZ2FwOiBjbGFtcCgwLjVyZW0sIDN2dywgMS41cmVtKTtcclxuICAgICAgICBtYXgtd2lkdGg6IDY2MHB4O1xyXG4gICAgICAgIG1hcmdpbjogMCBhdXRvO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAubW9udHktZG9vciB7XHJcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICAgIGFzcGVjdC1yYXRpbzogMyAvIDQ7XHJcbiAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICAgICAgICBib3JkZXI6IDNweCBzb2xpZCAjOThhMmIzICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgYm9yZGVyLXJhZGl1czogMC41cmVtIDAuNXJlbSAwIDAgIWltcG9ydGFudDtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjZGJlYWZlICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgY29sb3I6ICMxZTI5M2IgIWltcG9ydGFudDtcclxuICAgICAgICB0cmFuc2l0aW9uOlxyXG4gICAgICAgICAgdHJhbnNmb3JtIDAuMnMgZWFzZSxcclxuICAgICAgICAgIGJvcmRlci1jb2xvciAwLjJzIGVhc2UsXHJcbiAgICAgICAgICBiYWNrZ3JvdW5kIDAuMnMgZWFzZTtcclxuICAgICAgfVxyXG5cclxuICAgICAgLm1vbnR5LWRvb3I6aG92ZXI6bm90KDpkaXNhYmxlZCkge1xyXG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtNHB4KTtcclxuICAgICAgfVxyXG5cclxuICAgICAgLm1vbnR5LWRvb3IuaXMtY2hvc2VuIHtcclxuICAgICAgICBib3JkZXItY29sb3I6ICMyNTYzZWIgIWltcG9ydGFudDtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjYmZkYmZlICFpbXBvcnRhbnQ7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgIC5tb250eS1kb29yLmlzLW9wZW4ge1xyXG4gICAgICAgIGJvcmRlci1jb2xvcjogIzk0YTNiOCAhaW1wb3J0YW50O1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNlMmU4ZjAgIWltcG9ydGFudDtcclxuICAgICAgfVxyXG5cclxuICAgICAgLm1vbnR5LWRvb3IuaXMtd2lubmVyIHtcclxuICAgICAgICBib3JkZXItY29sb3I6ICMxNmEzNGEgIWltcG9ydGFudDtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjYmJmN2QwICFpbXBvcnRhbnQ7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgIC5tb250eS1udW1iZXIge1xyXG4gICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgICAgICB0b3A6IDglO1xyXG4gICAgICAgIGxlZnQ6IDUwJTtcclxuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7XHJcbiAgICAgICAgZm9udC1zaXplOiBjbGFtcCgxLjI1cmVtLCA0dncsIDJyZW0pO1xyXG4gICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAubW9udHktY29udGVudCB7XHJcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgICAgIGluc2V0OiAyOCUgOCUgOCU7XHJcbiAgICAgICAgZGlzcGxheTogZ3JpZDtcclxuICAgICAgICBwbGFjZS1pdGVtczogY2VudGVyO1xyXG4gICAgICAgIGZvbnQtc2l6ZTogY2xhbXAoMnJlbSwgOHZ3LCA0LjVyZW0pO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAubW9udHktc3RhdHMge1xyXG4gICAgICAgIG1heC13aWR0aDogNjYwcHg7XHJcbiAgICAgICAgbWFyZ2luOiAxLjRyZW0gYXV0byAwO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAubW9udHktcm93IHtcclxuICAgICAgICBkaXNwbGF5OiBncmlkO1xyXG4gICAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogNXJlbSAxZnIgOXJlbTtcclxuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgICAgIGdhcDogMC43NXJlbTtcclxuICAgICAgICBtYXJnaW46IDAuN3JlbSAwO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAubW9udHktdHJhY2sge1xyXG4gICAgICAgIGhlaWdodDogMXJlbTtcclxuICAgICAgICBvdmVyZmxvdzogaGlkZGVuO1xyXG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDk5OXB4O1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNlMmU4ZjA7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgIC5tb250eS1iYXIge1xyXG4gICAgICAgIHdpZHRoOiAwO1xyXG4gICAgICAgIGhlaWdodDogMTAwJTtcclxuICAgICAgICBib3JkZXItcmFkaXVzOiA5OTlweDtcclxuICAgICAgICB0cmFuc2l0aW9uOiB3aWR0aCAwLjM1cyBlYXNlO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAubW9udHktc3RheS1iYXIge1xyXG4gICAgICAgIGJhY2tncm91bmQ6ICNmNTllMGI7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgIC5tb250eS1zd2l0Y2gtYmFyIHtcclxuICAgICAgICBiYWNrZ3JvdW5kOiAjMjU2M2ViO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAubW9udHktcmVzdWx0IHtcclxuICAgICAgICB0ZXh0LWFsaWduOiByaWdodDtcclxuICAgICAgICBmb250LXZhcmlhbnQtbnVtZXJpYzogdGFidWxhci1udW1zO1xyXG4gICAgICB9XHJcblxyXG4gICAgICAubW9udHktdG90YWwge1xyXG4gICAgICAgIG1hcmdpbi10b3A6IDAuNzVyZW07XHJcbiAgICAgICAgY29sb3I6ICM2NjcwODU7XHJcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICB9XHJcblxyXG4gICAgICBbaGlkZGVuXSB7XHJcbiAgICAgICAgZGlzcGxheTogbm9uZSAhaW1wb3J0YW50O1xyXG4gICAgICB9XHJcblxyXG4gICAgICBAbWVkaWEgKG1heC13aWR0aDogNDgwcHgpIHtcclxuICAgICAgICAubW9udHktcm93IHtcclxuICAgICAgICAgIGdyaWQtdGVtcGxhdGUtY29sdW1uczogNC41cmVtIDFmcjtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIC5tb250eS1yZXN1bHQge1xyXG4gICAgICAgICAgZ3JpZC1jb2x1bW46IDI7XHJcbiAgICAgICAgfVxyXG4gICAgICB9XHJcbiAgICA8L3N0eWxlPlxyXG5cclxuICAgIDxkaXYgY2xhc3M9XCJtb250eS1jb250cm9sc1wiPlxyXG4gICAgICA8YnV0dG9uIGRhdGEtbmV3Pk5vd2Egcm96Z3J5d2thPC9idXR0b24+XHJcbiAgICAgIDxidXR0b24gY2xhc3M9XCJwcmltYXJ5XCIgZGF0YS1tYW55PVwiMTBcIj5cclxuICAgICAgICBTeW11bHVqIDEwIHByw7NiXHJcbiAgICAgIDwvYnV0dG9uPlxyXG4gICAgICA8YnV0dG9uIGNsYXNzPVwicHJpbWFyeVwiIGRhdGEtbWFueT1cIjEwMFwiPlxyXG4gICAgICAgIFN5bXVsdWogMTAwIHByw7NiXHJcbiAgICAgIDwvYnV0dG9uPlxyXG4gICAgICA8YnV0dG9uIGRhdGEtcmVzZXQ+XHJcbiAgICAgICAgV3l6ZXJ1aiBzdGF0eXN0eWtpXHJcbiAgICAgIDwvYnV0dG9uPlxyXG4gICAgPC9kaXY+XHJcblxyXG4gICAgPHAgY2xhc3M9XCJtb250eS1pbnN0cnVjdGlvblwiIGRhdGEtaW5zdHJ1Y3Rpb24+XHJcbiAgICAgIFd5YmllcnogamVkbmUgZHJ6d2kuXHJcbiAgICA8L3A+XHJcblxyXG4gICAgPGRpdlxyXG4gICAgICBjbGFzcz1cIm1vbnR5LWRvb3JzXCJcclxuICAgICAgcm9sZT1cImdyb3VwXCJcclxuICAgICAgYXJpYS1sYWJlbD1cIld5YmllcnogamVkbmUgeiB0cnplY2ggZHJ6d2lcIlxyXG4gICAgPlxyXG4gICAgICA8YnV0dG9uXHJcbiAgICAgICAgY2xhc3M9XCJtb250eS1kb29yXCJcclxuICAgICAgICBkYXRhLWRvb3I9XCIwXCJcclxuICAgICAgICBhcmlhLWxhYmVsPVwiRHJ6d2kgMVwiXHJcbiAgICAgID5cclxuICAgICAgICA8c3BhbiBjbGFzcz1cIm1vbnR5LW51bWJlclwiPjE8L3NwYW4+XHJcbiAgICAgICAgPHNwYW4gY2xhc3M9XCJtb250eS1jb250ZW50XCI+PC9zcGFuPlxyXG4gICAgICA8L2J1dHRvbj5cclxuXHJcbiAgICAgIDxidXR0b25cclxuICAgICAgICBjbGFzcz1cIm1vbnR5LWRvb3JcIlxyXG4gICAgICAgIGRhdGEtZG9vcj1cIjFcIlxyXG4gICAgICAgIGFyaWEtbGFiZWw9XCJEcnp3aSAyXCJcclxuICAgICAgPlxyXG4gICAgICAgIDxzcGFuIGNsYXNzPVwibW9udHktbnVtYmVyXCI+Mjwvc3Bhbj5cclxuICAgICAgICA8c3BhbiBjbGFzcz1cIm1vbnR5LWNvbnRlbnRcIj48L3NwYW4+XHJcbiAgICAgIDwvYnV0dG9uPlxyXG5cclxuICAgICAgPGJ1dHRvblxyXG4gICAgICAgIGNsYXNzPVwibW9udHktZG9vclwiXHJcbiAgICAgICAgZGF0YS1kb29yPVwiMlwiXHJcbiAgICAgICAgYXJpYS1sYWJlbD1cIkRyendpIDNcIlxyXG4gICAgICA+XHJcbiAgICAgICAgPHNwYW4gY2xhc3M9XCJtb250eS1udW1iZXJcIj4zPC9zcGFuPlxyXG4gICAgICAgIDxzcGFuIGNsYXNzPVwibW9udHktY29udGVudFwiPjwvc3Bhbj5cclxuICAgICAgPC9idXR0b24+XHJcbiAgICA8L2Rpdj5cclxuXHJcbiAgICA8ZGl2IGNsYXNzPVwibW9udHktZGVjaXNpb25cIiBkYXRhLWRlY2lzaW9uIGhpZGRlbj5cclxuICAgICAgPGJ1dHRvbiBkYXRhLXN0YXk+XHJcbiAgICAgICAgWm9zdGHFhCBwcnp5IHd5Ym9yemVcclxuICAgICAgPC9idXR0b24+XHJcblxyXG4gICAgICA8YnV0dG9uIGNsYXNzPVwicHJpbWFyeVwiIGRhdGEtc3dpdGNoPlxyXG4gICAgICAgIFptaWXFhCBkcnp3aVxyXG4gICAgICA8L2J1dHRvbj5cclxuICAgIDwvZGl2PlxyXG5cclxuICAgIDxkaXYgY2xhc3M9XCJtb250eS1zdGF0c1wiPlxyXG4gICAgICA8ZGl2IGNsYXNzPVwibW9udHktcm93XCI+XHJcbiAgICAgICAgPHNwYW4+Wm9zdGHFhDwvc3Bhbj5cclxuXHJcbiAgICAgICAgPGRpdiBjbGFzcz1cIm1vbnR5LXRyYWNrXCI+XHJcbiAgICAgICAgICA8ZGl2XHJcbiAgICAgICAgICAgIGNsYXNzPVwibW9udHktYmFyIG1vbnR5LXN0YXktYmFyXCJcclxuICAgICAgICAgICAgZGF0YS1zdGF5LWJhclxyXG4gICAgICAgICAgPjwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG5cclxuICAgICAgICA8c3Ryb25nXHJcbiAgICAgICAgICBjbGFzcz1cIm1vbnR5LXJlc3VsdFwiXHJcbiAgICAgICAgICBkYXRhLXN0YXktcmVzdWx0XHJcbiAgICAgICAgPuKAlDwvc3Ryb25nPlxyXG4gICAgICA8L2Rpdj5cclxuXHJcbiAgICAgIDxkaXYgY2xhc3M9XCJtb250eS1yb3dcIj5cclxuICAgICAgICA8c3Bhbj5abWllxYQ8L3NwYW4+XHJcblxyXG4gICAgICAgIDxkaXYgY2xhc3M9XCJtb250eS10cmFja1wiPlxyXG4gICAgICAgICAgPGRpdlxyXG4gICAgICAgICAgICBjbGFzcz1cIm1vbnR5LWJhciBtb250eS1zd2l0Y2gtYmFyXCJcclxuICAgICAgICAgICAgZGF0YS1zd2l0Y2gtYmFyXHJcbiAgICAgICAgICA+PC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcblxyXG4gICAgICAgIDxzdHJvbmdcclxuICAgICAgICAgIGNsYXNzPVwibW9udHktcmVzdWx0XCJcclxuICAgICAgICAgIGRhdGEtc3dpdGNoLXJlc3VsdFxyXG4gICAgICAgID7igJQ8L3N0cm9uZz5cclxuICAgICAgPC9kaXY+XHJcblxyXG4gICAgICA8cCBjbGFzcz1cIm1vbnR5LXRvdGFsXCIgZGF0YS10b3RhbD5cclxuICAgICAgICBCcmFrIHJvemVncmFueWNoIHByw7NiXHJcbiAgICAgIDwvcD5cclxuICAgIDwvZGl2PlxyXG4gIDwvZGl2PmA7XHJcblxyXG4gIGNvbnN0IGRvb3JzID0gW1xyXG4gICAgLi4ucm9vdC5xdWVyeVNlbGVjdG9yQWxsKFwiW2RhdGEtZG9vcl1cIilcclxuICBdO1xyXG5cclxuICBjb25zdCBpbnN0cnVjdGlvbiA9XHJcbiAgICByb290LnF1ZXJ5U2VsZWN0b3IoXCJbZGF0YS1pbnN0cnVjdGlvbl1cIik7XHJcblxyXG4gIGNvbnN0IGRlY2lzaW9uID1cclxuICAgIHJvb3QucXVlcnlTZWxlY3RvcihcIltkYXRhLWRlY2lzaW9uXVwiKTtcclxuXHJcbiAgbGV0IHByaXplO1xyXG4gIGxldCBjaG9zZW47XHJcbiAgbGV0IG9wZW5lZDtcclxuICBsZXQgc3RhZ2U7XHJcblxyXG4gIGxldCBzdGF5VHJpYWxzID0gMDtcclxuICBsZXQgc3RheVdpbnMgPSAwO1xyXG5cclxuICBsZXQgc3dpdGNoVHJpYWxzID0gMDtcclxuICBsZXQgc3dpdGNoV2lucyA9IDA7XHJcblxyXG4gIGZ1bmN0aW9uIHJhbmRvbUludChuKSB7XHJcbiAgICByZXR1cm4gTWF0aC5mbG9vcihNYXRoLnJhbmRvbSgpICogbik7XHJcbiAgfVxyXG5cclxuICBmdW5jdGlvbiBzdGFydFJvdW5kKCkge1xyXG4gICAgcHJpemUgPSByYW5kb21JbnQoMyk7XHJcbiAgICBjaG9zZW4gPSBudWxsO1xyXG4gICAgb3BlbmVkID0gbnVsbDtcclxuICAgIHN0YWdlID0gXCJjaG9vc2VcIjtcclxuXHJcbiAgICBpbnN0cnVjdGlvbi50ZXh0Q29udGVudCA9XHJcbiAgICAgIFwiV3liaWVyeiBqZWRuZSBkcnp3aS5cIjtcclxuXHJcbiAgICBkZWNpc2lvbi5oaWRkZW4gPSB0cnVlO1xyXG5cclxuICAgIGRvb3JzLmZvckVhY2goZG9vciA9PiB7XHJcbiAgICAgIGRvb3IuZGlzYWJsZWQgPSBmYWxzZTtcclxuICAgICAgZG9vci5jbGFzc05hbWUgPSBcIm1vbnR5LWRvb3JcIjtcclxuXHJcbiAgICAgIGRvb3IucXVlcnlTZWxlY3RvcihcclxuICAgICAgICBcIi5tb250eS1jb250ZW50XCJcclxuICAgICAgKS50ZXh0Q29udGVudCA9IFwiXCI7XHJcbiAgICB9KTtcclxuICB9XHJcblxyXG4gIGZ1bmN0aW9uIGNob29zZURvb3IoaW5kZXgpIHtcclxuICAgIGlmIChzdGFnZSAhPT0gXCJjaG9vc2VcIikge1xyXG4gICAgICByZXR1cm47XHJcbiAgICB9XHJcblxyXG4gICAgY2hvc2VuID0gaW5kZXg7XHJcblxyXG4gICAgZG9vcnNbY2hvc2VuXS5jbGFzc0xpc3QuYWRkKFxyXG4gICAgICBcImlzLWNob3NlblwiXHJcbiAgICApO1xyXG5cclxuICAgIGRvb3JzLmZvckVhY2goZG9vciA9PiB7XHJcbiAgICAgIGRvb3IuZGlzYWJsZWQgPSB0cnVlO1xyXG4gICAgfSk7XHJcblxyXG4gICAgLy8gUHJvd2FkesSFY3kgbW/FvGUgb3R3b3J6ecSHIHR5bGtvIGRyendpLFxyXG4gICAgLy8ga3TDs3J5Y2ggZ3JhY3ogbmllIHd5YnJhxYIgaSB6YSBrdMOzcnltaVxyXG4gICAgLy8gbmllIHpuYWpkdWplIHNpxJkgc2Ftb2Now7NkLlxyXG4gICAgY29uc3QgcG9zc2libGVEb29ycyA9IFswLCAxLCAyXS5maWx0ZXIoXHJcbiAgICAgIGluZGV4ID0+XHJcbiAgICAgICAgaW5kZXggIT09IGNob3NlbiAmJlxyXG4gICAgICAgIGluZGV4ICE9PSBwcml6ZVxyXG4gICAgKTtcclxuXHJcbiAgICBvcGVuZWQgPVxyXG4gICAgICBwb3NzaWJsZURvb3JzW1xyXG4gICAgICAgIHJhbmRvbUludChwb3NzaWJsZURvb3JzLmxlbmd0aClcclxuICAgICAgXTtcclxuXHJcbiAgICBkb29yc1tvcGVuZWRdLmNsYXNzTGlzdC5hZGQoXHJcbiAgICAgIFwiaXMtb3BlblwiXHJcbiAgICApO1xyXG5cclxuICAgIGRvb3JzW29wZW5lZF0ucXVlcnlTZWxlY3RvcihcclxuICAgICAgXCIubW9udHktY29udGVudFwiXHJcbiAgICApLnRleHRDb250ZW50ID0gXCLwn5CQXCI7XHJcblxyXG4gICAgaW5zdHJ1Y3Rpb24udGV4dENvbnRlbnQgPVxyXG4gICAgICBgUHJvd2FkesSFY3kgb3R3b3J6ecWCIGRyendpICR7b3BlbmVkICsgMX0gYCArXHJcbiAgICAgIFwiaSBwb2themHFgiBrb3rEmS4gWm9zdGFqZXN6IGN6eSB6bWllbmlhc3o/XCI7XHJcblxyXG4gICAgZGVjaXNpb24uaGlkZGVuID0gZmFsc2U7XHJcbiAgICBzdGFnZSA9IFwiZGVjaWRlXCI7XHJcbiAgfVxyXG5cclxuICBmdW5jdGlvbiBmaW5pc2hSb3VuZChzdHJhdGVneSkge1xyXG4gICAgaWYgKHN0YWdlICE9PSBcImRlY2lkZVwiKSB7XHJcbiAgICAgIHJldHVybjtcclxuICAgIH1cclxuXHJcbiAgICBsZXQgZmluYWxDaG9pY2U7XHJcblxyXG4gICAgaWYgKHN0cmF0ZWd5ID09PSBcInN0YXlcIikge1xyXG4gICAgICBmaW5hbENob2ljZSA9IGNob3NlbjtcclxuICAgIH0gZWxzZSB7XHJcbiAgICAgIGZpbmFsQ2hvaWNlID0gWzAsIDEsIDJdLmZpbmQoXHJcbiAgICAgICAgaW5kZXggPT5cclxuICAgICAgICAgIGluZGV4ICE9PSBjaG9zZW4gJiZcclxuICAgICAgICAgIGluZGV4ICE9PSBvcGVuZWRcclxuICAgICAgKTtcclxuICAgIH1cclxuXHJcbiAgICBjb25zdCB3aW4gPSBmaW5hbENob2ljZSA9PT0gcHJpemU7XHJcblxyXG4gICAgZG9vcnMuZm9yRWFjaCgoZG9vciwgaW5kZXgpID0+IHtcclxuICAgICAgY29uc3QgY29udGVudCA9XHJcbiAgICAgICAgZG9vci5xdWVyeVNlbGVjdG9yKFwiLm1vbnR5LWNvbnRlbnRcIik7XHJcblxyXG4gICAgICBjb250ZW50LnRleHRDb250ZW50ID1cclxuICAgICAgICBpbmRleCA9PT0gcHJpemUgPyBcIvCfmpdcIiA6IFwi8J+QkFwiO1xyXG5cclxuICAgICAgaWYgKGluZGV4ID09PSBwcml6ZSkge1xyXG4gICAgICAgIGRvb3IuY2xhc3NMaXN0LmFkZChcImlzLXdpbm5lclwiKTtcclxuICAgICAgfVxyXG4gICAgfSk7XHJcblxyXG4gICAgZG9vcnNbZmluYWxDaG9pY2VdLmNsYXNzTGlzdC5hZGQoXHJcbiAgICAgIFwiaXMtY2hvc2VuXCJcclxuICAgICk7XHJcblxyXG4gICAgaW5zdHJ1Y3Rpb24udGV4dENvbnRlbnQgPSB3aW5cclxuICAgICAgPyBcIld5Z3JhbmEg4oCUIHNhbW9jaMOzZCFcIlxyXG4gICAgICA6IFwiUHJ6ZWdyYW5hIOKAlCBzYW1vY2jDs2QgYnnFgiB6YSBpbm55bWkgZHJ6d2lhbWkuXCI7XHJcblxyXG4gICAgZGVjaXNpb24uaGlkZGVuID0gdHJ1ZTtcclxuICAgIHN0YWdlID0gXCJmaW5pc2hlZFwiO1xyXG5cclxuICAgIC8vIFLEmWN6bmEgcHLDs2JhIGplc3QgZG9saWN6YW5hIGRvIHN0cmF0ZWdpaSxcclxuICAgIC8vIGt0w7NyxIUgd3licmHFgiB1xbx5dGtvd25pay5cclxuICAgIGlmIChzdHJhdGVneSA9PT0gXCJzdGF5XCIpIHtcclxuICAgICAgc3RheVRyaWFscyArPSAxO1xyXG5cclxuICAgICAgaWYgKHdpbikge1xyXG4gICAgICAgIHN0YXlXaW5zICs9IDE7XHJcbiAgICAgIH1cclxuICAgIH0gZWxzZSB7XHJcbiAgICAgIHN3aXRjaFRyaWFscyArPSAxO1xyXG5cclxuICAgICAgaWYgKHdpbikge1xyXG4gICAgICAgIHN3aXRjaFdpbnMgKz0gMTtcclxuICAgICAgfVxyXG4gICAgfVxyXG5cclxuICAgIHVwZGF0ZVN0YXRpc3RpY3MoKTtcclxuICB9XHJcblxyXG4gIGZ1bmN0aW9uIHNpbXVsYXRlTWFueShudW1iZXJPZlRyaWFscykge1xyXG4gICAgZm9yIChcclxuICAgICAgbGV0IHRyaWFsID0gMDtcclxuICAgICAgdHJpYWwgPCBudW1iZXJPZlRyaWFscztcclxuICAgICAgdHJpYWwgKz0gMVxyXG4gICAgKSB7XHJcbiAgICAgIGNvbnN0IHNpbXVsYXRlZFByaXplID0gcmFuZG9tSW50KDMpO1xyXG4gICAgICBjb25zdCBzaW11bGF0ZWRDaG9pY2UgPSByYW5kb21JbnQoMyk7XHJcblxyXG4gICAgICBzdGF5VHJpYWxzICs9IDE7XHJcbiAgICAgIHN3aXRjaFRyaWFscyArPSAxO1xyXG5cclxuICAgICAgLy8gUG96b3N0YW5pZSB3eWdyeXdhIGRva8WCYWRuaWUgd3RlZHksXHJcbiAgICAgIC8vIGdkeSBwaWVyd3N6eSB3eWLDs3IgYnnFgiBwb3ByYXdueS5cclxuICAgICAgaWYgKFxyXG4gICAgICAgIHNpbXVsYXRlZENob2ljZSA9PT0gc2ltdWxhdGVkUHJpemVcclxuICAgICAgKSB7XHJcbiAgICAgICAgc3RheVdpbnMgKz0gMTtcclxuICAgICAgfSBlbHNlIHtcclxuICAgICAgICAvLyBKZcWbbGkgcGllcndzenkgd3liw7NyIGJ5xYIgYsWCxJlkbnksXHJcbiAgICAgICAgLy8gem1pYW5hIHphd3N6ZSBwcm93YWR6aSBkbyBzYW1vY2hvZHUuXHJcbiAgICAgICAgc3dpdGNoV2lucyArPSAxO1xyXG4gICAgICB9XHJcbiAgICB9XHJcblxyXG4gICAgdXBkYXRlU3RhdGlzdGljcygpO1xyXG4gIH1cclxuXHJcbiAgZnVuY3Rpb24gdXBkYXRlU3RhdGlzdGljcygpIHtcclxuICAgIGNvbnN0IHN0YXlSYXRlID0gc3RheVRyaWFsc1xyXG4gICAgICA/IDEwMCAqIHN0YXlXaW5zIC8gc3RheVRyaWFsc1xyXG4gICAgICA6IDA7XHJcblxyXG4gICAgY29uc3Qgc3dpdGNoUmF0ZSA9IHN3aXRjaFRyaWFsc1xyXG4gICAgICA/IDEwMCAqIHN3aXRjaFdpbnMgLyBzd2l0Y2hUcmlhbHNcclxuICAgICAgOiAwO1xyXG5cclxuICAgIHJvb3QucXVlcnlTZWxlY3RvcihcclxuICAgICAgXCJbZGF0YS1zdGF5LWJhcl1cIlxyXG4gICAgKS5zdHlsZS53aWR0aCA9IGAke3N0YXlSYXRlfSVgO1xyXG5cclxuICAgIHJvb3QucXVlcnlTZWxlY3RvcihcclxuICAgICAgXCJbZGF0YS1zd2l0Y2gtYmFyXVwiXHJcbiAgICApLnN0eWxlLndpZHRoID0gYCR7c3dpdGNoUmF0ZX0lYDtcclxuXHJcbiAgICByb290LnF1ZXJ5U2VsZWN0b3IoXHJcbiAgICAgIFwiW2RhdGEtc3RheS1yZXN1bHRdXCJcclxuICAgICkudGV4dENvbnRlbnQgPSBzdGF5VHJpYWxzXHJcbiAgICAgID8gYCR7c3RheVJhdGUudG9GaXhlZCgxKX0lIGAgK1xyXG4gICAgICAgIGAoJHtzdGF5V2luc30vJHtzdGF5VHJpYWxzfSlgXHJcbiAgICAgIDogXCLigJRcIjtcclxuXHJcbiAgICByb290LnF1ZXJ5U2VsZWN0b3IoXHJcbiAgICAgIFwiW2RhdGEtc3dpdGNoLXJlc3VsdF1cIlxyXG4gICAgKS50ZXh0Q29udGVudCA9IHN3aXRjaFRyaWFsc1xyXG4gICAgICA/IGAke3N3aXRjaFJhdGUudG9GaXhlZCgxKX0lIGAgK1xyXG4gICAgICAgIGAoJHtzd2l0Y2hXaW5zfS8ke3N3aXRjaFRyaWFsc30pYFxyXG4gICAgICA6IFwi4oCUXCI7XHJcblxyXG4gICAgY29uc3QgdG90YWxEZWNpc2lvbnMgPVxyXG4gICAgICBzdGF5VHJpYWxzICsgc3dpdGNoVHJpYWxzO1xyXG5cclxuICAgIHJvb3QucXVlcnlTZWxlY3RvcihcclxuICAgICAgXCJbZGF0YS10b3RhbF1cIlxyXG4gICAgKS50ZXh0Q29udGVudCA9IHRvdGFsRGVjaXNpb25zXHJcbiAgICAgID8gYMWBxIVjem5hIGxpY3piYSBkZWN5emppOiAke3RvdGFsRGVjaXNpb25zfWBcclxuICAgICAgOiBcIkJyYWsgcm96ZWdyYW55Y2ggcHLDs2JcIjtcclxuICB9XHJcblxyXG4gIGRvb3JzLmZvckVhY2goZG9vciA9PiB7XHJcbiAgICBkb29yLm9uY2xpY2sgPSAoKSA9PiB7XHJcbiAgICAgIGNob29zZURvb3IoXHJcbiAgICAgICAgTnVtYmVyKGRvb3IuZGF0YXNldC5kb29yKVxyXG4gICAgICApO1xyXG4gICAgfTtcclxuICB9KTtcclxuXHJcbiAgcm9vdC5xdWVyeVNlbGVjdG9yKFxyXG4gICAgXCJbZGF0YS1zdGF5XVwiXHJcbiAgKS5vbmNsaWNrID0gKCkgPT4ge1xyXG4gICAgZmluaXNoUm91bmQoXCJzdGF5XCIpO1xyXG4gIH07XHJcblxyXG4gIHJvb3QucXVlcnlTZWxlY3RvcihcclxuICAgIFwiW2RhdGEtc3dpdGNoXVwiXHJcbiAgKS5vbmNsaWNrID0gKCkgPT4ge1xyXG4gICAgZmluaXNoUm91bmQoXCJzd2l0Y2hcIik7XHJcbiAgfTtcclxuXHJcbiAgcm9vdC5xdWVyeVNlbGVjdG9yKFxyXG4gICAgXCJbZGF0YS1uZXddXCJcclxuICApLm9uY2xpY2sgPSBzdGFydFJvdW5kO1xyXG5cclxuICByb290LnF1ZXJ5U2VsZWN0b3JBbGwoXHJcbiAgICBcIltkYXRhLW1hbnldXCJcclxuICApLmZvckVhY2goYnV0dG9uID0+IHtcclxuICAgIGJ1dHRvbi5vbmNsaWNrID0gKCkgPT4ge1xyXG4gICAgICBzaW11bGF0ZU1hbnkoXHJcbiAgICAgICAgTnVtYmVyKGJ1dHRvbi5kYXRhc2V0Lm1hbnkpXHJcbiAgICAgICk7XHJcbiAgICB9O1xyXG4gIH0pO1xyXG5cclxuICByb290LnF1ZXJ5U2VsZWN0b3IoXHJcbiAgICBcIltkYXRhLXJlc2V0XVwiXHJcbiAgKS5vbmNsaWNrID0gKCkgPT4ge1xyXG4gICAgc3RheVRyaWFscyA9IDA7XHJcbiAgICBzdGF5V2lucyA9IDA7XHJcblxyXG4gICAgc3dpdGNoVHJpYWxzID0gMDtcclxuICAgIHN3aXRjaFdpbnMgPSAwO1xyXG5cclxuICAgIHVwZGF0ZVN0YXRpc3RpY3MoKTtcclxuICB9O1xyXG5cclxuICBzdGFydFJvdW5kKCk7XHJcbiAgdXBkYXRlU3RhdGlzdGljcygpO1xyXG5cclxuICByZXR1cm4gcm9vdDtcclxufVxyXG4ifV19
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Skopiowano!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Skopiowano!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link" aria-label="Wstęp">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Wstęp</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./klasyczne.html" class="pagination-link" aria-label="Prawdopodobieństwo klasyczne">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo klasyczne</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2026, Piotr Dyszewski</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

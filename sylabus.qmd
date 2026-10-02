@@ -1,0 +1,95 @@
+# Sylabus {-}
+
+
+### Dane dotyczące przedmiotu {-}
+
+ - **Nazwa przedmiotu:** Rachunek Prawdopodobieństwa (AI)
+ - **Jednostka oferująca przedmiot:** Instytut Matematyczny
+ - **Założenia:**
+ - **Strona www:**
+ - **Forma zajęć:** wykład + ćwiczenia + laboratorium
+ - **Punkty ECTS:** 8
+ - **Sprawdziany pisemne:** 26.11.2026 i 28.01.2027
+
+## Skrócony plan wykładu {-}
+
+W trakcie wykładu poruszymy następujące zagadnienia:
+
+- **A) Przestrzeń probabilistyczna**: aksjomatyka rachunku prawdopodobieństwa, 
+  prawdopodobieństwo warunkowe,
+  prawdopodobieństwo całkowite, wzór Bayesa, niezależność zdarzeń;
+- **B) elementy losowe**: zmienne losowe, wektory losowe, niezależne zmienne losowe;
+- **C) rozkłady prawdopodobieństwa**:
+  rozkłady zmiennych losowych, dystrybuanty, rozkłady dyskretne i absolutnie ciągłe;
+- **D) parametry rozkładów**: wartość oczekiwana, wariancja, kowariancja;
+- **E) twierdzenia graniczne**: prawo wielkich liczb, centralne twierdzenie graniczne.
+
+
+**Podstawowa literatura do wykładu:**
+
+-  Mitzenmacher, M, Upfal E. (2017) Probability and Computing, Cambridge University Press
+- Isaac, R. (2000). The Pleasures of Probability. Springer.
+- Blitzstein, J. K, Hwang, J, (2019) Introduction to Probability, Taylor & Francis
+- Grimmett, G, Stirzaker, D.  (2001) Probability and Random Processes, Oxford University Press 
+
+## Szczegółowy plan wykładu {-}
+
+Wstępny plan tematów poruszanych na poszczególnych wykładach:
+
+1. Aksjomatyka rachunku prawdopodobieństwa
+2. Prawdopodobieństwo warunkowe, niezależność zdarzeń
+4. Zmienne losowe dyskretne i ich rozkłady
+6. Wektory losowe, niezależność zmiennych losowych
+7. Parametry rozkładów
+1. Rozkłady warunkowe, warunkowa wartość oczekiwana i niezależność warunkowa.
+1. Regresja liniowa
+8. Nierówności związane z momentami, nierówności koncentracyjne
+1. słabe prawo wielkich liczb
+11. Twierdzenie de Moivre'a-Laplace'a
+11. Zmienne losowe o ciągłych rozkładach
+14. Centralne twierdzenie graniczne
+11. Wielowymiarowy rozkład normalny
+11. Łańcuchy Markowa
+11. Zbieżność do rozkładu stacjonarnego, MCMC
+
+### Efekty kształcenia {-}
+
+Po wykładzie student:
+
+1. Wymienia i definiuje podstawowe obiekty teorii prawdopodobieństwa (**A**, **B**, **C**, **D** );
+2. Podaje związki między podstawowymi obiektami teorii prawdopodobieństwa (**A**, **B**, **C**, **D** );
+3. Wykorzystuje narzędzia teorii prawdopodobieństwa do opisu zmiennych losowych w terminach ich rozkładu i ich parametrów (**B**, **C**, **D**);
+4. Formułuje twierdzenia graniczne (**D**);
+7. Stosuje twierdzenia graniczne do analizy ciągów zmiennych losowych (**B**, **E**);
+
+### Sposób weryfikacji efektów kształcenia {-}
+
+Na zaliczenie składać się będą:
+
+- Aktywność na ćwiczeniach;
+- Kartkówki na każdych ćwiczeniach;
+- Dwa kolokwia;
+
+### Metody i kryteria oceniania {-}
+
+Zaliczenie ćwiczeń na sprawdzianów pisemnych.
+Aktywności w czasie zajęć podnosi ocenę z ćwiczeń o $1$ lub $0.5$.
+Ocena z egzaminu wystawiona jest na podstawie egzaminu pisemnego.
+
+### Warunkiem zaliczenia przedmiotu jest: {-}
+
+- Uzyskanie 50% punktów za zadania stanowiące bieżącą weryfikację efektów kształcenia;
+- Uzyskanie pozytywnej oceny z egzaminu stanowiącego końcową weryfikację efektów kształcenia.
+
+### Kryteria ocen: {-}
+
+- **(dst)** student realizuje punkty 1-3 efektów kształcenia
+- **(db)** student realizuje punkty 1-4 efektów kształcenia
+- **(bdb)** student realizuje punkty 1-5 efektów kształcenia
+
+---
+
+::: {style="text-align: right"}
+Wrocław, październik 2026
+Piotr Dyszewski
+:::

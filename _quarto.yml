@@ -1,0 +1,40 @@
+project:
+  type: book
+  output-dir: docs
+lang: pl
+
+book:
+  title: "Rachunek prawdopodobieństwa (AI)"
+  author: "Piotr Dyszewski"
+  search: true
+  date: "6/8/2026"
+  page-footer: "Copyright 2026, Piotr Dyszewski"
+  downloads: [pdf]
+  repo-url: https://github.com/pdyszewski/
+  cover-image: Cover/cover.png
+  chapters:
+    - index.qmd
+    - sylabus.qmd
+    - intro.qmd
+    - aksjomaty.qmd
+    - klasyczne.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    fig-responsive: true
+    code-fold: true
+    code-summary: "Pokaż kod"
+    code-copy: true
+    code-overflow: wrap
+    css: styles.css
+    theme:
+      - Slate
+#  pdf:
+#    documentclass: scrreprt
+
+
+
