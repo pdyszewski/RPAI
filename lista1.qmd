@@ -1,0 +1,73 @@
+# Lista 1. Przestrzenie zdarzeń elementarnych {-}
+
+Zadania na ćwiczenia 8.10.2026
+
+1. Rzucamy kością sześcienną, a następnie dwukrotnie monetą.
+   a) Opisz przestrzeń zdarzeń elementarnych $\Omega$, która zachowuje informację o wyniku każdego rzutu. Ile ma ona elementów?
+   b) Zapisz jako podzbiory $\Omega$ następujące zdarzenia:
+      - $A$: na kości wypadła szóstka, a na monecie co najmniej jeden orzeł;
+      - $B$: na kości wypadła liczba parzysta, a w drugim rzucie monetą orzeł;
+      - $C$: na kości wypadła liczba mniejsza niż $5$, a na monecie co najmniej jeden orzeł.
+   c) Przyjmij, że wszystkie wyniki elementarne są jednakowo prawdopodobne. Oblicz $\mathbb P[A]$, $\mathbb P[B]$ i $\mathbb P[C]$.
+
+
+2. Za jednymi z czworga drzwi znajduje się samochód, a za pozostałymi kozy. Uczestnik wybiera jedne drzwi z jednakowym prawdopodobieństwem. Prowadzący zna położenie samochodu i otwiera jedne z niewybranych drzwi, za którymi jest koza. Jeśli ma kilka możliwości, wybiera spośród nich z jednakowym prawdopodobieństwem. Zawsze proponuje zmianę wyboru.
+
+   a) Jakie jest prawdopodobieństwo wygranej, jeśli uczestnik pozostaje przy swoim wyborze?
+   b) Jakie jest prawdopodobieństwo wygranej, jeśli uczestnik zmienia wybór na jedne z dwojga pozostałych zamkniętych drzwi, wybierając między nimi z jednakowym prawdopodobieństwem?
+
+
+
+3. Rzucamy dwiema rozróżnialnymi kośćmi sześciennymi. Każda uporządkowana para wyników ma prawdopodobieństwo $1/36$.
+
+   a) Opisz przestrzeń wyników, gdy zapisujemy wynik każdej kości osobno.
+   b) Opisz przestrzeń wyników, gdy zapisujemy tylko sumę oczek.
+   c) W drugim modelu oblicz prawdopodobieństwa wyników $2$, $7$ i $12$. Czy wszystkie możliwe sumy są jednakowo prawdopodobne?
+   d) Wybierz wygodniejszy z tych modeli i oblicz prawdopodobieństwo, że suma oczek wyniesie co najmniej $10$.
+
+
+4. Losujemy jedną liczbę ze zbioru $\Omega=\{1,2,\ldots,24\}$; każda liczba ma takie samo prawdopodobieństwo. Niech $A$ oznacza zdarzenie, że wylosowana liczba jest podzielna przez $2$, a $B$ że jest podzielna przez $3$.
+
+   a) Wypisz zbiory $A$, $B$, $A\cap B$, $A\cup B$ oraz $A\setminus B$.
+   b) Zapisz za pomocą $A$, $B$ i działań na zbiorach zdarzenia, że wylosowana liczba jest podzielna:
+      - przez co najmniej jedną z liczb $2$ i $3$;
+      - przez obie te liczby;
+      - przez dokładnie jedną z tych liczb;
+      - przez żadną z tych liczb.
+   c) Oblicz prawdopodobieństwo każdego ze zdarzeń z punktu b).
+   d) Niech $C$ oznacza podzielność przez $6$. Które ze zdarzeń $A$, $B$, $C$ pociągają inne? Zapisz odpowiednie inkluzje.
+
+
+5. Generator zwraca jedną z liczb $1,2,\ldots,6$. Prawdopodobieństwo otrzymania liczby $k$ ma postać
+$$
+p(k)=ck,\qquad k\in\{1,2,\ldots,6\},
+$$
+gdzie $c$ jest stałą.
+
+   a) Wyznacz $c$.
+   b) Oblicz prawdopodobieństwo otrzymania liczby parzystej, liczby co najmniej $5$ oraz liczby mniejszej niż $3$.
+   c) Wyjaśnij, dlaczego w tym modelu iloraz $|A|/|\Omega|$ nie musi być równy $\mathbb P[A]$. Podaj przykład zdarzenia, dla którego te wartości są różne.
+
+6. Rzucamy monetą do otrzymania pierwszego orła. Uwzględniamy również wynik $\omega_\infty=RRR\ldots$, w którym orzeł nigdy nie wypada. Przyjmujemy model
+$$
+p(R^{k-1}O)=2^{-k}\quad(k\geq1),\qquad p(\omega_\infty)=0,
+$$
+gdzie $R^{k-1}O$ oznacza $k-1$ reszek, po których następuje orzeł.
+
+   a) Oblicz prawdopodobieństwo zakończenia doświadczenia najpóźniej w trzecim rzucie.
+   b) Oblicz prawdopodobieństwo, że pierwszy orzeł pojawi się w rzucie o numerze parzystym.
+
+7. Niech $\mathbb{P}$ będzie miarą probabilistyczną na przestrzeni co najwyżej przeliczalnej.
+Uzasadnij następujące własności dla dowolnych zdarzeń $A$ i $B$:
+
+   a) $\mathbb P[\varnothing]=0$ oraz $\mathbb P[\Omega]=1$;
+   b) $\mathbb P[A']=1-\mathbb P[A]$;
+   c) jeśli $A\subseteq B$, to $\mathbb P[A]\leq\mathbb P[B]$;
+   d) $\mathbb P[A\cup B]=\mathbb P[A]+\mathbb P[B]-\mathbb P[A\cap B]$.
+
+8. Za jednymi z $n\geq3$ drzwi znajduje się samochód, a za pozostałymi kozy. Uczestnik wybiera jedne drzwi z jednakowym prawdopodobieństwem. Prowadzący zna położenie samochodu i zawsze otwiera dokładnie $r$ różnych drzwi z kozami, spośród drzwi niewybranych przez uczestnika, gdzie $1\leq r\leq n-2$. Jeśli ma kilka możliwości, wybiera zestaw otwieranych drzwi z jednakowym prawdopodobieństwem. Zawsze proponuje zmianę.
+
+   a) Oblicz prawdopodobieństwo wygranej przy pozostaniu przy pierwotnym wyborze.
+   b) Uczestnik zmienia wybór na jedne z pozostałych zamkniętych, niewybranych wcześniej drzwi, losując między nimi z jednakowym prawdopodobieństwem. Oblicz prawdopodobieństwo wygranej w zależności od $n$ i $r$.
+   c) Dla $n=100$ porównaj sytuacje $r=1$ i $r=98$. W której z nich zmiana wyboru daje większą szansę wygranej?
+

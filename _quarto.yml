@@ -10,16 +10,21 @@ book:
   date: "6/8/2026"
   page-footer: "Copyright 2026, Piotr Dyszewski"
   downloads: [pdf]
-  repo-url: https://github.com/pdyszewski/
+  repo-url: https://github.com/pdyszewski/RPAI/
   cover-image: Cover/cover.png
   chapters:
     - index.qmd
     - sylabus.qmd
-    - intro.qmd
-    - aksjomaty.qmd
-    - klasyczne.qmd
-    - summary.qmd
-    - references.qmd
+    - part: "Notatki"
+      chapters:
+        - intro.qmd
+        - aksjomaty.qmd
+        #- klasyczne.qmd
+        #- summary.qmd
+        - references.qmd
+    - part: "Listy zadań"
+      chapters:
+        - lista1.qmd
 
 bibliography: references.bib
 
@@ -33,8 +38,12 @@ format:
     css: styles.css
     theme:
       - Slate
-#  pdf:
-#    documentclass: scrreprt
+  pdf:
+    documentclass: scrreprt
+    include-in-header:
+      text: |
+        \usepackage{amsfonts}
+        \DeclareMathAlphabet{\mathbb}{U}{msb}{m}{n}
 
 
 

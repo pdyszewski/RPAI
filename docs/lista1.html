@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Summary – Rachunek prawdopodobieństwa (AI)</title>
+<title>Lista 1. Przestrzenie zdarzeń elementarnych – Rachunek prawdopodobieństwa (AI)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
-<link href="./klasyczne.html" rel="prev">
+<link href="./references.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -73,6 +72,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -86,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./summary.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lista1.html">Listy zadań</a></li><li class="breadcrumb-item"><a href="./lista1.html">Lista 1. Przestrzenie zdarzeń elementarnych</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Szukaj" onclick="window.quartoOpenSearch();">
@@ -103,7 +131,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Rachunek prawdopodobieństwa (AI)</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/pdyszewski/" title="Kod źródłowy" class="quarto-navigation-tool px-1" aria-label="Kod źródłowy"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/pdyszewski/RPAI/" title="Kod źródłowy" class="quarto-navigation-tool px-1" aria-label="Kod źródłowy"><i class="bi bi-github"></i></a>
     <a href="./Rachunek-prawdopodobieństwa--AI-.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
     </div>
@@ -124,39 +152,55 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sylabus.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Sylabus</span></span></a>
+ <span class="menu-text">Sylabus</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Notatki</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Przełącz sekcję">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Wstęp</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Wstęp</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./aksjomaty.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Aksjomatyka rachunku prawdopodobieństwa</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aksjomatyka rachunku prawdopodobieństwa</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./klasyczne.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo klasyczne</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Listy zadań</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Przełącz sekcję">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lista1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lista 1. Przestrzenie zdarzeń elementarnych</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -168,9 +212,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lista1.html">Listy zadań</a></li><li class="breadcrumb-item"><a href="./lista1.html">Lista 1. Przestrzenie zdarzeń elementarnych</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></h1>
+<h1 class="title">Lista 1. Przestrzenie zdarzeń elementarnych</h1>
 </div>
 
 
@@ -187,7 +231,73 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>In summary, this book has no content whatsoever.</p>
+<p>Zadania na ćwiczenia 8.10.2026</p>
+<ol type="1">
+<li><p>Rzucamy kością sześcienną, a następnie dwukrotnie monetą.</p>
+<ol type="a">
+<li>Opisz przestrzeń zdarzeń elementarnych <span class="math inline">\(\Omega\)</span>, która zachowuje informację o wyniku każdego rzutu. Ile ma ona elementów?</li>
+<li>Zapisz jako podzbiory <span class="math inline">\(\Omega\)</span> następujące zdarzenia:
+<ul>
+<li><span class="math inline">\(A\)</span>: na kości wypadła szóstka, a na monecie co najmniej jeden orzeł;</li>
+<li><span class="math inline">\(B\)</span>: na kości wypadła liczba parzysta, a w drugim rzucie monetą orzeł;</li>
+<li><span class="math inline">\(C\)</span>: na kości wypadła liczba mniejsza niż <span class="math inline">\(5\)</span>, a na monecie co najmniej jeden orzeł.</li>
+</ul></li>
+<li>Przyjmij, że wszystkie wyniki elementarne są jednakowo prawdopodobne. Oblicz <span class="math inline">\(\mathbb P[A]\)</span>, <span class="math inline">\(\mathbb P[B]\)</span> i <span class="math inline">\(\mathbb P[C]\)</span>.</li>
+</ol></li>
+<li><p>Za jednymi z czworga drzwi znajduje się samochód, a za pozostałymi kozy. Uczestnik wybiera jedne drzwi z jednakowym prawdopodobieństwem. Prowadzący zna położenie samochodu i otwiera jedne z niewybranych drzwi, za którymi jest koza. Jeśli ma kilka możliwości, wybiera spośród nich z jednakowym prawdopodobieństwem. Zawsze proponuje zmianę wyboru.</p>
+<ol type="a">
+<li>Jakie jest prawdopodobieństwo wygranej, jeśli uczestnik pozostaje przy swoim wyborze?</li>
+<li>Jakie jest prawdopodobieństwo wygranej, jeśli uczestnik zmienia wybór na jedne z dwojga pozostałych zamkniętych drzwi, wybierając między nimi z jednakowym prawdopodobieństwem?</li>
+</ol></li>
+<li><p>Rzucamy dwiema rozróżnialnymi kośćmi sześciennymi. Każda uporządkowana para wyników ma prawdopodobieństwo <span class="math inline">\(1/36\)</span>.</p>
+<ol type="a">
+<li>Opisz przestrzeń wyników, gdy zapisujemy wynik każdej kości osobno.</li>
+<li>Opisz przestrzeń wyników, gdy zapisujemy tylko sumę oczek.</li>
+<li>W drugim modelu oblicz prawdopodobieństwa wyników <span class="math inline">\(2\)</span>, <span class="math inline">\(7\)</span> i <span class="math inline">\(12\)</span>. Czy wszystkie możliwe sumy są jednakowo prawdopodobne?</li>
+<li>Wybierz wygodniejszy z tych modeli i oblicz prawdopodobieństwo, że suma oczek wyniesie co najmniej <span class="math inline">\(10\)</span>.</li>
+</ol></li>
+<li><p>Losujemy jedną liczbę ze zbioru <span class="math inline">\(\Omega=\{1,2,\ldots,24\}\)</span>; każda liczba ma takie samo prawdopodobieństwo. Niech <span class="math inline">\(A\)</span> oznacza zdarzenie, że wylosowana liczba jest podzielna przez <span class="math inline">\(2\)</span>, a <span class="math inline">\(B\)</span> że jest podzielna przez <span class="math inline">\(3\)</span>.</p>
+<ol type="a">
+<li>Wypisz zbiory <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(A\cap B\)</span>, <span class="math inline">\(A\cup B\)</span> oraz <span class="math inline">\(A\setminus B\)</span>.</li>
+<li>Zapisz za pomocą <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> i działań na zbiorach zdarzenia, że wylosowana liczba jest podzielna:
+<ul>
+<li>przez co najmniej jedną z liczb <span class="math inline">\(2\)</span> i <span class="math inline">\(3\)</span>;</li>
+<li>przez obie te liczby;</li>
+<li>przez dokładnie jedną z tych liczb;</li>
+<li>przez żadną z tych liczb.</li>
+</ul></li>
+<li>Oblicz prawdopodobieństwo każdego ze zdarzeń z punktu b).</li>
+<li>Niech <span class="math inline">\(C\)</span> oznacza podzielność przez <span class="math inline">\(6\)</span>. Które ze zdarzeń <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> pociągają inne? Zapisz odpowiednie inkluzje.</li>
+</ol></li>
+<li><p>Generator zwraca jedną z liczb <span class="math inline">\(1,2,\ldots,6\)</span>. Prawdopodobieństwo otrzymania liczby <span class="math inline">\(k\)</span> ma postać <span class="math display">\[
+p(k)=ck,\qquad k\in\{1,2,\ldots,6\},
+\]</span> gdzie <span class="math inline">\(c\)</span> jest stałą.</p>
+<ol type="a">
+<li>Wyznacz <span class="math inline">\(c\)</span>.</li>
+<li>Oblicz prawdopodobieństwo otrzymania liczby parzystej, liczby co najmniej <span class="math inline">\(5\)</span> oraz liczby mniejszej niż <span class="math inline">\(3\)</span>.</li>
+<li>Wyjaśnij, dlaczego w tym modelu iloraz <span class="math inline">\(|A|/|\Omega|\)</span> nie musi być równy <span class="math inline">\(\mathbb P[A]\)</span>. Podaj przykład zdarzenia, dla którego te wartości są różne.</li>
+</ol></li>
+<li><p>Rzucamy monetą do otrzymania pierwszego orła. Uwzględniamy również wynik <span class="math inline">\(\omega_\infty=RRR\ldots\)</span>, w którym orzeł nigdy nie wypada. Przyjmujemy model <span class="math display">\[
+p(R^{k-1}O)=2^{-k}\quad(k\geq1),\qquad p(\omega_\infty)=0,
+\]</span> gdzie <span class="math inline">\(R^{k-1}O\)</span> oznacza <span class="math inline">\(k-1\)</span> reszek, po których następuje orzeł.</p>
+<ol type="a">
+<li>Oblicz prawdopodobieństwo zakończenia doświadczenia najpóźniej w trzecim rzucie.</li>
+<li>Oblicz prawdopodobieństwo, że pierwszy orzeł pojawi się w rzucie o numerze parzystym.</li>
+</ol></li>
+<li><p>Niech <span class="math inline">\(\mathbb{P}\)</span> będzie miarą probabilistyczną na przestrzeni co najwyżej przeliczalnej. Uzasadnij następujące własności dla dowolnych zdarzeń <span class="math inline">\(A\)</span> i <span class="math inline">\(B\)</span>:</p>
+<ol type="a">
+<li><span class="math inline">\(\mathbb P[\varnothing]=0\)</span> oraz <span class="math inline">\(\mathbb P[\Omega]=1\)</span>;</li>
+<li><span class="math inline">\(\mathbb P[A']=1-\mathbb P[A]\)</span>;</li>
+<li>jeśli <span class="math inline">\(A\subseteq B\)</span>, to <span class="math inline">\(\mathbb P[A]\leq\mathbb P[B]\)</span>;</li>
+<li><span class="math inline">\(\mathbb P[A\cup B]=\mathbb P[A]+\mathbb P[B]-\mathbb P[A\cap B]\)</span>.</li>
+</ol></li>
+<li><p>Za jednymi z <span class="math inline">\(n\geq3\)</span> drzwi znajduje się samochód, a za pozostałymi kozy. Uczestnik wybiera jedne drzwi z jednakowym prawdopodobieństwem. Prowadzący zna położenie samochodu i zawsze otwiera dokładnie <span class="math inline">\(r\)</span> różnych drzwi z kozami, spośród drzwi niewybranych przez uczestnika, gdzie <span class="math inline">\(1\leq r\leq n-2\)</span>. Jeśli ma kilka możliwości, wybiera zestaw otwieranych drzwi z jednakowym prawdopodobieństwem. Zawsze proponuje zmianę.</p>
+<ol type="a">
+<li>Oblicz prawdopodobieństwo wygranej przy pozostaniu przy pierwotnym wyborze.</li>
+<li>Uczestnik zmienia wybór na jedne z pozostałych zamkniętych, niewybranych wcześniej drzwi, losując między nimi z jednakowym prawdopodobieństwem. Oblicz prawdopodobieństwo wygranej w zależności od <span class="math inline">\(n\)</span> i <span class="math inline">\(r\)</span>.</li>
+<li>Dla <span class="math inline">\(n=100\)</span> porównaj sytuacje <span class="math inline">\(r=1\)</span> i <span class="math inline">\(r=98\)</span>. W której z nich zmiana wyboru daje większą szansę wygranej?</li>
+</ol></li>
+</ol>
 
 
 
@@ -594,14 +704,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./klasyczne.html" class="pagination-link" aria-label="Prawdopodobieństwo klasyczne">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo klasyczne</span></span>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">References</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

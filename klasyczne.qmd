@@ -96,21 +96,30 @@ W tym celu bardzo pomocne są podstawowe schematy kombinatoryczne.
 Jeżeli obiekty, które chcemy policzyć, dzielą się na dwie **rozłączne** grupy 
 $A$ i $B$, to
 \begin{equation*}
-  |A \cup B | = |A| + |B|
-\end{equation*}
-a co za tym idzie
-\begin{equation*}
-  \mathbb{P}[A \cup B] = \mathbb{P}[A] + \mathbb{P}[B].
+  |A \cup B| = |A| + |B|
 \end{equation*}
 
 ::: {#exm-podzielne}
 Ze zbioru liczb
 $\Omega = \{1,2, \ldots, 30\}$ losujemy jedną liczbę. Jakie jest prawdopodobieństwo, że będzie ona
 podzielna przez $5$ lub przez $7$?
+Niech $A$ będzie zdarzeniem, że wylosowana liczba jest podzielna przez $5$. Wtedy
+\begin{equation*}
+  A = \{5,10,15,20,25,30\}, \quad |A| = 6.
+\end{equation*}
+Dla zdarzenia $B$, że wylosowana liczba jest podzielna przez $7$,
+\begin{equation*}
+  B = \{ 7, 14, 21 \}, \quad |B| = 3.
+\end{equation*}
+Skoro $A\cap B =\emptyset$, 
+$|A \cup B | =9$ a co za tym idzie
+\begin{equation*}
+ \mathbb{P}[A \cup B] = 3/10.
+\end{equation*}
 
 :::
 
-o liczebnościach $n_1,\ldots,n_m$, to łącznie jest ich
+Podobnie dla zdarzeń liczebnościach $n_1,\ldots,n_m$, to łącznie jest ich
 
 $$
 n_1+\cdots+n_m.

@@ -1,7 +1,7 @@
 # Sylabus {-}
 
 
-### Dane dotyczące przedmiotu {-}
+## Dane dotyczące przedmiotu {-}
 
  - **Nazwa przedmiotu:** Rachunek Prawdopodobieństwa (AI)
  - **Jednostka oferująca przedmiot:** Instytut Matematyczny
@@ -52,7 +52,7 @@ Wstępny plan tematów poruszanych na poszczególnych wykładach:
 11. Łańcuchy Markowa
 11. Zbieżność do rozkładu stacjonarnego, MCMC
 
-### Efekty kształcenia {-}
+## Efekty kształcenia {-}
 
 Po wykładzie student:
 
@@ -62,7 +62,7 @@ Po wykładzie student:
 4. Formułuje twierdzenia graniczne (**D**);
 7. Stosuje twierdzenia graniczne do analizy ciągów zmiennych losowych (**B**, **E**);
 
-### Sposób weryfikacji efektów kształcenia {-}
+## Sposób weryfikacji efektów kształcenia {-}
 
 Na zaliczenie składać się będą:
 
@@ -70,18 +70,18 @@ Na zaliczenie składać się będą:
 - Kartkówki na każdych ćwiczeniach;
 - Dwa kolokwia;
 
-### Metody i kryteria oceniania {-}
+## Metody i kryteria oceniania {-}
 
 Zaliczenie ćwiczeń na sprawdzianów pisemnych.
 Aktywności w czasie zajęć podnosi ocenę z ćwiczeń o $1$ lub $0.5$.
 Ocena z egzaminu wystawiona jest na podstawie egzaminu pisemnego.
 
-### Warunkiem zaliczenia przedmiotu jest: {-}
+## Warunkiem zaliczenia przedmiotu {-}
 
 - Uzyskanie 50% punktów za zadania stanowiące bieżącą weryfikację efektów kształcenia;
 - Uzyskanie pozytywnej oceny z egzaminu stanowiącego końcową weryfikację efektów kształcenia.
 
-### Kryteria ocen: {-}
+## Kryteria ocen: {-}
 
 - **(dst)** student realizuje punkty 1-3 efektów kształcenia
 - **(db)** student realizuje punkty 1-4 efektów kształcenia

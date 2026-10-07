@@ -12,7 +12,11 @@ W teleturnieju wybrani widzowie ze studia zawierają umowy z prowadzącym.
 Uczestnik otrzymuje nagrodę i decyduje, czy ją zatrzymać, czy wymienić na inną, 
 której zawartość pozostaje ukryta do momentu podjęcia decyzji. 
 
+::: {.content-visible unless-format="pdf"}
+
 {{< video https://www.youtube.com/watch?v=2Sxuw9Xe_GU >}}
+
+:::
 
 Dopiero po odsłonięciu nagrody okazuje się, czy wymiana była korzystna, czy też uczestnik trafił na bezwartościową, 
 żartobliwą nagrodę zwaną „zonkiem”.
@@ -35,6 +39,8 @@ Ta popularna zagadka wywołała spore zamieszanie, gdy w 1991 roku ukazała się
 Wielu czytelników, w tym także matematycy, podało błędną odpowiedź. 
 Najczęściej twierdzono, że zmiana drzwi nie ma znaczenia, ponieważ samochód z jednakowym prawdopodobieństwem 
 znajduje się za każdymi z dwojga nieotwartych drzwi.
+
+::: {.content-visible unless-format="pdf"}
 
 Jednym ze sposobów zapoznania się z tym problemem jest wielokrotne powtórzenie eskperymantu.
 Sam Monty Hall przeprowadził eksperyment w swoim domu w Beverly Hills. W swojej jadalni ustawił na stole trzy miniaturowe kartonowe drzwi. 
@@ -576,6 +582,7 @@ monty_hall = {
 }
 ```
 
+:::
 
 Dlaczego ten problem jest tak podchwytliwy i jak należy o nim myśleć? 
 Posłuży nam on jako wprowadzenie do rachunku prawdopodobieństwa. 
@@ -684,9 +691,52 @@ prowadziło to do nieścisłości.
 
 
 Wprowadzone przez nas @def-zdarzenie zdarzenia jest niezwykle pojemna. 
-W skutek czego jeżeli $A_1, A_2 \ldots$ jest ciągiem zdarzeń, czyli dla każdego $k \in \mathbb{N}$, 
-$A_k$ jest zdarzeniem, 
-to zdarzeniem jest również $\bigcup_{k=1}^{\infty} A_k$ oraz $\bigcap_{k=1}^\infty A_k$. 
+W skutek czego jeżeli $A$ i $B$ są zdarzeniami, to 
+$A\cup B$ oraz $A \cap B$ też są zdarzeniami. Pierwsze polega na tym, że zachodzi $A$ lub $B$, 
+natomiast drugie polega na tym, że jednocześnie zachodzą $A$ i $B$.
+
+::: {#exm-suma-przekroj}
+
+Powiedzmy, że losujemy jedną liczbę ze zbioru $\Omega = \{1, 2, \ldots, 10\}$.
+Niech $A$ będzie zdarzeniem, że wylosowana liczba jest podzielna przez $2$ a $B$
+zdarzeniem, że wylosowana liczba jest podzielna przez $3$. Wówczas
+\begin{equation*}
+  A = \{ 2,4,6,8\}
+\end{equation*}
+oraz 
+\begin{equation*}
+  B = \{ 3,6,9\}.
+\end{equation*}
+Wtedy $A\cup B$ jest zdarzeniem, że wylosowana liczba jest podzielna przez $2$ lub jest podzielna przez $3$, czyli
+\begin{equation*}
+  A \cup B = \{ 2,3,4,6,8,9 \}.
+\end{equation*}
+Natomiast $A \cap B$ to zdarzenie, że wylosowana liczba jest podzielna przez $6$,
+\begin{equation*}
+  A \cap B = \{6\}.
+\end{equation*}
+
+:::
+
+::: {#exm-suma-przekroj-monety}
+
+Rzucamy trzykrotnie monetą. Wtedy $\Omega = \{ OOO, OOR, ORO, \ldots \}$. Niech $A$ będzie zdarzeniem, że
+w pierwszym rzucie wypadł orzeł. Mamy
+\begin{equation*}
+   A = \{ OOO, OOR, ORO, ORR\}.
+\end{equation*}
+Niech $B$ będzie zdarzeniem, że w trzech rzutach otrzymaliśmy parzystą liczbę orłów,
+\begin{equation*}
+   B = \{ RRR, OOR, ORO, ROO \}.
+\end{equation*}
+Wtedy $A\cap B$ jest zdarzeniem, że w pierwszym rzucie otrzymaliśmy orła i łączna liczba orłów 
+jest parzysta,
+\begin{equation*}
+  A \cap B = \{ OOR, ORO\}.
+\end{equation*}
+:::
+
+
 Dodatkowo, jeżeli $A$ jest zdarzeniem, to jest nie również
 **zdarzenie przeciwne do zdarzenia $A$**, zadane wzorem
 $$
