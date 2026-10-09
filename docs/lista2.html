@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Piotr Dyszewski">
 
-<title>Rachunek prawdopodobieństwa (AI)</title>
+<title>Lista 2. Prawdopodobieństwo klasyczne – Rachunek prawdopodobieństwa (AI)</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,7 +33,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./sylabus.html" rel="next">
+<link href="./lista1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -73,6 +72,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -86,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Słowo wstępne</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lista1.html">Listy zadań</a></li><li class="breadcrumb-item"><a href="./lista2.html">Lista 2. Prawdopodobieństwo klasyczne</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Szukaj" onclick="window.quartoOpenSearch();">
@@ -117,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Słowo wstępne</span></a>
   </div>
 </li>
@@ -173,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lista2.html" class="sidebar-item-text sidebar-link">
+  <a href="./lista2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Lista 2. Prawdopodobieństwo klasyczne</span></a>
   </div>
 </li>
@@ -184,40 +212,22 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Spis treści</h2>
-   
-  <ul>
-  <li><a href="#słowo-wstępne" id="toc-słowo-wstępne" class="nav-link active" data-scroll-target="#słowo-wstępne">Słowo wstępne</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lista1.html">Listy zadań</a></li><li class="breadcrumb-item"><a href="./lista2.html">Lista 2. Prawdopodobieństwo klasyczne</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Rachunek prawdopodobieństwa (AI)</h1>
+<h1 class="title">Lista 2. Prawdopodobieństwo klasyczne</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor</div>
-    <div class="quarto-title-meta-contents">
-             <p>Piotr Dyszewski </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Opublikowano</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">8 czerwca 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -227,15 +237,47 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Zadania na ćwiczenia 15.10.2026</p>
+<ol type="1">
+<li><p>W pudełku jest <span class="math inline">\(6\)</span> śrubek dobrych i <span class="math inline">\(2\)</span> złe. Jaka jest szansa, że przy wyborze <span class="math inline">\(4\)</span> śrubek wybierze się <span class="math inline">\(3\)</span> dobre i <span class="math inline">\(1\)</span> złą?</p></li>
+<li><p>Na szachownicy o wymiarach <span class="math inline">\(n\times n\)</span> umieszczono <span class="math inline">\(8\)</span> nierozróżnialnych wież, w taki sposób aby żadne dwie się nie biły. Na ile sposobów można to zrobić? Jak zmieni się wynik, gdy wieże będą rozróżnialne?</p></li>
+<li><p>Na ile sposobów można rozmieścić <span class="math inline">\(n\)</span> kul w <span class="math inline">\(k\)</span> urnach jeżeli:</p>
+<ol type="a">
+<li>kule są rozróżnialne,</li>
+<li>kule są nierozróżnialne.</li>
+</ol></li>
+<li><p>Oblicz prawdopodobieństwo zdarzenia, że w potasowanej talii <span class="math inline">\(52\)</span> kart wszystkie cztery asy znajdują się koło siebie.</p></li>
+<li><p>W klasie jest <span class="math inline">\(15\)</span> uczniów. Na każdej lekcji odpytywany jest losowo jeden z nich. Oblicz prawdopodobieństwo, że podczas <span class="math inline">\(16\)</span> lekcji zostanie przepytany każdy z nich.</p></li>
+<li><p>Grupa składająca się z <span class="math inline">\(2n\)</span> pań i <span class="math inline">\(2n\)</span> panów została podzielona na dwie równoliczne grupy. Znaleźć prawdopodobieństwo, że każda z tych grup składa się z takiej samej liczby pań i panów. Przybliżyć to prawdopodobieństwo za pomocą wzoru Stirlinga.</p></li>
+<li><p>Uzasadnij, że dla dowolnego <span class="math inline">\(n\)</span> i dowolnego <span class="math inline">\(j\)</span>, <span class="math display">\[\begin{equation*}
+   {n \choose j} + {n \choose j+1} = {n \choose j+1}.
+\end{equation*}\]</span> Czy potrafisz to zrobić bez wykonywania obliczeń? Zsumuj <span class="math display">\[\begin{equation*}
+\sum_{k=0}^m{n+k \choose j}
+\end{equation*}\]</span> gdzie <span class="math inline">\(m,n,j \in \mathbb{N}\)</span> są liczbami naturalnymi. Zapisz <span class="math inline">\(k^2\)</span> jako <span class="math inline">\(a_2{k \choose 2 }+ a_1{ k \choose 1} + a_0{k \choose 0}\)</span>. Wykorzystaj to do policzenia <span class="math inline">\(\sum_{k=0}^n{k^2}\)</span></p></li>
+<li><p>Wachlarzem rzędu <span class="math inline">\(n\)</span> nazywamy graf o wierzchołkach <span class="math inline">\(\{0, 1, \ldots , n\}\)</span> z <span class="math inline">\(2n-1\)</span> krawędziami zdefiniowanymi następująco: wierzchołek <span class="math inline">\(0\)</span> połączony jest krawędzią z każdym z pozostałych wierzchołków i wierzchołek <span class="math inline">\(k\)</span> połączony jest krawędzią z wierzchołkiem <span class="math inline">\(k+1\)</span> dla każdego <span class="math inline">\(1 \leq k&lt;n\)</span>. Przyjmując <span class="math inline">\(S_0=0\)</span>, ile wynosi <span class="math inline">\(S_n\)</span> liczba drzew rozpinających na takim grafie? Drzewem rozpinającym nazywamy spójny podgraf bez cykli zawierający wszystkie wierzchołki. Dla przykładu wachlarz rzędu <span class="math inline">\(5\)</span> wygląda następująco</p></li>
+</ol>
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 368 225" width="368" height="225" style="display:block;max-width:100%;height:auto;margin:1rem auto;">
 
-<section id="słowo-wstępne" class="level1 unnumbered">
-<h1 class="unnumbered">Słowo wstępne</h1><p><img src="Cover/cover.png" title="Rachunek prawdopodobieństwa (AI)" class="quarto-cover-image nolightbox img-fluid"></p>
-<p>Notatki te powstają na potrzeby kursu o tym samym tytule, zaplanowanego w semestrze zimowym roku akademickiego 2026/2027 w Instytucie Matematycznym Uniwersytetu Wrocławskiego.</p>
-<p>Notatki mają charakter roboczy i (jak wszystko we wstępnych fazach rozwoju) mogą zawierać błędy. Będę wdzięczny za zgłoszenie każdej usterki znalezionej w tekście.</p>
-<p>Notatki są przygotowywane w Quarto, otwartym systemie do tworzenia publikacji naukowych i technicznych. Więcej informacji o Quarto można znaleźć na stronie <a href="https://quarto.org/" class="uri">https://quarto.org/</a>.</p>
+  <g stroke="black" stroke-width="1" fill="none">
+    <line x1="136" y1="31" x2="136" y2="182"></line>
+    <line x1="98" y1="182" x2="136" y2="182"></line>
+    <line x1="98" y1="182" x2="136" y2="144"></line>
+    <line x1="98" y1="182" x2="136" y2="106"></line>
+    <line x1="98" y1="182" x2="136" y2="69"></line>
+    <line x1="98" y1="182" x2="136" y2="31"></line>
+  </g>
+
+  <g fill="black">
+    <circle cx="98" cy="182" r="3"></circle>
+    <circle cx="136" cy="182" r="3"></circle>
+    <circle cx="136" cy="144" r="3"></circle>
+    <circle cx="136" cy="106" r="3"></circle>
+    <circle cx="136" cy="69" r="3"></circle>
+    <circle cx="136" cy="31" r="3"></circle>
+  </g>
+</svg>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -640,11 +682,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./lista1.html" class="pagination-link" aria-label="Lista 1. Przestrzenie zdarzeń elementarnych">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lista 1. Przestrzenie zdarzeń elementarnych</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./sylabus.html" class="pagination-link" aria-label="Sylabus">
-        <span class="nav-page-text">Sylabus</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

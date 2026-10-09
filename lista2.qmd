@@ -1,0 +1,70 @@
+# Lista 2. Prawdopodobieństwo klasyczne {-}
+
+Zadania na ćwiczenia 15.10.2026
+
+1. W pudełku jest $6$ śrubek dobrych i $2$ złe. Jaka jest szansa, że przy wyborze $4$ śrubek wybierze 
+   się $3$ dobre i $1$ złą?
+
+1. Na szachownicy o wymiarach $n\times n$ umieszczono $8$ nierozróżnialnych wież, w taki sposób aby żadne dwie się nie biły. 
+   Na ile sposobów można to zrobić? Jak zmieni się wynik, gdy wieże będą rozróżnialne?
+
+2. Na ile sposobów można rozmieścić $n$ kul w $k$ urnach jeżeli: 
+   a.  kule są rozróżnialne, 
+   b. kule są nierozróżnialne.
+
+5. Oblicz prawdopodobieństwo zdarzenia, że w potasowanej talii $52$ kart wszystkie cztery asy znajdują się koło siebie.
+
+
+7. W klasie jest $15$ uczniów. Na każdej lekcji odpytywany jest losowo jeden z nich. 
+   Oblicz prawdopodobieństwo, że podczas $16$ lekcji zostanie przepytany każdy z nich.
+
+
+8.  Grupa składająca się z $2n$ pań i $2n$ panów została podzielona na dwie równoliczne grupy. 
+   Znaleźć prawdopodobieństwo, że każda z tych grup składa się z takiej samej liczby pań i panów. 
+   Przybliżyć to prawdopodobieństwo za pomocą wzoru Stirlinga.
+
+7. Uzasadnij, że dla dowolnego $n$ i dowolnego $j$,
+   \begin{equation*}
+      {n \choose j} + {n \choose j+1} = {n \choose j+1}.
+   \end{equation*}
+   Czy potrafisz to zrobić bez wykonywania obliczeń? Zsumuj
+\begin{equation*}
+\sum_{k=0}^m{n+k \choose j}
+\end{equation*}
+gdzie $m,n,j \in \mathbb{N}$ są liczbami naturalnymi.
+Zapisz $k^2$ jako $a_2{k \choose 2 }+ a_1{ k \choose 1} + a_0{k \choose 0}$. 
+Wykorzystaj to do policzenia $\sum_{k=0}^n{k^2}$ 
+
+8. Wachlarzem rzędu $n$ nazywamy graf o wierzchołkach $\{0, 1, \ldots , n\}$ z $2n-1$ krawędziami zdefiniowanymi
+następująco: wierzchołek $0$ połączony jest krawędzią z każdym z pozostałych wierzchołków i wierzchołek $k$ połączony 
+jest krawędzią z wierzchołkiem $k+1$ dla każdego $1 \leq k<n$. 
+Przyjmując $S_0=0$, ile wynosi $S_n$ liczba drzew rozpinających na takim grafie? 
+Drzewem rozpinającym nazywamy spójny podgraf bez cykli zawierający wszystkie wierzchołki.
+Dla przykładu wachlarz rzędu $5$ wygląda następująco 
+```{=html}
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 368 225" width="368" height="225"
+     style="display:block;max-width:100%;height:auto;margin:1rem auto;">
+
+  <g stroke="black" stroke-width="1" fill="none">
+    <line x1="136" y1="31" x2="136" y2="182"/>
+    <line x1="98" y1="182" x2="136" y2="182"/>
+    <line x1="98" y1="182" x2="136" y2="144"/>
+    <line x1="98" y1="182" x2="136" y2="106"/>
+    <line x1="98" y1="182" x2="136" y2="69"/>
+    <line x1="98" y1="182" x2="136" y2="31"/>
+  </g>
+
+  <g fill="black">
+    <circle cx="98" cy="182" r="3"/>
+    <circle cx="136" cy="182" r="3"/>
+    <circle cx="136" cy="144" r="3"/>
+    <circle cx="136" cy="106" r="3"/>
+    <circle cx="136" cy="69" r="3"/>
+    <circle cx="136" cy="31" r="3"/>
+  </g>
+</svg>
+```
+
+
+

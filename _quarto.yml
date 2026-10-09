@@ -25,6 +25,7 @@ book:
     - part: "Listy zadań"
       chapters:
         - lista1.qmd
+        - lista2.qmd
 
 bibliography: references.bib
 

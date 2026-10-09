@@ -84,7 +84,7 @@ Jej prawdopodobieństwo wynosi więc $6/36=1/6$. Suma $2$ odpowiada tylko parze 
 
 :::
 
-## Jak zliczać wyniki? {#sec-reguly-zliczania}
+## Zliczanie wyników {#sec-reguly-zliczania}
 
 Przy analizie większych modeli często zliczanie na palcach może okazać się zbyt uciążliwe.
 Okazuje się, że przy obliczaniu odpowiednich prawdopodobieństw kluczowe jest
@@ -119,24 +119,78 @@ $|A \cup B | =9$ a co za tym idzie
 
 :::
 
-Podobnie dla zdarzeń liczebnościach $n_1,\ldots,n_m$, to łącznie jest ich
+:::{#exm-podzielna-2}
+  Rzucamy symetryczną kością dwudziestościenną. Wówczas przestrzenią zdarzeń elementarnych jest
+  \begin{equation*}
+    \Omega = \{ 1, 2, \ldots , 20\}.
+  \end{equation*}
+  Jakie jest prawdopodobieństwo, że wylosowana liczba jest nieparzysta lub dzieli się przez $4$? 
+  Dla liczby $p$ oznaczmy zdarzenie
+  \begin{equation*}
+    D_{p} = \{ n \in [20] \: | \: \mbox{$n$ dzieli się przez $p$} \} \subseteq \Omega.
+  \end{equation*}
+  Szukamy $\mathbb{P}[N \cup D_4]$, gdzie $N =\{1,3, \ldots, 19 \}$. 
+  Zauważmy, że zdarzenia $N$ i $D_4$ są rozłączne. 
+  Mamy $\mathbb{P}[N]= 1/2$ i $\mathbb{P}[D_4]= 1/5$. Stąd
+  \begin{equation*}
+    \mathbb{P}[N \cup D_4] = \mathbb{P}[N]+\mathbb{P}[D_4]= \frac{7}{10}.
+  \end{equation*}
+:::
 
+Podobnie jest dla rozłącznych zbiorów $A_1$, $A_2, \ldots, A_m$, $m \in \mathbb{N}$, 
+o liczebnościach $n_1,\ldots,n_m$, to łącznie jest ich
 $$
-n_1+\cdots+n_m.
+\left| \bigcup_{j=1}^m A_j \right| = n_1+\cdots+n_m.
 $$
-
-Warunek rozłączności zapobiega wielokrotnemu zliczaniu tego samego obiektu. Dla dowolnych skończonych zbiorów $A$ i $B$ mamy
-
+Warunek rozłączności zapobiega wielokrotnemu zliczaniu tego samego obiektu. 
+Dla dowolnych skończonych zbiorów $A$ i $B$ mamy
 $$
 |A\cup B|=|A|+|B|-|A\cap B|.
 $$
-
-Odejmujemy $|A\cap B|$, ponieważ elementy części wspólnej zostały dodane dwukrotnie. W modelu klasycznym daje to odpowiednio
-
+Odejmujemy $|A\cap B|$, ponieważ elementy części wspólnej zostały zliczone dwukrotnie. 
+W modelu klasycznym daje to
 $$
-\mathbb P(A\cup B)
-=\mathbb P(A)+\mathbb P(B)-\mathbb P(A\cap B).
+\mathbb P[A\cup B]
+=\mathbb P[A]+\mathbb P[B]-\mathbb P[A\cap B].
 $$
+
+:::{#exm-suma-3}
+  Losujemy jedną z liczb $1, 2, \ldots 1000$ w taki sposób, że wylosowanie każdej z 
+  nich jest jednakowo prawdopodobne. Wówczas przestrzenią zdarzeń elementarnych jest
+  \begin{equation*}
+    \Omega = \{ 1, 2, \ldots , 1000\}.
+  \end{equation*}
+  Jakie jest prawdopodobieństwo, że wylosowana liczba dzieli się przez $3$ lub $5$? 
+  Dla liczby $p$ oznaczmy zdarzenie
+  \begin{equation*}
+    D_{p} = \{ n \in [1000] \: | \: \mbox{$n$ dzieli się przez $p$} \}.
+  \end{equation*}
+  Szukamy $\mathbb{P}[D_3\cup D_5]$. Zauważmy, że
+  \begin{equation*}
+    D_{3} = \{ 3m \: | \: 1\leq m \leq 333 \},
+  \end{equation*}
+  więc $\mathbb{P}[D_3] = \frac{333}{1000}$. 
+  Podobnie $\mathbb{P}[D_5] =\frac{200}{1000}= \frac{1}{5}$. 
+  Skoro $D_3 \cap D_5 = D_{15}$, to $\mathbb{P}[D_3 \cap D_5] =\frac{66}{1000}= \frac{33}{500}$. 
+  Ostatecznie
+  \begin{align*}
+    \mathbb{P}[D_3 \cup D_5] & = \mathbb{P}[D_3]+\mathbb{P}[D_5]-\mathbb{P}[D_3\cap D_5] \\
+    & = \frac{467}{1000}.
+  \end{align*}
+:::
+
+Dla trzech zbiorów $A$, $B$, $C$ mamy
+\begin{equation*}
+   |A \cup B \cup C| = |A|+|B|+|C| -|A\cap B| - |B\cap C| + |A\cap B \cap C|.
+\end{equation*}
+Jest to przykład ogólnego schematu.
+
+::: {#thm-incl-exl}
+ Dla dowolnego $m$ i dowolnych zbiorów $A_1$, \ldots $A_m$ zachodzi
+ \begin{equation*}
+  |A_1\cup A_2 \cup \ldots \cup A_m|
+ \end{equation*}
+:::
 
 ### Reguła mnożenia
 
