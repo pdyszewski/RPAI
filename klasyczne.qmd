@@ -1,128 +1,156 @@
 # Prawdopodobieństwo klasyczne {#sec-prawdopodobienstwo-klasyczne}
 
-Przedyskutujemy najpierw klasyczny model prawdopodobieństwa, w którym
-każdy możliwy wynik naszego eksperymentu jest jednakowo prawdopodobny.
-Dzieje się tak kiedy rzucamy symetryczną monetą czy symetryczną kostką.
+  Przedyskutujemy klasyczny model prawdopodobieństwa, w którym
+  każdy możliwy wynik naszego eksperymentu jest jednakowo prawdopodobny.
+  Dzieje się tak kiedy rzucamy symetryczną monetą lub symetryczną kostką.
 
 ## Model klasyczny {#sec-model-klasyczny}
 
-Na potrzeby tego rozdziału zakładać będziemy, że rozważana przestrzeń
-zdarzeń elementarnych $\Omega$ jest skończona. Liczbę elementów zbioru $A$ będziemy 
-oznaczać przez $|A|$. Spotyka się też oznaczenie $\#A$.
+  Na potrzeby tego rozdziału zakładać będziemy, że rozważana przestrzeń
+  zdarzeń elementarnych $\Omega$ jest skończona. Liczbę elementów zbioru $A$ będziemy 
+  oznaczać przez $|A|$. Spotyka się też oznaczenie $\#A$.
+  Dla liczby naturalnej $n$ będziemy pisać
+  \begin{equation*}
+    [n] = \{ 1,2, \ldots, n\}.
+  \end{equation*}
 
-
-Jeżeli wszystkie zdarzenia elementarne są jednakowo prawdopodobne, to 
-\begin{equation*}
-   p(\omega) = 1 / |\Omega|
-\end{equation*}
-dla każdego $\omega \in \Omega$. Stąd
-dla każdego zdarzenia $A\subseteq\Omega$ mamy
-$$
-\mathbb P[A]= \sum_{\omega \in A} \frac{1}{|\Omega|} =  \frac{|A|}{|\Omega|}.
-$$
-Licznik jest liczbą wyników sprzyjających zdarzeniu $A$, a mianownik 
-liczbą wszystkich możliwych wyników. Jest to dokładnie definicja prawdopodobieństwa 
-spotykana w szkole średniej.
-
+  Jeżeli wszystkie zdarzenia elementarne są jednakowo prawdopodobne, to 
+  rozważana funkcja prawdopodobieństwa ma postać
+  \begin{equation*}
+    p(\omega) = \frac{1}{|\Omega|}
+  \end{equation*}
+  dla każdego $\omega \in \Omega$. Stąd
+  dla każdego zdarzenia $A\subseteq\Omega$ mamy
+  $$
+    \mathbb P[A]= \sum_{\omega \in A} \frac{1}{|\Omega|} 
+    =  \frac{|A|}{|\Omega|}.
+  $$
+  Licznik jest liczbą wyników sprzyjających zdarzeniu $A$, a mianownik 
+  liczbą wszystkich możliwych wyników. Jest to dokładnie definicja prawdopodobieństwa 
+  spotykana w szkole średniej.
 
 ::: {#exm-moneta}
 
-Rzucamy dwukrotnie symetryczną monetą. 
-Zakładamy, że moneta jest symetryczna. Wówczas każdy wynik jest jednakowo prawdopodobny. 
-Przestrzenią wszystkich zdarzeń jest
+  Rzucamy dwukrotnie symetryczną monetą. 
+  Wówczas każdy wynik jest jednakowo prawdopodobny. 
+  Przestrzenią wszystkich zdarzeń jest
+  $$
+    \Omega=\{OO,OR,RO,RR\},
+  $$
+  gdzie $O$ oznacza orła, a $R$ — reszkę. 
+  Każdy z czterech ciągów ma prawdopodobieństwo $1/4$.
 
-$$
-\Omega=\{OO,OR,RO,RR\},
-$$
+  Zdarzeniu „wypadł dokładnie jeden orzeł” odpowiada zbiór 
+  $\{OR,RO\}$, zatem jego prawdopodobieństwo wynosi $2/4=1/2$.
 
-gdzie $O$ oznacza orła, a $R$ — reszkę. Każdy z czterech ciągów ma prawdopodobieństwo $1/4$.
+  Możemy też zapisać wynik doświadczenia jako liczbę orłów. 
+  Otrzymamy wtedy trzy możliwości: $0$, $1$ i $2$. 
+  **Nie są one jednak jednakowo prawdopodobne**:
 
-Zdarzeniu „wypadł dokładnie jeden orzeł” odpowiada zbiór 
-$\{OR,RO\}$, zatem jego prawdopodobieństwo wynosi $2/4=1/2$.
-
-Możemy też zapisać wynik doświadczenia jako liczbę orłów. 
-Otrzymamy wtedy trzy możliwości: $0$, $1$ i $2$. **Nie są one jednak jednakowo prawdopodobne**:
-
-| Liczba orłów | Odpowiadające jej ciągi | Prawdopodobieństwo |
+|  \# orłów | ciągi | $\mathbb{P}$ |
 |:---:|:---:|:---:|
 | $0$ | $RR$ | $1/4$ |
 | $1$ | $OR,RO$ | $1/2$ |
 | $2$ | $OO$ | $1/4$ |
 
-Nie ma nic złego w opisywaniu doświadczenia za pomocą liczby orłów. 
-Błędem byłoby dopiero przypisanie każdej z tych trzech wartości prawdopodobieństwa $1/3$.
+  Nie ma nic złego w opisywaniu doświadczenia za pomocą liczby orłów. 
+  Błędem byłoby dopiero przypisanie każdej z tych trzech wartości prawdopodobieństwa $1/3$.
+
+:::
 
 ::: {.callout-important title="Słowo „losowo” nie wystarcza"}
-Zanim użyjesz modelu prawdopodobieństwa klasycznego, odpowiedz na dwa pytania:
+  Zanim użyjesz modelu prawdopodobieństwa klasycznego, odpowiedz na dwa pytania:
 
-1. Co jest zdarzeniem elementarnym?
-2. Dlaczego wszystkie takie wyniki mają tę samą szansę?
+  1. Co jest zdarzeniem elementarnym?
+  2. Dlaczego wszystkie takie wyniki mają tę samą szansę?
 
-To, że potrafimy wypisać kilka możliwości, nie oznacza jeszcze, że są jednakowo prawdopodobne.
+  To, że potrafimy wypisać kilka możliwości, nie oznacza jeszcze, że są jednakowo prawdopodobne.
 :::
 
-:::
 
 ::: {#exm-dwie-kostki}
 
-Rzucamy dwiema uczciwymi kostkami. 
-Wynik zapisujemy jako parę $(i,j)$, gdzie $i$ jest wynikiem pierwszej kostki, 
-a $j$ — drugiej. Wtedy
-
-$$
-\Omega=\{1,2,3,4,5,6\}^2,
-\qquad |\Omega|=36.
-$$
-
-Suma $7$ pojawia się dla sześciu par:
-
-$$
-(1,6),\ (2,5),\ (3,4),\ (4,3),\ (5,2),\ (6,1).
-$$
-
-Jej prawdopodobieństwo wynosi więc $6/36=1/6$. Suma $2$ odpowiada tylko parze $(1,1)$, zatem ma prawdopodobieństwo $1/36$. Możliwe sumy oczek również nie tworzą modelu klasycznego z jednakowymi wagami.
+  Rzucamy dwiema uczciwymi kostkami. 
+  Wynik zapisujemy jako parę $(i,j)$, gdzie $i$ jest wynikiem pierwszej kostki, 
+  a $j$ — drugiej. Wtedy
+  $$
+  \Omega=[6]^2,
+  \qquad |\Omega|=36.
+  $$
+  Suma $7$ pojawia się dla sześciu par:
+  $$
+    (1,6),\ (2,5),\ (3,4),\ (4,3),\ (5,2),\ (6,1).
+  $$
+  Jej prawdopodobieństwo wynosi więc $6/36=1/6$. 
+  Suma $2$ odpowiada tylko parze $(1,1)$, zatem ma prawdopodobieństwo $1/36$. 
+  Możliwe sumy oczek również nie tworzą modelu klasycznego z jednakowymi wagami.
 
 :::
 
 ## Zliczanie wyników {#sec-reguly-zliczania}
 
-Przy analizie większych modeli często zliczanie na palcach może okazać się zbyt uciążliwe.
-Okazuje się, że przy obliczaniu odpowiednich prawdopodobieństw kluczowe jest
-wyznaczenie liczebności $|A|$ interesującego nas zdarzenia $A$. 
-W tym celu bardzo pomocne są podstawowe schematy kombinatoryczne.
+  Przy analizie większych modeli często wypisywanie wszystkich
+  elementów zbioru może okazać się zbyt uciążliwe.
+  Okazuje się, że przy obliczaniu odpowiednich prawdopodobieństw nie jest to konieczne.
+  Kluczowe jest
+  wyznaczenie liczebności $|A|$ interesującego nas zdarzenia $A$. 
+  W tym celu bardzo pomocne są podstawowe schematy kombinatoryczne.
 
-### Reguła dodawania
+::: {#exm-5-1-1}
 
-Jeżeli obiekty, które chcemy policzyć, dzielą się na dwie **rozłączne** grupy 
-$A$ i $B$, to
-\begin{equation*}
-  |A \cup B| = |A| + |B|
-\end{equation*}
+  Aby poznać liczebność zbioru nie musimy wypisywać wszystkich jego elementów.
 
-::: {#exm-podzielne}
-Ze zbioru liczb
-$\Omega = \{1,2, \ldots, 30\}$ losujemy jedną liczbę. Jakie jest prawdopodobieństwo, że będzie ona
-podzielna przez $5$ lub przez $7$?
-Niech $A$ będzie zdarzeniem, że wylosowana liczba jest podzielna przez $5$. Wtedy
-\begin{equation*}
-  A = \{5,10,15,20,25,30\}, \quad |A| = 6.
-\end{equation*}
-Dla zdarzenia $B$, że wylosowana liczba jest podzielna przez $7$,
-\begin{equation*}
-  B = \{ 7, 14, 21 \}, \quad |B| = 3.
-\end{equation*}
-Skoro $A\cap B =\emptyset$, 
-$|A \cup B | =9$ a co za tym idzie
-\begin{equation*}
- \mathbb{P}[A \cup B] = 3/10.
-\end{equation*}
+  (a) Ile liczb całkowitych w zbiorze $[100]$ jest podzielnych przez $3$? 
+  Takich liczb jest $\lfloor100/3\rfloor=33$.
+
+  (b) Ile elementów $[100]$ nie jest podzielnych przez $3$? To proste: $100-33=67$.
+
+  (c) Ile elementów $A$ jest podzielnych przez $3$ lub przez $5$, lub przez obie te liczby? 
+  Przez $3$ podzielne są $33$ elementy, a przez $5$ podzielnych jest $\lfloor100/5\rfloor=20$. 
+  Dodając te liczby, otrzymalibyśmy $53$, czyli zbyt wiele: wielokrotności $15$ 
+  zostałyby policzone dwukrotnie. Poprawna odpowiedź to
+  $$
+    \left\lfloor\frac{100}{3}\right\rfloor+
+    \left\lfloor\frac{100}{5}\right\rfloor-
+    \left\lfloor\frac{100}{15}\right\rfloor=47.
+  $$
 
 :::
 
-:::{#exm-podzielna-2}
+## Reguła dodawania
+
+  Jeżeli obiekty, które chcemy policzyć, dzielą się na dwie **rozłączne** grupy 
+  $A,B\subseteq \Omega$, to
+  $$
+    |A \cup B| = |A| + |B|.
+  $$ {#eq-suma1}
+  Reguła ta mówi, że sumę rozłącznych zbiorów zliczamy, 
+  zliczając każdy zbiór osobno i dodając wyniki.
+
+::: {#exm-podzielne}
+  Ze zbioru liczb
+  $\Omega = [30]$ losujemy jedną liczbę. Jakie jest prawdopodobieństwo, że będzie ona
+  podzielna przez $5$ lub przez $7$?
+  Niech $A$ będzie zdarzeniem, że wylosowana liczba jest podzielna przez $5$. Wtedy
+  \begin{equation*}
+    A = \{5,10,15,20,25,30\}, \quad |A| = 6.
+  \end{equation*}
+  Dla zdarzenia $B$, że wylosowana liczba jest podzielna przez $7$,
+  \begin{equation*}
+    B = \{ 7, 14, 21 \}, \quad |B| = 3.
+  \end{equation*}
+  Skoro $A\cap B =\emptyset$, 
+  $|A \cup B | =9$ a co za tym idzie
+  \begin{equation*}
+    \mathbb{P}[A \cup B] = 3/10.
+  \end{equation*}
+
+:::
+
+::: {#exm-podzielna-2}
   Rzucamy symetryczną kością dwudziestościenną. Wówczas przestrzenią zdarzeń elementarnych jest
   \begin{equation*}
-    \Omega = \{ 1, 2, \ldots , 20\}.
+    \Omega = [20].
   \end{equation*}
   Jakie jest prawdopodobieństwo, że wylosowana liczba jest nieparzysta lub dzieli się przez $4$? 
   Dla liczby $p$ oznaczmy zdarzenie
@@ -131,30 +159,56 @@ $|A \cup B | =9$ a co za tym idzie
   \end{equation*}
   Szukamy $\mathbb{P}[N \cup D_4]$, gdzie $N =\{1,3, \ldots, 19 \}$. 
   Zauważmy, że zdarzenia $N$ i $D_4$ są rozłączne. 
-  Mamy $\mathbb{P}[N]= 1/2$ i $\mathbb{P}[D_4]= 1/5$. Stąd
+  Mamy $\mathbb{P}[N]= 1/2$ i $\mathbb{P}[D_4]= 1/4$. Stąd
   \begin{equation*}
-    \mathbb{P}[N \cup D_4] = \mathbb{P}[N]+\mathbb{P}[D_4]= \frac{7}{10}.
+    \mathbb{P}[N \cup D_4] = \mathbb{P}[N]+\mathbb{P}[D_4]= \frac{3}{4}.
   \end{equation*}
 :::
 
-Podobnie jest dla rozłącznych zbiorów $A_1$, $A_2, \ldots, A_m$, $m \in \mathbb{N}$, 
-o liczebnościach $n_1,\ldots,n_m$, to łącznie jest ich
-$$
-\left| \bigcup_{j=1}^m A_j \right| = n_1+\cdots+n_m.
-$$
-Warunek rozłączności zapobiega wielokrotnemu zliczaniu tego samego obiektu. 
-Dla dowolnych skończonych zbiorów $A$ i $B$ mamy
-$$
-|A\cup B|=|A|+|B|-|A\cap B|.
-$$
-Odejmujemy $|A\cap B|$, ponieważ elementy części wspólnej zostały zliczone dwukrotnie. 
-W modelu klasycznym daje to
-$$
-\mathbb P[A\cup B]
-=\mathbb P[A]+\mathbb P[B]-\mathbb P[A\cap B].
-$$
+  Podobnie jest dla rozłącznych zbiorów $A_1$, $A_2, \ldots, A_m$, $m \in \mathbb{N}$, 
+  o liczebnościach $n_1,\ldots,n_m$, to łącznie jest ich
+  $$
+    \left| \bigcup_{j=1}^m A_j \right| = n_1+\cdots+n_m.
+  $${#eq-sumaN}
+  Warunek rozłączności zapobiega wielokrotnemu zliczaniu tego samego obiektu. 
 
-:::{#exm-suma-3}
+::: {#exm-sumaN}
+  Ile liczb dwucyfrowych jest nieparzystych? 
+  Można policzyć parzyste i odjąć wynik od wszystkich liczb. 
+  Można również zastosować uogólnioną regułę @eq-sumaN. 
+  Niech $S_k$ oznacza zbiór liczb dwucyfrowych o cyfrze jedności $k$. Wówczas szukamy
+  \begin{align*}
+   & |S_1\cup S_3\cup S_5\cup S_7\cup S_9|\\
+   & =|S_1|+|S_3|+|S_5|+|S_7|+|S_9|.
+  \end{align*}
+  Każdy z tych zbiorów ma $9$ elementów [dlaczego?], więc odpowiedź brzmi $5\cdot9=45$. 
+:::
+
+  Dla dowolnych skończonych zbiorów $A$ i $B$ mamy
+  $$
+    |A\cup B|=|A|+|B|-|A\cap B|.
+  $$ {#eq-suma2}
+  Reguła @eq-suma2 uwzględnia możliwość dwukrotnego policzenia części wspólnej $A\cap B$. 
+  Można ją wyprowadzić z @eq-suma1: zbiory $A$ oraz $B\setminus A$ są rozłączne, 
+  podobnie jak $B\setminus A$ oraz $A\cap B$. Zatem
+  \begin{align*}
+    |A\cup B| & = |A|+|B\setminus A|,\\
+    |B| & = |B\setminus A|+|A\cap B|.
+  \end{align*}
+  Stąd
+  \begin{align*}
+    |A\cup B|+|A\cap B|
+    & =|A|+|B\setminus A|+|A\cap B| \\ 
+    & =|A|+|B|,
+  \end{align*}
+  co daje @eq-suma2 .
+  W terminach prawdopodobieństwa klasycznego zapisuje się to jako
+  $$
+    \mathbb P[A\cup B]
+    =\mathbb P[A]+\mathbb P[B]-\mathbb P[A\cap B].
+  $$
+
+::: {#exm-suma-3}
   Losujemy jedną z liczb $1, 2, \ldots 1000$ w taki sposób, że wylosowanie każdej z 
   nich jest jednakowo prawdopodobne. Wówczas przestrzenią zdarzeń elementarnych jest
   \begin{equation*}
@@ -163,7 +217,7 @@ $$
   Jakie jest prawdopodobieństwo, że wylosowana liczba dzieli się przez $3$ lub $5$? 
   Dla liczby $p$ oznaczmy zdarzenie
   \begin{equation*}
-    D_{p} = \{ n \in [1000] \: | \: \mbox{$n$ dzieli się przez $p$} \}.
+    D_{p} = \{ n \in \Omega \: | \: \mbox{$n$ dzieli się przez $p$} \}.
   \end{equation*}
   Szukamy $\mathbb{P}[D_3\cup D_5]$. Zauważmy, że
   \begin{equation*}
@@ -180,249 +234,555 @@ $$
 :::
 
 Dla trzech zbiorów $A$, $B$, $C$ mamy
-\begin{equation*}
-   |A \cup B \cup C| = |A|+|B|+|C| -|A\cap B| - |B\cap C| + |A\cap B \cap C|.
-\end{equation*}
-Jest to przykład ogólnego schematu.
+\begin{align*}
+   |A \cup B \cup C|  = &  |A|+|B|+|C| \\ &-|A\cap B| - |B\cap C| \\& + |A\cap B \cap C|.
+\end{align*}
+Jest to przykład ogólnego schematu który przedyskutujemy na koniec tego rozdziału.
 
-::: {#thm-incl-exl}
- Dla dowolnego $m$ i dowolnych zbiorów $A_1$, \ldots $A_m$ zachodzi
- \begin{equation*}
-  |A_1\cup A_2 \cup \ldots \cup A_m|
- \end{equation*}
-:::
 
-### Reguła mnożenia
 
-::: {#thm-klasyczne-mnozenie}
 ## Reguła mnożenia
 
-Załóżmy, że obiekt konstruujemy w $k$ etapach. Pierwszy etap można wykonać na $n_1$ sposobów. Po każdym dopuszczalnym wyborze w pierwszym etapie drugi można wykonać na $n_2$ sposobów, i tak dalej: po każdym dopuszczalnym ciągu wcześniejszych wyborów etap $i$ można wykonać na $n_i$ sposobów.
+  Dla skończonych zbiorów $S_1, \ldots , S_k$,
+  \begin{equation*}
+    |S_1 \times \ldots \times S_k| = \prod_{j=1}^k|S_j|. 
+  \end{equation*}
+  Jeżeli wszystkie $S_i$ są tym samym zbiorem $S$, otrzymujemy $|S^k|=|S|^k$.
 
-Liczba możliwych ciągów wyborów wynosi wtedy
+  Będziemy często korzystać z reguły mnożenia, lecz niemal nigdy z formalnego 
+  zapisu sugerowanego w jej sformułowaniu. 
+  Chcemy przede wszystkim zachęcić do myślenia o problemach jako o procesach wieloetapowych. 
+  Pierwszy element możemy wybrać na $|S_1|$ sposobów. Dla każdego takiego 
+  wyboru drugi możemy zrobić na $|S_2|$ sposobów itd.
+  Wyobrażenie sobie takiego procesu często pomaga znaleźć rozwiązanie.
 
-$$
-n_1n_2\cdots n_k.
-$$
+::: {#exm-5-1-4}
 
-Jeżeli każdy zliczany obiekt powstaje z dokładnie jednego takiego ciągu, jest to również liczba obiektów.
+  Liczba dróg od $s$ do $f$ na rysunku 2(a) wynosi $3\cdot2\cdot2\cdot1=12$: 
+  pierwszą krawędź wybieramy na 3 sposoby, drugą i trzecią na 2 sposoby. 
+  Po wyborze pierwszych trzech krawędzi czwarta jest już wymuszona.
+
+```{=html}
+<figure class="figure" style="color:inherit; margin:1.5rem 0">
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="240" viewBox="0 0 1120 240" role="img" aria-labelledby="graf-512-title graf-512-desc" style="display:block;width:100%;height:auto;color:inherit">
+<title id="graf-512-title">Grafy do zliczania dróg</title>
+<desc id="graf-512-desc">Graf a ma 18 skierowanych krawędzi i 12 dróg od s do f. Graf b składa się z dwóch takich grafów połączonych w wierzchołku v i ma 144 drogi od s do f.</desc>
+<style>
+  svg:root { color: #17202a !important; background-color: #ffffff; }
+  @media (prefers-color-scheme: dark) {
+    svg:root { color: #e6edf3 !important; background-color: #161b22; }
+  }
+</style>
+<defs><marker id="graf-512-arrow" viewBox="0 0 10 8" refX="5" refY="4" markerWidth="7" markerHeight="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 4 L0 8 L2.5 4 Z" fill="currentColor"/></marker></defs>
+<g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+<path d="M35 110 L75 79 L115 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M35 110 L75 110 L115 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M35 110 L75 141 L115 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 48 L155 48 L195 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 48 L155 79 L195 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 110 L155 79 L195 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 110 L155 141 L195 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 172 L155 141 L195 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 172 L155 172 L195 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 48 L235 48 L275 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 48 L235 79 L275 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 110 L235 79 L275 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 110 L235 141 L275 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 172 L235 141 L275 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 172 L235 172 L275 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M275 48 L315 79 L355 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M275 110 L315 110 L355 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M275 172 L315 141 L355 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M435 110 L475 79 L515 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M435 110 L475 110 L515 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M435 110 L475 141 L515 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 48 L555 48 L595 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 48 L555 79 L595 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 110 L555 79 L595 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 110 L555 141 L595 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 172 L555 141 L595 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 172 L555 172 L595 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 48 L635 48 L675 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 48 L635 79 L675 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 110 L635 79 L675 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 110 L635 141 L675 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 172 L635 141 L675 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 172 L635 172 L675 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M675 48 L715 79 L755 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M675 110 L715 110 L755 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M675 172 L715 141 L755 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M755 110 L795 79 L835 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M755 110 L795 110 L835 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M755 110 L795 141 L835 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 48 L875 48 L915 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 48 L875 79 L915 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 110 L875 79 L915 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 110 L875 141 L915 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 172 L875 141 L915 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 172 L875 172 L915 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 48 L955 48 L995 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 48 L955 79 L995 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 110 L955 79 L995 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 110 L955 141 L995 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 172 L955 141 L995 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 172 L955 172 L995 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M995 48 L1035 79 L1075 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M995 110 L1035 110 L1075 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M995 172 L1035 141 L1075 110" marker-mid="url(#graf-512-arrow)"/>
+</g><g fill="currentColor">
+<circle cx="35" cy="110" r="4.8"/>
+<circle cx="115" cy="48" r="4.8"/>
+<circle cx="115" cy="110" r="4.8"/>
+<circle cx="115" cy="172" r="4.8"/>
+<circle cx="195" cy="48" r="4.8"/>
+<circle cx="195" cy="110" r="4.8"/>
+<circle cx="195" cy="172" r="4.8"/>
+<circle cx="275" cy="48" r="4.8"/>
+<circle cx="275" cy="110" r="4.8"/>
+<circle cx="275" cy="172" r="4.8"/>
+<circle cx="355" cy="110" r="4.8"/>
+<circle cx="435" cy="110" r="4.8"/>
+<circle cx="515" cy="48" r="4.8"/>
+<circle cx="515" cy="110" r="4.8"/>
+<circle cx="515" cy="172" r="4.8"/>
+<circle cx="595" cy="48" r="4.8"/>
+<circle cx="595" cy="110" r="4.8"/>
+<circle cx="595" cy="172" r="4.8"/>
+<circle cx="675" cy="48" r="4.8"/>
+<circle cx="675" cy="110" r="4.8"/>
+<circle cx="675" cy="172" r="4.8"/>
+<circle cx="755" cy="110" r="4.8"/>
+<circle cx="835" cy="48" r="4.8"/>
+<circle cx="835" cy="110" r="4.8"/>
+<circle cx="835" cy="172" r="4.8"/>
+<circle cx="915" cy="48" r="4.8"/>
+<circle cx="915" cy="110" r="4.8"/>
+<circle cx="915" cy="172" r="4.8"/>
+<circle cx="995" cy="48" r="4.8"/>
+<circle cx="995" cy="110" r="4.8"/>
+<circle cx="995" cy="172" r="4.8"/>
+<circle cx="1075" cy="110" r="4.8"/>
+</g><g fill="currentColor" font-family="Georgia, Times New Roman, serif" font-size="21" font-style="italic">
+<text x="21" y="116" text-anchor="end">s</text>
+<text x="368" y="116" text-anchor="start">f</text>
+<text x="421" y="116" text-anchor="end">s</text>
+<text x="755" y="135" text-anchor="middle">v</text>
+<text x="1088" y="116" text-anchor="start">f</text>
+</g><g fill="currentColor" font-family="Georgia, Times New Roman, serif" font-size="20" text-anchor="middle"><text x="195" y="218">(a)</text><text x="755" y="218">(b)</text></g></svg>
+<figcaption class="figure-caption">Rysunek 5.1.2. Grafy do zliczania dróg.</figcaption>
+</figure>
+```
+
+  Podobne obliczenie zlicza drogi od $s$ do $f$ na rysunku 2(b). 
+  Można również zauważyć, że istnieje 12 dróg od $s$ do $v$ i 12 od $v$ do $f$, 
+  więc wszystkich dróg jest $12\cdot12=144$.
+
 :::
 
-Można wyobrazić sobie drzewo wyborów. Z początku wychodzi $n_1$ gałęzi, z każdego kolejnego wierzchołka $n_2$ gałęzi, i tak dalej. Liczba końcowych ścieżek jest iloczynem liczby wyborów na poszczególnych etapach.
-
-Na przykład identyfikator składający się z trzech liter alfabetu 26-literowego i czterech cyfr można utworzyć na
-
-$$
-26^3\cdot10^4=175\,760\,000
-$$
-
-sposobów. Zakładamy tu, że znaki mogą się powtarzać, a część cyfrowa może zaczynać się od zera.
-
-Z kolei identyfikator złożony z trzech **różnych** liter można utworzyć na
-
-$$
-26\cdot25\cdot24
-$$
-
-sposobów. Zestaw dostępnych liter zależy od wcześniejszych wyborów, ale liczba dostępnych liter na każdym etapie jest ustalona.
-
-::: {.callout-note title="Mnożenie liczebności a niezależność"}
-Reguła mnożenia jest zasadą kombinatoryczną: służy do liczenia obiektów. Nie wymaga niezależności zdarzeń losowych. Aby użyć uzyskanej liczby w obliczeniach prawdopodobieństwa, trzeba dodatkowo określić sposób losowania.
+::: {#exm-funkcje}
+  Niech $S$ i $T$ będą zbiorami skończonymi. 
+  Niech 
+  \begin{equation*}
+    S^T = \{ f \: : \: f \colon T \to S\}.
+  \end{equation*}
+  Znajdziemy $|S^T|$ liczbę różnych funkcji $f \colon T \to S$. 
+  Będzie wygodnie przyjąć, że
+  \begin{equation*}
+    S = \{s_1, s_2, \ldots, s_n \}, \quad T = \{ t_1, \ldots, t_m\},
+  \end{equation*}
+  gdzie $|S| = n$ and $|T|=m$. Dowolną funkcję $f \colon T \to S$ można 
+  utożsamić jednoznacznie z 
+  $$
+    (f(t_1), f(t_2), \ldots , f(t_m)).
+  $$
+  Jest to element $S^m$. Zatem z reguły iloczynu
+  \begin{equation*}
+    \left|S^T \right|  = \left|S^m \right| = n^m.
+  \end{equation*}
 :::
 
-## Podstawowe schematy kombinatoryczne {#sec-schematy-kombinatoryczne}
+## Wariacje
 
-W wielu zadaniach wybieramy $k$ elementów spośród $n$ dostępnych. Odpowiedni wzór zależy od dwóch decyzji:
-
-- **Czy kolejność ma znaczenie?** Czy wybór $(a,b)$ różni się od wyboru $(b,a)$?
-- **Czy dopuszczamy powtórzenia?** Czy ten sam element można wybrać więcej niż raz?
-
-### Wariacje z powtórzeniami
-
-Wybieramy kolejno $k$ elementów ze zbioru $n$-elementowego. Każdy element możemy wybierać wielokrotnie. Wynikiem jest ciąg
-
-$$
-(x_1,\ldots,x_k).
-$$
-
-Taki ciąg nazywamy **$k$-wyrazową wariacją z powtórzeniami**. Na każdej pozycji mamy $n$ możliwości, więc liczba ciągów wynosi
-
-$$
-n^k.
-$$ {#eq-wariacje-z-powtorzeniami}
-
-Przykłady to $k$ wyników rzutu kostką, słowo długości $k$ nad ustalonym alfabetem oraz uporządkowana próbka $k$ rekordów losowanych ze zwracaniem.
-
-### Wariacje bez powtórzeń
-
-Teraz kolejność nadal ma znaczenie, ale żaden element nie może wystąpić dwukrotnie. Dla $0\leq k\leq n$ liczba takich ciągów wynosi
-
-$$
-(n)_k
-=n(n-1)\cdots(n-k+1)
-=\frac{n!}{(n-k)!}.
-$$ {#eq-wariacje-bez-powtorzen}
-
-Symbol $(n)_k$ oznacza tu **silnię opadającą**. Przyjmujemy $(n)_0=1$.
-
-Uzasadnienie jest bezpośrednie: pierwszy element wybieramy na $n$ sposobów, drugi na $n-1$, a ostatni na $n-k+1$ sposobów. Jeżeli $k>n$, wybór bez powtórzeń jest niemożliwy.
-
-Na przykład trzy różne rekordy ze zbioru stu rekordów, zapisane w kolejności losowania, możemy otrzymać na $100\cdot99\cdot98$ sposobów.
-
-### Permutacje
-
-**Permutacją** zbioru $n$-elementowego nazywamy ustawienie wszystkich jego elementów w kolejności. Jest to szczególny przypadek wariacji bez powtórzeń, w którym $k=n$. Liczba permutacji wynosi
-
-$$
-n!=n(n-1)\cdots2\cdot1.
-$$ {#eq-permutacje}
-
-Przyjmujemy $0!=1$: istnieje dokładnie jeden pusty ciąg. Ta konwencja sprawia, że wzory działają również wtedy, gdy nie wybieramy żadnego elementu.
-
-Losowe przetasowanie zbioru danych możemy modelować jako wybór jednej z $n!$ permutacji, każdej z prawdopodobieństwem $1/n!$.
-
-### Kombinacje bez powtórzeń
-
-Wybieramy teraz $k$ różnych elementów, ale ich kolejność nie ma znaczenia. Wynikiem jest **podzbiór** $k$-elementowy, nazywany także kombinacją.
-
-Każdy taki podzbiór można ustawić w kolejności na $k!$ sposobów. Licząc wariacje bez powtórzeń, policzyliśmy więc każdy podzbiór dokładnie $k!$ razy. Stąd liczba podzbiorów wynosi
-
-$$
-\binom nk
-=\frac{(n)_k}{k!}
-=\frac{n!}{k!(n-k)!},
-\qquad 0\leq k\leq n.
-$$ {#eq-kombinacje}
-
-Symbol $\binom nk$ czytamy „$n$ po $k$” i nazywamy **współczynnikiem dwumianowym**. W szczególności
-
-$$
-\binom n0=\binom nn=1,
-\qquad
-\binom nk=\binom n{n-k}.
-$$
-
-Ostatnia równość ma proste wyjaśnienie: wskazanie $k$ wybranych elementów jest równoważne wskazaniu $n-k$ elementów pominiętych.
-
-::: {.callout-tip title="Kolejność może być nieistotna dla pytania, ale przydatna w modelu"}
-Można liczyć na uporządkowanych próbkach, nawet gdy pytanie nie zależy od kolejności. Trzeba tylko konsekwentnie liczyć w ten sam sposób wyniki w liczniku i mianowniku. Nie wolno dzielić liczby nieuporządkowanych wyborów sprzyjających przez liczbę wszystkich uporządkowanych wyborów.
+::: {#def-wariacja}
+  $k$-wyrazową wariancją z powtórzeniami zbioru $A$ nazywamy dowolną funkcję $f \colon [k] \to A$.
 :::
 
-## Pierwsze zastosowania {#sec-klasyczne-zastosowania}
+  Innymi słowy $k$-wyrazowa wariacja z powtórzeniami to po prostu ciąg 
+  długości $k$ o wyrazach z $A$.
+  Zauważmy, że zbiorem wszystkich  $k$-wyrazowych wariancji z powtórzeniami zbioru $A$ jest
+  \begin{equation*}
+    A^k = A^{[k]} = \{ f \: | \: f \colon [k] \to A \}.
+  \end{equation*}
 
-### Czy wszyscy wysiądą na różnych piętrach?
+::: {#cor-wariacja}
+  Jeżeli $|A| =n$, to dla każdego naturalnego $k$ jest
+  \begin{equation*}
+    \left| A^{[k]} \right| = n^k
+  \end{equation*}
+  różnych wariacji z powtórzeniami zbioru $A$.
+:::
 
-Do windy wsiada siedem osób, a do wyboru jest dziesięć pięter. Przyjmijmy, że każda osoba wybiera każde piętro z prawdopodobieństwem $1/10$, niezależnie od pozostałych osób.
 
-Numerujemy osoby. Wynikiem elementarnym jest siedmiowyrazowy ciąg numerów pięter, zatem
+::: {#exm-wariacja-winda}		
+  W dziesięciopiętrowym budynku windą jedzie siedem osób. 
+  Jakie jest prawdopodobieństwo, że wszystkie wysiądą na ostatnim piętrze? 
+  Jakie jest prawdopodobieństwo, że wszystkie wysiądą na tym samym piętrze? 
+  Zauważmy, że każdy scenariusz możemy zakodować w funkcji $f \colon [7] \to [10]$. 
+  Tutaj $j$-tej osobie przyporządkowujemy jedno z dziesięciu pięter, 
+  na którym wysiada. W skutek czego wszystkich możliwości jest $|[10]^7| = 10^7$. 
+  Zdarzenie, że wszyscy wysiądą na ostatnim piętrze, to
+  \begin{equation*}
+    \{(10, 10, \ldots, 10) \}.
+  \end{equation*}
+  Wobec czego jego prawdopodobieństwo wynosi $10^{-7}$.
+  Drugie zdarzenie, że wszyscy wysiądą na tym samym piętrze to 
+  \begin{equation*}
+    \bigcup_{k=1}^{10} A_k,
+  \end{equation*}
+  gdzie $A_k$ to zdarzenie, że wszyscy wysiądą na $k$tym piętrze. 
+  Dla $k=10$ sprawdziliśmy już, że $\mathbb{P}[A_{10}]=10^{-7}$.
+  Nietrudno się przekonać, że dla dowolnego $k \leq 10$, $\mathbb{P}[A_k] =10^{-7}$. 
+  Skoro zdarzenia $A_k$ są rozłączne, to nasze drugie zdarzenie ma prawdopodobieństwo
+  \begin{equation*} 
+   \sum_{k=1}^{10} \mathbb{P}[A_k] = 10^{-6}.
+  \end{equation*}
+
+:::
+
+::: {#def-wariacja-bez}
+  $k$-wyrazową wariancją bez powtórzeń zbioru $A$ nazywamy dowolną różnowartościową funkcję 
+  $f \colon [k] \to A$. Zbiór wszystkich takich funkcji oznaczamy przez
+  \begin{equation*}
+   A^{\underline{k}} = \{ f \colon [k] \to A \: | \: f \mbox{ jest 1-1} \}.
+  \end{equation*}
+:::
+
+Dla naturalnych $k, n$ przyjmujemy 
+\begin{equation*}
+  n^{\underline{k}} = n(n-1) \cdots (n-k+1).
+\end{equation*}
+
+Jeżeli $A$ ma $n$ elementów, to pierwszy wyraz wariacji możemy wybrać na $n$ sposobów, 
+drugi na $n-1$ sposobów, trzeci na $n-2$ sposobów itd.
+Mamy więc
+\begin{equation*}
+   |A^{\underline{k}}| = n(n-1) \cdots (n-k+1) = n^{\underline{k}}.
+\end{equation*}
+Wzór ten można całkowicie formalnie wyprowadzić z reguły mnożenia poprzez 
+znalezienie bijekcji (jakiej?) 
+między zbiorem $A^{\underline{k}}$ a zbiorem
+\begin{equation*}
+   [n]\times [n-1] \times \cdots \times [n-k+1].
+\end{equation*}
+
+::: {#exm-winda}
+  W dziesięciopiętrowym budynku windą jedzie siedem osób. 
+  Na ile sposobów mogą one wysiąść z windy, jeżeli każda osoba wysiada na innym piętrze? 
+  Zauważmy, że każdy scenariusz możemy zakodować w równowartościowej funkcji 
+  $f \colon [7] \to [10]$, gdzie $j$-tej osobie przyporządkowujemy jedno z dziesięciu pięter, 
+  na którym wysiada. W skutek czego wszystkich 
+  możliwości jest $|[10]^{\underline{7}}| = 10^{\underline{7}}$.
+:::
+
+::: {#exm-5-1-3}
+
+  (a) Dla alfabetu $\Sigma=\{a,b,c,d,e,f,g\}$ liczba słów długości $5$ wynosi $7^5=16\,807$, 
+  czyli $|\Sigma^5|=16\,807$. Liczba słów bez powtarzających się liter to 
+  $7\cdot6\cdot5\cdot4\cdot3=2520$: 
+  pierwszą literę wybieramy na $7$ sposobów, drugą na $6$ itd.
+
+  (b) Dla $\Sigma=\{a,b,c,d\}$ liczba słów długości $2$ bez powtórzeń wynosi $4\cdot3=12$. 
+  Można przedstawić te słowa za pomocą drzewa, jak na rysunku poniżej. 
+  Każda droga od początku odpowiada jednemu słowu bez powtórzeń; 
+  na przykład droga przez $b$ do $bc$ odpowiada słowu $bc$. 
+  Podobne, lecz znacznie większe drzewo można wyobrazić sobie dla obliczenia z (a), 
+  a także dla dowolnej sytuacji, w której stosujemy regułę mnożenia.
+
+```{=html}
+<figure class="figure" style="color:inherit; margin:1.5rem 0">
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="295" viewBox="0 0 1120 295" role="img" aria-labelledby="tree-511-title tree-511-desc" style="display:block;width:100%;height:auto;color:inherit">
+<title id="tree-511-title">Drzewo słów dwuliterowych bez powtórzeń</title>
+<desc id="tree-511-desc">Od wierzchołka Początek prowadzą gałęzie do liter a, b, c i d. Każda litera ma trzy liście z inną drugą literą: ab, ac, ad, ba, bc, bd, ca, cb, cd, da, db i dc.</desc>
+<style>
+svg:root { color: #17202a !important; background-color: #ffffff; }
+@media (prefers-color-scheme: dark) {
+  svg:root { color: #e6edf3 !important; background-color: #161b22; }
+}
+</style>
+<g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+<path d="M560 36 L140 135"/>
+<path d="M140 135 L55 235"/>
+<path d="M140 135 L140 235"/>
+<path d="M140 135 L225 235"/>
+<path d="M560 36 L420 135"/>
+<path d="M420 135 L335 235"/>
+<path d="M420 135 L420 235"/>
+<path d="M420 135 L505 235"/>
+<path d="M560 36 L700 135"/>
+<path d="M700 135 L615 235"/>
+<path d="M700 135 L700 235"/>
+<path d="M700 135 L785 235"/>
+<path d="M560 36 L980 135"/>
+<path d="M980 135 L895 235"/>
+<path d="M980 135 L980 235"/>
+<path d="M980 135 L1065 235"/>
+</g><g fill="currentColor">
+<circle cx="560" cy="36" r="4.8"/>
+<circle cx="140" cy="135" r="4.8"/>
+<circle cx="420" cy="135" r="4.8"/>
+<circle cx="700" cy="135" r="4.8"/>
+<circle cx="980" cy="135" r="4.8"/>
+<circle cx="55" cy="235" r="4.8"/>
+<circle cx="140" cy="235" r="4.8"/>
+<circle cx="225" cy="235" r="4.8"/>
+<circle cx="335" cy="235" r="4.8"/>
+<circle cx="420" cy="235" r="4.8"/>
+<circle cx="505" cy="235" r="4.8"/>
+<circle cx="615" cy="235" r="4.8"/>
+<circle cx="700" cy="235" r="4.8"/>
+<circle cx="785" cy="235" r="4.8"/>
+<circle cx="895" cy="235" r="4.8"/>
+<circle cx="980" cy="235" r="4.8"/>
+<circle cx="1065" cy="235" r="4.8"/>
+</g><g fill="currentColor" font-family="Georgia, Times New Roman, serif" font-size="23" font-style="italic">
+<text x="154" y="123" text-anchor="start">a</text>
+<text x="55" y="268" text-anchor="middle">ab</text>
+<text x="140" y="268" text-anchor="middle">ac</text>
+<text x="225" y="268" text-anchor="middle">ad</text>
+<text x="434" y="123" text-anchor="start">b</text>
+<text x="335" y="268" text-anchor="middle">ba</text>
+<text x="420" y="268" text-anchor="middle">bc</text>
+<text x="505" y="268" text-anchor="middle">bd</text>
+<text x="714" y="123" text-anchor="start">c</text>
+<text x="615" y="268" text-anchor="middle">ca</text>
+<text x="700" y="268" text-anchor="middle">cb</text>
+<text x="785" y="268" text-anchor="middle">cd</text>
+<text x="994" y="123" text-anchor="start">d</text>
+<text x="895" y="268" text-anchor="middle">da</text>
+<text x="980" y="268" text-anchor="middle">db</text>
+<text x="1065" y="268" text-anchor="middle">dc</text>
+</g><text x="578" y="26" fill="currentColor" font-family="Georgia, Times New Roman, serif" font-size="23">Początek</text></svg>
+<figcaption class="figure-caption">Rysunek 5.1.1. Drzewo słów dwuliterowych bez powtórzeń.</figcaption>
+</figure>
+```
+:::
+
+::: {#def-perm}
+  Permutacją zbioru $A$ nazywamy dowolną bijekcję $\sigma \colon A \to A$. 
+  Zbiór wszystkich permutacji oznaczamy przez 
+  \begin{equation*}
+    A! = \{ \sigma \colon A \to A \: | \: \sigma \mbox{ jest 1-1 i na} \}
+  \end{equation*}
+:::
+
+Zauważmy, że permutacja zbioru o $|A|=n$ elementach to $n$ elementów wariacja zbioru $A$. 
+Wobec czego
+\begin{equation*}
+  |A!| = n^{\underline{n}} = n(n-1) \cdots 2\cdot 1 = n!
+\end{equation*}
+
+::: {#exm-5-1-7}
+
+(a) Liczba uporządkowań talii $52$ kart to $52!\approx8{,}07\cdot10^{67}$. 
+
+(b) Policzmy sposoby wybrania pięciu kart **ze zwracaniem**. Zliczamy uporządkowane piątki kart. Ze zwracaniem oznacza, 
+że przed następnym losowaniem karta wraca do talii. Wyniki odpowiadają wzajemnie jednoznacznie elementom $D^5$, 
+gdzie $D$ jest zbiorem $52$ kart. Reguła mnożenia daje $|D|^5=52^5$ możliwości.
+
+(c) Przy wyborze **bez zwracania** wylosowana karta nie wraca do talii. 
+Nie wszystkie piątki z $D^5$ są dopuszczalne: wykluczamy powtórzenia kart. 
+Nadal stosujemy regułę mnożenia, otrzymując $52\cdot51\cdot50\cdot49\cdot48=52^{\underline{5}}$ możliwości.
+
+:::
+
+## Kombinacje
+
+Gdy kolejność jest istotna używamy wariacji. 
+Często jednak kolejność nie ma znaczenia, a wtedy zamiast ciągów trzeba 
+liczyć nieuporządkowane zbiory. 
+
+:::{#def-komn}
+  $k$-wyrazową kombinacją bez powtórzeń zbioru $A$ nazywamy dowolny $k$-elementowy 
+  zbiór $B \subseteq A$. 
+  Zbiór wszystkich kombinacji bez powtórzeń oznaczamy przez
+  \begin{equation*}
+    {A \choose k} = \{ B \subseteq A \: | \: |B| = k \}.
+  \end{equation*} 
+:::
+
+Wiemy już, że zbiór $n$ elementów ma $2^n$ podzbiorów. 
+Dla $0\le r\le n$ niech $\binom nr$ oznacza liczbę jego podzbiorów $r$-elementowych. 
+Jest to **współczynnik dwumianowy**, czytany „$n$ po $r$”, 
+zwany także liczbą kombinacji $r$ elementów spośród $n$. 
+Oczywiście
+\begin{equation*}
+   \left|{A \choose k}\right| = {|A| \choose k}.
+\end{equation*}
+
+::: {#exm-5-1-8}
+
+Policzmy ciągi zer i jedynek długości $72$ zawierające dokładnie $17$ jedynek. 
+Każdy taki ciąg wyznaczamy, wybierając $17$ pozycji dla jedynek spośród $72$ możliwych. 
+Liczba ciągów wynosi więc $\binom{72}{17}$. Ogólnie, liczba ciągów długości $n$ 
+zawierających $r$ jedynek to $\binom nr$. Aby zakończyć przykład, 
+potrzebujemy wartości $\binom{72}{17}$.
+
+:::
+
+
+::: {#thm-komb}
+  Dla $0\le r\le n$ zachodzi
+  $$
+  \binom nr
+  = \frac{n^{\underline{r}}}{r!}
+  = \frac{n!}{(n-r)!r!}.
+  $$
+:::
+
+::: {#proof}
+  Wybór $r$-elementowej wariacji zbioru $n$-elementowego można przeprowadzić w dwóch krokach: 
+  wybieramy podzbiór $r$-elementowy na $\binom nr$ sposobów, następnie porządkujemy go na $r!$ 
+  sposobów. 
+  Formalnie oznacza to, że istnieje bijekcja 
+  \begin{equation*}
+    A^{\underline{r}} \to {A \choose r} \times [r]!
+  \end{equation*}
+  Reguła mnożenia daje 
+  $$ 
+    n^{\underline{r}}=\binom nr r!
+  $$
+:::
+
+
+::: {#exm-5-1-9}
+
+  Rozważmy graf bez pętli, kompletny w tym sensie, że każdą parę różnych 
+  wierzchołków łączy dokładnie jedna krawędź. 
+  Ile ma krawędzi, jeśli ma $n\ge2$ wierzchołków? 
+  Każda krawędź wyznacza dwuelementowy podzbiór zbioru wierzchołków $V$ i odwrotnie. 
+  Zbiory te są w bijekcji, zatem liczba krawędzi wynosi
+  $$
+    \binom n2=\frac{n!}{(n-2)!2!}=\frac{n(n-1)}2.
+  $$
+
+:::
+
+::: {#thm-binom}
+
+  Dla dowolnych rzeczywistych $x_0$ i $x_1$ oraz naturalnego $n$,
+  \begin{equation*}
+    (x_1+x_0)^n = \sum_{k=0}^n {n \choose k} x_1^k x_0^{n-k}.
+  \end{equation*}
+
+:::
+
+::: {#proof}
+  Poprzez wymnożenie wszystkich nawiasów
+  \begin{equation*}
+    (x_0+x_1)^n = \sum_{\epsilon \in \{ 0,1\}^n} x_{\epsilon(1)} \cdots x_{\epsilon(n)}
+  \end{equation*}
+  tutaj $\epsilon = (\epsilon(1), \epsilon(2), \ldots , \epsilon(n))$
+  koduje który z $x_0$ i $x_1$ został wybrany do produktu. Dokładniej $\epsilon(j)=1$ oznacza, że
+  z $j$-tego nawiasu zostało wybrane $x_1$ i $\epsilon(j)=0$ oznacza, że zostało wybrane $x_0$.
+  Mamy
+  \begin{equation*}
+   \sum_{\epsilon \in \{ 0,1\}^n} x_{\epsilon(1)} \cdots x_{\epsilon(n)}
+    = \sum_{k=0}^{n} |E_k| x_1^k x_0^{n-k},
+  \end{equation*}
+  gdzie, $E_k$ to zbiór tych $\epsilon$, które wybierają dokładnie $k$ razy $x_1$ w 
+  trakcie wymnażania. Dokładniej
+  \begin{equation*}
+    E_k = \{ \epsilon \: : \: \epsilon(1)+\ldots +\epsilon(n) =k\}.
+  \end{equation*}
+  Pozostaje zauważyć, że
+  \begin{equation*}
+    |E_k| = {n \choose k}.
+  \end{equation*}
+:::
+
+## Partia pokera
+
+  Dobrym sposobem ilustrowania tych technik jest zliczanie układów pokerowych. 
+  Talia składa się z czterech kolorów: trefli, kar, kierów i pików. 
+  Każdy kolor obejmuje $13$ wartości: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K. 
+  A oznacza asa, J waleta, Q damę, a K króla. 
+  Każda wartość występuje cztery razy, po jednej karcie każdego koloru.
+
+  Ręka pokerowa jest zbiorem pięciu kart z talii 52 kart. 
+  Kolejność wyboru nie ma znaczenia. Strit składa się z pięciu kolejnych wartości, 
+  na przykład 8, 9, 10, J, Q. As może być na początku A, 2, 3, 4, 5 albo na 
+  końcu 10, J, Q, K, A. Klasyfikujemy ręce w następujące parami 
+  rozłączne grupy, wymienione od najmniej do najbardziej prawdopodobnych:
+
+| Układ | Opis |
+|---|---|
+| Poker królewski | 10, J, Q, K, A w jednym kolorze. |
+| Poker | Strit w jednym kolorze, który nie jest pokerem królewskim. |
+| Kareta | Cztery karty tej samej wartości, na przykład cztery trójki i dziewiątka. |
+| Ful | Trzy karty jednej wartości i dwie innej, na przykład trzy walety i dwie ósemki. |
+| Kolor | Pięć kart jednego koloru, bez pokera i pokera królewskiego. |
+| Strit | Strit, który nie jest pokerem ani pokerem królewskim. |
+| Trójka | Trzy karty jednej wartości oraz dwie karty dwóch innych wartości. |
+| Dwie pary | Dwie karty jednej wartości, dwie drugiej i piąta karta trzeciej wartości. |
+| Jedna para | Dwie karty jednej wartości, jeśli ręka nie należy do żadnej wcześniejszej grupy; na przykład dwa króle, walet, dziewiątka i szóstka. |
+| Brak układu | Żaden z powyższych układów. |
+
+
+::: {#exm-5-1-10}
+
+(a) Wszystkich rąk pokerowych jest
+
+\begin{align*}
+\binom{52}{5} & =\frac{52\cdot51\cdot50\cdot49\cdot48}{5\cdot4\cdot3\cdot2\cdot1} \\
+& =52\cdot17\cdot10\cdot49\cdot6=2\,598\,960.
+\end{align*}
+
+(b) Ile jest fulów? Nazwijmy rękę z trzema waletami i dwiema ósemkami fulem typu $(J,8)$. Kolejność ma znaczenie: typ $(8,J)$ oznacza trzy ósemki i dwa walety. Typy $(J,J)$ i $(8,8)$ są niemożliwe. Typy fulów odpowiadają więc 2-permutacjom 13 wartości kart: jest ich $13\cdot12$.
+Dla typu $(J,8)$ trzy walety wybieramy na $\binom43=4$ sposoby, a dwie ósemki na $\binom42=6$ sposobów. Mamy $4\cdot6=24$ ręce tego typu. Rozumowanie działa dla każdego typu, więc wszystkich fulów jest $13\cdot12\cdot24=3744$.
+
+(c) Ile rąk zawiera dwie pary? Typ $\{Q,4\}$ oznacza dwie damy, dwie czwórki i kartę trzeciej wartości. Zapis zbiorowy podkreśla, że $\{Q,4\}=\{4,Q\}$ i nie chcemy liczyć ręki dwukrotnie. Istnieje $\binom{13}{2}$ typów. Dla każdego z nich obie pary wybieramy na $\binom42$ sposobów każdą, a piątą kartę na $52-8=44$ sposoby. Otrzymujemy
 
 $$
-\Omega=\{1,\ldots,10\}^7,
-\qquad |\Omega|=10^7.
+\binom{13}{2}\binom42\binom42\cdot44=123\,552.
 $$
 
-Wszystkie osoby wysiądą na różnych piętrach dokładnie wtedy, gdy wyrazy ciągu będą różne. Takich ciągów jest $(10)_7$, więc
+(d) Ile rąk jest stritami? Najpierw liczymy także pokery i pokery królewskie. Typ strita określa jego najwyższa wartość. Może nią być 5, 6, 7, 8, 9, 10, J, Q, K lub A, więc typów jest 10. Dla każdego typu mamy cztery możliwości dla każdej z pięciu kart: razem $4^5$. Otrzymujemy $10\cdot4^5=10\,240$ stritów. Odejmując 4 pokery królewskie i 36 pozostałych pokerów, dostajemy 10 200 zwykłych stritów.
 
-$$
-\mathbb P(\text{różne piętra})
-=\frac{(10)_7}{10^7}
-=\frac{10\cdot9\cdot8\cdot7\cdot6\cdot5\cdot4}{10^7}
-=0{,}06048.
-$$
+:::
 
-Zatem w tym modelu prawdopodobieństwo wynosi około $6\%$. Model nie opisuje wszystkich cech prawdziwego ruchu w windzie: piętra mogą mieć różną popularność, a osoby mogą podróżować razem. Wynik dotyczy dokładnie przyjętych założeń.
+## Problem urodzin {#sec-klasyczne-urodziny}
 
-### Czy w próbce znajdzie się rzadka klasa?
+Ile osób powinno znaleźć się w grupie, aby prawdopodobieństwo wspólnych 
+urodzin przynajmniej dwóch z nich przekroczyło $1/2$?
 
-Zbiór danych zawiera $N$ rekordów, w tym $M$ rekordów należących do wyróżnionej klasy. Wybieramy $k$ różnych rekordów, przy czym każdy podzbiór $k$-elementowy jest jednakowo prawdopodobny.
-
-Wszystkich możliwych próbek jest $\binom Nk$. Aby w próbce znalazło się dokładnie $r$ rekordów wyróżnionej klasy, trzeba wybrać:
-
-- $r$ rekordów spośród $M$ rekordów tej klasy;
-- $k-r$ rekordów spośród pozostałych $N-M$.
-
-Na mocy reguły mnożenia
-
-$$
-\mathbb P(\text{dokładnie }r\text{ rekordów wyróżnionej klasy})
-=\frac{\binom Mr\binom{N-M}{k-r}}{\binom Nk},
-$$ {#eq-klasyczne-hipergeometryczne}
-
-o ile $\max(0,k-(N-M))\leq r\leq\min(k,M)$. Poza tym zakresem prawdopodobieństwo wynosi zero. Do tej formuły wrócimy przy omawianiu rozkładu hipergeometrycznego.
-
-Szczególnie łatwo policzyć prawdopodobieństwo, że nie wybierzemy ani jednego rekordu wyróżnionej klasy. Jeżeli $k\leq N-M$, wynosi ono
-
-$$
-\frac{\binom{N-M}{k}}{\binom Nk}.
-$$
-
-Wobec tego
-
-$$
-\mathbb P(\text{co najmniej jeden rekord wyróżnionej klasy})
-=1-\frac{\binom{N-M}{k}}{\binom Nk}.
-$$ {#eq-klasyczne-rzadka-klasa}
-
-Gdy $k>N-M$, to prawdopodobieństwo jest równe $1$.
-
-Na przykład w zbiorze $1000$ rekordów jest $20$ anomalii. W równomiernie wybranej próbce $32$ różnych rekordów co najmniej jedna anomalia pojawi się z prawdopodobieństwem
-
-$$
-1-\frac{\binom{980}{32}}{\binom{1000}{32}}
-\approx0{,}4815.
-$$
-
-Mimo że w całym zbiorze występuje dwadzieścia anomalii, pojedyncza taka próbka częściej nie zawiera żadnej z nich, niż zawiera choć jedną.
-
-### Dokładnie dwie pary
-
-Z talii $24$ kart, zawierającej sześć wartości po cztery kolory, wybieramy równomiernie pięć kart. Szukamy prawdopodobieństwa otrzymania **dokładnie dwóch par**: dwóch kart jednej wartości, dwóch innej oraz piątej karty o jeszcze innej wartości.
-
-Wszystkich układów jest $\binom{24}{5}$. Układy sprzyjające konstruujemy tak:
-
-1. Wybieramy dwie wartości tworzące pary: $\binom62$ sposobów.
-2. Dla każdej z tych wartości wybieramy dwie spośród czterech kart: $\binom42^2$ sposobów.
-3. Wybieramy piątą kartę spośród $16$ kart o pozostałych wartościach.
-
-Otrzymujemy
-
-$$
-\mathbb P(\text{dokładnie dwie pary})
-=\frac{\binom62\binom42^2\cdot16}{\binom{24}{5}}
-=\frac{8640}{42504}
-\approx0{,}2033.
-$$
-
-Dlaczego w pierwszym kroku nie użyliśmy $6\cdot5$? Pary nie mają przypisanych ról „pierwsza” i „druga”. Zamiana kolejności wyboru ich wartości prowadziłaby do tej samej ręki.
-
-## Problem urodzin i kolizje {#sec-klasyczne-urodziny}
-
-Ile osób powinno znaleźć się w grupie, aby prawdopodobieństwo wspólnych urodzin przynajmniej dwóch z nich przekroczyło $1/2$?
-
-Przyjmijmy uproszczony model: rok ma $365$ dni, każdy dzień urodzin jest jednakowo prawdopodobny, a daty urodzin różnych osób są niezależne. Pomijamy więc lata przestępne i sezonowe różnice w częstości urodzeń.
+Przyjmijmy uproszczony model: rok ma $365$ dni, każda konfiguracja urodzin jest jednakowo 
+prawdopodobna. Pomijamy więc lata przestępne i sezonowe różnice w częstości urodzeń.
 
 Dla grupy $k$ osób przestrzenią wyników jest
 
 $$
-\Omega=\{1,\ldots,365\}^k.
+\Omega=[365]^k.
 $$
 
-Niech $C_k$ oznacza zdarzenie, że co najmniej dwie osoby mają urodziny tego samego dnia. Bezpośrednie zliczanie wyników sprzyjających $C_k$ jest niewygodne: wspólną datę może mieć jedna para, kilka par, trzy osoby, a nawet cała grupa.
+Niech $C_k$ oznacza zdarzenie, że co najmniej dwie osoby mają urodziny tego samego dnia. 
+Bezpośrednie zliczanie wyników sprzyjających $C_k$ jest niewygodne: 
+wspólną datę może mieć jedna para, kilka par, trzy osoby, a nawet cała grupa.
 
-Znacznie łatwiej policzyć zdarzenie przeciwne. Dla $1\leq k\leq365$ wszystkie daty są różne z prawdopodobieństwem
+Znacznie łatwiej policzyć zdarzenie przeciwne. Dla $1\leq k\leq365$ wszystkie 
+daty są różne z prawdopodobieństwem
 
 $$
 \mathbb P(C_k^c)
-=\frac{(365)_k}{365^k}
+=\frac{365^{\underline{k}}}{365^k}
 =\prod_{j=0}^{k-1}\left(1-\frac{j}{365}\right).
 $$
-
-Stąd
-
-$$
-\mathbb P(C_k)
-=1-\prod_{j=0}^{k-1}\left(1-\frac{j}{365}\right).
-$$ {#eq-problem-urodzin}
+Korzystając z nierówności $1+x\leq e^x$ mamy
+\begin{equation*}
+  \mathbb{P}[C_k^c] \leq e^{- \frac{1}{365}} e^{- \frac{2}{365}} \cdots e^{- \frac{k-1}{365}}
+  = e^{- \frac{k(k-1)}{730}}
+\end{equation*}
+Na to aby $\mathbb{P}[C_k^c]\leq 1/2$ wystarcza by
+$k(k-1) \geq 730 \log(2) \approx 505,997$, czyli $k \leq 23$.
 
 Dla $k\geq366$ mamy $\mathbb P(C_k)=1$, ponieważ różne daty dla wszystkich osób są wtedy niemożliwe.
 
@@ -436,464 +796,203 @@ Dla $k\geq366$ mamy $\mathbb P(C_k)=1$, ponieważ różne daty dla wszystkich os
 | $40$ | $0{,}8912$ |
 | $50$ | $0{,}9704$ |
 
-Prawdopodobieństwo rośnie wraz z liczbą osób. Porównanie wyników dla $22$ i $23$ osób pokazuje więc, że **najmniejsza szukana liczba to $23$**.
+Prawdopodobieństwo rośnie wraz z liczbą osób. 
+Porównanie wyników dla $22$ i $23$ osób pokazuje więc, że **najmniejsza szukana liczba to $23$**.
 
-Skąd tak niewielka liczba? Nie pytamy, czy ktoś ma urodziny w jednym z góry ustalonym dniu. Porównujemy wszystkie pary osób. W grupie $23$ osób jest aż
-
+Skąd tak niewielka liczba? Nie pytamy, czy ktoś ma urodziny w jednym z 
+góry ustalonym dniu. Porównujemy wszystkie pary osób. W grupie $23$ osób jest aż
 $$
 \binom{23}{2}=253
 $$
+pary. Jest więc wiele możliwości pojawienia się zgodności. 
+Samej liczby par nie wolno jednak po prostu podzielić przez $365$: 
+zdarzenia zgodności poszczególnych par nie są rozłączne.
 
-pary. Jest więc wiele możliwości pojawienia się zgodności. Samej liczby par nie wolno jednak po prostu podzielić przez $365$: zdarzenia zgodności poszczególnych par nie są rozłączne.
+## Zasada właczeń i wyłączeń
 
-### Skąd bierze się skala pierwiastkowa?
+Zliczanie elementów części wspólnej zbiorów, gdzie kluczowym spójnikiem jest „i”, 
+często jest łatwe. Natomiast bezpośrednie zliczanie elementów sumy zbiorów 
+często sprawia trudność. Zasada włączeń i wyłączeń wyraża liczność sumy 
+przez liczności odpowiednich części wspólnych.
 
-Zastąpmy $365$ ogólną liczbą $m$ możliwych wartości. Gdy ilorazy $j/m$ są małe, przybliżenie $\log(1-x)\approx-x$ podpowiada
+::: {.callout-tip}
 
-$$
-\begin{aligned}
-\log\mathbb P(C_k^c)
-&=\sum_{j=0}^{k-1}\log\left(1-\frac jm\right)\\
-&\approx-\frac1m\sum_{j=0}^{k-1}j
-=-\frac{k(k-1)}{2m}.
-\end{aligned}
-$$
+# Zasada włączeń i wyłączeń
 
-W efekcie
+Aby obliczyć liczność $A_1\cup\cdots\cup A_n$, oblicz liczności wszystkich 
+możliwych części wspólnych zbiorów z $\{A_1,\ldots,A_n\}$. 
+Dodaj wyniki dla części wspólnych nieparzystej liczby zbiorów, 
+a odejmij wyniki dla części wspólnych parzystej liczby zbiorów.
 
-$$
-\mathbb P(C_k)
-\approx1-\exp\left(-\frac{k(k-1)}{2m}\right).
-$$ {#eq-urodziny-przyblizenie}
-
-Przybliżenie jest szczególnie użyteczne, gdy $m$ jest duże, a $k$ jest rzędu $\sqrt m$. Wyrażenie $k(k-1)/(2m)$ staje się wtedy wielkością stałego rzędu. Próg prawdopodobieństwa $1/2$ wypada w przybliżeniu przy
-
-$$
-k\approx\sqrt{2m\log2}.
-$$
-
-Możemy też uzyskać ścisłe oszacowanie, bez zastępowania równości przybliżeniem. Z nierówności $1-x\leq e^{-x}$ wynika, że dla $1\leq k\leq m$
-
-$$
-\mathbb P(C_k)
-\geq1-\exp\left(-\frac{k(k-1)}{2m}\right).
-$$
-
-Dla $m=365$ i $k=23$ prawa strona przekracza $1/2$. Oszacowanie potwierdza, że $23$ osoby wystarczają; aby stwierdzić, że mniej nie wystarczy, korzystamy z dokładnego wyniku dla $22$ osób.
-
-### Losowe identyfikatory
-
-Ten sam rachunek dotyczy kolizji identyfikatorów. Jeżeli każdy z $k$ rekordów otrzymuje niezależnie identyfikator wybrany równomiernie ze zbioru $m$ wartości, to
-
-$$
-\mathbb P(\text{co najmniej jedna kolizja})
-=1-\frac{(m)_k}{m^k},
-\qquad k\leq m.
-$$
-
-Znaczne ryzyko kolizji pojawia się już przy liczbie rekordów rzędu $\sqrt m$. Jeżeli identyfikator ma $b$ bitów, to $m=2^b$, a odpowiadająca temu skala wynosi $2^{b/2}$.
-
-Nie każda funkcja skrótu automatycznie spełnia te założenia. Powyższy wynik dotyczy modelu, w którym wartości są niezależne i równomierne.
-
-## Rozmieszczenia i podziały {#sec-klasyczne-rozmieszczenia}
-
-### Nierozróżnialne obiekty w oznaczonych pudełkach
-
-Na ile sposobów można rozdzielić $n$ identycznych obiektów między $m$ oznaczonych pudełek? Pudełka mogą pozostać puste. Przykładowo możemy rozdzielać identyczne jednostki zasobu między różne zadania.
-
-Niech $r_i$ oznacza liczbę obiektów w pudełku $i$. Pytamy o liczbę rozwiązań równania
-
-$$
-r_1+\cdots+r_m=n,
-\qquad r_i\in\{0,1,2,\ldots\}.
-$$ {#eq-gwiazdki-rownanie}
-
-Obiekty przedstawimy jako gwiazdki, a granice między pudełkami jako kreski. Na przykład rozmieszczeniu $(2,0,3,1)$ odpowiada zapis
-
-$$
-\star\,\star\;\mid\;\mid\;\star\,\star\,\star\;\mid\;\star.
-$$
-
-Dwie sąsiadujące kreski oznaczają puste pudełko. Kreska na początku lub końcu oznaczałaby odpowiednio puste pierwsze lub ostatnie pudełko.
-
-Potrzebujemy $n$ gwiazdek i $m-1$ kresek. Cały zapis ma $n+m-1$ pozycji, a wystarczy wybrać pozycje kresek. Otrzymujemy więc
-
-$$
-\binom{n+m-1}{m-1}
-=\binom{n+m-1}{n}.
-$$ {#eq-gwiazdki-kreski}
-
-Ten argument nazywa się **metodą gwiazdek i kresek**.
-
-Jeżeli każde pudełko ma zawierać co najmniej jeden obiekt, najpierw umieszczamy po jednym obiekcie w każdym pudełku. Pozostaje rozdzielić $n-m$ obiektów bez dodatkowych ograniczeń. Dla $n\geq m$ liczba rozmieszczeń wynosi
-
-$$
-\binom{n-1}{m-1}.
-$$
-
-### Kombinacje z powtórzeniami
-
-Wyobraźmy sobie wybór $k$ elementów spośród $n$ typów, przy czym powtórzenia są dozwolone, a kolejność jest nieistotna. Wynik określa, ile razy wybraliśmy każdy typ. Jest to rozwiązanie równania
-
-$$
-r_1+\cdots+r_n=k,
-\qquad r_i\geq0.
-$$
-
-Takie wybory nazywamy **kombinacjami z powtórzeniami**. Dla $n\geq1$ ich liczba wynosi
-
-$$
-\binom{n+k-1}{k}.
-$$
-
-Mamy zatem pełną tabelę podstawowych schematów:
-
-| Co wybieramy? | Kolejność istotna? | Powtórzenia? | Liczba wyników |
-|:---|:---:|:---:|:---:|
-| Wariacja z powtórzeniami | tak | tak | $n^k$ |
-| Wariacja bez powtórzeń | tak | nie | $(n)_k=n!/(n-k)!$ |
-| Kombinacja bez powtórzeń | nie | nie | $\binom nk$ |
-| Kombinacja z powtórzeniami | nie | tak | $\binom{n+k-1}{k}$ |
-
-W wierszach bez powtórzeń zakładamy $0\leq k\leq n$. Permutacje są szczególnym przypadkiem drugiego wiersza: wybieramy wszystkie $n$ elementów.
-
-### Podział różnych obiektów na grupy
-
-Mamy $n$ **rozróżnialnych** obiektów. Dzielimy je na $m$ **oznaczonych** grup o ustalonych liczebnościach $r_1,\ldots,r_m$, gdzie
-
-$$
-r_1+\cdots+r_m=n.
-$$
-
-Pierwszą grupę wybieramy na $\binom n{r_1}$ sposobów, drugą na $\binom{n-r_1}{r_2}$ sposobów, i tak dalej. Po wymnożeniu i skróceniu silni otrzymujemy
-
-$$
-\binom{n}{r_1,\ldots,r_m}
-:=\frac{n!}{r_1!\cdots r_m!}.
-$$ {#eq-wspolczynnik-wielomianowy}
-
-Jest to **współczynnik wielomianowy**.
-
-Inne uzasadnienie: ustawiamy wszystkie obiekty w ciąg i dzielimy ciąg na kolejne fragmenty o długościach $r_1,\ldots,r_m$. Jest $n!$ ciągów, ale każdy podział otrzymujemy $r_1!\cdots r_m!$ razy, przestawiając obiekty wewnątrz grup.
-
-Taki sam wzór opisuje liczbę ciągów z $r_1$ symbolami pierwszego typu, $r_2$ symbolami drugiego typu i tak dalej. Są to **permutacje z powtórzeniami**. Na przykład ciągów binarnych długości $10$ zawierających dokładnie cztery jedynki jest
-
-$$
-\frac{10!}{4!6!}=\binom{10}{4}.
-$$
-
-### Podział danych na część uczącą, walidacyjną i testową
-
-Zbiór $100$ różnych rekordów chcemy podzielić na trzy części: $70$ rekordów uczących, $15$ walidacyjnych i $15$ testowych. Liczba takich podziałów wynosi
-
-$$
-\frac{100!}{70!15!15!}.
-$$
-
-Część walidacyjna i testowa mają tę samą liczebność, ale pełnią różne role. Ich zamiana daje inny podział, więc nie dzielimy wyniku przez $2!$.
-
-Możemy losować taki podział, wybierając równomierną permutację rekordów i przydzielając kolejne fragmenty do trzech części. Każdy podział powstaje z dokładnie $70!15!15!$ permutacji. Dlatego wszystkie podziały o tych liczebnościach są w tym modelu jednakowo prawdopodobne.
-
-### Rozróżnialne obiekty losowane do pudełek
-
-Teraz każdy z $n$ różnych obiektów niezależnie trafia do jednego z $m$ oznaczonych pudełek, z prawdopodobieństwem $1/m$ dla każdego pudełka. Wynikiem elementarnym jest ciąg numerów pudełek przypisanych kolejnym obiektom. Wszystkich wyników jest $m^n$.
-
-Wektor $(r_1,\ldots,r_m)$ mówi jedynie, ile obiektów trafiło do poszczególnych pudełek. Liczba wyników elementarnych odpowiadających ustalonemu wektorowi wynosi
-
-$$
-\frac{n!}{r_1!\cdots r_m!}.
-$$
-
-Wobec tego
-
-$$
-\mathbb P(\text{liczebności }r_1,\ldots,r_m)
-=\frac{n!}{r_1!\cdots r_m!}\frac1{m^n}.
-$$ {#eq-klasyczne-liczebnosci}
-
-Na przykład dla trzech różnych obiektów i dwóch pudełek mamy:
-
-| Liczebności pudełek | Liczba przypisań obiektów | Prawdopodobieństwo |
-|:---:|---:|:---:|
-| $(3,0)$ | $1$ | $1/8$ |
-| $(2,1)$ | $3$ | $3/8$ |
-| $(1,2)$ | $3$ | $3/8$ |
-| $(0,3)$ | $1$ | $1/8$ |
-
-::: {.callout-warning title="Liczba możliwych wektorów to jeszcze nie prawdopodobieństwo"}
-Metoda gwiazdek i kresek daje liczbę możliwych wektorów liczebności. Nie mówi, że te wektory są jednakowo prawdopodobne.
-
-Losowanie niezależnego pudełka dla każdego obiektu i równomierne losowanie całego wektora liczebności to dwa różne doświadczenia. W powyższym przykładzie drugie doświadczenie przypisywałoby każdemu z czterech wektorów prawdopodobieństwo $1/4$.
 :::
 
-Ten sam problem pojawia się przy próbkowaniu ze zwracaniem. Wszystkie uporządkowane próbki są jednakowo prawdopodobne, ale po zapomnieniu kolejności nie wszystkie wyniki mają tę samą wagę. Na przykład multizbiór $\{a,a,b\}$ powstaje z trzech ciągów, a $\{a,a,a\}$ tylko z jednego.
+Dla przykładu, dla dwóch zdarzeń $A$, $B$ mamy znany nam już wzór
+\begin{equation*}
+   |A \cup B| = |A| + |B| - |A\cap B|.
+\end{equation*}
+Dla trzech zdarzeń $A$, $B$, $C$,
+\begin{align*}
+  & |A\cup B \cup C| = |A|+|B|+|C| \\ & -|A\cap B| - |A\cap C| - |B\cap C| \\ &+ |A\cap B \cap C|.
+\end{align*}
 
-## Symetria zamiast obliczeń {#sec-klasyczne-symetria}
+„Włączamy”, czyli dodajemy, liczności poszczególnych zbiorów; 
+„wyłączamy”, czyli odejmujemy, części wspólne każdej pary; 
+następnie dodajemy części wspólne każdej trójki itd.
 
-Symetria pozwala czasem uniknąć zliczania. Trzeba jednak wskazać, co dokładnie zamieniamy i dlaczego taka zamiana zachowuje prawdopodobieństwo.
+::: {#exm-5-3-1}
 
-### Parzysta liczba orłów
+(a) Policzmy liczby w $S=\{1,2,\ldots,2000\}$ podzielne przez $9$ lub $11$. 
+Dla dodatniego $k$ niech $D_k=\{n\in S:k\mid n\}$. Szukamy $|D_9\cup D_{11}|$. 
+Ponieważ $|D_k|=\lfloor2000/k\rfloor$, mamy $|D_9|=222$, $|D_{11}|=181$ i 
+$|D_9\cap D_{11}|=|D_{99}|=20$. Zatem $|D_9\cup D_{11}|=222+181-20=383$.
 
-Rzucamy symetryczną monetą $n\geq1$ razy, niezależnie. Jakie jest prawdopodobieństwo otrzymania parzystej liczby orłów?
+(b) Przy podzielności przez $9$, $11$ lub $13$ trudniejsze są tylko rachunki. 
+Ponadto $|D_{13}|=153$, $|D_9\cap D_{13}|=|D_{117}|=17$, 
+$|D_{11}\cap D_{13}|=|D_{143}|=13$, $|D_9\cap D_{11}\cap D_{13}|=|D_{1287}|=1$. Stąd
+\begin{align*}
+   &|D_9\cup D_{11}\cup D_{13}|\\& 
+   =222+181+153-20-17-13+1\\ 
+   &=507.
+\end{align*}
 
-Każdemu ciągowi wyników przyporządkujmy ciąg otrzymany przez zmianę **pierwszego** wyniku: orła na reszkę albo reszki na orła. Ta operacja:
-
-- zmienia parzystość liczby orłów;
-- po powtórzeniu przywraca wyjściowy ciąg;
-- łączy wyniki o tym samym prawdopodobieństwie $2^{-n}$.
-
-Jest więc wzajemnie jednoznacznym przyporządkowaniem między ciągami z parzystą i nieparzystą liczbą orłów. Obie grupy mają taką samą liczebność i łącznie wyczerpują $\Omega$. Stąd
-
+(c) Policzmy jeszcze liczby podzielne przez $9$, $11$, $13$ lub $15$. 
+Trzeba uważać: na przykład $D_9\cap D_{15}=D_{45}$, a nie $D_{135}$, 
+ponieważ podzielność przez $9$ i $15$ jest równoważna podzielności przez 
+$\operatorname{lcm}(9,15)=45$. Otrzymujemy
+\begin{align*}
+  & |D_{15}|=133, \\
+  & |D_9\cap D_{15}|=|D_{45}|=44,\\
+  & |D_{11}\cap D_{15}|=|D_{165}|=12,\\
+  &|D_{13}\cap D_{15}|=|D_{195}|=10,\\
+  & |D_9\cap D_{11}\cap D_{15}|=|D_{495}|=4,\\
+  &|D_9\cap D_{13}\cap D_{15}|=|D_{585}|=3,\\
+  & |D_{11}\cap D_{13}\cap D_{15}|=|D_{2145}|=0,\\
+  &|D_9\cap D_{11}\cap D_{13}\cap D_{15}|=|D_{6435}|=0.
+\end{align*}
+Zasada włączeń i wyłączeń daje
 $$
-\mathbb P(\text{parzysta liczba orłów})=\frac12.
-$$
-
-Argument działa zarówno dla parzystego, jak i nieparzystego $n$. Natomiast zamiana wszystkich orłów na reszki zmienia parzystość liczby orłów tylko wtedy, gdy $n$ jest nieparzyste.
-
-### Losy pozwalające losować ponownie
-
-W pudełku jest $10$ losów wygrywających, $100$ przegrywających i $1000$ losów z napisem „losuj ponownie”. Tasujemy równomiernie wszystkie losy i odsłaniamy je kolejno, aż pojawi się los wygrywający albo przegrywający.
-
-Liczy się pierwszy spośród $110$ losów rozstrzygających. Każdy z nich ma taką samą szansę pojawić się przed pozostałymi: zamiana etykiet dwóch losów daje bijekcję między odpowiednimi permutacjami.
-
-Zatem
-
-$$
-\mathbb P(\text{wygrana})=\frac{10}{110}=\frac1{11}.
-$$
-
-Liczba losów „losuj ponownie” wpływa na to, jak długo czekamy na rozstrzygnięcie, ale nie na prawdopodobieństwo wygranej w tym modelu.
-
-## Typowe błędy {#sec-klasyczne-bledy}
-
-### Jednemu obiektowi odpowiada kilka dróg konstrukcji
-
-Procedura zliczająca musi spełniać dwa warunki: każdy obiekt, który chcemy policzyć, musi zostać otrzymany, a jego liczba wystąpień musi być znana. Najwygodniej, gdy każdy obiekt powstaje dokładnie raz. Jeżeli powstaje zawsze dokładnie $d$ razy, wynik można podzielić przez $d$.
-
-Rozważmy przykład. Każda z $n\geq2$ rozróżnialnych kul trafia niezależnie i równomiernie do jednej z $n$ oznaczonych komórek. Jakie jest prawdopodobieństwo, że **dokładnie jedna komórka pozostanie pusta**?
-
-Wszystkich wyników elementarnych jest $n^n$. Jeżeli dokładnie jedna komórka jest pusta, pozostałe $n-1$ są zajęte. Ponieważ kul jest $n$, jedna z zajętych komórek zawiera dwie kule, a pozostałe po jednej.
-
-Kuszące, ale błędne zliczanie wygląda tak:
-
-1. Wybierz pustą komórkę: $n$ sposobów.
-2. Odłóż jedną kulę: $n$ sposobów.
-3. Pozostałe kule rozmieść po jednej w niepustych komórkach: $(n-1)!$ sposobów.
-4. Odłożoną kulę dołóż do jednej z zajętych komórek: $n-1$ sposobów.
-
-Otrzymujemy $n^2(n-1)(n-1)!$ ciągów decyzji. Każde końcowe rozmieszczenie zostało jednak policzone **dwukrotnie**: odłożoną kulą mogła być dowolna z dwóch kul w podwójnie zajętej komórce.
-
-Poprawna procedura wybiera od razu obiekty widoczne w gotowym rozmieszczeniu:
-
-1. Wybierz parę kul, które znajdą się razem: $\binom n2$ sposobów.
-2. Wybierz ich komórkę: $n$ sposobów.
-3. Wybierz pustą komórkę: $n-1$ sposobów.
-4. Rozmieść pozostałe $n-2$ kule bijektywnie w pozostałych komórkach: $(n-2)!$ sposobów.
-
-Każde sprzyjające rozmieszczenie otrzymujemy dokładnie raz. Stąd
-
-$$
-\mathbb P(\text{dokładnie jedna pusta komórka})
-=\frac{\binom n2\,n(n-1)(n-2)!}{n^n}
-=\frac{\binom n2\,n!}{n^n}.
-$$ {#eq-jedna-pusta-komorka}
-
-Dla $n=2$ otrzymujemy $1/2$. Można to sprawdzić, wypisując wszystkie cztery przypisania dwóch kul do dwóch komórek.
-
-### „Co najmniej” potraktowane jak „dokładnie”
-
-Zdarzenie „co najmniej jedna zgodna para” obejmuje również wyniki z kilkoma parami lub z trzema zgodnymi wartościami. Sumowanie po wybranej parze może wielokrotnie liczyć ten sam wynik. W problemie urodzin ominęliśmy tę trudność, licząc dopełnienie.
-
-### Zmieniony opis wyniku, niezmienione wagi
-
-Po przejściu od ciągu do liczby orłów, sumy oczek albo wektora liczebności łączymy wiele wyników elementarnych w jeden wynik uproszczony. Różne wyniki uproszczone mogą łączyć różną liczbę wyników pierwotnych. Nie wolno automatycznie nadawać im równych prawdopodobieństw.
-
-::: {.callout-tip title="Jak sprawdzić rozwiązanie?"}
-Przed zakończeniem obliczeń sprawdź:
-
-1. Czy jasno opisałeś przestrzeń $\Omega$ i uzasadniłeś równe szanse jej elementów?
-2. Czy licznik i mianownik zliczają obiekty tego samego rodzaju?
-3. Czy konstrukcja daje wszystkie wyniki sprzyjające i czy któryś wynik powstaje wielokrotnie?
-4. Czy rozróżniasz „dokładnie” i „co najmniej”?
-5. Czy wynik należy do $[0,1]$ i zgadza się z prostym przypadkiem, który można wypisać ręcznie?
-:::
-
-## Eksperyment komputerowy {#sec-klasyczne-eksperyment}
-
-Sprawdźmy wynik problemu urodzin za pomocą symulacji. W każdej próbie generujemy dni urodzin $k$ osób i sprawdzamy, czy któryś numer dnia się powtórzył.
-
-Poniższy kod korzysta wyłącznie z biblioteki standardowej Pythona. Jest pokazany jako zwykły blok kodu; można uruchomić go osobno w interpreterze lub notatniku.
-
-```python
-from math import prod
-from random import Random
-
-
-def prawdopodobienstwo_kolizji(k, m=365):
-    if m < 1 or k < 0:
-        raise ValueError("Wymagamy m >= 1 i k >= 0.")
-    if k > m:
-        return 1.0
-    return 1.0 - prod(1.0 - j / m for j in range(k))
-
-
-def symulacja_kolizji(k, m=365, liczba_prob=20_000, ziarno=2026):
-    if m < 1 or k < 0 or liczba_prob < 1:
-        raise ValueError("Niepoprawne parametry symulacji.")
-    rng = Random(ziarno)
-    trafienia = 0
-
-    for _ in range(liczba_prob):
-        wyniki = [rng.randrange(m) for _ in range(k)]
-        if len(set(wyniki)) < k:
-            trafienia += 1
-
-    return trafienia / liczba_prob
-
-
-for k in (10, 20, 22, 23, 30, 40):
-    teoria = prawdopodobienstwo_kolizji(k)
-    symulacja = symulacja_kolizji(k)
-    print(f"k={k:2d}: wzór={teoria:.4f}, symulacja={symulacja:.4f}")
-```
-
-Wartość zwrócona przez symulację jest **częstością** kolizji w wykonanych próbach. Nie musi być równa prawdopodobieństwu obliczonemu ze wzoru. Zmiana ziarna może zmienić wynik. Dlaczego przy dużej liczbie prób częstość zwykle jest bliska prawdopodobieństwu, wyjaśnimy przy prawie wielkich liczb.
-
-**Do zbadania:** zmień $m$ z $365$ na $10\,000$ i poszukaj takiej liczby losowań, przy której kolizja występuje w około połowie prób. Porównaj wynik z przybliżeniem $\sqrt{2m\log2}$.
-
-## Zadania {#sec-klasyczne-zadania}
-
-### 1. Wybór przestrzeni wyników
-
-Rzucamy dwukrotnie symetryczną monetą, niezależnie. Ktoś twierdzi: „Możliwe są dwa orły, dwie reszki albo jeden orzeł i jedna reszka. Każda z tych możliwości ma prawdopodobieństwo $1/3$”. Wyjaśnij błąd, wskazując odpowiednią przestrzeń wyników elementarnych.
-
-### 2. Identyfikatory
-
-Identyfikator składa się z sześciu cyfr; może zaczynać się od zera. Wybieramy go równomiernie spośród wszystkich takich identyfikatorów.
-
-a. Ile jest możliwych identyfikatorów?
-b. Jakie jest prawdopodobieństwo, że wszystkie cyfry są różne?
-c. Jakie jest prawdopodobieństwo, że dokładnie dwie pozycje zawierają cyfrę $0$?
-
-### 3. Próbka danych
-
-W zbiorze $200$ rekordów jest $12$ rekordów błędnie oznaczonych. Wybieramy równomiernie podzbiór $10$ rekordów. Oblicz prawdopodobieństwo, że w próbce są:
-
-a. dokładnie dwa błędnie oznaczone rekordy;
-b. co najmniej jeden błędnie oznaczony rekord.
-
-### 4. Podział zbioru danych
-
-Mamy $20$ różnych rekordów i dzielimy je na oznaczone części: $12$ rekordów uczących, $4$ walidacyjne i $4$ testowe. Każdy taki podział jest jednakowo prawdopodobny.
-
-a. Ile jest możliwych podziałów?
-b. Jakie jest prawdopodobieństwo, że jeden ustalony rekord trafi do części testowej?
-c. Jakie jest prawdopodobieństwo, że dwa ustalone różne rekordy oba trafią do części testowej?
-
-### 5. Urodziny konkretnej osoby
-
-Załóż model z $365$ jednakowo prawdopodobnymi dniami urodzin i niezależnością dat. Ty masz ustalony dzień urodzin, a na spotkaniu jest jeszcze $k$ osób.
-
-a. Jakie jest prawdopodobieństwo, że przynajmniej jedna z nich ma urodziny tego samego dnia co Ty?
-b. Znajdź najmniejsze $k$, dla którego to prawdopodobieństwo przekracza $1/2$.
-c. Dlaczego wynik tak bardzo różni się od odpowiedzi w problemie urodzin?
-
-### 6. Rozdział zasobów
-
-Na ile sposobów można rozdzielić $12$ identycznych jednostek zasobu między cztery oznaczone zadania, jeżeli:
-
-a. dopuszczamy przydział zerowy;
-b. każde zadanie otrzymuje co najmniej jedną jednostkę;
-c. każde zadanie otrzymuje co najmniej dwie jednostki?
-
-### 7. Ten sam wektor, różne prawdopodobieństwa
-
-Cztery rozróżnialne obiekty niezależnie i równomiernie przypisujemy do dwóch oznaczonych pudełek.
-
-a. Wypisz możliwe wektory liczebności i oblicz ich prawdopodobieństwa.
-b. Jakie jest prawdopodobieństwo, że oba pudełka są niepuste?
-c. Odpowiedz na pytanie z punktu b w innym doświadczeniu: wybieramy równomiernie jeden z możliwych wektorów liczebności.
-
-### 8. Jeden pusty koszyk
-
-Pięć różnych rekordów niezależnie i równomiernie przypisujemy do pięciu oznaczonych koszyków. Oblicz prawdopodobieństwo, że dokładnie jeden koszyk będzie pusty. Wyjaśnij, dlaczego w takim przypadku dokładnie jeden koszyk zawiera dwa rekordy.
-
-### 9. Parzystość
-
-Rzucamy symetryczną monetą $100$ razy, niezależnie.
-
-a. Oblicz bez sumowania współczynników dwumianowych prawdopodobieństwo parzystej liczby orłów.
-b. Czy zamiana wszystkich orłów na reszki dowodzi tutaj równości szans obu parzystości?
-c. Co zmienia się, gdy nie wykonujemy żadnego rzutu?
-
-### 10. Losowanie ze zwracaniem
-
-Ze zbioru $n\geq2$ różnych rekordów losujemy kolejno $n$ razy, za każdym razem równomiernie i ze zwracaniem. Losowania są niezależne. Taki schemat jest wykorzystywany przy tworzeniu próbek bootstrapowych.
-
-a. Jakie jest prawdopodobieństwo, że jeden ustalony rekord nie zostanie wylosowany ani razu?
-b. Jakie jest prawdopodobieństwo, że każdy rekord zostanie wylosowany dokładnie raz?
-c. Do jakiej liczby zbiega prawdopodobieństwo z punktu a, gdy $n\to\infty$?
-
-### 11. Losowanie z warunkiem
-
-Losujemy równomiernie $6$ różnych liczb ze zbioru $\{1,\ldots,49\}$. Jakie jest prawdopodobieństwo, że żadne dwie wybrane liczby nie są kolejne?
-
-*Wskazówka:* uporządkuj wybrane liczby jako $x_1<\cdots<x_6$ i rozważ $y_i=x_i-(i-1)$.
-
-### 12. Dwa doświadczenia z kostkami
-
-Porównaj prawdopodobieństwa następujących zdarzeń:
-
-a. w czterech niezależnych rzutach uczciwą kostką przynajmniej raz pojawia się szóstka;
-b. w dwudziestu czterech niezależnych rzutach parą uczciwych, niezależnych kostek przynajmniej raz pojawiają się dwie szóstki.
-
-Które prawdopodobieństwo jest większe? Które przekracza $1/2$?
-
-### 13. Dlaczego suma $11$ wypada częściej niż $12$?
-
-Rzucamy trzema uczciwymi kostkami, niezależnie. Zarówno $11$, jak i $12$ można zapisać na sześć sposobów jako sumę trzech liczb od $1$ do $6$, jeżeli nie odróżniamy kolejności składników. Mimo to prawdopodobieństwa tych sum są różne. Oblicz je i wyjaśnij, skąd bierze się różnica.
-
-### 14. Profil zajętości
-
-Siedem oznaczonych zadań niezależnie i równomiernie przypisujemy do dziesięciu oznaczonych serwerów. Jakie jest prawdopodobieństwo, że jeden serwer otrzyma trzy zadania, inny dwa zadania, dwa kolejne po jednym, a pozostałe pozostaną puste?
-
-*Wskazówka:* osobno wybierz serwery pełniące poszczególne role, a następnie przydziel do nich konkretne zadania.
-
-::: {.callout-note collapse="true" title="Odpowiedzi i wskazówki do zadań"}
-
-**1.** Cztery równoprawdopodobne ciągi to $OO,OR,RO,RR$. Trzy opisane zdarzenia mają prawdopodobieństwa odpowiednio $1/4,1/4,1/2$.
-
-**2.** a. $10^6$. b. $(10)_6/10^6=0{,}1512$. c. $\binom62 9^4/10^6=0{,}098415$. W punkcie c pozostałe cyfry mają być niezerowe, ale mogą się powtarzać.
-
-**3.** a. $\binom{12}{2}\binom{188}{8}/\binom{200}{10}$. b. $1-\binom{188}{10}/\binom{200}{10}$.
-
-**4.** a. $20!/(12!4!4!)$. b. $4/20=1/5$. c. $\binom{18}{2}/\binom{20}{4}=(4\cdot3)/(20\cdot19)=3/95$. W punktach b i c można liczyć równoprawdopodobne czteroelementowe zbiory testowe.
-
-**5.** a. $1-(364/365)^k$. b. Najmniejsza liczba całkowita większa od $\log(1/2)/\log(364/365)$, czyli $k=253$. c. Tutaj porównujemy wszystkich z jednym ustalonym dniem, a nie wszystkie pary osób.
-
-**6.** a. $\binom{15}{3}=455$. b. $\binom{11}{3}=165$. c. $\binom73=35$.
-
-**7.** a. Wektory $(j,4-j)$ dla $j=0,\ldots,4$ mają prawdopodobieństwa $\binom4j/16$, czyli $1/16,4/16,6/16,4/16,1/16$. b. $14/16=7/8$. c. $3/5$.
-
-**8.** $\binom52 5!/5^5=0{,}384$. Cztery zajęte koszyki wymagają przynajmniej czterech rekordów, więc pozostaje tylko jeden dodatkowy rekord.
-
-**9.** a. $1/2$: zmień wynik pierwszego rzutu. b. Nie, ta operacja zachowuje parzystość, ponieważ $100-h$ ma taką samą parzystość jak $h$. c. Dla zera rzutów liczba orłów wynosi zero, więc jest parzysta z prawdopodobieństwem $1$.
-
-**10.** a. $(1-1/n)^n$. b. $n!/n^n$. c. $e^{-1}\approx0{,}3679$. Punkt a dotyczy jednego ustalonego rekordu, a nie zdarzenia, że pominięto jakiś rekord.
-
-**11.** $\binom{44}{6}/\binom{49}{6}$. Warunek $x_{i+1}\geq x_i+2$ jest równoważny temu, że $1\leq y_1<\cdots<y_6\leq44$. Przekształcenie jest odwracalne.
-
-**12.** a. $1-(5/6)^4\approx0{,}5177$. b. $1-(35/36)^{24}\approx0{,}4914$. Pierwsze prawdopodobieństwo jest większe i tylko ono przekracza $1/2$.
-
-**13.** Suma $11$ odpowiada nieuporządkowanym trójkom $(1,4,6),(1,5,5),(2,3,6),(2,4,5),(3,3,5),(3,4,4)$. Mają one odpowiednio $6,3,6,6,3,3$ różnych uporządkowań, łącznie $27$. Dla sumy $12$ trójki to $(1,5,6),(2,4,6),(2,5,5),(3,3,6),(3,4,5),(4,4,4)$, z liczbami uporządkowań $6,6,3,3,6,1$, łącznie $25$. Prawdopodobieństwa wynoszą $27/216$ i $25/216$.
-
-**14.** Wybór serwera z trzema zadaniami, serwera z dwoma zadaniami i pary serwerów z jednym zadaniem daje $10\cdot9\cdot\binom82$ możliwości. Dla ustalonego wyboru liczba przydziałów zadań wynosi $7!/(3!2!1!1!)$. Szukane prawdopodobieństwo to
-
-$$
-\frac{10\cdot9\cdot\binom82}{10^7}
-\frac{7!}{3!2!1!1!}
-=0{,}10584.
+\begin{align*}
+& |D_9\cup D_{11}\cup D_{13}\cup D_{15}| \\ 
+&= 222+181+153+133\\
+&-(20+17+44+13+12+10) \\ &+(1+4+3+0)-0=581.
+\end{align*}
 $$
 
 :::
+
+Zasada przydaje się także do zliczania części wspólnej zbiorów, 
+których dopełnienia są łatwiejsze do opisania.
+
+::: {#exm-5-3-2}
+
+Losujemy liczbę z $T=\{1000,1001,\ldots,9999\}$. Szukamy prawdopodobieństwa, że jej zapis 
+zawiera co najmniej jedno $0$, co najmniej jedną $1$ i co najmniej jedną $2$. 
+Przykładami są $1072$ i $2101$. Łatwiej policzyć liczby, które nie zawierają 
+określonych cyfr. Dla $k=0,1,2$ niech
+$$
+A_k=\{n\in T:\text{ zapis }n\text{ nie zawiera cyfry }k\}.
+$$
+Wtedy poszukiwany zbiór to $A_0^c\cap A_1^c\cap A_2^c=(A_0\cup A_1\cup A_2)^c$, 
+zgodnie z prawem de Morgana. Reguła mnożenia daje $|A_1|=8\cdot9^3$: 
+pierwsza cyfra nie może być zerem ani jedynką, a pozostałe nie mogą być jedynkami. Podobnie
+\begin{align*}
+  |A_0|&=9^4=6561, \\ 
+  |A_1|&=|A_2|&=8\cdot9^3=5832,\\
+  |A_0\cap A_1|& =|A_0\cap A_2|=8^4=4096,\\
+  |A_1\cap A_2|&=7\cdot8^3=3584,\\
+  |A_0\cap A_1\cap A_2|&=7^4=2401.
+\end{align*}
+Stąd 
+\begin{align*}
+   |A_0\cup A_1\cup A_2| = & 6561+5832+5832\\ 
+   &-(4096+4096+3584)\\ & +2401=8850.
+\end{align*}
+Zdarzenie przeciwne ma $9000-8850=150$ elementów, 
+a jego prawdopodobieństwo wynosi $150/9000=1/60$.
+
+:::
+
+::: {#exm-5-3-3}
+
+Ustawiamy cyfry $1,2,\ldots,9$ w losowej kolejności. 
+Jakie jest prawdopodobieństwo, że żadna nie pozostanie na naturalnym miejscu, 
+czyli $1$ na pierwszym, $2$ na drugim itd.? 
+Łatwiej policzyć zdarzenie przeciwne. 
+Niech $A_k$ będzie zbiorem permutacji, w których na pozycji $k$ stoi cyfra $k$.
+
+Każdy $A_i$ ma $8!$ elementów: ustalamy jedną cyfrę i dowolnie porządkujemy pozostałe. 
+Każde $A_i\cap A_j$, dla $i<j$, ma $7!$ elementów; 
+każda część wspólna trzech takich zbiorów ma $6!$ itd. 
+Jest $9$ zbiorów $A_i$, $\binom92$ par, $\binom93$ trójek itd. Zatem
+\begin{align*}
+  &|A_1\cup\cdots\cup A_9|\\
+  & =9\cdot8!-\binom92 7!+\binom93 6!-\binom94 5!\\ & +\ldots+\binom99 0!
+\end{align*}
+Ostatni składnik $\binom99 0!=1$ zlicza permutację identycznościową, 
+w której żadna cyfra się nie przesunęła. 
+Ponieważ $\binom9m(9-m)!=9!/m!$, dostajemy
+\begin{align*}
+  & |A_1\cup\cdots\cup A_9|\\
+  & =9!\left(\frac1{1!}-\frac1{2!}+\frac1{3!}-\cdots-\frac1{8!}+\frac1{9!}\right).
+\end{align*}
+Wszystkich permutacji jest $9!$, więc prawdopodobieństwo co najmniej jednej 
+cyfry na swoim miejscu to 
+$$
+  1-1/2!+1/3!-\cdots-1/8!+1/9!.
+$$
+Prawdopodobieństwo, że żadna nie jest na swoim miejscu, wynosi
+\begin{align*}
+& \frac1{2!}-\frac1{3!}+\cdots+\frac1{8!}-\frac1{9!}\\
+& =1-1+\frac1{2!}-\frac1{3!}+\cdots+\frac1{8!}-\frac1{9!}.
+\end{align*}
+
+To początek szeregu dla $e^{-1}$, gdzie $e\approx2{,}71828$. Odpowiedź wynosi zatem około $1/e\approx0{,}368$.
+
+:::
+
+
+::: {#thm-incl}
+
+Dla dowolnych skończonych podzbiorów $A_1, \ldots , A_n \subseteq \Omega$,
+\begin{align*}
+   & \left| A_1 \cup A_2 \cup \ldots \cup A_n \right| = \sum_{k=1}^m |A_k| \\ 
+   &- \sum_{k,j=1, k<j}^n |A_k\cap A_j| + \ldots (-1)^{n-1}|A_1\cap \ldots A_n|
+\end{align*}
+
+:::
+
+::: {#proof}
+  Twierdzenie o dwumianie daje wzór:
+  \begin{align*}
+  & 0=\sum_{k=0}^m(-1)^k\binom mk \\
+  & =1-\binom m1+\binom m2-\cdots+(-1)^m.
+  \end{align*}
+  Dla nieparzystego $m$ łatwo dostrzec, że składniki $\binom mk$ i $\binom m{m-k}$ mają przeciwne znaki i się redukują. 
+  Dla parzystego $m$ nie jest to tak oczywiste bez twierdzenia. 
+
+  Wzór ten daje dowód zasady włączeń i wyłączeń. 
+  Rozważmy element należący do dokładnie $m$ zbiorów, powiedzmy $A_1,\ldots,A_m$. 
+  W sumie liczności zbiorów zliczamy go $m$ razy, następnie odejmujemy po jednym razie dla każdej pary, 
+  dodajemy dla każdej trójki itd. Jego łączny wkład wynosi
+  $$
+    \binom m1-\binom m2+\cdots+(-1)^{m+1}\binom mm=1.
+  $$
+  Każdy element sumy został więc policzony dokładnie raz.
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

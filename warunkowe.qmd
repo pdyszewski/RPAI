@@ -1,0 +1,352 @@
+# Prawdopodobieństwo warunkowe {#sec-prawdopodobienstwo-warunkowe}
+
+Rozważmy przykład z finansów. W chwili $0$ kupujemy europejską opcję kupna, 
+czyli kontrakt dający prawo zakupu akcji w ustalonej chwili $1$ po określonej 
+cenie wykonania $K$. Interesuje nas przyszła cena akcji $S_1$, 
+ponieważ wypłata z opcji wynosi $\max(S_1-K,0)$.
+
+Załóżmy, że w chwili $0{,}8$ chcemy sprzedać ten kontrakt. 
+Dysponujemy wtedy informacją o cenie akcji na przedziale $[0,0{,}8]$. 
+Pytamy, jak ta informacja zmienia naszą ocenę możliwych cen w chwili $1$.
+
+```{=html}
+<figure class="figure" style="color:inherit;margin:1.5rem 0">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 300" role="img" aria-labelledby="war-price-title war-price-desc" style="display:block;width:100%;height:auto;color:inherit">
+<title id="war-price-title">Znana historia ceny i możliwe przyszłe przebiegi</title>
+<desc id="war-price-desc">Do chwili 0,8 znamy przebieg ceny. Dalej przedstawiono trzy hipotetyczne kontynuacje do chwili 1.</desc>
+<g stroke="currentColor" fill="none" stroke-width="1.5">
+<path d="M65 35 V245 H790"/>
+<path d="M625 35 V245" stroke-dasharray="5 5" opacity="0.5"/>
+<path d="M65 175 L95 167 L125 186 L155 158 L185 171 L215 141 L245 153 L275 130 L305 149 L335 126 L365 137 L395 111 L425 123 L455 102 L485 128 L515 109 L545 120 L575 93 L605 109 L625 100" stroke-width="3"/>
+<path d="M625 100 L650 88 L675 103 L700 77 L725 87 L750 60 L775 47" stroke-width="2" stroke-dasharray="7 4"/>
+<path d="M625 100 L650 118 L675 107 L700 130 L725 120 L750 149 L775 139" stroke-width="2" stroke-dasharray="3 4"/>
+<path d="M625 100 L650 124 L675 143 L700 135 L725 166 L750 175 L775 203" stroke-width="2" stroke-dasharray="11 5"/>
+</g>
+<g fill="currentColor" font-family="sans-serif" font-size="17">
+<text x="42" y="22">Cena</text><text x="787" y="278">t</text>
+<text x="65" y="269" text-anchor="middle">0</text><text x="625" y="269" text-anchor="middle">0,8</text><text x="775" y="269" text-anchor="middle">1</text>
+<text x="345" y="294" text-anchor="middle">znana historia</text><text x="700" y="294" text-anchor="middle">możliwa przyszłość</text>
+</g></svg>
+<figcaption class="figure-caption">Schemat poglądowy: obserwowana historia i przykładowe kontynuacje ceny. Nie przedstawia danych rynkowych ani prognozy.</figcaption>
+</figure>
+```
+
+Przeszłość i przyszłość można traktować jako dwie części doświadczenia losowego. 
+Jak wiedza o pierwszej wpływa na prawdopodobieństwa wyników drugiej? 
+Pierwszym krokiem do takich zastosowań jest zrozumienie prawdopodobieństwa warunkowego. 
+Warunkowanie całej historii procesu wymaga bardziej zaawansowanego języka; 
+tutaj zaczniemy od warunkowania zdarzeniem o dodatnim prawdopodobieństwie.
+
+## Podstawowe definicje {#sec-warunkowe-definicje}
+
+::: {#exm-warunkowe-kostki}
+Rzucamy dwiema symetrycznymi kostkami sześciennymi. Przestrzeń wyników ma postać
+
+$$
+\Omega=\{1,2,\ldots,6\}^2.
+$$
+
+Każdej z 36 par przypisujemy prawdopodobieństwo $1/36$. Zdarzenie „suma oczek wynosi 6” to
+
+$$
+A=\{(1,5),(2,4),(3,3),(4,2),(5,1)\},
+$$
+
+więc $\mathbb P[A]=5/36$.
+
+Załóżmy teraz, że wiemy, iż na pierwszej kostce wypadło jedno oczko. Informacja ta oznacza zdarzenie
+
+$$
+B=\{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6)\}.
+$$
+
+Po uwzględnieniu tej informacji pozostaje sześć jednakowo prawdopodobnych wyników. Tylko $(1,5)$ należy do $A$, zatem nowe prawdopodobieństwo wynosi $1/6$. Możemy je wyrazić za pomocą pierwotnej miary:
+
+$$
+\begin{aligned}
+\frac{|A\cap B|}{|B|}
+&=\frac{|A\cap B|/|\Omega|}{|B|/|\Omega|}\\
+&=\frac{\mathbb P[A\cap B]}{\mathbb P[B]}
+=\frac{1/36}{6/36}=\frac16.
+\end{aligned}
+$$
+:::
+
+Ta konstrukcja pojawia się tak często, że ma własną nazwę.
+
+::: {#def-prawdopodobienstwo-warunkowe}
+Niech $(\Omega,\mathbb P)$ będzie dyskretną przestrzenią probabilistyczną, 
+a $B\subseteq \Omega$ zdarzeniem takim, 
+że $\mathbb P[B]>0$. **Prawdopodobieństwem warunkowym** zdarzenia 
+$A$ pod warunkiem zajścia $B$ nazywamy
+$$
+\mathbb P[A\mid B]=\frac{\mathbb P[A\cap B]}{\mathbb P[B]}.
+$$
+:::
+
+Przy ustalonym $B$ funkcja $\mathbb P_B[A]=\mathbb P[A\mid B]$ jest miarą probabilistyczną 
+na $\Omega$. 
+Istotnie, jeżeli przez $p$ oznaczymy funkcję prawdopodobieństwa stowarzyszoną z 
+wyjściową miarą probabilistyczną $\mathbb{P}$, 
+czyli $p(\omega) = \mathbb{P}[\{ \omega\}]$ dla której
+\begin{equation*}
+  \mathbb{P}[A] = \sum_{\omega \in A} p(\omega)
+\end{equation*}
+Wówczas dla
+\begin{equation*}
+   p_B(\omega) = \left\{ \begin{array}{cc} \frac{p(\omega)}{\mathbb{P}[B]} & \omega \in B \\ 0 & \omega\notin B  \end{array}\right.
+\end{equation*}
+mamy
+\begin{equation*}
+   \mathbb{P}_B[A] = \sum_{\omega \in A} p_B(\omega).
+\end{equation*}
+W szczególności
+$$
+\mathbb P_B[\Omega]=1,\qquad \mathbb P_B[B]=1,
+$$
+a dla parami rozłącznych $A_1,A_2,\ldots, A_N$
+\begin{align*}
+\mathbb P_B\left[\bigcup_{n=1}^{N}A_n\right]
+& =\frac{\sum_{n=1}^{\infty}\mathbb P[A_n\cap B]}{\mathbb P[B]}\\
+& =\sum_{n=1}^{N}\mathbb P_B[A_n].
+\end{align*}
+
+Warunkowanie pozwala uwzględnić dodatkową informację. 
+Na przykład model ryzyka może korzystać z wieku, historii zdarzeń lub 
+charakterystyki badanego obiektu. 
+
+::: {#exm-warunkowe-dzieci}
+Rozważamy rodzinę z dwojgiem dzieci. 
+Przyjmujemy uproszczony model: chłopiec i dziewczynka są jednakowo prawdopodobni. 
+Pierwsza współrzędna oznacza **starsze** dziecko, 
+druga młodsze; $c$ oznacza chłopca, $d$ dziewczynkę. Wówczas
+$$
+\Omega=\{(c,c),(c,d),(d,c),(d,d)\}.
+$$
+Jakie jest prawdopodobieństwo dwóch chłopców?
+(a) Jeśli wiemy, że starsze dziecko jest chłopcem, warunkujemy zdarzeniem $B=\{(c,c),(c,d)\}$. Otrzymujemy
+$$
+\mathbb P[\{(c,c)\}\mid B]=\frac12.
+$$
+(b) Jeśli wiemy, że **co najmniej jedno dziecko jest chłopcem**, warunkujemy zdarzeniem $D=\{(c,c),(c,d),(d,c)\}$, więc
+$$
+\mathbb P[\{(c,c)\}\mid D]=\frac13.
+$$
+(c) Informacja „co najmniej jedno dziecko ma na imię Franek” nie jest tym samym 
+co informacja z (b). 
+Załóżmy dodatkowo, że każdy chłopiec ma to imię z prawdopodobieństwem $f>0$, 
+że dziewczynki go nie mają i że nadawanie imion 
+jest niezależne między dziećmi oraz od płci drugiego dziecka. 
+Niech $F$ oznacza co najmniej jednego Franka. W rozszerzonym modelu
+$$
+\mathbb P[F\mid(c,c)]=1-(1-f)^2=2f-f^2,
+$$
+natomiast $\mathbb P[F\mid(c,d)]=\mathbb P[F\mid(d,c)]=f$ i $\mathbb P[F\mid(d,d)]=0$. Zatem
+$$
+\mathbb P[(c,c)\mid F]
+=\frac{(2f-f^2)/4}{(2f-f^2+f+f)/4}
+=\frac{2-f}{4-f}.
+$$
+Dla małego $f$ wynik jest bliski $1/2$, a dla $f=1$ wynosi $1/3$. 
+Wynik zależy również od sposobu uzyskania informacji: 
+poznanie imienia konkretnego dziecka jest innym zdarzeniem niż stwierdzenie, 
+że co najmniej jedno nosi dane imię.
+
+:::
+
+## Wzór na prawdopodobieństwo całkowite {#sec-prawdopodobienstwo-calkowite}
+
+Definicja prawdopodobieństwa warunkowego daje **regułę mnożenia**:
+
+$$
+\mathbb P[A\cap B]=\mathbb P[B]\mathbb P[A\mid B].
+$$
+
+Zdarzenia $A\cap B$ i $A\cap B^c$ są rozłączne. Jeśli $0<\mathbb P[B]<1$, to
+
+$$
+\begin{aligned}
+\mathbb P[A]
+&=\mathbb P[A\cap B]+\mathbb P[A\cap B^c]\\
+&=\mathbb P[A\mid B]\mathbb P[B]
++\mathbb P[A\mid B^c]\mathbb P[B^c].
+\end{aligned}
+$$
+
+Wzór szczególnie ułatwia rachunki w doświadczeniach wieloetapowych. Uogólnijmy go na więcej zdarzeń.
+
+::: {#def-rozbicie-przestrzeni}
+Rodzinę zdarzeń $\{B_k\}_{k\in I}$, skończoną lub przeliczalną, 
+nazywamy **rozbiciem** przestrzeni $\Omega$, jeżeli
+
+$$
+\Omega=\bigcup_{k\in I}B_k,
+\qquad B_i\cap B_j=\varnothing\quad(i\ne j).
+$$
+:::
+
+::: {#thm-prawdopodobienstwo-calkowite}
+## Wzór na prawdopodobieństwo całkowite
+
+Jeżeli $\{B_k\}_{k\in I}$ jest skończonym lub przeliczalnym rozbiciem $\Omega$ i 
+$\mathbb P[B_k]>0$ dla każdego $k\in I$, to dla dowolnego $A\subseteq \Omega$,
+$$
+\mathbb P[A]=\sum_{k\in I}\mathbb P[A\mid B_k]\mathbb P[B_k].
+$$
+:::
+
+::: {.proof}
+Korzystając z rozbicia, addytywności i definicji prawdopodobieństwa 
+warunkowego, otrzymujemy
+
+$$
+\begin{aligned}
+\mathbb P[A]
+&=\mathbb P\left[A\cap\bigcup_{k\in I}B_k\right]\\
+&=\mathbb P\left[\bigcup_{k\in I}(A\cap B_k)\right]\\
+&=\sum_{k\in I}\mathbb P[A\cap B_k]
+=\sum_{k\in I}\mathbb P[A\mid B_k]\mathbb P[B_k].
+\end{aligned}
+$$
+:::
+
+::: {#exm-warunkowe-loteria}
+W loterii fantowej prawdopodobieństwo wyciągnięcia losu wygrywającego wynosi $p$, 
+przegrywającego $q$, a losu „graj dalej” $r$, gdzie $p+q+r=1$ i $r<1$. 
+Los „graj dalej” wraca do urny i pozwala na kolejne losowanie, 
+w tych samych warunkach. Jakie jest prawdopodobieństwo ostatecznej wygranej?
+
+Niech $A,B,C$ oznaczają rodzaje losu w pierwszym losowaniu, 
+a $W$ ostateczną wygraną. Po losie „graj dalej” wracamy do sytuacji początkowej. 
+Wzór na prawdopodobieństwo całkowite daje
+$$
+\begin{aligned}
+\mathbb P[W]
+&=\mathbb P[W\mid A]p+\mathbb P[W\mid B]q
++\mathbb P[W\mid C]r\\
+&=p+r\mathbb P[W].
+\end{aligned}
+$$
+Stąd
+$$
+\mathbb P[W]=\frac{p}{1-r}=\frac{p}{p+q}.
+$$
+
+Jeśli któryś z rodzajów losu ma prawdopodobieństwo zero, pomijamy go w rozbiciu. Warunek $r<1$ jest istotny: dla $r=1$ gra trwa bez końca i wygrana ma prawdopodobieństwo zero.
+:::
+
+## Wzór Bayesa {#sec-wzor-bayesa}
+
+::: {#exm-warunkowe-test-dodatni}
+Rozważmy hipotetyczny model testu wykrywającego chorobę. 
+Jedna osoba na $1000$ jest chora. U chorych test daje wynik dodatni z 
+prawdopodobieństwem $99\%$, a u zdrowych wynik ujemny z 
+prawdopodobieństwem $95\%$. 
+Jakie jest prawdopodobieństwo dodatniego wyniku u losowej osoby?
+
+Oznaczmy:
+
+- $C$: osoba jest chora;
+- $Z=C^c$: osoba jest zdrowa;
+- $T$: wynik testu jest dodatni.
+
+Mamy $\mathbb P[T\mid Z]=0{,}05$, więc
+
+$$
+\begin{aligned}
+\mathbb P[T]
+&=\mathbb P[T\mid Z]\mathbb P[Z]+\mathbb P[T\mid C]\mathbb P[C]\\
+&=\frac5{100}\frac{999}{1000}
++\frac{99}{100}\frac1{1000}\\
+&=\frac{5094}{100000}=0{,}05094.
+\end{aligned}
+$$
+:::
+
+Naturalne jest teraz inne pytanie: jeśli wynik był dodatni, jakie 
+jest prawdopodobieństwo, że osoba rzeczywiście jest chora? 
+Pytamy o stan badanego obiektu po poznaniu wyniku obserwacji. Odpowiedź daje wzór Bayesa.
+
+::: {#thm-bayes}
+## Wzór Bayesa
+
+Niech $\{B_k\}_{k\in I}$ będzie skończonym lub przeliczalnym rozbiciem 
+$\Omega$ z $\mathbb P(B_k)>0$. Jeżeli $\mathbb P[A]>0$, to dla każdego $k\in I$
+
+$$
+\mathbb P[B_k\mid A]
+=\frac{\mathbb P[A\mid B_k]\mathbb P[B_k]}
+{\sum_{i\in I}\mathbb P[A\mid B_i]\mathbb P[B_i]}.
+$$
+:::
+
+::: {.proof}
+Z definicji warunkowania i wzoru na prawdopodobieństwo całkowite:
+
+\begin{align*}
+\mathbb P[B_k\mid A]
+& =\frac{\mathbb P[A\cap B_k]}{\mathbb P[A]} \\
+& =\frac{\mathbb P[A\mid B_k]\mathbb P[B_k]}
+{\sum_{i\in I}\mathbb P[A\mid B_i]\mathbb P[B_i]}.
+\end{align*}
+:::
+
+::: {.callout-note title="Dwa kierunki rachunku"}
+Wzór na prawdopodobieństwo całkowite łączy prawdopodobieństwa wyniku w różnych przypadkach. 
+Wzór Bayesa pozwala obliczyć prawdopodobieństwa tych przypadków po poznaniu wyniku.
+:::
+
+::: {#exm-warunkowe-moneta}
+Mamy $100$ monet: $99$ symetrycznych i jedną z orłem po obu stronach. 
+Wybieramy monetę losowo i rzucamy nią dziesięć razy. 
+Wszystkie wyniki to orły. Jakie jest prawdopodobieństwo, że wybraliśmy monetę z dwoma orłami?
+
+Niech $B_1$ oznacza monetę symetryczną, $B_2$ monetę z dwoma orłami, 
+a $A$ dziesięć orłów. Zakładamy niezależność rzutów przy ustalonej monecie. Wtedy
+$$
+\mathbb P[A\mid B_1]=2^{-10},\qquad
+\mathbb P[A\mid B_2]=1.
+$$
+Ze wzoru Bayesa
+$$
+\begin{aligned}
+&\mathbb P[B_2\mid A] \\
+&=\frac{\mathbb P[A\mid B_2]\mathbb P[B_2]}
+{\mathbb P[A\mid B_1]\mathbb P[B_1]+\mathbb P[A\mid B_2]\mathbb P[B_2]}\\
+&=\frac{1\cdot\frac1{100}}
+{\frac1{2^{10}}\frac{99}{100}+1\cdot\frac1{100}}
+=\frac{1024}{1123}\approx0{,}912.
+\end{aligned}
+$$
+
+Przed obserwacją prawdopodobieństwo wynosiło $1\%$. Dziesięć orłów zwiększa je do około $91{,}2\%$.
+:::
+
+::: {#exm-warunkowe-test-bayes}
+Wróćmy do testu z @exm-warunkowe-test-dodatni. 
+U losowo wybranej osoby wynik jest dodatni. Jakie jest prawdopodobieństwo choroby?
+
+$$
+\begin{aligned}
+\mathbb P[C\mid T]
+&=\frac{\mathbb P[T\mid C]\mathbb P[C]}
+{\mathbb P[T\mid Z]\mathbb P[Z]+\mathbb P[T\mid C]\mathbb P[C]}\\
+&=\frac{\frac{99}{100}\frac1{1000}}
+{\frac5{100}\frac{999}{1000}+\frac{99}{100}\frac1{1000}}
+=\frac{99}{5094} \\ & \approx0{,}01943.
+\end{aligned}
+$$
+
+Otrzymujemy około $1{,}94\%$. To nie jest czułość testu $\mathbb P(T\mid C)=99\%$: odwrócenie warunku zmienia pytanie.
+
+Spójrzmy na oczekiwane liczby w populacji 100 000 osób. Około 100 jest chorych, a 99 900 zdrowych. Wśród chorych oczekujemy 99 wyników dodatnich, a wśród zdrowych 4995. Łącznie daje to 5094 wyniki dodatnie.
+
+| Stan osoby | Wynik dodatni | Wynik ujemny | Razem |
+|---|---:|---:|---:|
+| Chora | 99 | 1 | 100 |
+| Zdrowa | 4995 | 94 905 | 99 900 |
+| Razem | 5094 | 94 906 | 100 000 |
+
+
+Warto odróżniać wysoką czułość testu od prawdopodobieństwa choroby po dodatnim wyniku. Znaczenie ma także częstość choroby w badanej populacji.
+:::

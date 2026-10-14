@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Prawdopodobieństwo klasyczne – Rachunek prawdopodobieństwa (AI)</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./warunkowe.html" rel="next">
+<link href="./aksjomaty.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4d174a927e64a7b5d77cac81bb67e0a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Brak wyników",
+    "search-matching-documents-text": "dopasowane dokumenty",
+    "search-copy-link-title": "Kopiuj link do wyszukiwania",
+    "search-hide-matches-text": "Ukryj dodatkowe dopasowania",
+    "search-more-match-text": "więcej dopasowań w tym dokumencie",
+    "search-more-matches-text": "więcej dopasowań w tym dokumencie",
+    "search-clear-button-title": "Wyczyść",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Anuluj",
+    "search-submit-button-title": "Zatwierdź",
+    "search-label": "Szukaj"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Notatki</a></li><li class="breadcrumb-item"><a href="./klasyczne.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo klasyczne</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Szukaj" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Rachunek prawdopodobieństwa (AI)</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/pdyszewski/RPAI/" title="Kod źródłowy" class="quarto-navigation-tool px-1" aria-label="Kod źródłowy"><i class="bi bi-github"></i></a>
+    <a href="./Rachunek-prawdopodobieństwa--AI-.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Szukaj"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Słowo wstępne</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sylabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sylabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Notatki</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Przełącz sekcję">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Wstęp</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./aksjomaty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aksjomatyka rachunku prawdopodobieństwa</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./klasyczne.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo klasyczne</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./warunkowe.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo warunkowe</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Listy zadań</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Przełącz sekcję">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lista1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lista 1. Przestrzenie zdarzeń elementarnych</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lista2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lista 2. Prawdopodobieństwo klasyczne</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Spis treści</h2>
+   
+  <ul>
+  <li><a href="#sec-model-klasyczny" id="toc-sec-model-klasyczny" class="nav-link active" data-scroll-target="#sec-model-klasyczny"><span class="header-section-number">3.1</span> Model klasyczny</a></li>
+  <li><a href="#sec-reguly-zliczania" id="toc-sec-reguly-zliczania" class="nav-link" data-scroll-target="#sec-reguly-zliczania"><span class="header-section-number">3.2</span> Zliczanie wyników</a></li>
+  <li><a href="#reguła-dodawania" id="toc-reguła-dodawania" class="nav-link" data-scroll-target="#reguła-dodawania"><span class="header-section-number">3.3</span> Reguła dodawania</a></li>
+  <li><a href="#reguła-mnożenia" id="toc-reguła-mnożenia" class="nav-link" data-scroll-target="#reguła-mnożenia"><span class="header-section-number">3.4</span> Reguła mnożenia</a></li>
+  <li><a href="#wariacje" id="toc-wariacje" class="nav-link" data-scroll-target="#wariacje"><span class="header-section-number">3.5</span> Wariacje</a></li>
+  <li><a href="#kombinacje" id="toc-kombinacje" class="nav-link" data-scroll-target="#kombinacje"><span class="header-section-number">3.6</span> Kombinacje</a></li>
+  <li><a href="#partia-pokera" id="toc-partia-pokera" class="nav-link" data-scroll-target="#partia-pokera"><span class="header-section-number">3.7</span> Partia pokera</a></li>
+  <li><a href="#sec-klasyczne-urodziny" id="toc-sec-klasyczne-urodziny" class="nav-link" data-scroll-target="#sec-klasyczne-urodziny"><span class="header-section-number">3.8</span> Problem urodzin</a></li>
+  <li><a href="#zasada-właczeń-i-wyłączeń" id="toc-zasada-właczeń-i-wyłączeń" class="nav-link" data-scroll-target="#zasada-właczeń-i-wyłączeń"><span class="header-section-number">3.9</span> Zasada właczeń i wyłączeń</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Notatki</a></li><li class="breadcrumb-item"><a href="./klasyczne.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo klasyczne</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-prawdopodobienstwo-klasyczne" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo klasyczne</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Przedyskutujemy klasyczny model prawdopodobieństwa, w którym każdy możliwy wynik naszego eksperymentu jest jednakowo prawdopodobny. Dzieje się tak kiedy rzucamy symetryczną monetą lub symetryczną kostką.</p>
+<section id="sec-model-klasyczny" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-model-klasyczny"><span class="header-section-number">3.1</span> Model klasyczny</h2>
+<p>Na potrzeby tego rozdziału zakładać będziemy, że rozważana przestrzeń zdarzeń elementarnych <span class="math inline">\(\Omega\)</span> jest skończona. Liczbę elementów zbioru <span class="math inline">\(A\)</span> będziemy oznaczać przez <span class="math inline">\(|A|\)</span>. Spotyka się też oznaczenie <span class="math inline">\(\#A\)</span>. Dla liczby naturalnej <span class="math inline">\(n\)</span> będziemy pisać <span class="math display">\[\begin{equation*}
+    [n] = \{ 1,2, \ldots, n\}.
+  \end{equation*}\]</span></p>
+<p>Jeżeli wszystkie zdarzenia elementarne są jednakowo prawdopodobne, to rozważana funkcja prawdopodobieństwa ma postać <span class="math display">\[\begin{equation*}
+    p(\omega) = \frac{1}{|\Omega|}
+  \end{equation*}\]</span> dla każdego <span class="math inline">\(\omega \in \Omega\)</span>. Stąd dla każdego zdarzenia <span class="math inline">\(A\subseteq\Omega\)</span> mamy <span class="math display">\[
+    \mathbb P[A]= \sum_{\omega \in A} \frac{1}{|\Omega|}
+    =  \frac{|A|}{|\Omega|}.
+  \]</span> Licznik jest liczbą wyników sprzyjających zdarzeniu <span class="math inline">\(A\)</span>, a mianownik liczbą wszystkich możliwych wyników. Jest to dokładnie definicja prawdopodobieństwa spotykana w szkole średniej.</p>
+<div id="exm-moneta" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.1</strong></span> Rzucamy dwukrotnie symetryczną monetą. Wówczas każdy wynik jest jednakowo prawdopodobny. Przestrzenią wszystkich zdarzeń jest <span class="math display">\[
+    \Omega=\{OO,OR,RO,RR\},
+  \]</span> gdzie <span class="math inline">\(O\)</span> oznacza orła, a <span class="math inline">\(R\)</span> — reszkę. Każdy z czterech ciągów ma prawdopodobieństwo <span class="math inline">\(1/4\)</span>.</p>
+<p>Zdarzeniu „wypadł dokładnie jeden orzeł” odpowiada zbiór <span class="math inline">\(\{OR,RO\}\)</span>, zatem jego prawdopodobieństwo wynosi <span class="math inline">\(2/4=1/2\)</span>.</p>
+<p>Możemy też zapisać wynik doświadczenia jako liczbę orłów. Otrzymamy wtedy trzy możliwości: <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span> i <span class="math inline">\(2\)</span>. <strong>Nie są one jednak jednakowo prawdopodobne</strong>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"># orłów</th>
+<th style="text-align: center;">ciągi</th>
+<th style="text-align: center;"><span class="math inline">\(\mathbb{P}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(RR\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1/4\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(OR,RO\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1/2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(OO\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1/4\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Nie ma nic złego w opisywaniu doświadczenia za pomocą liczby orłów. Błędem byłoby dopiero przypisanie każdej z tych trzech wartości prawdopodobieństwa <span class="math inline">\(1/3\)</span>.</p>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Słowo „losowo” nie wystarcza">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Ważne</span>Słowo „losowo” nie wystarcza
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Zanim użyjesz modelu prawdopodobieństwa klasycznego, odpowiedz na dwa pytania:</p>
+<ol type="1">
+<li>Co jest zdarzeniem elementarnym?</li>
+<li>Dlaczego wszystkie takie wyniki mają tę samą szansę?</li>
+</ol>
+<p>To, że potrafimy wypisać kilka możliwości, nie oznacza jeszcze, że są jednakowo prawdopodobne.</p>
+</div>
+</div>
+<div id="exm-dwie-kostki" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.2</strong></span> Rzucamy dwiema uczciwymi kostkami. Wynik zapisujemy jako parę <span class="math inline">\((i,j)\)</span>, gdzie <span class="math inline">\(i\)</span> jest wynikiem pierwszej kostki, a <span class="math inline">\(j\)</span> — drugiej. Wtedy <span class="math display">\[
+  \Omega=[6]^2,
+  \qquad |\Omega|=36.
+  \]</span> Suma <span class="math inline">\(7\)</span> pojawia się dla sześciu par: <span class="math display">\[
+    (1,6),\ (2,5),\ (3,4),\ (4,3),\ (5,2),\ (6,1).
+  \]</span> Jej prawdopodobieństwo wynosi więc <span class="math inline">\(6/36=1/6\)</span>. Suma <span class="math inline">\(2\)</span> odpowiada tylko parze <span class="math inline">\((1,1)\)</span>, zatem ma prawdopodobieństwo <span class="math inline">\(1/36\)</span>. Możliwe sumy oczek również nie tworzą modelu klasycznego z jednakowymi wagami.</p>
+</div>
+</section>
+<section id="sec-reguly-zliczania" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-reguly-zliczania"><span class="header-section-number">3.2</span> Zliczanie wyników</h2>
+<p>Przy analizie większych modeli często wypisywanie wszystkich elementów zbioru może okazać się zbyt uciążliwe. Okazuje się, że przy obliczaniu odpowiednich prawdopodobieństw nie jest to konieczne. Kluczowe jest wyznaczenie liczebności <span class="math inline">\(|A|\)</span> interesującego nas zdarzenia <span class="math inline">\(A\)</span>. W tym celu bardzo pomocne są podstawowe schematy kombinatoryczne.</p>
+<div id="exm-5-1-1" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.3</strong></span> Aby poznać liczebność zbioru nie musimy wypisywać wszystkich jego elementów.</p>
+<ol type="a">
+<li><p>Ile liczb całkowitych w zbiorze <span class="math inline">\([100]\)</span> jest podzielnych przez <span class="math inline">\(3\)</span>? Takich liczb jest <span class="math inline">\(\lfloor100/3\rfloor=33\)</span>.</p></li>
+<li><p>Ile elementów <span class="math inline">\([100]\)</span> nie jest podzielnych przez <span class="math inline">\(3\)</span>? To proste: <span class="math inline">\(100-33=67\)</span>.</p></li>
+<li><p>Ile elementów <span class="math inline">\(A\)</span> jest podzielnych przez <span class="math inline">\(3\)</span> lub przez <span class="math inline">\(5\)</span>, lub przez obie te liczby? Przez <span class="math inline">\(3\)</span> podzielne są <span class="math inline">\(33\)</span> elementy, a przez <span class="math inline">\(5\)</span> podzielnych jest <span class="math inline">\(\lfloor100/5\rfloor=20\)</span>. Dodając te liczby, otrzymalibyśmy <span class="math inline">\(53\)</span>, czyli zbyt wiele: wielokrotności <span class="math inline">\(15\)</span> zostałyby policzone dwukrotnie. Poprawna odpowiedź to <span class="math display">\[
+    \left\lfloor\frac{100}{3}\right\rfloor+
+    \left\lfloor\frac{100}{5}\right\rfloor-
+    \left\lfloor\frac{100}{15}\right\rfloor=47.
+  \]</span></p></li>
+</ol>
+</div>
+</section>
+<section id="reguła-dodawania" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="reguła-dodawania"><span class="header-section-number">3.3</span> Reguła dodawania</h2>
+<p>Jeżeli obiekty, które chcemy policzyć, dzielą się na dwie <strong>rozłączne</strong> grupy <span class="math inline">\(A,B\subseteq \Omega\)</span>, to <span id="eq-suma1"><span class="math display">\[
+    |A \cup B| = |A| + |B|.
+   \tag{3.1}\]</span></span> Reguła ta mówi, że sumę rozłącznych zbiorów zliczamy, zliczając każdy zbiór osobno i dodając wyniki.</p>
+<div id="exm-podzielne" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.4</strong></span> Ze zbioru liczb <span class="math inline">\(\Omega = [30]\)</span> losujemy jedną liczbę. Jakie jest prawdopodobieństwo, że będzie ona podzielna przez <span class="math inline">\(5\)</span> lub przez <span class="math inline">\(7\)</span>? Niech <span class="math inline">\(A\)</span> będzie zdarzeniem, że wylosowana liczba jest podzielna przez <span class="math inline">\(5\)</span>. Wtedy <span class="math display">\[\begin{equation*}
+    A = \{5,10,15,20,25,30\}, \quad |A| = 6.
+  \end{equation*}\]</span> Dla zdarzenia <span class="math inline">\(B\)</span>, że wylosowana liczba jest podzielna przez <span class="math inline">\(7\)</span>, <span class="math display">\[\begin{equation*}
+    B = \{ 7, 14, 21 \}, \quad |B| = 3.
+  \end{equation*}\]</span> Skoro <span class="math inline">\(A\cap B =\emptyset\)</span>, <span class="math inline">\(|A \cup B | =9\)</span> a co za tym idzie <span class="math display">\[\begin{equation*}
+    \mathbb{P}[A \cup B] = 3/10.
+  \end{equation*}\]</span></p>
+</div>
+<div id="exm-podzielna-2" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.5</strong></span> Rzucamy symetryczną kością dwudziestościenną. Wówczas przestrzenią zdarzeń elementarnych jest <span class="math display">\[\begin{equation*}
+    \Omega = [20].
+  \end{equation*}\]</span> Jakie jest prawdopodobieństwo, że wylosowana liczba jest nieparzysta lub dzieli się przez <span class="math inline">\(4\)</span>? Dla liczby <span class="math inline">\(p\)</span> oznaczmy zdarzenie <span class="math display">\[\begin{equation*}
+    D_{p} = \{ n \in [20] \: | \: \mbox{$n$ dzieli się przez $p$} \} \subseteq \Omega.
+  \end{equation*}\]</span> Szukamy <span class="math inline">\(\mathbb{P}[N \cup D_4]\)</span>, gdzie <span class="math inline">\(N =\{1,3, \ldots, 19 \}\)</span>. Zauważmy, że zdarzenia <span class="math inline">\(N\)</span> i <span class="math inline">\(D_4\)</span> są rozłączne. Mamy <span class="math inline">\(\mathbb{P}[N]= 1/2\)</span> i <span class="math inline">\(\mathbb{P}[D_4]= 1/4\)</span>. Stąd <span class="math display">\[\begin{equation*}
+    \mathbb{P}[N \cup D_4] = \mathbb{P}[N]+\mathbb{P}[D_4]= \frac{3}{4}.
+  \end{equation*}\]</span></p>
+</div>
+<p>Podobnie jest dla rozłącznych zbiorów <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2, \ldots, A_m\)</span>, <span class="math inline">\(m \in \mathbb{N}\)</span>, o liczebnościach <span class="math inline">\(n_1,\ldots,n_m\)</span>, to łącznie jest ich <span id="eq-sumaN"><span class="math display">\[
+    \left| \bigcup_{j=1}^m A_j \right| = n_1+\cdots+n_m.
+   \tag{3.2}\]</span></span> Warunek rozłączności zapobiega wielokrotnemu zliczaniu tego samego obiektu.</p>
+<div id="exm-sumaN" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.6</strong></span> Ile liczb dwucyfrowych jest nieparzystych? Można policzyć parzyste i odjąć wynik od wszystkich liczb. Można również zastosować uogólnioną regułę <a href="#eq-sumaN" class="quarto-xref">Równanie&nbsp;<span>3.2</span></a>. Niech <span class="math inline">\(S_k\)</span> oznacza zbiór liczb dwucyfrowych o cyfrze jedności <span class="math inline">\(k\)</span>. Wówczas szukamy <span class="math display">\[\begin{align*}
+   &amp; |S_1\cup S_3\cup S_5\cup S_7\cup S_9|\\
+   &amp; =|S_1|+|S_3|+|S_5|+|S_7|+|S_9|.
+  \end{align*}\]</span> Każdy z tych zbiorów ma <span class="math inline">\(9\)</span> elementów [dlaczego?], więc odpowiedź brzmi <span class="math inline">\(5\cdot9=45\)</span>.</p>
+</div>
+<p>Dla dowolnych skończonych zbiorów <span class="math inline">\(A\)</span> i <span class="math inline">\(B\)</span> mamy <span id="eq-suma2"><span class="math display">\[
+    |A\cup B|=|A|+|B|-|A\cap B|.
+   \tag{3.3}\]</span></span> Reguła <a href="#eq-suma2" class="quarto-xref">Równanie&nbsp;<span>3.3</span></a> uwzględnia możliwość dwukrotnego policzenia części wspólnej <span class="math inline">\(A\cap B\)</span>. Można ją wyprowadzić z <a href="#eq-suma1" class="quarto-xref">Równanie&nbsp;<span>3.1</span></a>: zbiory <span class="math inline">\(A\)</span> oraz <span class="math inline">\(B\setminus A\)</span> są rozłączne, podobnie jak <span class="math inline">\(B\setminus A\)</span> oraz <span class="math inline">\(A\cap B\)</span>. Zatem <span class="math display">\[\begin{align*}
+    |A\cup B| &amp; = |A|+|B\setminus A|,\\
+    |B| &amp; = |B\setminus A|+|A\cap B|.
+  \end{align*}\]</span> Stąd <span class="math display">\[\begin{align*}
+    |A\cup B|+|A\cap B|
+    &amp; =|A|+|B\setminus A|+|A\cap B| \\
+    &amp; =|A|+|B|,
+  \end{align*}\]</span> co daje <a href="#eq-suma2" class="quarto-xref">Równanie&nbsp;<span>3.3</span></a> . W terminach prawdopodobieństwa klasycznego zapisuje się to jako <span class="math display">\[
+    \mathbb P[A\cup B]
+    =\mathbb P[A]+\mathbb P[B]-\mathbb P[A\cap B].
+  \]</span></p>
+<div id="exm-suma-3" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.7</strong></span> Losujemy jedną z liczb <span class="math inline">\(1, 2, \ldots 1000\)</span> w taki sposób, że wylosowanie każdej z nich jest jednakowo prawdopodobne. Wówczas przestrzenią zdarzeń elementarnych jest <span class="math display">\[\begin{equation*}
+    \Omega = \{ 1, 2, \ldots , 1000\}.
+  \end{equation*}\]</span> Jakie jest prawdopodobieństwo, że wylosowana liczba dzieli się przez <span class="math inline">\(3\)</span> lub <span class="math inline">\(5\)</span>? Dla liczby <span class="math inline">\(p\)</span> oznaczmy zdarzenie <span class="math display">\[\begin{equation*}
+    D_{p} = \{ n \in \Omega \: | \: \mbox{$n$ dzieli się przez $p$} \}.
+  \end{equation*}\]</span> Szukamy <span class="math inline">\(\mathbb{P}[D_3\cup D_5]\)</span>. Zauważmy, że <span class="math display">\[\begin{equation*}
+    D_{3} = \{ 3m \: | \: 1\leq m \leq 333 \},
+  \end{equation*}\]</span> więc <span class="math inline">\(\mathbb{P}[D_3] = \frac{333}{1000}\)</span>. Podobnie <span class="math inline">\(\mathbb{P}[D_5] =\frac{200}{1000}= \frac{1}{5}\)</span>. Skoro <span class="math inline">\(D_3 \cap D_5 = D_{15}\)</span>, to <span class="math inline">\(\mathbb{P}[D_3 \cap D_5] =\frac{66}{1000}= \frac{33}{500}\)</span>. Ostatecznie <span class="math display">\[\begin{align*}
+    \mathbb{P}[D_3 \cup D_5] &amp; = \mathbb{P}[D_3]+\mathbb{P}[D_5]-\mathbb{P}[D_3\cap D_5] \\
+    &amp; = \frac{467}{1000}.
+  \end{align*}\]</span></p>
+</div>
+<p>Dla trzech zbiorów <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> mamy <span class="math display">\[\begin{align*}
+   |A \cup B \cup C|  = &amp;  |A|+|B|+|C| \\ &amp;-|A\cap B| - |B\cap C| \\&amp; + |A\cap B \cap C|.
+\end{align*}\]</span> Jest to przykład ogólnego schematu który przedyskutujemy na koniec tego rozdziału.</p>
+</section>
+<section id="reguła-mnożenia" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="reguła-mnożenia"><span class="header-section-number">3.4</span> Reguła mnożenia</h2>
+<p>Dla skończonych zbiorów <span class="math inline">\(S_1, \ldots , S_k\)</span>, <span class="math display">\[\begin{equation*}
+    |S_1 \times \ldots \times S_k| = \prod_{j=1}^k|S_j|.
+  \end{equation*}\]</span> Jeżeli wszystkie <span class="math inline">\(S_i\)</span> są tym samym zbiorem <span class="math inline">\(S\)</span>, otrzymujemy <span class="math inline">\(|S^k|=|S|^k\)</span>.</p>
+<p>Będziemy często korzystać z reguły mnożenia, lecz niemal nigdy z formalnego zapisu sugerowanego w jej sformułowaniu. Chcemy przede wszystkim zachęcić do myślenia o problemach jako o procesach wieloetapowych. Pierwszy element możemy wybrać na <span class="math inline">\(|S_1|\)</span> sposobów. Dla każdego takiego wyboru drugi możemy zrobić na <span class="math inline">\(|S_2|\)</span> sposobów itd. Wyobrażenie sobie takiego procesu często pomaga znaleźć rozwiązanie.</p>
+<div id="exm-5-1-4" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.8</strong></span> Liczba dróg od <span class="math inline">\(s\)</span> do <span class="math inline">\(f\)</span> na rysunku 2(a) wynosi <span class="math inline">\(3\cdot2\cdot2\cdot1=12\)</span>: pierwszą krawędź wybieramy na 3 sposoby, drugą i trzecią na 2 sposoby. Po wyborze pierwszych trzech krawędzi czwarta jest już wymuszona.</p>
+<figure class="figure" style="color:inherit; margin:1.5rem 0">
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="240" viewbox="0 0 1120 240" role="img" aria-labelledby="graf-512-title graf-512-desc" style="display:block;width:100%;height:auto;color:inherit">
+<title id="graf-512-title">Grafy do zliczania dróg</title>
+<desc id="graf-512-desc">Graf a ma 18 skierowanych krawędzi i 12 dróg od s do f. Graf b składa się z dwóch takich grafów połączonych w wierzchołku v i ma 144 drogi od s do f.</desc>
+<style>
+  svg:root { color: #17202a !important; background-color: #ffffff; }
+  @media (prefers-color-scheme: dark) {
+    svg:root { color: #e6edf3 !important; background-color: #161b22; }
+  }
+</style>
+<defs><marker id="graf-512-arrow" viewbox="0 0 10 8" refx="5" refy="4" markerwidth="7" markerheight="6" orient="auto" markerunits="userSpaceOnUse"><path d="M0 0 L10 4 L0 8 L2.5 4 Z" fill="currentColor"></path></marker></defs>
+<g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+<path d="M35 110 L75 79 L115 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M35 110 L75 110 L115 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M35 110 L75 141 L115 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M115 48 L155 48 L195 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M115 48 L155 79 L195 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M115 110 L155 79 L195 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M115 110 L155 141 L195 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M115 172 L155 141 L195 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M115 172 L155 172 L195 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M195 48 L235 48 L275 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M195 48 L235 79 L275 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M195 110 L235 79 L275 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M195 110 L235 141 L275 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M195 172 L235 141 L275 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M195 172 L235 172 L275 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M275 48 L315 79 L355 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M275 110 L315 110 L355 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M275 172 L315 141 L355 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M435 110 L475 79 L515 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M435 110 L475 110 L515 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M435 110 L475 141 L515 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M515 48 L555 48 L595 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M515 48 L555 79 L595 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M515 110 L555 79 L595 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M515 110 L555 141 L595 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M515 172 L555 141 L595 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M515 172 L555 172 L595 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M595 48 L635 48 L675 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M595 48 L635 79 L675 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M595 110 L635 79 L675 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M595 110 L635 141 L675 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M595 172 L635 141 L675 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M595 172 L635 172 L675 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M675 48 L715 79 L755 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M675 110 L715 110 L755 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M675 172 L715 141 L755 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M755 110 L795 79 L835 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M755 110 L795 110 L835 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M755 110 L795 141 L835 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M835 48 L875 48 L915 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M835 48 L875 79 L915 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M835 110 L875 79 L915 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M835 110 L875 141 L915 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M835 172 L875 141 L915 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M835 172 L875 172 L915 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M915 48 L955 48 L995 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M915 48 L955 79 L995 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M915 110 L955 79 L995 48" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M915 110 L955 141 L995 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M915 172 L955 141 L995 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M915 172 L955 172 L995 172" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M995 48 L1035 79 L1075 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M995 110 L1035 110 L1075 110" marker-mid="url(#graf-512-arrow)"></path>
+<path d="M995 172 L1035 141 L1075 110" marker-mid="url(#graf-512-arrow)"></path>
+</g><g fill="currentColor">
+<circle cx="35" cy="110" r="4.8"></circle>
+<circle cx="115" cy="48" r="4.8"></circle>
+<circle cx="115" cy="110" r="4.8"></circle>
+<circle cx="115" cy="172" r="4.8"></circle>
+<circle cx="195" cy="48" r="4.8"></circle>
+<circle cx="195" cy="110" r="4.8"></circle>
+<circle cx="195" cy="172" r="4.8"></circle>
+<circle cx="275" cy="48" r="4.8"></circle>
+<circle cx="275" cy="110" r="4.8"></circle>
+<circle cx="275" cy="172" r="4.8"></circle>
+<circle cx="355" cy="110" r="4.8"></circle>
+<circle cx="435" cy="110" r="4.8"></circle>
+<circle cx="515" cy="48" r="4.8"></circle>
+<circle cx="515" cy="110" r="4.8"></circle>
+<circle cx="515" cy="172" r="4.8"></circle>
+<circle cx="595" cy="48" r="4.8"></circle>
+<circle cx="595" cy="110" r="4.8"></circle>
+<circle cx="595" cy="172" r="4.8"></circle>
+<circle cx="675" cy="48" r="4.8"></circle>
+<circle cx="675" cy="110" r="4.8"></circle>
+<circle cx="675" cy="172" r="4.8"></circle>
+<circle cx="755" cy="110" r="4.8"></circle>
+<circle cx="835" cy="48" r="4.8"></circle>
+<circle cx="835" cy="110" r="4.8"></circle>
+<circle cx="835" cy="172" r="4.8"></circle>
+<circle cx="915" cy="48" r="4.8"></circle>
+<circle cx="915" cy="110" r="4.8"></circle>
+<circle cx="915" cy="172" r="4.8"></circle>
+<circle cx="995" cy="48" r="4.8"></circle>
+<circle cx="995" cy="110" r="4.8"></circle>
+<circle cx="995" cy="172" r="4.8"></circle>
+<circle cx="1075" cy="110" r="4.8"></circle>
+</g><g fill="currentColor" font-family="Georgia, Times New Roman, serif" font-size="21" font-style="italic">
+<text x="21" y="116" text-anchor="end">s</text>
+<text x="368" y="116" text-anchor="start">f</text>
+<text x="421" y="116" text-anchor="end">s</text>
+<text x="755" y="135" text-anchor="middle">v</text>
+<text x="1088" y="116" text-anchor="start">f</text>
+</g><g fill="currentColor" font-family="Georgia, Times New Roman, serif" font-size="20" text-anchor="middle"><text x="195" y="218">(a)</text><text x="755" y="218">(b)</text></g></svg>
+<figcaption class="figure-caption">Rysunek 5.1.2. Grafy do zliczania dróg.</figcaption>
+</figure>
+<p>Podobne obliczenie zlicza drogi od <span class="math inline">\(s\)</span> do <span class="math inline">\(f\)</span> na rysunku 2(b). Można również zauważyć, że istnieje 12 dróg od <span class="math inline">\(s\)</span> do <span class="math inline">\(v\)</span> i 12 od <span class="math inline">\(v\)</span> do <span class="math inline">\(f\)</span>, więc wszystkich dróg jest <span class="math inline">\(12\cdot12=144\)</span>.</p>
+</div>
+<div id="exm-funkcje" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.9</strong></span> Niech <span class="math inline">\(S\)</span> i <span class="math inline">\(T\)</span> będą zbiorami skończonymi. Niech <span class="math display">\[\begin{equation*}
+    S^T = \{ f \: : \: f \colon T \to S\}.
+  \end{equation*}\]</span> Znajdziemy <span class="math inline">\(|S^T|\)</span> liczbę różnych funkcji <span class="math inline">\(f \colon T \to S\)</span>. Będzie wygodnie przyjąć, że <span class="math display">\[\begin{equation*}
+    S = \{s_1, s_2, \ldots, s_n \}, \quad T = \{ t_1, \ldots, t_m\},
+  \end{equation*}\]</span> gdzie <span class="math inline">\(|S| = n\)</span> and <span class="math inline">\(|T|=m\)</span>. Dowolną funkcję <span class="math inline">\(f \colon T \to S\)</span> można utożsamić jednoznacznie z <span class="math display">\[
+    (f(t_1), f(t_2), \ldots , f(t_m)).
+  \]</span> Jest to element <span class="math inline">\(S^m\)</span>. Zatem z reguły iloczynu <span class="math display">\[\begin{equation*}
+    \left|S^T \right|  = \left|S^m \right| = n^m.
+  \end{equation*}\]</span></p>
+</div>
+</section>
+<section id="wariacje" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="wariacje"><span class="header-section-number">3.5</span> Wariacje</h2>
+<div id="def-wariacja" class="theorem definition">
+<p><span class="theorem-title"><strong>Definicja 3.1</strong></span> <span class="math inline">\(k\)</span>-wyrazową wariancją z powtórzeniami zbioru <span class="math inline">\(A\)</span> nazywamy dowolną funkcję <span class="math inline">\(f \colon [k] \to A\)</span>.</p>
+</div>
+<p>Innymi słowy <span class="math inline">\(k\)</span>-wyrazowa wariacja z powtórzeniami to po prostu ciąg długości <span class="math inline">\(k\)</span> o wyrazach z <span class="math inline">\(A\)</span>. Zauważmy, że zbiorem wszystkich <span class="math inline">\(k\)</span>-wyrazowych wariancji z powtórzeniami zbioru <span class="math inline">\(A\)</span> jest <span class="math display">\[\begin{equation*}
+    A^k = A^{[k]} = \{ f \: | \: f \colon [k] \to A \}.
+  \end{equation*}\]</span></p>
+<div id="cor-wariacja" class="theorem corollary">
+<p><span class="theorem-title"><strong>Wniosek 3.1</strong></span> Jeżeli <span class="math inline">\(|A| =n\)</span>, to dla każdego naturalnego <span class="math inline">\(k\)</span> jest <span class="math display">\[\begin{equation*}
+    \left| A^{[k]} \right| = n^k
+  \end{equation*}\]</span> różnych wariacji z powtórzeniami zbioru <span class="math inline">\(A\)</span>.</p>
+</div>
+<div id="exm-wariacja-winda" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.10</strong></span> W dziesięciopiętrowym budynku windą jedzie siedem osób. Jakie jest prawdopodobieństwo, że wszystkie wysiądą na ostatnim piętrze? Jakie jest prawdopodobieństwo, że wszystkie wysiądą na tym samym piętrze? Zauważmy, że każdy scenariusz możemy zakodować w funkcji <span class="math inline">\(f \colon [7] \to [10]\)</span>. Tutaj <span class="math inline">\(j\)</span>-tej osobie przyporządkowujemy jedno z dziesięciu pięter, na którym wysiada. W skutek czego wszystkich możliwości jest <span class="math inline">\(|[10]^7| = 10^7\)</span>. Zdarzenie, że wszyscy wysiądą na ostatnim piętrze, to <span class="math display">\[\begin{equation*}
+    \{(10, 10, \ldots, 10) \}.
+  \end{equation*}\]</span> Wobec czego jego prawdopodobieństwo wynosi <span class="math inline">\(10^{-7}\)</span>. Drugie zdarzenie, że wszyscy wysiądą na tym samym piętrze to <span class="math display">\[\begin{equation*}
+    \bigcup_{k=1}^{10} A_k,
+  \end{equation*}\]</span> gdzie <span class="math inline">\(A_k\)</span> to zdarzenie, że wszyscy wysiądą na <span class="math inline">\(k\)</span>tym piętrze. Dla <span class="math inline">\(k=10\)</span> sprawdziliśmy już, że <span class="math inline">\(\mathbb{P}[A_{10}]=10^{-7}\)</span>. Nietrudno się przekonać, że dla dowolnego <span class="math inline">\(k \leq 10\)</span>, <span class="math inline">\(\mathbb{P}[A_k] =10^{-7}\)</span>. Skoro zdarzenia <span class="math inline">\(A_k\)</span> są rozłączne, to nasze drugie zdarzenie ma prawdopodobieństwo <span class="math display">\[\begin{equation*}
+   \sum_{k=1}^{10} \mathbb{P}[A_k] = 10^{-6}.
+  \end{equation*}\]</span></p>
+</div>
+<div id="def-wariacja-bez" class="theorem definition">
+<p><span class="theorem-title"><strong>Definicja 3.2</strong></span> <span class="math inline">\(k\)</span>-wyrazową wariancją bez powtórzeń zbioru <span class="math inline">\(A\)</span> nazywamy dowolną różnowartościową funkcję <span class="math inline">\(f \colon [k] \to A\)</span>. Zbiór wszystkich takich funkcji oznaczamy przez <span class="math display">\[\begin{equation*}
+   A^{\underline{k}} = \{ f \colon [k] \to A \: | \: f \mbox{ jest 1-1} \}.
+  \end{equation*}\]</span></p>
+</div>
+<p>Dla naturalnych <span class="math inline">\(k, n\)</span> przyjmujemy <span class="math display">\[\begin{equation*}
+  n^{\underline{k}} = n(n-1) \cdots (n-k+1).
+\end{equation*}\]</span></p>
+<p>Jeżeli <span class="math inline">\(A\)</span> ma <span class="math inline">\(n\)</span> elementów, to pierwszy wyraz wariacji możemy wybrać na <span class="math inline">\(n\)</span> sposobów, drugi na <span class="math inline">\(n-1\)</span> sposobów, trzeci na <span class="math inline">\(n-2\)</span> sposobów itd. Mamy więc <span class="math display">\[\begin{equation*}
+   |A^{\underline{k}}| = n(n-1) \cdots (n-k+1) = n^{\underline{k}}.
+\end{equation*}\]</span> Wzór ten można całkowicie formalnie wyprowadzić z reguły mnożenia poprzez znalezienie bijekcji (jakiej?) między zbiorem <span class="math inline">\(A^{\underline{k}}\)</span> a zbiorem <span class="math display">\[\begin{equation*}
+   [n]\times [n-1] \times \cdots \times [n-k+1].
+\end{equation*}\]</span></p>
+<div id="exm-winda" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.11</strong></span> W dziesięciopiętrowym budynku windą jedzie siedem osób. Na ile sposobów mogą one wysiąść z windy, jeżeli każda osoba wysiada na innym piętrze? Zauważmy, że każdy scenariusz możemy zakodować w równowartościowej funkcji <span class="math inline">\(f \colon [7] \to [10]\)</span>, gdzie <span class="math inline">\(j\)</span>-tej osobie przyporządkowujemy jedno z dziesięciu pięter, na którym wysiada. W skutek czego wszystkich możliwości jest <span class="math inline">\(|[10]^{\underline{7}}| = 10^{\underline{7}}\)</span>.</p>
+</div>
+<div id="exm-5-1-3" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.12</strong></span> &nbsp;</p>
+<ol type="a">
+<li><p>Dla alfabetu <span class="math inline">\(\Sigma=\{a,b,c,d,e,f,g\}\)</span> liczba słów długości <span class="math inline">\(5\)</span> wynosi <span class="math inline">\(7^5=16\,807\)</span>, czyli <span class="math inline">\(|\Sigma^5|=16\,807\)</span>. Liczba słów bez powtarzających się liter to <span class="math inline">\(7\cdot6\cdot5\cdot4\cdot3=2520\)</span>: pierwszą literę wybieramy na <span class="math inline">\(7\)</span> sposobów, drugą na <span class="math inline">\(6\)</span> itd.</p></li>
+<li><p>Dla <span class="math inline">\(\Sigma=\{a,b,c,d\}\)</span> liczba słów długości <span class="math inline">\(2\)</span> bez powtórzeń wynosi <span class="math inline">\(4\cdot3=12\)</span>. Można przedstawić te słowa za pomocą drzewa, jak na rysunku poniżej. Każda droga od początku odpowiada jednemu słowu bez powtórzeń; na przykład droga przez <span class="math inline">\(b\)</span> do <span class="math inline">\(bc\)</span> odpowiada słowu <span class="math inline">\(bc\)</span>. Podobne, lecz znacznie większe drzewo można wyobrazić sobie dla obliczenia z (a), a także dla dowolnej sytuacji, w której stosujemy regułę mnożenia.</p></li>
+</ol>
+<figure class="figure" style="color:inherit; margin:1.5rem 0">
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="295" viewbox="0 0 1120 295" role="img" aria-labelledby="tree-511-title tree-511-desc" style="display:block;width:100%;height:auto;color:inherit">
+<title id="tree-511-title">Drzewo słów dwuliterowych bez powtórzeń</title>
+<desc id="tree-511-desc">Od wierzchołka Początek prowadzą gałęzie do liter a, b, c i d. Każda litera ma trzy liście z inną drugą literą: ab, ac, ad, ba, bc, bd, ca, cb, cd, da, db i dc.</desc>
+<style>
+svg:root { color: #17202a !important; background-color: #ffffff; }
+@media (prefers-color-scheme: dark) {
+  svg:root { color: #e6edf3 !important; background-color: #161b22; }
+}
+</style>
+<g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+<path d="M560 36 L140 135"></path>
+<path d="M140 135 L55 235"></path>
+<path d="M140 135 L140 235"></path>
+<path d="M140 135 L225 235"></path>
+<path d="M560 36 L420 135"></path>
+<path d="M420 135 L335 235"></path>
+<path d="M420 135 L420 235"></path>
+<path d="M420 135 L505 235"></path>
+<path d="M560 36 L700 135"></path>
+<path d="M700 135 L615 235"></path>
+<path d="M700 135 L700 235"></path>
+<path d="M700 135 L785 235"></path>
+<path d="M560 36 L980 135"></path>
+<path d="M980 135 L895 235"></path>
+<path d="M980 135 L980 235"></path>
+<path d="M980 135 L1065 235"></path>
+</g><g fill="currentColor">
+<circle cx="560" cy="36" r="4.8"></circle>
+<circle cx="140" cy="135" r="4.8"></circle>
+<circle cx="420" cy="135" r="4.8"></circle>
+<circle cx="700" cy="135" r="4.8"></circle>
+<circle cx="980" cy="135" r="4.8"></circle>
+<circle cx="55" cy="235" r="4.8"></circle>
+<circle cx="140" cy="235" r="4.8"></circle>
+<circle cx="225" cy="235" r="4.8"></circle>
+<circle cx="335" cy="235" r="4.8"></circle>
+<circle cx="420" cy="235" r="4.8"></circle>
+<circle cx="505" cy="235" r="4.8"></circle>
+<circle cx="615" cy="235" r="4.8"></circle>
+<circle cx="700" cy="235" r="4.8"></circle>
+<circle cx="785" cy="235" r="4.8"></circle>
+<circle cx="895" cy="235" r="4.8"></circle>
+<circle cx="980" cy="235" r="4.8"></circle>
+<circle cx="1065" cy="235" r="4.8"></circle>
+</g><g fill="currentColor" font-family="Georgia, Times New Roman, serif" font-size="23" font-style="italic">
+<text x="154" y="123" text-anchor="start">a</text>
+<text x="55" y="268" text-anchor="middle">ab</text>
+<text x="140" y="268" text-anchor="middle">ac</text>
+<text x="225" y="268" text-anchor="middle">ad</text>
+<text x="434" y="123" text-anchor="start">b</text>
+<text x="335" y="268" text-anchor="middle">ba</text>
+<text x="420" y="268" text-anchor="middle">bc</text>
+<text x="505" y="268" text-anchor="middle">bd</text>
+<text x="714" y="123" text-anchor="start">c</text>
+<text x="615" y="268" text-anchor="middle">ca</text>
+<text x="700" y="268" text-anchor="middle">cb</text>
+<text x="785" y="268" text-anchor="middle">cd</text>
+<text x="994" y="123" text-anchor="start">d</text>
+<text x="895" y="268" text-anchor="middle">da</text>
+<text x="980" y="268" text-anchor="middle">db</text>
+<text x="1065" y="268" text-anchor="middle">dc</text>
+</g><text x="578" y="26" fill="currentColor" font-family="Georgia, Times New Roman, serif" font-size="23">Początek</text></svg>
+<figcaption class="figure-caption">Rysunek 5.1.1. Drzewo słów dwuliterowych bez powtórzeń.</figcaption>
+</figure>
+</div>
+<div id="def-perm" class="theorem definition">
+<p><span class="theorem-title"><strong>Definicja 3.3</strong></span> Permutacją zbioru <span class="math inline">\(A\)</span> nazywamy dowolną bijekcję <span class="math inline">\(\sigma \colon A \to A\)</span>. Zbiór wszystkich permutacji oznaczamy przez <span class="math display">\[\begin{equation*}
+    A! = \{ \sigma \colon A \to A \: | \: \sigma \mbox{ jest 1-1 i na} \}
+  \end{equation*}\]</span></p>
+</div>
+<p>Zauważmy, że permutacja zbioru o <span class="math inline">\(|A|=n\)</span> elementach to <span class="math inline">\(n\)</span> elementów wariacja zbioru <span class="math inline">\(A\)</span>. Wobec czego <span class="math display">\[\begin{equation*}
+  |A!| = n^{\underline{n}} = n(n-1) \cdots 2\cdot 1 = n!
+\end{equation*}\]</span></p>
+<div id="exm-5-1-7" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.13</strong></span> &nbsp;</p>
+<ol type="a">
+<li><p>Liczba uporządkowań talii <span class="math inline">\(52\)</span> kart to <span class="math inline">\(52!\approx8{,}07\cdot10^{67}\)</span>.</p></li>
+<li><p>Policzmy sposoby wybrania pięciu kart <strong>ze zwracaniem</strong>. Zliczamy uporządkowane piątki kart. Ze zwracaniem oznacza, że przed następnym losowaniem karta wraca do talii. Wyniki odpowiadają wzajemnie jednoznacznie elementom <span class="math inline">\(D^5\)</span>, gdzie <span class="math inline">\(D\)</span> jest zbiorem <span class="math inline">\(52\)</span> kart. Reguła mnożenia daje <span class="math inline">\(|D|^5=52^5\)</span> możliwości.</p></li>
+<li><p>Przy wyborze <strong>bez zwracania</strong> wylosowana karta nie wraca do talii. Nie wszystkie piątki z <span class="math inline">\(D^5\)</span> są dopuszczalne: wykluczamy powtórzenia kart. Nadal stosujemy regułę mnożenia, otrzymując <span class="math inline">\(52\cdot51\cdot50\cdot49\cdot48=52^{\underline{5}}\)</span> możliwości.</p></li>
+</ol>
+</div>
+</section>
+<section id="kombinacje" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="kombinacje"><span class="header-section-number">3.6</span> Kombinacje</h2>
+<p>Gdy kolejność jest istotna używamy wariacji. Często jednak kolejność nie ma znaczenia, a wtedy zamiast ciągów trzeba liczyć nieuporządkowane zbiory.</p>
+<div id="def-komn" class="theorem definition">
+<p><span class="theorem-title"><strong>Definicja 3.4</strong></span> <span class="math inline">\(k\)</span>-wyrazową kombinacją bez powtórzeń zbioru <span class="math inline">\(A\)</span> nazywamy dowolny <span class="math inline">\(k\)</span>-elementowy zbiór <span class="math inline">\(B \subseteq A\)</span>. Zbiór wszystkich kombinacji bez powtórzeń oznaczamy przez <span class="math display">\[\begin{equation*}
+    {A \choose k} = \{ B \subseteq A \: | \: |B| = k \}.
+  \end{equation*}\]</span></p>
+</div>
+<p>Wiemy już, że zbiór <span class="math inline">\(n\)</span> elementów ma <span class="math inline">\(2^n\)</span> podzbiorów. Dla <span class="math inline">\(0\le r\le n\)</span> niech <span class="math inline">\(\binom nr\)</span> oznacza liczbę jego podzbiorów <span class="math inline">\(r\)</span>-elementowych. Jest to <strong>współczynnik dwumianowy</strong>, czytany „<span class="math inline">\(n\)</span> po <span class="math inline">\(r\)</span>”, zwany także liczbą kombinacji <span class="math inline">\(r\)</span> elementów spośród <span class="math inline">\(n\)</span>. Oczywiście <span class="math display">\[\begin{equation*}
+   \left|{A \choose k}\right| = {|A| \choose k}.
+\end{equation*}\]</span></p>
+<div id="exm-5-1-8" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.14</strong></span> Policzmy ciągi zer i jedynek długości <span class="math inline">\(72\)</span> zawierające dokładnie <span class="math inline">\(17\)</span> jedynek. Każdy taki ciąg wyznaczamy, wybierając <span class="math inline">\(17\)</span> pozycji dla jedynek spośród <span class="math inline">\(72\)</span> możliwych. Liczba ciągów wynosi więc <span class="math inline">\(\binom{72}{17}\)</span>. Ogólnie, liczba ciągów długości <span class="math inline">\(n\)</span> zawierających <span class="math inline">\(r\)</span> jedynek to <span class="math inline">\(\binom nr\)</span>. Aby zakończyć przykład, potrzebujemy wartości <span class="math inline">\(\binom{72}{17}\)</span>.</p>
+</div>
+<div id="thm-komb" class="theorem">
+<p><span class="theorem-title"><strong>Twierdzenie 3.1</strong></span> Dla <span class="math inline">\(0\le r\le n\)</span> zachodzi <span class="math display">\[
+  \binom nr
+  = \frac{n^{\underline{r}}}{r!}
+  = \frac{n!}{(n-r)!r!}.
+  \]</span></p>
+</div>
+<div id="proof">
+<p>Wybór <span class="math inline">\(r\)</span>-elementowej wariacji zbioru <span class="math inline">\(n\)</span>-elementowego można przeprowadzić w dwóch krokach: wybieramy podzbiór <span class="math inline">\(r\)</span>-elementowy na <span class="math inline">\(\binom nr\)</span> sposobów, następnie porządkujemy go na <span class="math inline">\(r!\)</span> sposobów. Formalnie oznacza to, że istnieje bijekcja <span class="math display">\[\begin{equation*}
+    A^{\underline{r}} \to {A \choose r} \times [r]!
+  \end{equation*}\]</span> Reguła mnożenia daje <span class="math display">\[
+    n^{\underline{r}}=\binom nr r!
+  \]</span></p>
+</div>
+<div id="exm-5-1-9" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.15</strong></span> Rozważmy graf bez pętli, kompletny w tym sensie, że każdą parę różnych wierzchołków łączy dokładnie jedna krawędź. Ile ma krawędzi, jeśli ma <span class="math inline">\(n\ge2\)</span> wierzchołków? Każda krawędź wyznacza dwuelementowy podzbiór zbioru wierzchołków <span class="math inline">\(V\)</span> i odwrotnie. Zbiory te są w bijekcji, zatem liczba krawędzi wynosi <span class="math display">\[
+    \binom n2=\frac{n!}{(n-2)!2!}=\frac{n(n-1)}2.
+  \]</span></p>
+</div>
+<div id="thm-binom" class="theorem">
+<p><span class="theorem-title"><strong>Twierdzenie 3.2</strong></span> Dla dowolnych rzeczywistych <span class="math inline">\(x_0\)</span> i <span class="math inline">\(x_1\)</span> oraz naturalnego <span class="math inline">\(n\)</span>, <span class="math display">\[\begin{equation*}
+    (x_1+x_0)^n = \sum_{k=0}^n {n \choose k} x_1^k x_0^{n-k}.
+  \end{equation*}\]</span></p>
+</div>
+<div id="proof">
+<p>Poprzez wymnożenie wszystkich nawiasów <span class="math display">\[\begin{equation*}
+    (x_0+x_1)^n = \sum_{\epsilon \in \{ 0,1\}^n} x_{\epsilon(1)} \cdots x_{\epsilon(n)}
+  \end{equation*}\]</span> tutaj <span class="math inline">\(\epsilon = (\epsilon(1), \epsilon(2), \ldots , \epsilon(n))\)</span> koduje który z <span class="math inline">\(x_0\)</span> i <span class="math inline">\(x_1\)</span> został wybrany do produktu. Dokładniej <span class="math inline">\(\epsilon(j)=1\)</span> oznacza, że z <span class="math inline">\(j\)</span>-tego nawiasu zostało wybrane <span class="math inline">\(x_1\)</span> i <span class="math inline">\(\epsilon(j)=0\)</span> oznacza, że zostało wybrane <span class="math inline">\(x_0\)</span>. Mamy <span class="math display">\[\begin{equation*}
+   \sum_{\epsilon \in \{ 0,1\}^n} x_{\epsilon(1)} \cdots x_{\epsilon(n)}
+    = \sum_{k=0}^{n} |E_k| x_1^k x_0^{n-k},
+  \end{equation*}\]</span> gdzie, <span class="math inline">\(E_k\)</span> to zbiór tych <span class="math inline">\(\epsilon\)</span>, które wybierają dokładnie <span class="math inline">\(k\)</span> razy <span class="math inline">\(x_1\)</span> w trakcie wymnażania. Dokładniej <span class="math display">\[\begin{equation*}
+    E_k = \{ \epsilon \: : \: \epsilon(1)+\ldots +\epsilon(n) =k\}.
+  \end{equation*}\]</span> Pozostaje zauważyć, że <span class="math display">\[\begin{equation*}
+    |E_k| = {n \choose k}.
+  \end{equation*}\]</span></p>
+</div>
+</section>
+<section id="partia-pokera" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="partia-pokera"><span class="header-section-number">3.7</span> Partia pokera</h2>
+<p>Dobrym sposobem ilustrowania tych technik jest zliczanie układów pokerowych. Talia składa się z czterech kolorów: trefli, kar, kierów i pików. Każdy kolor obejmuje <span class="math inline">\(13\)</span> wartości: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K. A oznacza asa, J waleta, Q damę, a K króla. Każda wartość występuje cztery razy, po jednej karcie każdego koloru.</p>
+<p>Ręka pokerowa jest zbiorem pięciu kart z talii 52 kart. Kolejność wyboru nie ma znaczenia. Strit składa się z pięciu kolejnych wartości, na przykład 8, 9, 10, J, Q. As może być na początku A, 2, 3, 4, 5 albo na końcu 10, J, Q, K, A. Klasyfikujemy ręce w następujące parami rozłączne grupy, wymienione od najmniej do najbardziej prawdopodobnych:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Układ</th>
+<th>Opis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Poker królewski</td>
+<td>10, J, Q, K, A w jednym kolorze.</td>
+</tr>
+<tr class="even">
+<td>Poker</td>
+<td>Strit w jednym kolorze, który nie jest pokerem królewskim.</td>
+</tr>
+<tr class="odd">
+<td>Kareta</td>
+<td>Cztery karty tej samej wartości, na przykład cztery trójki i dziewiątka.</td>
+</tr>
+<tr class="even">
+<td>Ful</td>
+<td>Trzy karty jednej wartości i dwie innej, na przykład trzy walety i dwie ósemki.</td>
+</tr>
+<tr class="odd">
+<td>Kolor</td>
+<td>Pięć kart jednego koloru, bez pokera i pokera królewskiego.</td>
+</tr>
+<tr class="even">
+<td>Strit</td>
+<td>Strit, który nie jest pokerem ani pokerem królewskim.</td>
+</tr>
+<tr class="odd">
+<td>Trójka</td>
+<td>Trzy karty jednej wartości oraz dwie karty dwóch innych wartości.</td>
+</tr>
+<tr class="even">
+<td>Dwie pary</td>
+<td>Dwie karty jednej wartości, dwie drugiej i piąta karta trzeciej wartości.</td>
+</tr>
+<tr class="odd">
+<td>Jedna para</td>
+<td>Dwie karty jednej wartości, jeśli ręka nie należy do żadnej wcześniejszej grupy; na przykład dwa króle, walet, dziewiątka i szóstka.</td>
+</tr>
+<tr class="even">
+<td>Brak układu</td>
+<td>Żaden z powyższych układów.</td>
+</tr>
+</tbody>
+</table>
+<div id="exm-5-1-10" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.16</strong></span> &nbsp;</p>
+<ol type="a">
+<li>Wszystkich rąk pokerowych jest</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+\binom{52}{5} &amp; =\frac{52\cdot51\cdot50\cdot49\cdot48}{5\cdot4\cdot3\cdot2\cdot1} \\
+&amp; =52\cdot17\cdot10\cdot49\cdot6=2\,598\,960.
+\end{align*}\]</span></p>
+<ol start="2" type="a">
+<li><p>Ile jest fulów? Nazwijmy rękę z trzema waletami i dwiema ósemkami fulem typu <span class="math inline">\((J,8)\)</span>. Kolejność ma znaczenie: typ <span class="math inline">\((8,J)\)</span> oznacza trzy ósemki i dwa walety. Typy <span class="math inline">\((J,J)\)</span> i <span class="math inline">\((8,8)\)</span> są niemożliwe. Typy fulów odpowiadają więc 2-permutacjom 13 wartości kart: jest ich <span class="math inline">\(13\cdot12\)</span>. Dla typu <span class="math inline">\((J,8)\)</span> trzy walety wybieramy na <span class="math inline">\(\binom43=4\)</span> sposoby, a dwie ósemki na <span class="math inline">\(\binom42=6\)</span> sposobów. Mamy <span class="math inline">\(4\cdot6=24\)</span> ręce tego typu. Rozumowanie działa dla każdego typu, więc wszystkich fulów jest <span class="math inline">\(13\cdot12\cdot24=3744\)</span>.</p></li>
+<li><p>Ile rąk zawiera dwie pary? Typ <span class="math inline">\(\{Q,4\}\)</span> oznacza dwie damy, dwie czwórki i kartę trzeciej wartości. Zapis zbiorowy podkreśla, że <span class="math inline">\(\{Q,4\}=\{4,Q\}\)</span> i nie chcemy liczyć ręki dwukrotnie. Istnieje <span class="math inline">\(\binom{13}{2}\)</span> typów. Dla każdego z nich obie pary wybieramy na <span class="math inline">\(\binom42\)</span> sposobów każdą, a piątą kartę na <span class="math inline">\(52-8=44\)</span> sposoby. Otrzymujemy</p></li>
+</ol>
+<p><span class="math display">\[
+\binom{13}{2}\binom42\binom42\cdot44=123\,552.
+\]</span></p>
+<ol start="4" type="a">
+<li>Ile rąk jest stritami? Najpierw liczymy także pokery i pokery królewskie. Typ strita określa jego najwyższa wartość. Może nią być 5, 6, 7, 8, 9, 10, J, Q, K lub A, więc typów jest 10. Dla każdego typu mamy cztery możliwości dla każdej z pięciu kart: razem <span class="math inline">\(4^5\)</span>. Otrzymujemy <span class="math inline">\(10\cdot4^5=10\,240\)</span> stritów. Odejmując 4 pokery królewskie i 36 pozostałych pokerów, dostajemy 10 200 zwykłych stritów.</li>
+</ol>
+</div>
+</section>
+<section id="sec-klasyczne-urodziny" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="sec-klasyczne-urodziny"><span class="header-section-number">3.8</span> Problem urodzin</h2>
+<p>Ile osób powinno znaleźć się w grupie, aby prawdopodobieństwo wspólnych urodzin przynajmniej dwóch z nich przekroczyło <span class="math inline">\(1/2\)</span>?</p>
+<p>Przyjmijmy uproszczony model: rok ma <span class="math inline">\(365\)</span> dni, każda konfiguracja urodzin jest jednakowo prawdopodobna. Pomijamy więc lata przestępne i sezonowe różnice w częstości urodzeń.</p>
+<p>Dla grupy <span class="math inline">\(k\)</span> osób przestrzenią wyników jest</p>
+<p><span class="math display">\[
+\Omega=[365]^k.
+\]</span></p>
+<p>Niech <span class="math inline">\(C_k\)</span> oznacza zdarzenie, że co najmniej dwie osoby mają urodziny tego samego dnia. Bezpośrednie zliczanie wyników sprzyjających <span class="math inline">\(C_k\)</span> jest niewygodne: wspólną datę może mieć jedna para, kilka par, trzy osoby, a nawet cała grupa.</p>
+<p>Znacznie łatwiej policzyć zdarzenie przeciwne. Dla <span class="math inline">\(1\leq k\leq365\)</span> wszystkie daty są różne z prawdopodobieństwem</p>
+<p><span class="math display">\[
+\mathbb P(C_k^c)
+=\frac{365^{\underline{k}}}{365^k}
+=\prod_{j=0}^{k-1}\left(1-\frac{j}{365}\right).
+\]</span> Korzystając z nierówności <span class="math inline">\(1+x\leq e^x\)</span> mamy <span class="math display">\[\begin{equation*}
+  \mathbb{P}[C_k^c] \leq e^{- \frac{1}{365}} e^{- \frac{2}{365}} \cdots e^{- \frac{k-1}{365}}
+  = e^{- \frac{k(k-1)}{730}}
+\end{equation*}\]</span> Na to aby <span class="math inline">\(\mathbb{P}[C_k^c]\leq 1/2\)</span> wystarcza by <span class="math inline">\(k(k-1) \geq 730 \log(2) \approx 505,997\)</span>, czyli <span class="math inline">\(k \leq 23\)</span>.</p>
+<p>Dla <span class="math inline">\(k\geq366\)</span> mamy <span class="math inline">\(\mathbb P(C_k)=1\)</span>, ponieważ różne daty dla wszystkich osób są wtedy niemożliwe.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Liczba osób <span class="math inline">\(k\)</span></th>
+<th style="text-align: right;">Prawdopodobieństwo wspólnych urodzin</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(10\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0{,}1169\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(20\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0{,}4114\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(22\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0{,}4757\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(23\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0{,}5073\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(30\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0{,}7063\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><span class="math inline">\(40\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0{,}8912\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><span class="math inline">\(50\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0{,}9704\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Prawdopodobieństwo rośnie wraz z liczbą osób. Porównanie wyników dla <span class="math inline">\(22\)</span> i <span class="math inline">\(23\)</span> osób pokazuje więc, że <strong>najmniejsza szukana liczba to <span class="math inline">\(23\)</span></strong>.</p>
+<p>Skąd tak niewielka liczba? Nie pytamy, czy ktoś ma urodziny w jednym z góry ustalonym dniu. Porównujemy wszystkie pary osób. W grupie <span class="math inline">\(23\)</span> osób jest aż <span class="math display">\[
+\binom{23}{2}=253
+\]</span> pary. Jest więc wiele możliwości pojawienia się zgodności. Samej liczby par nie wolno jednak po prostu podzielić przez <span class="math inline">\(365\)</span>: zdarzenia zgodności poszczególnych par nie są rozłączne.</p>
+</section>
+<section id="zasada-właczeń-i-wyłączeń" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="zasada-właczeń-i-wyłączeń"><span class="header-section-number">3.9</span> Zasada właczeń i wyłączeń</h2>
+<p>Zliczanie elementów części wspólnej zbiorów, gdzie kluczowym spójnikiem jest „i”, często jest łatwe. Natomiast bezpośrednie zliczanie elementów sumy zbiorów często sprawia trudność. Zasada włączeń i wyłączeń wyraża liczność sumy przez liczności odpowiednich części wspólnych.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Wskazówka</span>Zasada włączeń i wyłączeń
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aby obliczyć liczność <span class="math inline">\(A_1\cup\cdots\cup A_n\)</span>, oblicz liczności wszystkich możliwych części wspólnych zbiorów z <span class="math inline">\(\{A_1,\ldots,A_n\}\)</span>. Dodaj wyniki dla części wspólnych nieparzystej liczby zbiorów, a odejmij wyniki dla części wspólnych parzystej liczby zbiorów.</p>
+</div>
+</div>
+<p>Dla przykładu, dla dwóch zdarzeń <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> mamy znany nam już wzór <span class="math display">\[\begin{equation*}
+   |A \cup B| = |A| + |B| - |A\cap B|.
+\end{equation*}\]</span> Dla trzech zdarzeń <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>, <span class="math display">\[\begin{align*}
+  &amp; |A\cup B \cup C| = |A|+|B|+|C| \\ &amp; -|A\cap B| - |A\cap C| - |B\cap C| \\ &amp;+ |A\cap B \cap C|.
+\end{align*}\]</span></p>
+<p>„Włączamy”, czyli dodajemy, liczności poszczególnych zbiorów; „wyłączamy”, czyli odejmujemy, części wspólne każdej pary; następnie dodajemy części wspólne każdej trójki itd.</p>
+<div id="exm-5-3-1" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.17</strong></span> &nbsp;</p>
+<ol type="a">
+<li><p>Policzmy liczby w <span class="math inline">\(S=\{1,2,\ldots,2000\}\)</span> podzielne przez <span class="math inline">\(9\)</span> lub <span class="math inline">\(11\)</span>. Dla dodatniego <span class="math inline">\(k\)</span> niech <span class="math inline">\(D_k=\{n\in S:k\mid n\}\)</span>. Szukamy <span class="math inline">\(|D_9\cup D_{11}|\)</span>. Ponieważ <span class="math inline">\(|D_k|=\lfloor2000/k\rfloor\)</span>, mamy <span class="math inline">\(|D_9|=222\)</span>, <span class="math inline">\(|D_{11}|=181\)</span> i <span class="math inline">\(|D_9\cap D_{11}|=|D_{99}|=20\)</span>. Zatem <span class="math inline">\(|D_9\cup D_{11}|=222+181-20=383\)</span>.</p></li>
+<li><p>Przy podzielności przez <span class="math inline">\(9\)</span>, <span class="math inline">\(11\)</span> lub <span class="math inline">\(13\)</span> trudniejsze są tylko rachunki. Ponadto <span class="math inline">\(|D_{13}|=153\)</span>, <span class="math inline">\(|D_9\cap D_{13}|=|D_{117}|=17\)</span>, <span class="math inline">\(|D_{11}\cap D_{13}|=|D_{143}|=13\)</span>, <span class="math inline">\(|D_9\cap D_{11}\cap D_{13}|=|D_{1287}|=1\)</span>. Stąd <span class="math display">\[\begin{align*}
+   &amp;|D_9\cup D_{11}\cup D_{13}|\\&amp;
+   =222+181+153-20-17-13+1\\
+   &amp;=507.
+\end{align*}\]</span></p></li>
+<li><p>Policzmy jeszcze liczby podzielne przez <span class="math inline">\(9\)</span>, <span class="math inline">\(11\)</span>, <span class="math inline">\(13\)</span> lub <span class="math inline">\(15\)</span>. Trzeba uważać: na przykład <span class="math inline">\(D_9\cap D_{15}=D_{45}\)</span>, a nie <span class="math inline">\(D_{135}\)</span>, ponieważ podzielność przez <span class="math inline">\(9\)</span> i <span class="math inline">\(15\)</span> jest równoważna podzielności przez <span class="math inline">\(\operatorname{lcm}(9,15)=45\)</span>. Otrzymujemy <span class="math display">\[\begin{align*}
+  &amp; |D_{15}|=133, \\
+  &amp; |D_9\cap D_{15}|=|D_{45}|=44,\\
+  &amp; |D_{11}\cap D_{15}|=|D_{165}|=12,\\
+  &amp;|D_{13}\cap D_{15}|=|D_{195}|=10,\\
+  &amp; |D_9\cap D_{11}\cap D_{15}|=|D_{495}|=4,\\
+  &amp;|D_9\cap D_{13}\cap D_{15}|=|D_{585}|=3,\\
+  &amp; |D_{11}\cap D_{13}\cap D_{15}|=|D_{2145}|=0,\\
+  &amp;|D_9\cap D_{11}\cap D_{13}\cap D_{15}|=|D_{6435}|=0.
+\end{align*}\]</span> Zasada włączeń i wyłączeń daje <span class="math display">\[
+\begin{align*}
+&amp; |D_9\cup D_{11}\cup D_{13}\cup D_{15}| \\
+&amp;= 222+181+153+133\\
+&amp;-(20+17+44+13+12+10) \\ &amp;+(1+4+3+0)-0=581.
+\end{align*}
+\]</span></p></li>
+</ol>
+</div>
+<p>Zasada przydaje się także do zliczania części wspólnej zbiorów, których dopełnienia są łatwiejsze do opisania.</p>
+<div id="exm-5-3-2" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.18</strong></span> Losujemy liczbę z <span class="math inline">\(T=\{1000,1001,\ldots,9999\}\)</span>. Szukamy prawdopodobieństwa, że jej zapis zawiera co najmniej jedno <span class="math inline">\(0\)</span>, co najmniej jedną <span class="math inline">\(1\)</span> i co najmniej jedną <span class="math inline">\(2\)</span>. Przykładami są <span class="math inline">\(1072\)</span> i <span class="math inline">\(2101\)</span>. Łatwiej policzyć liczby, które nie zawierają określonych cyfr. Dla <span class="math inline">\(k=0,1,2\)</span> niech <span class="math display">\[
+A_k=\{n\in T:\text{ zapis }n\text{ nie zawiera cyfry }k\}.
+\]</span> Wtedy poszukiwany zbiór to <span class="math inline">\(A_0^c\cap A_1^c\cap A_2^c=(A_0\cup A_1\cup A_2)^c\)</span>, zgodnie z prawem de Morgana. Reguła mnożenia daje <span class="math inline">\(|A_1|=8\cdot9^3\)</span>: pierwsza cyfra nie może być zerem ani jedynką, a pozostałe nie mogą być jedynkami. Podobnie <span class="math display">\[\begin{align*}
+  |A_0|&amp;=9^4=6561, \\
+  |A_1|&amp;=|A_2|&amp;=8\cdot9^3=5832,\\
+  |A_0\cap A_1|&amp; =|A_0\cap A_2|=8^4=4096,\\
+  |A_1\cap A_2|&amp;=7\cdot8^3=3584,\\
+  |A_0\cap A_1\cap A_2|&amp;=7^4=2401.
+\end{align*}\]</span> Stąd <span class="math display">\[\begin{align*}
+   |A_0\cup A_1\cup A_2| = &amp; 6561+5832+5832\\
+   &amp;-(4096+4096+3584)\\ &amp; +2401=8850.
+\end{align*}\]</span> Zdarzenie przeciwne ma <span class="math inline">\(9000-8850=150\)</span> elementów, a jego prawdopodobieństwo wynosi <span class="math inline">\(150/9000=1/60\)</span>.</p>
+</div>
+<div id="exm-5-3-3" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 3.19</strong></span> Ustawiamy cyfry <span class="math inline">\(1,2,\ldots,9\)</span> w losowej kolejności. Jakie jest prawdopodobieństwo, że żadna nie pozostanie na naturalnym miejscu, czyli <span class="math inline">\(1\)</span> na pierwszym, <span class="math inline">\(2\)</span> na drugim itd.? Łatwiej policzyć zdarzenie przeciwne. Niech <span class="math inline">\(A_k\)</span> będzie zbiorem permutacji, w których na pozycji <span class="math inline">\(k\)</span> stoi cyfra <span class="math inline">\(k\)</span>.</p>
+<p>Każdy <span class="math inline">\(A_i\)</span> ma <span class="math inline">\(8!\)</span> elementów: ustalamy jedną cyfrę i dowolnie porządkujemy pozostałe. Każde <span class="math inline">\(A_i\cap A_j\)</span>, dla <span class="math inline">\(i&lt;j\)</span>, ma <span class="math inline">\(7!\)</span> elementów; każda część wspólna trzech takich zbiorów ma <span class="math inline">\(6!\)</span> itd. Jest <span class="math inline">\(9\)</span> zbiorów <span class="math inline">\(A_i\)</span>, <span class="math inline">\(\binom92\)</span> par, <span class="math inline">\(\binom93\)</span> trójek itd. Zatem <span class="math display">\[\begin{align*}
+  &amp;|A_1\cup\cdots\cup A_9|\\
+  &amp; =9\cdot8!-\binom92 7!+\binom93 6!-\binom94 5!\\ &amp; +\ldots+\binom99 0!
+\end{align*}\]</span> Ostatni składnik <span class="math inline">\(\binom99 0!=1\)</span> zlicza permutację identycznościową, w której żadna cyfra się nie przesunęła. Ponieważ <span class="math inline">\(\binom9m(9-m)!=9!/m!\)</span>, dostajemy <span class="math display">\[\begin{align*}
+  &amp; |A_1\cup\cdots\cup A_9|\\
+  &amp; =9!\left(\frac1{1!}-\frac1{2!}+\frac1{3!}-\cdots-\frac1{8!}+\frac1{9!}\right).
+\end{align*}\]</span> Wszystkich permutacji jest <span class="math inline">\(9!\)</span>, więc prawdopodobieństwo co najmniej jednej cyfry na swoim miejscu to <span class="math display">\[
+  1-1/2!+1/3!-\cdots-1/8!+1/9!.
+\]</span> Prawdopodobieństwo, że żadna nie jest na swoim miejscu, wynosi <span class="math display">\[\begin{align*}
+&amp; \frac1{2!}-\frac1{3!}+\cdots+\frac1{8!}-\frac1{9!}\\
+&amp; =1-1+\frac1{2!}-\frac1{3!}+\cdots+\frac1{8!}-\frac1{9!}.
+\end{align*}\]</span></p>
+<p>To początek szeregu dla <span class="math inline">\(e^{-1}\)</span>, gdzie <span class="math inline">\(e\approx2{,}71828\)</span>. Odpowiedź wynosi zatem około <span class="math inline">\(1/e\approx0{,}368\)</span>.</p>
+</div>
+<div id="thm-incl" class="theorem">
+<p><span class="theorem-title"><strong>Twierdzenie 3.3</strong></span> Dla dowolnych skończonych podzbiorów <span class="math inline">\(A_1, \ldots , A_n \subseteq \Omega\)</span>, <span class="math display">\[\begin{align*}
+   &amp; \left| A_1 \cup A_2 \cup \ldots \cup A_n \right| = \sum_{k=1}^m |A_k| \\
+   &amp;- \sum_{k,j=1, k&lt;j}^n |A_k\cap A_j| + \ldots (-1)^{n-1}|A_1\cap \ldots A_n|
+\end{align*}\]</span></p>
+</div>
+<div id="proof">
+<p>Twierdzenie o dwumianie daje wzór: <span class="math display">\[\begin{align*}
+  &amp; 0=\sum_{k=0}^m(-1)^k\binom mk \\
+  &amp; =1-\binom m1+\binom m2-\cdots+(-1)^m.
+  \end{align*}\]</span> Dla nieparzystego <span class="math inline">\(m\)</span> łatwo dostrzec, że składniki <span class="math inline">\(\binom mk\)</span> i <span class="math inline">\(\binom m{m-k}\)</span> mają przeciwne znaki i się redukują. Dla parzystego <span class="math inline">\(m\)</span> nie jest to tak oczywiste bez twierdzenia.</p>
+<p>Wzór ten daje dowód zasady włączeń i wyłączeń. Rozważmy element należący do dokładnie <span class="math inline">\(m\)</span> zbiorów, powiedzmy <span class="math inline">\(A_1,\ldots,A_m\)</span>. W sumie liczności zbiorów zliczamy go <span class="math inline">\(m\)</span> razy, następnie odejmujemy po jednym razie dla każdej pary, dodajemy dla każdej trójki itd. Jego łączny wkład wynosi <span class="math display">\[
+    \binom m1-\binom m2+\cdots+(-1)^{m+1}\binom mm=1.
+  \]</span> Każdy element sumy został więc policzony dokładnie raz.</p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Skopiowano!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Skopiowano!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./aksjomaty.html" class="pagination-link" aria-label="Aksjomatyka rachunku prawdopodobieństwa">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aksjomatyka rachunku prawdopodobieństwa</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./warunkowe.html" class="pagination-link" aria-label="Prawdopodobieństwo warunkowe">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo warunkowe</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2026, Piotr Dyszewski</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.35">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>4&nbsp; Prawdopodobieństwo warunkowe – Rachunek prawdopodobieństwa (AI)</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./klasyczne.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-46f66b053e56abd73bb6e954d61a315b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-4d174a927e64a7b5d77cac81bb67e0a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Brak wyników",
+    "search-matching-documents-text": "dopasowane dokumenty",
+    "search-copy-link-title": "Kopiuj link do wyszukiwania",
+    "search-hide-matches-text": "Ukryj dodatkowe dopasowania",
+    "search-more-match-text": "więcej dopasowań w tym dokumencie",
+    "search-more-matches-text": "więcej dopasowań w tym dokumencie",
+    "search-clear-button-title": "Wyczyść",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Anuluj",
+    "search-submit-button-title": "Zatwierdź",
+    "search-label": "Szukaj"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Notatki</a></li><li class="breadcrumb-item"><a href="./warunkowe.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo warunkowe</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Przełącz pasek boczny" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Szukaj" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Rachunek prawdopodobieństwa (AI)</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/pdyszewski/RPAI/" title="Kod źródłowy" class="quarto-navigation-tool px-1" aria-label="Kod źródłowy"><i class="bi bi-github"></i></a>
+    <a href="./Rachunek-prawdopodobieństwa--AI-.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Szukaj"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Słowo wstępne</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sylabus.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sylabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Notatki</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Przełącz sekcję">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Wstęp</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./aksjomaty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aksjomatyka rachunku prawdopodobieństwa</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./klasyczne.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo klasyczne</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./warunkowe.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo warunkowe</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Listy zadań</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Przełącz sekcję">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lista1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lista 1. Przestrzenie zdarzeń elementarnych</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lista2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lista 2. Prawdopodobieństwo klasyczne</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Spis treści</h2>
+   
+  <ul>
+  <li><a href="#sec-warunkowe-definicje" id="toc-sec-warunkowe-definicje" class="nav-link active" data-scroll-target="#sec-warunkowe-definicje"><span class="header-section-number">4.1</span> Podstawowe definicje</a></li>
+  <li><a href="#sec-prawdopodobienstwo-calkowite" id="toc-sec-prawdopodobienstwo-calkowite" class="nav-link" data-scroll-target="#sec-prawdopodobienstwo-calkowite"><span class="header-section-number">4.2</span> Wzór na prawdopodobieństwo całkowite</a></li>
+  <li><a href="#sec-wzor-bayesa" id="toc-sec-wzor-bayesa" class="nav-link" data-scroll-target="#sec-wzor-bayesa"><span class="header-section-number">4.3</span> Wzór Bayesa</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Notatki</a></li><li class="breadcrumb-item"><a href="./warunkowe.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo warunkowe</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-prawdopodobienstwo-warunkowe" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo warunkowe</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Rozważmy przykład z finansów. W chwili <span class="math inline">\(0\)</span> kupujemy europejską opcję kupna, czyli kontrakt dający prawo zakupu akcji w ustalonej chwili <span class="math inline">\(1\)</span> po określonej cenie wykonania <span class="math inline">\(K\)</span>. Interesuje nas przyszła cena akcji <span class="math inline">\(S_1\)</span>, ponieważ wypłata z opcji wynosi <span class="math inline">\(\max(S_1-K,0)\)</span>.</p>
+<p>Załóżmy, że w chwili <span class="math inline">\(0{,}8\)</span> chcemy sprzedać ten kontrakt. Dysponujemy wtedy informacją o cenie akcji na przedziale <span class="math inline">\([0,0{,}8]\)</span>. Pytamy, jak ta informacja zmienia naszą ocenę możliwych cen w chwili <span class="math inline">\(1\)</span>.</p>
+<figure class="figure" style="color:inherit;margin:1.5rem 0">
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 840 300" role="img" aria-labelledby="war-price-title war-price-desc" style="display:block;width:100%;height:auto;color:inherit">
+<title id="war-price-title">Znana historia ceny i możliwe przyszłe przebiegi</title>
+<desc id="war-price-desc">Do chwili 0,8 znamy przebieg ceny. Dalej przedstawiono trzy hipotetyczne kontynuacje do chwili 1.</desc>
+<g stroke="currentColor" fill="none" stroke-width="1.5">
+<path d="M65 35 V245 H790"></path>
+<path d="M625 35 V245" stroke-dasharray="5 5" opacity="0.5"></path>
+<path d="M65 175 L95 167 L125 186 L155 158 L185 171 L215 141 L245 153 L275 130 L305 149 L335 126 L365 137 L395 111 L425 123 L455 102 L485 128 L515 109 L545 120 L575 93 L605 109 L625 100" stroke-width="3"></path>
+<path d="M625 100 L650 88 L675 103 L700 77 L725 87 L750 60 L775 47" stroke-width="2" stroke-dasharray="7 4"></path>
+<path d="M625 100 L650 118 L675 107 L700 130 L725 120 L750 149 L775 139" stroke-width="2" stroke-dasharray="3 4"></path>
+<path d="M625 100 L650 124 L675 143 L700 135 L725 166 L750 175 L775 203" stroke-width="2" stroke-dasharray="11 5"></path>
+</g>
+<g fill="currentColor" font-family="sans-serif" font-size="17">
+<text x="42" y="22">Cena</text><text x="787" y="278">t</text>
+<text x="65" y="269" text-anchor="middle">0</text><text x="625" y="269" text-anchor="middle">0,8</text><text x="775" y="269" text-anchor="middle">1</text>
+<text x="345" y="294" text-anchor="middle">znana historia</text><text x="700" y="294" text-anchor="middle">możliwa przyszłość</text>
+</g></svg>
+<figcaption class="figure-caption">Schemat poglądowy: obserwowana historia i przykładowe kontynuacje ceny. Nie przedstawia danych rynkowych ani prognozy.</figcaption>
+</figure>
+<p>Przeszłość i przyszłość można traktować jako dwie części doświadczenia losowego. Jak wiedza o pierwszej wpływa na prawdopodobieństwa wyników drugiej? Pierwszym krokiem do takich zastosowań jest zrozumienie prawdopodobieństwa warunkowego. Warunkowanie całej historii procesu wymaga bardziej zaawansowanego języka; tutaj zaczniemy od warunkowania zdarzeniem o dodatnim prawdopodobieństwie.</p>
+<section id="sec-warunkowe-definicje" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="sec-warunkowe-definicje"><span class="header-section-number">4.1</span> Podstawowe definicje</h2>
+<div id="exm-warunkowe-kostki" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 4.1</strong></span> Rzucamy dwiema symetrycznymi kostkami sześciennymi. Przestrzeń wyników ma postać</p>
+<p><span class="math display">\[
+\Omega=\{1,2,\ldots,6\}^2.
+\]</span></p>
+<p>Każdej z 36 par przypisujemy prawdopodobieństwo <span class="math inline">\(1/36\)</span>. Zdarzenie „suma oczek wynosi 6” to</p>
+<p><span class="math display">\[
+A=\{(1,5),(2,4),(3,3),(4,2),(5,1)\},
+\]</span></p>
+<p>więc <span class="math inline">\(\mathbb P[A]=5/36\)</span>.</p>
+<p>Załóżmy teraz, że wiemy, iż na pierwszej kostce wypadło jedno oczko. Informacja ta oznacza zdarzenie</p>
+<p><span class="math display">\[
+B=\{(1,1),(1,2),(1,3),(1,4),(1,5),(1,6)\}.
+\]</span></p>
+<p>Po uwzględnieniu tej informacji pozostaje sześć jednakowo prawdopodobnych wyników. Tylko <span class="math inline">\((1,5)\)</span> należy do <span class="math inline">\(A\)</span>, zatem nowe prawdopodobieństwo wynosi <span class="math inline">\(1/6\)</span>. Możemy je wyrazić za pomocą pierwotnej miary:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\frac{|A\cap B|}{|B|}
+&amp;=\frac{|A\cap B|/|\Omega|}{|B|/|\Omega|}\\
+&amp;=\frac{\mathbb P[A\cap B]}{\mathbb P[B]}
+=\frac{1/36}{6/36}=\frac16.
+\end{aligned}
+\]</span></p>
+</div>
+<p>Ta konstrukcja pojawia się tak często, że ma własną nazwę.</p>
+<div id="def-prawdopodobienstwo-warunkowe" class="theorem definition">
+<p><span class="theorem-title"><strong>Definicja 4.1</strong></span> Niech <span class="math inline">\((\Omega,\mathbb P)\)</span> będzie dyskretną przestrzenią probabilistyczną, a <span class="math inline">\(B\subseteq \Omega\)</span> zdarzeniem takim, że <span class="math inline">\(\mathbb P[B]&gt;0\)</span>. <strong>Prawdopodobieństwem warunkowym</strong> zdarzenia <span class="math inline">\(A\)</span> pod warunkiem zajścia <span class="math inline">\(B\)</span> nazywamy <span class="math display">\[
+\mathbb P[A\mid B]=\frac{\mathbb P[A\cap B]}{\mathbb P[B]}.
+\]</span></p>
+</div>
+<p>Przy ustalonym <span class="math inline">\(B\)</span> funkcja <span class="math inline">\(\mathbb P_B[A]=\mathbb P[A\mid B]\)</span> jest miarą probabilistyczną na <span class="math inline">\(\Omega\)</span>. Istotnie, jeżeli przez <span class="math inline">\(p\)</span> oznaczymy funkcję prawdopodobieństwa stowarzyszoną z wyjściową miarą probabilistyczną <span class="math inline">\(\mathbb{P}\)</span>, czyli <span class="math inline">\(p(\omega) = \mathbb{P}[\{ \omega\}]\)</span> dla której <span class="math display">\[\begin{equation*}
+  \mathbb{P}[A] = \sum_{\omega \in A} p(\omega)
+\end{equation*}\]</span> Wówczas dla <span class="math display">\[\begin{equation*}
+   p_B(\omega) = \left\{ \begin{array}{cc} \frac{p(\omega)}{\mathbb{P}[B]} &amp; \omega \in B \\ 0 &amp; \omega\notin B  \end{array}\right.
+\end{equation*}\]</span> mamy <span class="math display">\[\begin{equation*}
+   \mathbb{P}_B[A] = \sum_{\omega \in A} p_B(\omega).
+\end{equation*}\]</span> W szczególności <span class="math display">\[
+\mathbb P_B[\Omega]=1,\qquad \mathbb P_B[B]=1,
+\]</span> a dla parami rozłącznych <span class="math inline">\(A_1,A_2,\ldots, A_N\)</span> <span class="math display">\[\begin{align*}
+\mathbb P_B\left[\bigcup_{n=1}^{N}A_n\right]
+&amp; =\frac{\sum_{n=1}^{\infty}\mathbb P[A_n\cap B]}{\mathbb P[B]}\\
+&amp; =\sum_{n=1}^{N}\mathbb P_B[A_n].
+\end{align*}\]</span></p>
+<p>Warunkowanie pozwala uwzględnić dodatkową informację. Na przykład model ryzyka może korzystać z wieku, historii zdarzeń lub charakterystyki badanego obiektu.</p>
+<div id="exm-warunkowe-dzieci" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 4.2</strong></span> Rozważamy rodzinę z dwojgiem dzieci. Przyjmujemy uproszczony model: chłopiec i dziewczynka są jednakowo prawdopodobni. Pierwsza współrzędna oznacza <strong>starsze</strong> dziecko, druga młodsze; <span class="math inline">\(c\)</span> oznacza chłopca, <span class="math inline">\(d\)</span> dziewczynkę. Wówczas <span class="math display">\[
+\Omega=\{(c,c),(c,d),(d,c),(d,d)\}.
+\]</span> Jakie jest prawdopodobieństwo dwóch chłopców? (a) Jeśli wiemy, że starsze dziecko jest chłopcem, warunkujemy zdarzeniem <span class="math inline">\(B=\{(c,c),(c,d)\}\)</span>. Otrzymujemy <span class="math display">\[
+\mathbb P[\{(c,c)\}\mid B]=\frac12.
+\]</span> (b) Jeśli wiemy, że <strong>co najmniej jedno dziecko jest chłopcem</strong>, warunkujemy zdarzeniem <span class="math inline">\(D=\{(c,c),(c,d),(d,c)\}\)</span>, więc <span class="math display">\[
+\mathbb P[\{(c,c)\}\mid D]=\frac13.
+\]</span> (c) Informacja „co najmniej jedno dziecko ma na imię Franek” nie jest tym samym co informacja z (b). Załóżmy dodatkowo, że każdy chłopiec ma to imię z prawdopodobieństwem <span class="math inline">\(f&gt;0\)</span>, że dziewczynki go nie mają i że nadawanie imion jest niezależne między dziećmi oraz od płci drugiego dziecka. Niech <span class="math inline">\(F\)</span> oznacza co najmniej jednego Franka. W rozszerzonym modelu <span class="math display">\[
+\mathbb P[F\mid(c,c)]=1-(1-f)^2=2f-f^2,
+\]</span> natomiast <span class="math inline">\(\mathbb P[F\mid(c,d)]=\mathbb P[F\mid(d,c)]=f\)</span> i <span class="math inline">\(\mathbb P[F\mid(d,d)]=0\)</span>. Zatem <span class="math display">\[
+\mathbb P[(c,c)\mid F]
+=\frac{(2f-f^2)/4}{(2f-f^2+f+f)/4}
+=\frac{2-f}{4-f}.
+\]</span> Dla małego <span class="math inline">\(f\)</span> wynik jest bliski <span class="math inline">\(1/2\)</span>, a dla <span class="math inline">\(f=1\)</span> wynosi <span class="math inline">\(1/3\)</span>. Wynik zależy również od sposobu uzyskania informacji: poznanie imienia konkretnego dziecka jest innym zdarzeniem niż stwierdzenie, że co najmniej jedno nosi dane imię.</p>
+</div>
+</section>
+<section id="sec-prawdopodobienstwo-calkowite" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-prawdopodobienstwo-calkowite"><span class="header-section-number">4.2</span> Wzór na prawdopodobieństwo całkowite</h2>
+<p>Definicja prawdopodobieństwa warunkowego daje <strong>regułę mnożenia</strong>:</p>
+<p><span class="math display">\[
+\mathbb P[A\cap B]=\mathbb P[B]\mathbb P[A\mid B].
+\]</span></p>
+<p>Zdarzenia <span class="math inline">\(A\cap B\)</span> i <span class="math inline">\(A\cap B^c\)</span> są rozłączne. Jeśli <span class="math inline">\(0&lt;\mathbb P[B]&lt;1\)</span>, to</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb P[A]
+&amp;=\mathbb P[A\cap B]+\mathbb P[A\cap B^c]\\
+&amp;=\mathbb P[A\mid B]\mathbb P[B]
++\mathbb P[A\mid B^c]\mathbb P[B^c].
+\end{aligned}
+\]</span></p>
+<p>Wzór szczególnie ułatwia rachunki w doświadczeniach wieloetapowych. Uogólnijmy go na więcej zdarzeń.</p>
+<div id="def-rozbicie-przestrzeni" class="theorem definition">
+<p><span class="theorem-title"><strong>Definicja 4.2</strong></span> Rodzinę zdarzeń <span class="math inline">\(\{B_k\}_{k\in I}\)</span>, skończoną lub przeliczalną, nazywamy <strong>rozbiciem</strong> przestrzeni <span class="math inline">\(\Omega\)</span>, jeżeli</p>
+<p><span class="math display">\[
+\Omega=\bigcup_{k\in I}B_k,
+\qquad B_i\cap B_j=\varnothing\quad(i\ne j).
+\]</span></p>
+</div>
+<div id="thm-prawdopodobienstwo-calkowite" class="theorem">
+<p><span class="theorem-title"><strong>Twierdzenie 4.1 (Wzór na prawdopodobieństwo całkowite)</strong></span> Jeżeli <span class="math inline">\(\{B_k\}_{k\in I}\)</span> jest skończonym lub przeliczalnym rozbiciem <span class="math inline">\(\Omega\)</span> i <span class="math inline">\(\mathbb P[B_k]&gt;0\)</span> dla każdego <span class="math inline">\(k\in I\)</span>, to dla dowolnego <span class="math inline">\(A\subseteq \Omega\)</span>, <span class="math display">\[
+\mathbb P[A]=\sum_{k\in I}\mathbb P[A\mid B_k]\mathbb P[B_k].
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Dowód</em>. </span>Korzystając z rozbicia, addytywności i definicji prawdopodobieństwa warunkowego, otrzymujemy</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb P[A]
+&amp;=\mathbb P\left[A\cap\bigcup_{k\in I}B_k\right]\\
+&amp;=\mathbb P\left[\bigcup_{k\in I}(A\cap B_k)\right]\\
+&amp;=\sum_{k\in I}\mathbb P[A\cap B_k]
+=\sum_{k\in I}\mathbb P[A\mid B_k]\mathbb P[B_k].
+\end{aligned}
+\]</span></p>
+</div>
+<div id="exm-warunkowe-loteria" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 4.3</strong></span> W loterii fantowej prawdopodobieństwo wyciągnięcia losu wygrywającego wynosi <span class="math inline">\(p\)</span>, przegrywającego <span class="math inline">\(q\)</span>, a losu „graj dalej” <span class="math inline">\(r\)</span>, gdzie <span class="math inline">\(p+q+r=1\)</span> i <span class="math inline">\(r&lt;1\)</span>. Los „graj dalej” wraca do urny i pozwala na kolejne losowanie, w tych samych warunkach. Jakie jest prawdopodobieństwo ostatecznej wygranej?</p>
+<p>Niech <span class="math inline">\(A,B,C\)</span> oznaczają rodzaje losu w pierwszym losowaniu, a <span class="math inline">\(W\)</span> ostateczną wygraną. Po losie „graj dalej” wracamy do sytuacji początkowej. Wzór na prawdopodobieństwo całkowite daje <span class="math display">\[
+\begin{aligned}
+\mathbb P[W]
+&amp;=\mathbb P[W\mid A]p+\mathbb P[W\mid B]q
++\mathbb P[W\mid C]r\\
+&amp;=p+r\mathbb P[W].
+\end{aligned}
+\]</span> Stąd <span class="math display">\[
+\mathbb P[W]=\frac{p}{1-r}=\frac{p}{p+q}.
+\]</span></p>
+<p>Jeśli któryś z rodzajów losu ma prawdopodobieństwo zero, pomijamy go w rozbiciu. Warunek <span class="math inline">\(r&lt;1\)</span> jest istotny: dla <span class="math inline">\(r=1\)</span> gra trwa bez końca i wygrana ma prawdopodobieństwo zero.</p>
+</div>
+</section>
+<section id="sec-wzor-bayesa" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="sec-wzor-bayesa"><span class="header-section-number">4.3</span> Wzór Bayesa</h2>
+<div id="exm-warunkowe-test-dodatni" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 4.4</strong></span> Rozważmy hipotetyczny model testu wykrywającego chorobę. Jedna osoba na <span class="math inline">\(1000\)</span> jest chora. U chorych test daje wynik dodatni z prawdopodobieństwem <span class="math inline">\(99\%\)</span>, a u zdrowych wynik ujemny z prawdopodobieństwem <span class="math inline">\(95\%\)</span>. Jakie jest prawdopodobieństwo dodatniego wyniku u losowej osoby?</p>
+<p>Oznaczmy:</p>
+<ul>
+<li><span class="math inline">\(C\)</span>: osoba jest chora;</li>
+<li><span class="math inline">\(Z=C^c\)</span>: osoba jest zdrowa;</li>
+<li><span class="math inline">\(T\)</span>: wynik testu jest dodatni.</li>
+</ul>
+<p>Mamy <span class="math inline">\(\mathbb P[T\mid Z]=0{,}05\)</span>, więc</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb P[T]
+&amp;=\mathbb P[T\mid Z]\mathbb P[Z]+\mathbb P[T\mid C]\mathbb P[C]\\
+&amp;=\frac5{100}\frac{999}{1000}
++\frac{99}{100}\frac1{1000}\\
+&amp;=\frac{5094}{100000}=0{,}05094.
+\end{aligned}
+\]</span></p>
+</div>
+<p>Naturalne jest teraz inne pytanie: jeśli wynik był dodatni, jakie jest prawdopodobieństwo, że osoba rzeczywiście jest chora? Pytamy o stan badanego obiektu po poznaniu wyniku obserwacji. Odpowiedź daje wzór Bayesa.</p>
+<div id="thm-bayes" class="theorem">
+<p><span class="theorem-title"><strong>Twierdzenie 4.2 (Wzór Bayesa)</strong></span> Niech <span class="math inline">\(\{B_k\}_{k\in I}\)</span> będzie skończonym lub przeliczalnym rozbiciem <span class="math inline">\(\Omega\)</span> z <span class="math inline">\(\mathbb P(B_k)&gt;0\)</span>. Jeżeli <span class="math inline">\(\mathbb P[A]&gt;0\)</span>, to dla każdego <span class="math inline">\(k\in I\)</span></p>
+<p><span class="math display">\[
+\mathbb P[B_k\mid A]
+=\frac{\mathbb P[A\mid B_k]\mathbb P[B_k]}
+{\sum_{i\in I}\mathbb P[A\mid B_i]\mathbb P[B_i]}.
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Dowód</em>. </span>Z definicji warunkowania i wzoru na prawdopodobieństwo całkowite:</p>
+<p><span class="math display">\[\begin{align*}
+\mathbb P[B_k\mid A]
+&amp; =\frac{\mathbb P[A\cap B_k]}{\mathbb P[A]} \\
+&amp; =\frac{\mathbb P[A\mid B_k]\mathbb P[B_k]}
+{\sum_{i\in I}\mathbb P[A\mid B_i]\mathbb P[B_i]}.
+\end{align*}\]</span></p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Dwa kierunki rachunku">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Adnotacja</span>Dwa kierunki rachunku
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wzór na prawdopodobieństwo całkowite łączy prawdopodobieństwa wyniku w różnych przypadkach. Wzór Bayesa pozwala obliczyć prawdopodobieństwa tych przypadków po poznaniu wyniku.</p>
+</div>
+</div>
+<div id="exm-warunkowe-moneta" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 4.5</strong></span> Mamy <span class="math inline">\(100\)</span> monet: <span class="math inline">\(99\)</span> symetrycznych i jedną z orłem po obu stronach. Wybieramy monetę losowo i rzucamy nią dziesięć razy. Wszystkie wyniki to orły. Jakie jest prawdopodobieństwo, że wybraliśmy monetę z dwoma orłami?</p>
+<p>Niech <span class="math inline">\(B_1\)</span> oznacza monetę symetryczną, <span class="math inline">\(B_2\)</span> monetę z dwoma orłami, a <span class="math inline">\(A\)</span> dziesięć orłów. Zakładamy niezależność rzutów przy ustalonej monecie. Wtedy <span class="math display">\[
+\mathbb P[A\mid B_1]=2^{-10},\qquad
+\mathbb P[A\mid B_2]=1.
+\]</span> Ze wzoru Bayesa <span class="math display">\[
+\begin{aligned}
+&amp;\mathbb P[B_2\mid A] \\
+&amp;=\frac{\mathbb P[A\mid B_2]\mathbb P[B_2]}
+{\mathbb P[A\mid B_1]\mathbb P[B_1]+\mathbb P[A\mid B_2]\mathbb P[B_2]}\\
+&amp;=\frac{1\cdot\frac1{100}}
+{\frac1{2^{10}}\frac{99}{100}+1\cdot\frac1{100}}
+=\frac{1024}{1123}\approx0{,}912.
+\end{aligned}
+\]</span></p>
+<p>Przed obserwacją prawdopodobieństwo wynosiło <span class="math inline">\(1\%\)</span>. Dziesięć orłów zwiększa je do około <span class="math inline">\(91{,}2\%\)</span>.</p>
+</div>
+<div id="exm-warunkowe-test-bayes" class="theorem example">
+<p><span class="theorem-title"><strong>Przykład 4.6</strong></span> Wróćmy do testu z <a href="#exm-warunkowe-test-dodatni" class="quarto-xref">Przykład&nbsp;<span>4.4</span></a>. U losowo wybranej osoby wynik jest dodatni. Jakie jest prawdopodobieństwo choroby?</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb P[C\mid T]
+&amp;=\frac{\mathbb P[T\mid C]\mathbb P[C]}
+{\mathbb P[T\mid Z]\mathbb P[Z]+\mathbb P[T\mid C]\mathbb P[C]}\\
+&amp;=\frac{\frac{99}{100}\frac1{1000}}
+{\frac5{100}\frac{999}{1000}+\frac{99}{100}\frac1{1000}}
+=\frac{99}{5094} \\ &amp; \approx0{,}01943.
+\end{aligned}
+\]</span></p>
+<p>Otrzymujemy około <span class="math inline">\(1{,}94\%\)</span>. To nie jest czułość testu <span class="math inline">\(\mathbb P(T\mid C)=99\%\)</span>: odwrócenie warunku zmienia pytanie.</p>
+<p>Spójrzmy na oczekiwane liczby w populacji 100 000 osób. Około 100 jest chorych, a 99 900 zdrowych. Wśród chorych oczekujemy 99 wyników dodatnich, a wśród zdrowych 4995. Łącznie daje to 5094 wyniki dodatnie.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Stan osoby</th>
+<th style="text-align: right;">Wynik dodatni</th>
+<th style="text-align: right;">Wynik ujemny</th>
+<th style="text-align: right;">Razem</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chora</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr class="even">
+<td>Zdrowa</td>
+<td style="text-align: right;">4995</td>
+<td style="text-align: right;">94 905</td>
+<td style="text-align: right;">99 900</td>
+</tr>
+<tr class="odd">
+<td>Razem</td>
+<td style="text-align: right;">5094</td>
+<td style="text-align: right;">94 906</td>
+<td style="text-align: right;">100 000</td>
+</tr>
+</tbody>
+</table>
+<p>Warto odróżniać wysoką czułość testu od prawdopodobieństwa choroby po dodatnim wyniku. Znaczenie ma także częstość choroby w badanej populacji.</p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Skopiowano!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Skopiowano!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./klasyczne.html" class="pagination-link" aria-label="Prawdopodobieństwo klasyczne">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Prawdopodobieństwo klasyczne</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Copyright 2026, Piotr Dyszewski</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

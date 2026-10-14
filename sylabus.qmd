@@ -36,9 +36,9 @@ W trakcie wykładu poruszymy następujące zagadnienia:
 
 Wstępny plan tematów poruszanych na poszczególnych wykładach:
 
-1. Aksjomatyka rachunku prawdopodobieństwa
-2. Prawdopodobieństwo warunkowe, niezależność zdarzeń
-4. Zmienne losowe dyskretne i ich rozkłady
+1. Aksjomatyka rachunku prawdopodobieństwa (7.10.2026)
+2. Prawdopodobieństwo klasyczne i prawdopodobieństwo warunkowe (14.10.2026)
+4. Niezależność zdarzeń, zmienne losowe dyskretne i ich rozkłady
 6. Wektory losowe, niezależność zmiennych losowych
 7. Parametry rozkładów
 1. Rozkłady warunkowe, warunkowa wartość oczekiwana i niezależność warunkowa.

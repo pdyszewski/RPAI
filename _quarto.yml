@@ -19,7 +19,8 @@ book:
       chapters:
         - intro.qmd
         - aksjomaty.qmd
-        #- klasyczne.qmd
+        - klasyczne.qmd
+        - warunkowe.qmd
         #- summary.qmd
         - references.qmd
     - part: "Listy zadań"

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="240" viewBox="0 0 1120 240" role="img" aria-labelledby="graf-512-title graf-512-desc" style="display:block;width:100%;height:auto;color:inherit">
+<title id="graf-512-title">Grafy do zliczania dróg</title>
+<desc id="graf-512-desc">Graf a ma 18 skierowanych krawędzi i 12 dróg od s do f. Graf b składa się z dwóch takich grafów połączonych w wierzchołku v i ma 144 drogi od s do f.</desc>
+<style>
+  svg:root { color: #17202a !important; background-color: #ffffff; }
+  @media (prefers-color-scheme: dark) {
+    svg:root { color: #e6edf3 !important; background-color: #161b22; }
+  }
+</style>
+<defs><marker id="graf-512-arrow" viewBox="0 0 10 8" refX="5" refY="4" markerWidth="7" markerHeight="6" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L10 4 L0 8 L2.5 4 Z" fill="currentColor"/></marker></defs>
+<g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+<path d="M35 110 L75 79 L115 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M35 110 L75 110 L115 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M35 110 L75 141 L115 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 48 L155 48 L195 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 48 L155 79 L195 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 110 L155 79 L195 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 110 L155 141 L195 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 172 L155 141 L195 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M115 172 L155 172 L195 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 48 L235 48 L275 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 48 L235 79 L275 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 110 L235 79 L275 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 110 L235 141 L275 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 172 L235 141 L275 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M195 172 L235 172 L275 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M275 48 L315 79 L355 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M275 110 L315 110 L355 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M275 172 L315 141 L355 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M435 110 L475 79 L515 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M435 110 L475 110 L515 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M435 110 L475 141 L515 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 48 L555 48 L595 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 48 L555 79 L595 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 110 L555 79 L595 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 110 L555 141 L595 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 172 L555 141 L595 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M515 172 L555 172 L595 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 48 L635 48 L675 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 48 L635 79 L675 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 110 L635 79 L675 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 110 L635 141 L675 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 172 L635 141 L675 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M595 172 L635 172 L675 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M675 48 L715 79 L755 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M675 110 L715 110 L755 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M675 172 L715 141 L755 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M755 110 L795 79 L835 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M755 110 L795 110 L835 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M755 110 L795 141 L835 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 48 L875 48 L915 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 48 L875 79 L915 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 110 L875 79 L915 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 110 L875 141 L915 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 172 L875 141 L915 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M835 172 L875 172 L915 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 48 L955 48 L995 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 48 L955 79 L995 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 110 L955 79 L995 48" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 110 L955 141 L995 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 172 L955 141 L995 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M915 172 L955 172 L995 172" marker-mid="url(#graf-512-arrow)"/>
+<path d="M995 48 L1035 79 L1075 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M995 110 L1035 110 L1075 110" marker-mid="url(#graf-512-arrow)"/>
+<path d="M995 172 L1035 141 L1075 110" marker-mid="url(#graf-512-arrow)"/>
+</g><g fill="currentColor">
+<circle cx="35" cy="110" r="4.8"/>
+<circle cx="115" cy="48" r="4.8"/>
+<circle cx="115" cy="110" r="4.8"/>
+<circle cx="115" cy="172" r="4.8"/>
+<circle cx="195" cy="48" r="4.8"/>
+<circle cx="195" cy="110" r="4.8"/>
+<circle cx="195" cy="172" r="4.8"/>
+<circle cx="275" cy="48" r="4.8"/>
+<circle cx="275" cy="110" r="4.8"/>
+<circle cx="275" cy="172" r="4.8"/>
+<circle cx="355" cy="110" r="4.8"/>
+<circle cx="435" cy="110" r="4.8"/>
+<circle cx="515" cy="48" r="4.8"/>
+<circle cx="515" cy="110" r="4.8"/>
+<circle cx="515" cy="172" r="4.8"/>
+<circle cx="595" cy="48" r="4.8"/>
+<circle cx="595" cy="110" r="4.8"/>
+<circle cx="595" cy="172" r="4.8"/>
+<circle cx="675" cy="48" r="4.8"/>
+<circle cx="675" cy="110" r="4.8"/>
+<circle cx="675" cy="172" r="4.8"/>
+<circle cx="755" cy="110" r="4.8"/>
+<circle cx="835" cy="48" r="4.8"/>
+<circle cx="835" cy="110" r="4.8"/>
+<circle cx="835" cy="172" r="4.8"/>
+<circle cx="915" cy="48" r="4.8"/>
+<circle cx="915" cy="110" r="4.8"/>
+<circle cx="915" cy="172" r="4.8"/>
+<circle cx="995" cy="48" r="4.8"/>
+<circle cx="995" cy="110" r="4.8"/>
+<circle cx="995" cy="172" r="4.8"/>
+<circle cx="1075" cy="110" r="4.8"/>
+</g><g fill="currentColor" font-family="Georgia, Times New Roman, serif" font-size="21" font-style="italic">
+<text x="21" y="116" text-anchor="end">s</text>
+<text x="368" y="116" text-anchor="start">f</text>
+<text x="421" y="116" text-anchor="end">s</text>
+<text x="755" y="135" text-anchor="middle">v</text>
+<text x="1088" y="116" text-anchor="start">f</text>
+</g><g fill="currentColor" font-family="Georgia, Times New Roman, serif" font-size="20" text-anchor="middle"><text x="195" y="218">(a)</text><text x="755" y="218">(b)</text></g></svg>
