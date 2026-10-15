@@ -27,6 +27,7 @@ book:
       chapters:
         - lista1.qmd
         - lista2.qmd
+        - lista3.qmd
 
 bibliography: references.bib
 

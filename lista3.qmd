@@ -1,0 +1,74 @@
+# Lista 3. Prawdopodobieństwo warunkowe {-}
+
+Zadania na ćwiczenia 22.10.2026
+
+
+
+1. Dwoje graczy, Maciek i Dawid,  dostało po $13$ kart z $52$.
+Obliczyć prawdopodobieństwo, że Maciek nie ma asa jeżeli 
+Maciek zobaczył przypadkowo u Dawida
+	a. asa pik,
+	b. jakiegoś asa czarnego koloru, 
+	c. jakiegoś asa. 
+
+1. Rzucamy trzema kostkami. Jakie jest prawdopodobieństwo,
+że na żadnej kostce nie wypadła szóstka, jeśli na każdej
+kostce wypadła inna liczba oczek?
+
+1. Podaj przykłady zdarzeń takich, że 
+	a. $\mathbb{P}[A|B] < \mathbb{P}[A]$, 
+	b. $\mathbb{P}[A|B] = \mathbb{P}[A]$ 
+	c. $\mathbb{P}[A|B] > \mathbb{P}[A]$.
+
+
+
+1. Mamy dwie urny i $50$ kul. Połowa z kul jest biała, a połowa czarna. 
+Jak rozłożyć kule do urn, aby zmaksymalizować prawdopodobieństwo zdarzenia, 
+że losowo wybrana kula z losowej urny jest biała (najpierw losujemy urnę, 
+a potem z wybranej urny losujemy kulę)?
+
+1. Naczelnik więzienia postanowił uwolnić jednego z trzech więźniów,
+o czym dowiedzieli się zainteresowani, ale nie dowiedzieli się,
+który z nich będzie wolny. Więzień $A$ ma wśród strażników
+znajomego, który to wie. Chce go zapytać, ale krępuje się pytać
+o siebie. Pyta więc o imię jednego z więźniów (różnego od niego),
+który ma pozostać w więzieniu.
+Przed zadaniem pytania ocenia, że każdy z nich ma szansę wyjścia
+równą $1/3$. Myśli, że jeśli strażnik powie na przykład, że
+zostaje $B$, to jego szanse rosną do $1/2$ (bo zostanie uwolniony
+$A$ lub $C$). Czy popełnia błąd?
+
+1. Podaj przykład zdarzeń $A$, $B$ i $C$, dla których
+$$
+\mathbb{P}[A\mid B]<\mathbb{P}[A\mid B^c],
+$$
+a jednocześnie
+$$
+\begin{aligned}
+\mathbb{P}[A\mid B\cap C]
+&\geq \mathbb{P}[A\mid B^c\cap C],\\
+\mathbb{P}[A\mid B\cap C^c]
+&\geq \mathbb{P}[A\mid B^c\cap C^c].
+\end{aligned}
+$$
+Słownie można sformułować paradoks w następujący sposób:
+może się zdarzyć, że w mieście $X$ umieralność chorych
+na gruźlicę jest większa niż w mieście $Y$, a jednocześnie
+zarówno wśród kobiet, jak i wśród mężczyzn chorych
+na gruźlicę umieralność jest większa w mieście $Y$.
+
+
+1. Przypuśćmy, że $1/20$ wszystkich kości do gry jest sfałszowana i zawsze wypada na nich szóstka. Wybieramy losowo trzy kostki i rzucamy nimi. Oblicz
+	a. prawdopodobieństwo wyrzucenia w sumie 18 oczek;
+	b. prawdopodobieństwo, że co najmniej jedna kostka była sfałszowana, jeżeli wyrzuciliśmy  18 oczek;
+
+
+
+1. W populacji jest $15\%$ dyslektyków. 
+Jeżeli w teście diagnostycznym uczeń popełni $6$ lub więcej błędów, to zostaje uznany za dyslektyka. 
+Każdy dyslektyk na pewno popełni co najmniej $6$ błędów. 
+Również nie-dyslektyk może popełnić co najmniej $6$ błędów i dzieje się to z prawdopodobieństwem $0,1$. 
+Jasiu popełnił $6$ błędów. 
+Oblicz prawdopodobieństwo, że jest dyslektykiem. 
+Jakie jest prawdopodobieństwo, że w kolejnym teście też popełni co najmniej $6$ błędów?
+
