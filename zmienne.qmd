@@ -1,0 +1,772 @@
+# Zmienne losowe {#sec-ch-zmienne-losowe}
+
+Często skonstruowana przez nas przestrzeń probabilistyczna staje się zbyt duża do efektywnej analizy. 
+Dla przykładu w eksperymencie polegającym na rzucie dużą liczbą kości, powiedzmy siedemnastu, 
+jest aż $6^{17}= 16926659444736$ możliwych wyników. 
+Interesować nas może tylko suma
+wyrzuconych oczek. W praktyce zamiast analizować poszczególne
+zdarzenia elementarne wygodniej jest analizować funkcje tych zdarzeń.
+
+::: {#def-zmienne-1}
+
+Niech $\Omega$ będzie co najwyżej przeliczalną przestrzenią zdarzeń elementarnych. *Zmienną losową* nazywamy dowolną funkcję 
+$X \colon \Omega \to \mathbb{R}\cup\{ \infty\}$ zdefiniowaną na przestrzeni zdarzeń elementarnych.
+
+:::
+
+Zmienne losowe same w sobie nie upraszczają problemów probabilistycznych. Stanowią one jedynie język, którym będziemy się w przyszłości posługiwać.
+
+::: {#exm-zmienne-1}
+
+Powiedzmy, że rzucamy parą kości. 
+Wtedy $X$ równe sumie wyrzuconych oczek jest zmienną losową. 
+Aby ją formalnie zdefiniować, niech $\Omega = [6] \times [6]$ będzie przestrzenią opisującą wyniki na obu kościach.
+Wówczas $X \colon \Omega \to \mathbb{Z}$ zadane jest wzorem $X(a,b)=a+b$.
+
+:::
+
+Wartości, które może przyjąć zmienna losowa $X \colon \Omega \to \mathbb{R}$ będziemy oznaczać przez $x_k$. 
+Dokładniej $X[\Omega] = \{ x_k\: : \: k \leq T \}$ dla $T \in \mathbb{N}$ jeżeli $\Omega$ jest skończona lub $T =\infty$ jeżeli
+$\Omega$ jest przeliczalna. Dla każdego ustalonego $x_k$ definiujemy zdarzenie, że $X$ jest równe $x_k$ przez
+
+$$
+\{ X=x_k \}=X^{-1}[\{ x_k \}] = \{ \omega \in \Omega \: | \: X(\omega) = x_k\}.
+$$
+
+W przyszłości zobaczymy, że liczby $\mathbb{P}[X=x_k]$ pomogą znaleźć uproszczony język do opisu zmiennej losowej $X$.
+
+::: {#exm-zmienne-2}
+
+  W grze w kości, dla $X$ równej sumie wyrzuconych oczek mamy $\Omega =[6]\times [6]$ oraz $X(a,b) = a+b$. 
+  Załóżmy, że wszystkie wyniki są jednakowo prawdopodobne. Wówczas
+  $$
+    \mathbb{P}[X = 5]= \frac{4}{36}.
+  $$
+
+:::
+
+::: {#exm-zmienne-3}
+
+  Rzucamy monetą aż do momentu otrzymania orła. 
+  Wówczas $\Omega = \{R\}^{\mathbb{N}} \cup \bigcup_{k=0}^\infty\{R \}^k \times \{O\}$. 
+  Niech $X$ oznacza liczbę rzutów w naszym eksperymencie.
+  Innymi słowy $X$ jest liczbą rzutów potrzebną do otrzymania orła. 
+  Wówczas $X(O)=1$, $X(RO)=2$ oraz ogólnie $X(\omega_k)=k$ jeżeli $\omega_k$ składa się z $k-1$ reszek i orła. 
+  W szczególności $X(\omega_\infty)=\infty$.
+
+:::
+
+## Wartość oczekiwana
+
+  Najprostszym opisem zmiennej losowej $X$ byłaby jedna liczba. 
+  Aby umotywować nasz przyszły wybór rozważmy następujący przykład. 
+  Powiedzmy, że mamy do dyspozycji niesymetryczną kostkę sześcienną na której $1$ wypada z
+  prawdopodobieństwem $p_1$, $2$ wypada z prawdopodobieństwem $p_2$ itd. gdzie $p_1+p_2+ \ldots + p_6=1$. 
+  Rzucamy tą kością $N\in \mathbb{N}$. Jaka będzie średnia z uzyskanych wyników?
+  Niech $X_k$ dla $k\leq N$ opisuje wynik $k$-tego rzutu. 
+  Załóżmy, że w naszym eksperymencie $n_1$ razy wpadła $1$, $n_2$ razy wypadła $2$ itd. Szukaną średnią możemy zapisać jako
+  $$
+    \frac{X_1+X_2+\ldots + X_N}{N} = 1\cdot \frac{n_1}{N}
+    +2 \cdot \frac{n_2}{N} + 3 \cdot \frac{n_3}{N} 
+    +4 \cdot \frac{n_4}{N}+ 5 \cdot \frac{n_5}{N} 
+    +6 \cdot \frac{n_6}{N},
+  $$
+  gdzie $n_k=|\{ j\leq N \: : \: X_j=k \}|$ dla $k \in [6]$. 
+  Na poziomie intuicyjnym jasne jest, że dla dużego $N$, $\frac{n_k}{N} \approx p_k$. 
+  W przyszłości ściśle uzasadnimy ten fakt. Mamy
+  $$
+    \frac{X_1+X_2+\ldots + X_N}{N} \approx 1\cdot p_1+2 \cdot p_2 + 3 \cdot p_3 +4 \cdot p_4+ 5 \cdot p_5 +6 \cdot p_6.
+  $$
+  Liczba po prawej stronie to średnia ważona dla rzutu jedną kością. 
+  Istotnie, mamy $\mathbb{P}[X_1=1]=p_1$, $\mathbb{P}[X_1=2]=p_2$, \ldots, $\mathbb{P}[X_1=6]=p_6$. 
+  Możemy wreszcie napisać
+  $$
+    \frac{X_1+X_2+\ldots + X_N}{N} \approx \sum_{k=1}^6 k \cdot \mathbb{P}[X_1=k].
+  $$ {#eq-eq-2-approx}
+
+  Otrzymujemy średnią wartości $X_1$ z wagą, która jest prawdopodobieństwem poszczególnych wyników. Taką średnią nazywamy wartością oczekiwaną $X_1$.
+
+::: {#def-df-2-wartosc}
+
+  Niech $(\Omega, \mathbb{P})$ będzie dyskretną przestrzenią probabilistyczną. 
+  Powiemy, że zmienna losowa $X$ jest *całkowalna*, jeżeli
+  $$
+    \sum_{\omega \in \Omega} |X(\omega)| p(\omega) <\infty.
+  $$
+  Dla całkowalnej zmiennej losowej $X \colon \Omega \to \mathbb{R}$  jej *wartością oczekiwaną* nazywamy
+  $$
+    \mathbb{E} [X] = \sum_{\omega \in \Omega} X(\omega) p(\omega).
+  $$
+
+:::
+
+  W powyższej definicji, jeżeli $X(\omega_0) =\infty$ oraz $\mathbb{P}[\{\omega_0 \}]=0$ to interpretujemy 
+  $X(\omega_0)\mathbb{P}[\{\omega_0 \}]=0$.
+  Niebawem przekonamy się, że powyższa definicja wartości oczekiwanej zadaje 
+  dokładnie prawą stronę równania @eq-eq-2-approx.
+
+::: {#exm-zmienne-4}
+
+  Wróćmy do eksperymentu czekania na pierwszego orła. 
+  Tutaj $\Omega = \{R\}^{\mathbb{N}} \cup \bigcup_{k=0}^\infty\{R \}^k \times \{O\}$. 
+  Niech $X$ będzie zmienną losową opisującą liczbę rzutów potrzebnych do otrzymania orła ($X(\omega_k)=k$).
+  Wówczas $X$ jest całkowalna, bo
+  $$
+    \sum_{\omega \in \Omega} |X(\omega)| p(\omega) = \sum_{k=1}^\infty \frac{k}{2^k}<\infty
+  $$
+  oraz $\mathbb{E} X=2$. 
+  Z kolei zmienna zadana przez $Y=3^X$, innymi słowy $Y(\omega_k) = 3^k$ nie jest całkowalna. 
+  Istotnie
+  $$
+    \sum_{\omega \in \Omega} |Y(\omega)| p(\omega) = 
+    \sum_{k=1}^\infty \left( \frac{3}{2} \right)^k=\infty.
+  $$
+
+:::
+
+::: {#exm-zmienne-5}
+
+  Niech $X$ oznacza liczbę otrzymanych oczek przy rzucie jedną wyważoną kością. Wówczas
+  $$
+    \mathbb{E} [X] = X(1) \frac 16 +  X(2) \frac 16 +  X(3) \frac 16  +  X(4) \frac 16 +  X(5) \frac 16 +  X(6) \frac 16 = \frac 72.
+  $$
+  Ten przykład pokazuje, że nazwa *wartość oczekiwana* jest niefortunna. 
+  Przy rzucie kością nie możemy oczekiwać wyniku $7/2$.
+
+:::
+
+::: {#exm-unfair}
+
+Dwaj gracze $A$ i $B$ grają w następującą grę. 
+Rzucają kostką. Niech $k$ będzie wynikiem rzutu. 
+Jeżeli $k$ jest nieparzyste, to $A$ wygrywa $k$ złotych, jeżeli $k$ jest parzyste, 
+to $B$ wygrywa $k$ złotych. Czy gra jest uczciwa?
+
+Niech $X$ oznacza wygraną gracza $A$ podczas jednej rundy, wtedy
+\begin{multline*}
+\mathbb{E} X = 1\cdot \mathbb{P}[X=1] - 2\cdot \mathbb{P}[X=2] + 3\cdot \mathbb{P}[X=3] \\
+- 4\cdot \mathbb{P}[X=4] + 5\cdot \mathbb{P}[X=5] - 6\cdot \mathbb{P}[X=6]= -\frac 12.
+\end{multline*}
+Jeżeli wykonamy $n$ rzutów i przez #X_j$ oznaczymy wygraną gracza $A$ w $k$tym rzucie, to stan 
+portfela gracza $A$ po $n$ rzutach wyniesie
+\begin{equation*}
+	\sum_{k=1}^nX_k.
+\end{equation*}
+Dla dużych wartości $n$ powyższa suma jest w przybliżeniu równa $n\mathbb{E}[X]=-n/2$.
+Powyższa gra nie jest zatem uczciwa. Z czasem gracz $A$ zacznie tracić duże ilości gotówki
+co widać na symulacji poniżej. Wykres przedstawia stan portfela gracza $A$ w trakcie rozgrywki. 
+
+```{=html}
+
+<div class="rw-container card my-3">
+  <div class="card-body">
+    <canvas class="rw-canvas" role="img" aria-label="Wykres pozycji w kolejnych krokach spaceru losowego"></canvas>
+    <div class="d-flex flex-wrap align-items-center gap-2 mt-3">
+      <button type="button" class="rw-toggle btn btn-primary" aria-pressed="false">Start</button>
+      <button type="button" class="rw-reset btn btn-outline-secondary">Reset</button>
+      <span class="rw-status text-body-secondary ms-sm-2" role="status" aria-live="polite">Krok: 0 · Pozycja: 0</span>
+    </div>
+  </div>
+</div>
+
+<style>
+.rw-container .rw-canvas {
+  display: block;
+  width: 100%;
+  height: 300px;
+  border-radius: var(--bs-border-radius, .375rem);
+}
+</style>
+
+<script>
+(() => {
+  const root = document.currentScript.previousElementSibling.previousElementSibling;
+  const canvas = root.querySelector('.rw-canvas');
+  const ctx = canvas.getContext('2d');
+  const toggle = root.querySelector('.rw-toggle');
+  const reset = root.querySelector('.rw-reset');
+  const status = root.querySelector('.rw-status');
+  let positions = [0];
+  let running = false;
+  let timer = null;
+
+  // Zmienne CSS pochodzą z aktualnego motywu Bootstrap/Quarto.
+  function render() {
+    const style = getComputedStyle(root);
+    const color = (name, fallback) => style.getPropertyValue(name).trim() || fallback;
+    const w = canvas.clientWidth;
+    const h = 300;
+    if (!w) return;
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = color('--bs-body-bg', '#fff');
+    ctx.fillRect(0, 0, w, h);
+    const left = 58, right = w - 18, top = 22, bottom = h - 46;
+    let min = 0, max = 0;
+    for (const value of positions) {
+      min = Math.min(min, value);
+      max = Math.max(max, value);
+    }
+    const padding = Math.max(2, (max - min) * .1);
+    min -= padding;
+    max += padding;
+    const count = positions.length - 1;
+    const x = i => left + i / Math.max(1, count) * (right - left);
+    const y = v => bottom - (v - min) / (max - min) * (bottom - top);
+    ctx.font = '12px ' + style.fontFamily;
+    ctx.lineWidth = 1;
+    for (let i = 0; i <= 4; i++) {
+      const value = min + (max - min) * i / 4;
+      ctx.strokeStyle = color('--bs-border-color', '#dee2e6');
+      ctx.beginPath();
+      ctx.moveTo(left, y(value)); ctx.lineTo(right, y(value)); ctx.stroke();
+      ctx.fillStyle = color('--bs-body-color', '#212529');
+      ctx.textAlign = 'right';
+      ctx.fillText(value.toFixed(1), left - 8, y(value) + 4);
+    }
+    ctx.strokeStyle = color('--bs-secondary', '#6c757d');
+    ctx.beginPath();
+    ctx.moveTo(left, top); ctx.lineTo(left, bottom); ctx.lineTo(right, bottom); ctx.stroke();
+    ctx.strokeStyle = color('--bs-success', '#198754');
+    ctx.setLineDash([5, 4]);
+    ctx.beginPath(); ctx.moveTo(left, y(0)); ctx.lineTo(right, y(0)); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.strokeStyle = color('--bs-primary', '#0d6efd');
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    positions.forEach((value, i) => i ? ctx.lineTo(x(i), y(value)) : ctx.moveTo(x(i), y(value)));
+    ctx.stroke();
+    ctx.fillStyle = color('--bs-primary', '#0d6efd');
+    ctx.beginPath(); ctx.arc(x(count), y(positions[count]), 3.5, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = color('--bs-body-color', '#212529');
+    ctx.textAlign = 'left'; ctx.fillText('Pozycja', 5, 14);
+    ctx.fillText('0', left, bottom + 18);
+    if (count) { ctx.textAlign = 'right'; ctx.fillText(String(count), right, bottom + 18); }
+    ctx.textAlign = 'center'; ctx.fillText('Krok', (left + right) / 2, h - 5);
+  }
+
+  function updateStatus() {
+    const count = positions.length - 1;
+    status.textContent = `Krok: ${count} · Pozycja: ${positions[count]}`;
+    canvas.setAttribute('aria-label', `Spacer losowy. Krok: ${count}, pozycja: ${positions[count]}.`);
+  }
+
+  toggle.addEventListener('click', () => {
+    running = !running;
+    toggle.textContent = running ? 'Stop' : 'Start';
+    toggle.setAttribute('aria-pressed', String(running));
+    if (running) {
+      timer = setInterval(() => {
+        const k = Math.floor(Math.random() * 6) + 1;
+        positions.push(positions[positions.length - 1] + (k % 2 ? k : -k));
+        updateStatus();
+        render();
+      }, 100);
+    } else {
+      clearInterval(timer);
+    }
+  });
+  reset.addEventListener('click', () => {
+    positions = [0];
+    updateStatus();
+    render();
+  });
+  new ResizeObserver(render).observe(canvas);
+  new MutationObserver(render).observe(document.documentElement, {
+    attributes: true, subtree: true,
+    attributeFilter: ['class', 'data-bs-theme', 'href', 'media', 'disabled']
+  });
+  render();
+})();
+</script>
+
+```
+
+:::
+
+::: {#prp-fak-2-wzorwartosc}
+
+Niech $\{ x_1, x_2, \ldots \}$ będzie zbiorem wartości całkowalnej zmiennej losowej $X$, 
+czyli $X[\Omega] = \{ x_k \: : \: k \leq T \}$ dla
+$T \in \mathbb{N}\cup \{ \infty\}$.
+Wówczas
+$$
+\mathbb{E} X = \sum_{k=1}^T x_k \mathbb{P}[X=x_k].
+$$
+
+:::
+
+::: {.proof}
+
+Niech $E_k = \{ X=x_k \}$. Wówczas $E_k$ są parami rozłączne oraz $\bigcup_{k=1}^TE_k=\Omega$ 
+a co za tym idzie
+
+$$
+\mathbb{E} X = \sum_{\omega \in \Omega}  X(\omega) p(\omega) 
+= \sum_{k=1}^T \sum_{\omega \in E_k} X(\omega) p(\omega).
+$$
+
+Skorzystaliśmy tutaj z całkowalności zmiennej losowej $X$: 
+dla szeregu bezwzględnie zbieżnego zmiana kolejności sumowania nie wpływa na jego wartość. 
+Dla $\omega \in E_k$ mamy $X(\omega) = x_k$, więc
+
+$$
+\mathbb{E} X =\sum_{k=1}^T \sum_{\omega \in E_k} x_k p(\omega)
+=\sum_{k=1}^T x_k \sum_{\omega \in E_k} p(\omega) .
+$$
+
+Na koniec skorzystamy z 
+$$
+  \sum_{\omega \in E_k} p(\omega) = \mathbb{P}[E_k] = \mathbb{P}[X=x_k]
+$$
+aby otrzymać
+$$
+\mathbb{E} X =\sum_{k=1}^T x_k \sum_{\omega \in E_k} p(\omega) =  \sum_{k=1}^T x_k \mathbb{P}[X=x_k].
+$$
+Co było do pokazania
+:::
+
+
+::: {#exm-pd-2-bern}
+
+Rzucamy $n$ razy monetą. Jako przestrzeń zdarzeń elementarnych wybieramy
+
+$$
+\Omega = \{ O, R\}^n  = \{ \omega = (\omega_1, \omega_2, \ldots, \omega_n) \: : \: \omega_k \in \{ O, R\} \}.
+$$
+
+Wówczas $\omega_k$ reprezentuje wynik $k$-tego rzutu. 
+Zbadajmy zmienną losową $X$ która jest liczbą otrzymanych orłów
+Wówczas przykładowo $X(RR \ldots R) =0$, $X(RORR\ldots R) = 1$ oraz ogólnie
+$$
+X((\omega_1, \omega_2, \ldots, \omega_n)) = | \{ j \in [n] \: : \: \omega_j =O \}|.
+$$
+Zakładając, że każdy wynik jest jednakowo prawdopodobny otrzymujemy, dla $k \leq n$,
+$$
+\mathbb{P}[X=k] =\frac{|\{ X=k\}|}{|\Omega|} = \frac{{n \choose k}}{|\Omega|} = {n \choose k}2^{-n}.
+$$
+Zauważmy, że $X$ jest liczbą sukcesów w schemacie $n$ prób Bernoulliego z prawdopodobieństwem 
+sukcesu $1/2$.
+Korzystając z @prp-fak-2-wzorwartosc otrzymujemy
+
+$$
+\begin{aligned}
+\mathbb{E} X &= \sum_{k=0}^nk \mathbb{P}[X=k]= \sum_{k=0}^n k  {n \choose k}2^{-n} =\sum_{k=1}^n k  {n \choose k}2^{-n} \\
+& \stackrel{(*)}{=}   \sum_{k=1}^n   n {n-1 \choose k-1}2^{-n} = \frac n2 \sum_{j=0}^{n-1} {n-1 \choose j}2^{-(n-1)} \stackrel{(**)}{=} \frac n2.
+\end{aligned}
+$$
+
+Skorzystaliśmy tutaj ze wzorów
+
+$$
+{n \choose k} \stackrel{(*)}{=} \frac nk{n-1 \choose k-1}, \qquad \sum_{j=0}^{m} {m \choose j} \stackrel{(**)}{=} 2^m
+$$
+
+dla $1 \leq k \leq n$ oraz $m\geq 0$.
+
+:::
+
+Wartość oczekiwana na dyskretnej przestrzeni probabilistycznej jest
+zadana przez średnią ważoną. Naturalne więc jest, że dziedziczy wiele jej 
+własności.
+
+::: {#prp-fak-2-eliniowe}
+
+Niech $X, Y$ będą całkowalnymi zmiennymi losowymi. 
+Wówczas dla dowolnych stałych $\alpha, \beta \in \mathbb{R}$, zmienna 
+losowa $\alpha X + \beta Y$ jest całkowalna oraz
+zachodzi wzór
+$$
+\mathbb{E} [\alpha X+ \beta Y] = \alpha \mathbb{E} X +  \beta \mathbb{E} Y.
+$$
+
+:::
+
+Zanim zobaczymy dowód powyższego faktu zaznajomimy się z jednym przykładem.
+
+::: {#exm-zmienne-7}
+
+Rozważmy grę, w której  rzucamy dwiema dobrze wyważonymi kośćmi. 
+Pierwsza kość jest sześcienna a druga dwudziestościanną. 
+Nasz wynik obliczany jest według następującego wzoru
+
+$$
+6 \cdot (\text{wynik na pierwszej kości})^2 - 2 \cdot (\text{wynik na drugiej kości}).
+$$
+
+Jaka jest wartość oczekiwana wyniku? 
+Naszą przestrzenią jest $\Omega = [6]\times [20]$ z jednakowym prawdopodobieństwem 
+dla każdego zdarzenie elementarnego. Rozważmy zmienne losowe
+
+$$
+X(a,b) = a^2 \qquad Y(a,b) = b.
+$$
+
+Wtedy wynik zapisuje się jako $Z = 6X-2Y$.
+Dla pierwszej zmiennej mamy $\{X = k \} = \{ (a,b) \: : \: k=a^2\}$ a co za tym idzie
+
+$$
+\mathbb{P}[X = k^2] = \frac 16, \qquad k \in [6]
+$$
+
+oraz $\mathbb{E}[X] = \frac{91}{6}$. Podobnie
+
+$$
+\mathbb{P}[Y = j] = \frac 1{20}, \qquad j \in [20]
+$$
+
+oraz $\mathbb{E}[Y]=\frac {21} 2$. @prp-fak-2-eliniowe daje
+
+$$
+\mathbb{E}[Z] = 6 \mathbb{E}[X] -2 \mathbb{E}[Y] = 70.
+$$
+
+:::
+
+::: {#exm-para-kosci-exp}
+  Rzucamy para kości sześciennych. Jaka jest wartość oczekiwana sumy oczek na obu kościach?
+  Jeżeli $X$ to suma oczek na obu kościach, to oczywiście $X = X_1 + X_2$, 
+  gdzie $X_1$ to wynik na pierwszej kości a $X_2$ to wynik na drugiej kości. 
+  Wiemy, że $\mathbb{E}[X_1] =\mathbb{E}[X_2] = 7/2$. Stąd
+  \begin{equation*}
+    \mathbb{E}[X] = \mathbb{E}[X_1+X_2] = \mathbb{E}[X_1] + \mathbb{E}[X_2] =7.
+  \end{equation*}
+:::
+
+::: {.proof name="@prp-fak-2-eliniowe"}
+Oznaczmy $Z = \alpha X+\beta Y$. Mamy
+
+$$
+\sum_{\omega \in \Omega} |Z(\omega)| p(\omega) 
+\leq |\alpha| \sum_{\omega \in \Omega} |X(\omega)| p(\omega) 
++ |\beta| \sum_{\omega \in \Omega} |Y(\omega)| p(\omega) <\infty
+$$
+co pokazuje, że $Z$ jest całkowalna. Podobnie
+
+$$
+\begin{aligned}
+\mathbb{E} Z & = \sum_{\omega \in \Omega} Z(\omega) \mathbb{P}[ \{ \omega\}] \\
+& =  \alpha \sum_{\omega \in \Omega} X(\omega) \mathbb{P}[ \{ \omega\}] + \beta \sum_{\omega \in \Omega} Y(\omega) \mathbb{P}[ \{ \omega\}] \\
+&=  \alpha\mathbb{E} X + \beta \mathbb{E} Y.
+\end{aligned}
+$$
+
+:::
+
+Zauważmy, że jeżeli $X$ jest zmienną losową a $\varphi \colon \mathbb{R}\cup \{ \infty\} \to \mathbb{R} \cup \{ \infty\}$ to zmienną losową staje się również $Z = \varphi \circ X = \varphi(X)$. Bardzo często przyda nam się sposób na efektywne obliczanie wartości oczekiwanej
+zmiennej losowej $Z$.
+
+::: {#prp-fak-2-podstawienie}
+
+Niech $(\Omega, \mathbb{P})$ będzie dyskretną przestrzenią probabilistyczną  a $X$ zmienną losową. Niech dodatkowo $\varphi \colon \mathbb{R}\cup \{\infty\} \to \mathbb{R} \cup \{\infty\}$ będzie funkcją taką, że zmienna losowa $Z(\omega) = \varphi(X(\omega ))$
+jest całkowalna. Wówczas
+
+$$
+\mathbb{E} [\varphi(X)]= \mathbb{E}[Z] = \sum_{k=1}^T \varphi(x_k) \mathbb{P}[X=x_k],
+$$
+
+gdzie $\{x_j \: : \: j\leq T\}$, dla $T \in \mathbb{N}\cup \{\infty\}$, jest zbiorem wartości zmiennej losowej $X$.
+
+:::
+
+::: {.proof}
+
+Z @def-df-2-wartosc
+
+$$
+\mathbb{E} [\varphi(X)]=\mathbb{E}[Z] = \sum_{\omega \in \Omega} \varphi(X(\omega)) \mathbb{P}[\{ \omega\}].
+$$
+
+Podobnie jak w dowodzie @prp-fak-2-wzorwartosc, dla zbiorów $E_k = \{ X = x_k\}$ mamy $\Omega = \bigcup_{k=1}^TE_k$ oraz
+
+$$
+\mathbb{E} [\varphi(X)] = \sum_{\omega \in \Omega} \varphi(X(\omega)) \mathbb{P}[\{ \omega\}] = \sum_{k=1}^T \sum_{\omega \in E_k} \varphi(X(\omega)) \mathbb{P}[\{ \omega\}].
+$$
+
+Tutaj skorzystaliśmy z całkowalności zmiennej $Z$.
+Zauważmy, że jeżeli $\omega \in E_k$, to $X(\omega)=x_k$. Korzystając z tej obserwacji możemy napisać
+
+$$
+\mathbb{E} [\varphi(X)] = \sum_{k=1}^T \sum_{\omega \in E_k} \varphi(x_k) \mathbb{P}[\{ \omega\}] = \sum_{k=1}^T  \varphi(x_k) \sum_{\omega \in E_k}  \mathbb{P}[\{ \omega\}].
+$$
+
+Na koniec wystarczy skorzystać z tego, że $\sum_{\omega \in E_k}  \mathbb{P}[\{ \omega\}] = \mathbb{P}[E_k] = \mathbb{P}[X=x_k]$ żeby otrzymać
+
+$$
+\mathbb{E} [\varphi(X)] = \sum_{k=1}^T  \varphi(x_k) \sum_{\omega \in E_k}  \mathbb{P}[\{ \omega\}]= \sum_{k=1}^T \varphi(x_k) \mathbb{P}[X=x_k].
+$$
+
+:::
+
+::: {#exm-pd-2-barntworzaca}
+
+Rzucamy $n$ razy symetryczną monetą. Oznaczmy przez $X$ liczbę uzyskanych orłów (@exm-pd-2-bern). Niech $s \in (0,1]$ znajdziemy zwartą postać dla $\mathbb{E} \left[ s^X \right]$.
+Stosując @prp-fak-2-podstawienie dla funkcji $\varphi(x) = s^x$ otrzymujemy
+
+$$
+\mathbb{E} \left[ s^X \right] = \sum_{k=0}^n s^k \mathbb{P}[X = k].
+$$
+
+Korzystając z otrzymanego wcześniej wzoru $\mathbb{P}[X=k] = {n \choose k} 2^{-n}$ otrzymujemy
+
+$$
+\mathbb{E} \left[ s^X \right] = \sum_{k=0}^n {n \choose k} \left(\frac{s}{2}\right)^k 2^{-n+k} = \left( \frac{s}{2} + \frac 12 \right)^n.
+$$
+
+Powyższy wzór bywa bardzo pomocny. Różniczkując stronami  po zmiennej $s$ otrzymujemy
+
+$$
+\mathbb{E} \left[X s^{X-1} \right] = \sum_{k=0}^n {n \choose k} ks^{k-1}2^{-n} = \frac{n}{2}\left( \frac{s}{2} + \frac 12 \right)^{n-1}.
+$$ {#eq-eq-2-gernbern}
+
+Podstawiając $s=1$ otrzymujemy znany już nam wzór
+
+$$
+\mathbb{E} \left[X\right] = \frac{n}{2}.
+$$
+
+Jeżeli zróżniczkujemy @eq-eq-2-gernbern po zmiennej $s$ otrzymujemy
+
+$$
+\mathbb{E} \left[X(X-1) s^{X-2} \right] = \sum_{k=0}^n {n \choose k} k(k-1)s^{k-2}2^{-n} = \frac{n(n-1)}{4}\left( \frac{s}{2} + \frac 12 \right)^{n-2}.
+$$
+
+Dla $s=1$ daje to
+
+$$
+\mathbb{E}[X(X-1)] = \frac{n(n-1)}{4}.
+$$
+
+Skoro $\mathbb{E}[X(X-1)] = \mathbb{E}[X^2-X] = \mathbb{E}\left[X^2\right] - \mathbb{E}[X]$ otrzymujemy
+
+$$
+\mathbb{E}\left[X^2\right] =  \frac{n(n+1)}{4}.
+$$
+
+:::
+
+::: {#prp-zmienne-4}
+
+Niech $(\Omega, \mathbb{P})$ będzie dyskretną przestrzenią probabilistyczną.
+Wówczas
+
+(i) Jeżeli $X$ jest zmienną losową taką, że dla pewnej stałej $a \in \mathbb{R}$ zachodzi $X(\omega) = a$ dla wszystkich $\omega \in \Omega$, to
+
+$$
+\mathbb{E}[X]=a.
+$$
+
+(ii) Jeżeli $X$ i $Y$ są całkowalnymi zmiennymi losowymi takimi, że $X(\omega) \leq Y(\omega)$ dla wszystkich $\omega \in \Omega$, to
+
+$$
+\mathbb{E}[X] \leq \mathbb{E}[Y]
+.
+$$
+
+:::
+
+::: {.proof}
+
+Jeżeli $X(\omega) = a$ dla wszystkich $\omega \in \Omega$, to
+
+$$
+\mathbb{E}[X] = \sum_{\omega \in \Omega} X(\omega) \mathbb{P}[\{ \omega\}] = \sum_{\omega \in \Omega}a \mathbb{P}[\{ \omega\}] = a \cdot \sum_{\omega \in \Omega} \mathbb{P}[\{ \omega\}] = a \cdot 1=a.
+$$
+\
+Jeśli natomiast $X(\omega) \leq Y(\omega)$ dla wszystkich $\omega \in \Omega$, to
+
+$$
+\mathbb{E}[X] = \sum_{\omega \in \Omega} X(\omega) \mathbb{P}[\{ \omega\}] \leq \sum_{\omega \in \Omega} Y(\omega) \mathbb{P}[\{ \omega\}] =\mathbb{E}[Y].
+$$
+
+:::
+
+Za każdym razem kiedy dokonujemy takiego przybliżenia warto jest znać jego błąd. Wartość oczekiwana nie jest tutaj wyjątkiem. W przyszłości bardzo istotna będzie dla nas informacja jak bardzo zmienna losowa $X$ różni się od
+swojej wartości oczekiwanej $\mathbb{E} X$.
+
+::: {#def-df-2-var}
+
+*Wariancję* zmiennej losowej $X$ definiujemy przez
+$$
+\mathbb{V} [X] = \mathbb{E}[ (X-\mathbb{E} X) ^2].
+$$
+
+:::
+
+Powyższa definicja jest w zupełności ogólna i będzie nam służyć w przyszłości dla przestrzeni probabilistycznych, które nie są dyskretne. Pomijając chwilowo przyszłe zastosowania @def-df-2-var, na dyskretnej przestrzeni probabilistycznej
+$(\Omega, \mathbb{P})$ zachodzi wzór
+
+$$
+\mathbb{V}[X] = \sum_{\omega \in \Omega} (X(\omega) - \mathbb{E} X)^2 \mathbb{P}[\{\omega\}].
+$$ {#eq-eq-2-warzdef}
+
+::: {#exm-zmienne-9}
+
+Przypuśćmy, że właśnie otrzymaliśmy propozycję nie do odrzucenia; ktoś podarował nam dwa losy na pewną loterię.
+Wygrane mierzymy w milionach dolarów i zakładamy niezależność różnych losowań. Organizatorzy loterii sprzedają $100$ losów na cotygodniowe losowanie. Każdy z losów jest wybierany w jednorodnym procesie losowym, to znaczy, że każdy los może być wybrany z takim samym prawdopodobieństwem—i szczęśliwy
+właściciel wybranego losu wygrywa sto milionów dolarów. Pozostałe $99$ losów nic nie wygrywa.
+
+Możemy teraz wykorzystać nasz prezent na dwa sposoby: albo kupujemy dwa losy na to samo losowanie, albo kupimy po jednym losie na dwa różne losowania. Która strategia jest lepsza? Jeżeli przez $X$ oznaczymy wygraną dla pierwszej strategii, to
+$$
+\mathbb{E} X = 0 \cdot  \frac{98}{100} + 100 \cdot \frac{2}{100} = 2.
+$$
+Dla drugiej strategii $Y$ otrzymujemy
+$$
+\mathbb{E} Y = 0 \cdot \frac{99}{100} + 100 \cdot  \frac{1}{100} + 0 \cdot  \frac{99}{100} + 100 \cdot \frac{1}{100} =2.
+$$
+Wartości oczekiwane są takie same. Mimo to obydwie strategie wyglądają różnie. Nie patrzmy jednak na wartości oczekiwane i przeanalizujmy dokładnie rozkłady zmiennych losowych $X$ oraz $Y$
+$$
+\begin{array}{|c|c|c|c|} \hline
+& 0  & 100  & 200\\ \hline
+X &  0,98 &  0,02 &  0 \\ \hline
+Y & 0,9801 & 0,0198 & 0,0001 \\\hline
+\end{array}
+$$
+Wariancja ma służyć właśnie do analizy pojęcia rozproszenia zmiennej losowej. W przypadku $X$ wariancja wynosi
+$$
+\mathbb{V} [X] = 0{,}98 \cdot (0 -2 )^2 + 0,02\cdot (100 -2)^2 = 196
+$$
+a w przypadku $Y$
+$$
+\mathbb{V} [Y] = 0{,}9801 \cdot (0 - 2)^2  +  0{,}0198\cdot (100 -  2)^2 + 0,0001\cdot  (200  - 2)^2 = 198
+$$
+Tak jak oczekiwaliśmy, druga wariancja jest odrobinę większa, ponieważ rozkład losowy w przypadku $Y$ jest odrobinę bardziej rozproszony.
+
+:::
+
+Wzór @eq-eq-2-warzdef jest w praktyce nieporęczny. Okazuje się, że $\mathbb{V}[X]$ można wyrazić w zgrabny sposób, który jest dodatkowo wygodny w rachunkach.
+
+::: {#prp-zmienne-5}
+
+Niech $X$ będzie całkowalną zmienną losową. Wówczas
+
+$$
+\mathbb{V}[X]  = \mathbb{E} \left[ X^2 \right] - (\mathbb{E} X)^2.
+$$ {#eq-eq-var}
+
+:::
+
+::: {.proof}
+
+Oznaczmy $ m = \mathbb{E} [X] \in \mathbb{R}$. Wówczas
+
+$$
+\begin{aligned}
+\mathbb{V}[X] &= \mathbb{E}\left[ X^2 - 2 X m +m^2 \right] = \mathbb{E}\left[ X^2 \right] - \mathbb{E}[2mX] + \mathbb{E}\left[m^2\right] \\
+&= \mathbb{E}\left[ X^2 \right]  - 2m \mathbb{E}[X] + m^2 = \mathbb{E}\left[ X^2 \right]  -m^2.
+\end{aligned}
+$$
+
+:::
+
+::: {#exm-zmienne-10}
+
+Niech $X$ oznacza liczbę uzyskanych orłów w serii $n$ rzutów symetryczną monetą. Wiemy, że $\mathbb{E}[X] = \frac n2$ oraz $\mathbb{E} \left[X^2 \right] = \frac{n(n+1)}{4}$ a co za tym idzie
+
+$$
+\mathbb{V}[X]  = \mathbb{E} \left[ X^2 \right] - (\mathbb{E} X)^2 = \frac{n}4.
+$$
+
+:::
+
+::: {#cor-zmienne-1}
+
+Niech $X$ będzie całkowalną zmienną losową. Wówczas zachodzi nierówność
+
+$$
+\mathbb{E} \left[ X^2 \right] \geq  \left(\mathbb{E} X \right)^2.
+$$
+
+:::
+
+::: {.proof}
+
+Jako, że $X$ przyjmuje wartości rzeczywiste, $(X(\omega)-\mathbb{E} X) ^2\geq 0$ a co za tym idzie
+
+$$
+\mathbb{V}[X] = \sum_{\omega \in \Omega} (X(\omega)-\mathbb{E} X) ^2 \mathbb{P}[\{ \omega \}] \geq 0.
+$$
+
+Z drugiej strony $0 \leq \mathbb{V}[X]  = \mathbb{E} \left[ X^2 \right] - (\mathbb{E} X)^2$, co pociąga naszą tezę.
+
+:::
+
+::: {#thm-zmienne-1 name="Nierówność Czebyszewa"}
+
+Niech $(\Omega, \mathbb{P})$ będzie dyskretną przestrzenią probabilistyczną. Dla całkowalnej zmiennej losowej $X$ i dowolnej stałej $c >0$ zachodzi
+$$
+\mathbb{P}[ |X - \mathbb{E} X| \geq c] \leq \frac{ \mathbb{V} X}{c^2}.
+$$
+
+:::
+
+::: {.proof}
+
+$$
+\begin{aligned}
+\mathbb{V} X & = \sum_{\omega \in \Omega } (X(\omega) -\mathbb{E} X)^2 \mathbb{P}[\{\omega\}] \geq  \sum_{|X(\omega) - \mathbb{E} X| \geq c } (X(\omega) -\mathbb{E} X)^2 \mathbb{P}[\{\omega\}] \\
+&\geq c^2\sum_{|X(\omega) - \mathbb{E} X| \geq c } \mathbb{P}[\{\omega\}]  \geq c^2 \mathbb{P}[ |X - \mathbb{E} X| \geq c].
+\end{aligned}
+$$
+
+:::
+
+::: {#exm-zmienne-11 name="problem podrzucanych kapeluszy raz jeszcze"}
+
+Grupa $n$ kibiców wygrywającej drużyny piłkarskiej podrzuciła wysoko w powietrze swoje kapelusze. Kapelusze spadły przypadkowo, z tym że każdy z $n$ kibiców złapał jeden kapelusz. Wówczas prawdopodobieństwo, że dokładnie $k$ kibiców złapie swój kapelusz
+wynosi
+$$
+P(n,k) = \frac {1}{n!} {n \choose k} !(n-k) = \frac{!(n-k)}{k!(n-k)!},
+$$
+gdzie $!(n-k)$ jest liczbą nieporządków na $n-k$ elementach opisaną przez wzór na liczbę nieporządków z poprzedniego rozdziału.
+Wyrażając te wyniki w formalizmie, który właśnie poznaliśmy, rozważmy przestrzeń $\Omega=S_n$ wszystkich  permutacji $n$ liczb $\{1 ,2 , . . . , n\}$, gdzie wylosowanie każdej permutacji jest jednakowo prawdopodobne. Wówczas
+$$
+\mathbb{P}[\{ \omega \}] = \frac {1}{n!}, \quad \omega \in S_n.
+$$
+Zmienna losowa
+$$
+F_n(\omega) = \text{ liczba punktów stałych $\omega$}, \qquad \omega \in S_n
+$$
+wyznacza liczbę poprawnie spadających kapeluszy. Wiemy, że
+$$
+\mathbb{P}[F_n =k ] = P(n,k) =  \frac{!(n-k)}{k!(n-k)!}.
+$$
+Ile wynosi wartość średnia $F_n$ i jej odchylenie standardowe? Niech
+$$
+F_{n,k}(\pi) = [\text{pozycja $k$ jest punktem stałym w $\pi$}] = \left\{  \begin{array}{cc}
+1 & \pi(k)=k \\
+0 & \text{poza tym}   \end{array}\right. .
+$$
+Wówczas
+$$
+F_n(\pi) = F_{n,1}(\pi) + F_{n,2}(\pi) + \ldots + F_{n,n}(\pi)
+$$
+a co za tym idzie
+$$
+\mathbb{E} F_n = \mathbb{E} F_{n,1} + \mathbb{E} F_{n,2} + \ldots + \mathbb{E} F_{n,n}.
+$$
+Zauważmy, że
+
+$$
+\mathbb{P}[F_{n,k}=1] = \frac 1n, \qquad \mathbb{P}[F_{n,k}=0] =1-\mathbb{P}[F_{n,k}=1] = \frac {n-1}{n}.
+$$
+
+Stąd $\mathbb{E} F_{n,k}= \frac 1n$ a co za tym idzie $\mathbb{E} F_n = 1$. Tak więc średnio jeden kapelusz będzie na swojej pozycji początkowej. Aby wyznaczyć wariancję dla $n \geq 2$, obliczmy najpierw
+
+$$
+\begin{aligned}
+\mathbb{E} F_n^2 & = \sum_{k=1}^n \mathbb{E} F_{n,k}^2 + \sum_{j\neq k} \mathbb{E}[F_{n,k}F_{n,j}] = \sum_{k=1}^n  \frac 1n + \sum_{j\neq k} \frac{(n-2)!}{n!} \\ &= 1 + {n \choose 2} \frac{2}{n(n-1)} = 2.
+\end{aligned}
+$$
+
+Wariancja wynosi zatem $\mathbb{V}[F_n]=1$. Dla $n \geq 2$, korzystając z nierówności Czebyszewa,
+$$
+\mathbb{P}[|F_n-1| \geq 2] \leq \frac{\mathbb{V} [F_n]}{4}=\frac 14.
+$$
+Z prawdopodobieństwem co najmniej $3/4$ losowa permutacja $n \geq 2$ elementów ma od $0$ do $2$ punktów stałych. Jej odchylenie standardowe wynosi $1$. Dla $n=1$ wariancja wynosi $0$.
+
+:::
+
+

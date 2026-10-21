@@ -25,7 +25,7 @@ Zadania na ćwiczenia 15.10.2026
 
 7. Uzasadnij, że dla dowolnego $n$ i dowolnego $j$,
    \begin{equation*}
-      {n \choose j} + {n \choose j+1} = {n \choose j+1}.
+      {n \choose j} + {n \choose j+1} = {n+1 \choose j+1}.
    \end{equation*}
    Czy potrafisz to zrobić bez wykonywania obliczeń? Zsumuj
 \begin{equation*}

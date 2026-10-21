@@ -76,3 +76,64 @@ figure img {
   max-width: 100% !important;
   height: auto !important;
 }
+
+/* Delikatne ramki wokół środowisk matematycznych */
+
+.theorem,
+.proposition,
+.corollary,
+.definition,
+.example {
+  margin: 1.2rem 0;
+  padding: 0.9rem 1.2rem;
+
+  border: 1px solid var(--bs-border-color);
+  border-left: 4px solid var(--bs-primary);
+  border-radius: 6px;
+
+  background-color: color-mix(
+    in srgb,
+    var(--bs-body-bg) 96%,
+    var(--bs-primary) 4%
+  );
+}
+
+/* Nagłówki */
+
+.theorem-title {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.theorem-title strong {
+  color: var(--bs-primary);
+}
+
+/* Bez zbędnego odstępu na końcu */
+
+.theorem > :last-child,
+.proposition > :last-child,
+.corollary > :last-child,
+.definition > :last-child,
+.example > :last-child {
+  margin-bottom: 0;
+}
+
+/* Symbol końca dowodu */
+
+.proof > p:last-child::after {
+  content: "□";
+  float: right;
+  margin-left: 1rem;
+  font-size: 1.15em;
+  font-style: normal;
+}
+
+/* Gdy dowód kończy się wzorem lub innym blokiem */
+
+.proof > :last-child:not(p)::after {
+  content: "□";
+  display: block;
+  text-align: right;
+  font-size: 1.15em;
+}

@@ -1,0 +1,61 @@
+# Lista 4. Niezależność zdarzeń {-}
+
+Zadania na ćwiczenia 29.10.2026
+
+1. Maciek rzuca dwiema kośćmi. Pierwsza kość jest dobrze wyważona.
+Na drugiej kości szóstka wypada dwa razy częściej niż każda
+z pozostałych liczb, przy czym wszystkie pozostałe wyniki
+są jednakowo prawdopodobne.
+Jakie jest prawdopodobieństwo, że suma wyrzuconych oczek
+będzie większa niż $10$?
+
+6. Rzucono $10$ razy kostką. Jakie jest prawdopodobieństwo otrzymania  
+	a. $6$ oczek co najmniej raz?
+	b. $5$ oczek dokładnie $3$ razy?
+
+
+1. W meczu piłki nożnej z prawdopodobieństwem $1/6$ wygrywają goście,
+   z prawdopodobieństwem $1/2$ gospodarze, a z prawdopodobieństwem
+   $1/3$ będzie remis. Obliczyć prawdopodobieństwo, że 
+
+      a. w $10$ meczach będzie $6$ zwycięstw gospodarzy i $4$ remisy
+      a. w $14$ meczach będzie $7$ zwycięstw gospodarzy i $3$ remisy.
+
+1. Adam, Bolek i Czesio rzucają po kolei monetą. Wygrywa ten, który pierwszy wyrzuci orła. 
+   Znaleźć szanse wygranej dla każdego z nich.
+
+7. Wykonujemy dwa eksperymenty: rzucamy kością, na której liczby parzyste wypadają dwa
+   razy częściej niż liczby nieparzyste (wszystkie parzyste są tak samo prawdopodobne i 
+   wszystkie nieparzyste są tak samo prawdopodobne) i losujemy liczbę ze zbioru
+   $\{1,2, \ldots, 10\}$.
+   Skonstruuj przestrzeń probabilistyczną  opisująca wykonanie tych eksperymentów 
+   niezależnie. Jakie jest prawdopodobieństwo, że suma otrzymanych liczb jest
+   mniejsza niż $5$?
+
+8. Rozważmy zdarzenia $A_1$, ..., $A_n$. Dla $\epsilon_j \in \{0,1\}$ niech
+   \begin{equation*}
+     A_j^{\epsilon_j} = \left\{\begin{array}{cc} A_j & \epsilon_j=0 \\ A_j^c & \epsilon_j=1 
+     \end{array} \right..
+   \end{equation*}
+   Pokaż, że $A_1, A_2, \ldots, A_n$ sa niezależne wtedy i tylko wtedy, gdy
+   dla dowolnego wyboru $\epsilon_1, \ldots \epsilon_n$, $A_1^{\epsilon_1}, \ldots A_n^{\epsilon_n}$
+   są niezależne.
+
+4.  Zdarzenia $A_1, A_2, \ldots , A_{2026}$ są niezależne i mają jednakowe prawdopodobieństwo $p$.
+   Jaka jest szansa, że zajdzie dokładnie jedno?
+
+10. Student musi poprawić oceny niedostateczne z dwóch przedmiotów. Szansa poprawienia oceny z 
+   pierwszego przedmiotu w jednej próbie wynosi $p$, a z drugiego — $q$. 
+   Żeby móc poprawić drugą ocenę, trzeba najpierw poprawić pierwszą. Poszczególne próby 
+   poprawiania są niezależne. Wiadomo, że po piętnastu próbach poprawiania oceny student 
+   jeszcze nie poprawił oceny z drugiego przedmiotu. 
+   Jaka jest szansa -- pod tym warunkiem -- że nie poprawił jeszcze oceny z pierwszego przedmiotu?
+
+1. Pewien matematyk nosi w kieszeniach (lewej i prawej) po jednym pudełku zapałek. 
+   Ilekroć chce zapalić papierosa, sięga do losowo wybranej kieszeni. 
+   Jaka jest szansa, że gdy po raz pierwszy wyciągnie puste pudełko, 
+   w drugim będzie $k$ zapałek ($k=0,1,2,\ldots,m$, gdzie $m$ jest liczbą zapałek w pełnym pudełku; 
+   zakładamy, że w chwili początkowej matematyk ma dwa pełne pudełka)?
+
+1. Obliczyć prawdopodobieństwo otrzymania parzystej liczby sukcesów w schemacie 
+   $n$ prób Bernoulliego z prawdopodobieństwem sukcesu w jednej próbie równym $p$.

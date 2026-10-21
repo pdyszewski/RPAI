@@ -2,6 +2,8 @@ project:
   type: book
   output-dir: docs
 lang: pl
+language:
+  crossref-prp-title: "Fakt"
 
 book:
   title: "Rachunek prawdopodobieństwa (AI)"
@@ -21,6 +23,8 @@ book:
         - aksjomaty.qmd
         - klasyczne.qmd
         - warunkowe.qmd
+        - niezaleznosc.qmd
+        #- zmienne.qmd
         #- summary.qmd
         - references.qmd
     - part: "Listy zadań"
@@ -28,6 +32,7 @@ book:
         - lista1.qmd
         - lista2.qmd
         - lista3.qmd
+        - lista4.qmd
 
 bibliography: references.bib
 
