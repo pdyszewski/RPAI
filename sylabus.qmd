@@ -38,9 +38,9 @@ Wstępny plan tematów poruszanych na poszczególnych wykładach:
 
 1. Aksjomatyka rachunku prawdopodobieństwa (7.10.2026)
 2. Prawdopodobieństwo klasyczne i prawdopodobieństwo warunkowe (14.10.2026)
-4. Niezależność zdarzeń, zmienne losowe dyskretne i ich rozkłady
+4. Niezależność zdarzeń (21.10.2026)
+7. Zmienne losowe i ich rozkłady. Wartośc oczekiwana i wariancja (28.10.2026)
 6. Wektory losowe, niezależność zmiennych losowych
-7. Parametry rozkładów
 1. Rozkłady warunkowe, warunkowa wartość oczekiwana i niezależność warunkowa.
 1. Regresja liniowa
 8. Nierówności związane z momentami, nierówności koncentracyjne

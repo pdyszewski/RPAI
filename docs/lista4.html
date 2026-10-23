@@ -242,8 +242,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Spis treści</h2>
+   
+  <ul>
+  <li><a href="#zadania-na-ćwiczenia" id="toc-zadania-na-ćwiczenia" class="nav-link active" data-scroll-target="#zadania-na-ćwiczenia">Zadania na ćwiczenia</a></li>
+  <li><a href="#zadania-kartkówkowe" id="toc-zadania-kartkówkowe" class="nav-link" data-scroll-target="#zadania-kartkówkowe">Zadania kartkówkowe</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -268,6 +275,8 @@ window.Quarto = {
 
 
 <p>Zadania na ćwiczenia 29.10.2026</p>
+<section id="zadania-na-ćwiczenia" class="level2">
+<h2 class="anchored" data-anchor-id="zadania-na-ćwiczenia">Zadania na ćwiczenia</h2>
 <ol type="1">
 <li><p>Maciek rzuca dwiema kośćmi. Pierwsza kość jest dobrze wyważona. Na drugiej kości szóstka wypada dwa razy częściej niż każda z pozostałych liczb, przy czym wszystkie pozostałe wyniki są jednakowo prawdopodobne. Jakie jest prawdopodobieństwo, że suma wyrzuconych oczek będzie większa niż <span class="math inline">\(10\)</span>?</p></li>
 <li><p>Rzucono <span class="math inline">\(10\)</span> razy kostką. Jakie jest prawdopodobieństwo otrzymania</p>
@@ -291,8 +300,55 @@ window.Quarto = {
 <li><p>Pewien matematyk nosi w kieszeniach (lewej i prawej) po jednym pudełku zapałek. Ilekroć chce zapalić papierosa, sięga do losowo wybranej kieszeni. Jaka jest szansa, że gdy po raz pierwszy wyciągnie puste pudełko, w drugim będzie <span class="math inline">\(k\)</span> zapałek (<span class="math inline">\(k=0,1,2,\ldots,m\)</span>, gdzie <span class="math inline">\(m\)</span> jest liczbą zapałek w pełnym pudełku; zakładamy, że w chwili początkowej matematyk ma dwa pełne pudełka)?</p></li>
 <li><p>Obliczyć prawdopodobieństwo otrzymania parzystej liczby sukcesów w schemacie <span class="math inline">\(n\)</span> prób Bernoulliego z prawdopodobieństwem sukcesu w jednej próbie równym <span class="math inline">\(p\)</span>.</p></li>
 </ol>
+</section>
+<section id="zadania-kartkówkowe" class="level2">
+<h2 class="anchored" data-anchor-id="zadania-kartkówkowe">Zadania kartkówkowe</h2>
+<ol type="1">
+<li><p>Rzucamy czterokrotnie symetryczną kostką. Zakładamy, że wyniki kolejnych rzutów są niezależne.</p>
+<p><strong>a.</strong> Jakie jest prawdopodobieństwo, że szóstka wypadnie co najmniej raz?</p>
+<p><strong>b.</strong> Jakie jest prawdopodobieństwo, że szóstka wypadnie dokładnie dwa razy?</p>
+<details>
+<summary>
+<p>Odpowiedź</p>
+</summary>
+<p><strong>a.</strong> <span class="math inline">\(1-\left(\frac56\right)^4=\frac{671}{1296}\)</span></p>
+<p><strong>b.</strong> <span class="math inline">\(\binom42\left(\frac16\right)^2
+\left(\frac56\right)^2=\frac{25}{216}\)</span></p>
+</details></li>
+<li><p>W meczu piłki nożnej gospodarze wygrywają z prawdopodobieństwem <span class="math inline">\(\frac12\)</span>, goście z prawdopodobieństwem <span class="math inline">\(\frac16\)</span>, a remis pada z prawdopodobieństwem <span class="math inline">\(\frac13\)</span>. Rozpatrujemy trzy niezależne mecze.</p>
+<p><strong>a.</strong> Jakie jest prawdopodobieństwo, że gospodarze wygrają wszystkie trzy mecze?</p>
+<p><strong>b.</strong> Jakie jest prawdopodobieństwo, że gospodarze wygrają dokładnie dwa mecze, a trzeci zakończy się remisem?</p>
+<details>
+<summary>
+<p>Odpowiedź</p>
+</summary>
+<p><strong>a.</strong> <span class="math inline">\(\left(\frac12\right)^3=\frac18\)</span></p>
+<p><strong>b.</strong> <span class="math inline">\(3\cdot\left(\frac12\right)^2\cdot\frac13=\frac14\)</span></p>
+</details></li>
+<li><p>Komputer składa się z dwóch podzespołów <span class="math inline">\(A\)</span> i <span class="math inline">\(B\)</span>. Podzespół <span class="math inline">\(A\)</span> ulega awarii z prawdopodobieństwem <span class="math inline">\(0{,}2\)</span>, natomiast podzespół <span class="math inline">\(B\)</span> z prawdopodobieństwem <span class="math inline">\(0{,}3\)</span>. Zakładamy, że awarie obu podzespołów są niezależne.</p>
+<p><strong>a.</strong> Jakie jest prawdopodobieństwo, że żaden z podzespołów nie ulegnie awarii?</p>
+<p><strong>b.</strong> Jakie jest prawdopodobieństwo, że dokładnie jeden z podzespołów ulegnie awarii?</p>
+<details>
+<summary>
+<p>Odpowiedź</p>
+</summary>
+<p><strong>a.</strong> <span class="math inline">\(0{,}8\cdot0{,}7=0{,}56\)</span></p>
+<p><strong>b.</strong> <span class="math inline">\(0{,}2\cdot0{,}7+0{,}8\cdot0{,}3=0{,}38\)</span></p>
+</details></li>
+<li><p>Rzucamy symetryczną monetą i symetryczną kostką. Wyniki obu eksperymentów są niezależne.</p>
+<p><strong>a.</strong> Jakie jest prawdopodobieństwo, że na monecie wypadnie orzeł, a na kostce szóstka?</p>
+<p><strong>b.</strong> Jakie jest prawdopodobieństwo, że na monecie wypadnie orzeł lub na kostce szóstka (dopuszczamy jednoczesne wystąpienie obu zdarzeń)?</p>
+<details>
+<summary>
+<p>Odpowiedź</p>
+</summary>
+<p><strong>a.</strong> <span class="math inline">\(\frac12\cdot\frac16=\frac1{12}\)</span></p>
+<p><strong>b.</strong> <span class="math inline">\(\frac12+\frac16-\frac1{12}=\frac7{12}\)</span></p>
+</details></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

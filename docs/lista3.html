@@ -243,8 +243,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Spis treści</h2>
+   
+  <ul>
+  <li><a href="#zadania-na-ćwiczenia" id="toc-zadania-na-ćwiczenia" class="nav-link active" data-scroll-target="#zadania-na-ćwiczenia">Zadania na ćwiczenia</a></li>
+  <li><a href="#zadania-kartkówkowe" id="toc-zadania-kartkówkowe" class="nav-link" data-scroll-target="#zadania-kartkówkowe">Zadania kartkówkowe</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -269,6 +276,8 @@ window.Quarto = {
 
 
 <p>Zadania na ćwiczenia 22.10.2026</p>
+<section id="zadania-na-ćwiczenia" class="level2">
+<h2 class="anchored" data-anchor-id="zadania-na-ćwiczenia">Zadania na ćwiczenia</h2>
 <ol type="1">
 <li><p>Dwoje graczy, Maciek i Dawid, dostało po <span class="math inline">\(13\)</span> kart z <span class="math inline">\(52\)</span>. Obliczyć prawdopodobieństwo, że Maciek nie ma asa jeżeli Maciek zobaczył przypadkowo u Dawida</p>
 <ol type="a">
@@ -302,8 +311,54 @@ window.Quarto = {
 </ol></li>
 <li><p>W populacji jest <span class="math inline">\(15\%\)</span> dyslektyków. Jeżeli w teście diagnostycznym uczeń popełni <span class="math inline">\(6\)</span> lub więcej błędów, to zostaje uznany za dyslektyka. Każdy dyslektyk na pewno popełni co najmniej <span class="math inline">\(6\)</span> błędów. Również nie-dyslektyk może popełnić co najmniej <span class="math inline">\(6\)</span> błędów i dzieje się to z prawdopodobieństwem <span class="math inline">\(0,1\)</span>. Jasiu popełnił <span class="math inline">\(6\)</span> błędów. Oblicz prawdopodobieństwo, że jest dyslektykiem. Jakie jest prawdopodobieństwo, że w kolejnym teście też popełni co najmniej <span class="math inline">\(6\)</span> błędów?</p></li>
 </ol>
+</section>
+<section id="zadania-kartkówkowe" class="level2">
+<h2 class="anchored" data-anchor-id="zadania-kartkówkowe">Zadania kartkówkowe</h2>
+<ol type="1">
+<li><p>W pierwszej urnie znajdują się <span class="math inline">\(3\)</span> kule białe i <span class="math inline">\(1\)</span> czarna, a w drugiej <span class="math inline">\(1\)</span> kula biała i <span class="math inline">\(1\)</span> czarna. Losujemy jedną z urn z jednakowym prawdopodobieństwem, a następnie jedną kulę z wybranej urny.</p>
+<p><strong>a.</strong> Jakie jest prawdopodobieństwo wylosowania białej kuli?</p>
+<p><strong>b.</strong> Wylosowano białą kulę. Jakie jest prawdopodobieństwo, że pochodzi ona z pierwszej urny?</p>
+<details>
+<summary>
+<p>Odpowiedź</p>
+</summary>
+<p><strong>a.</strong> <span class="math inline">\(\frac12\cdot\frac34+\frac12\cdot\frac12=\frac58\)</span></p>
+<p><strong>b.</strong> <span class="math inline">\(\frac{\frac12\cdot\frac34}{\frac58}=\frac35\)</span></p>
+</details></li>
+<li><p>Mamy dwie kostki. Pierwsza jest standardową symetryczną kostką sześcienną, natomiast na drugiej ściankach znajdują się liczby <span class="math inline">\(1,2,3,6,6,6\)</span>. Losujemy jedną z kostek z jednakowym prawdopodobieństwem i wykonujemy nią jeden rzut.</p>
+<p><strong>a.</strong> Jakie jest prawdopodobieństwo wyrzucenia szóstki?</p>
+<p><strong>b.</strong> Wypadła szóstka. Jakie jest prawdopodobieństwo, że rzucano drugą kostką?</p>
+<details>
+<summary>
+<p>Odpowiedź</p>
+</summary>
+<p><strong>a.</strong> <span class="math inline">\(\frac12\cdot\frac16+\frac12\cdot\frac12=\frac13\)</span></p>
+<p><strong>b.</strong> <span class="math inline">\(\frac{\frac12\cdot\frac12}{\frac13}=\frac34\)</span></p>
+</details></li>
+<li><p>W pewnej skrzynce pocztowej <span class="math inline">\(20\%\)</span> wiadomości stanowi spam. Filtr antyspamowy poprawnie rozpoznaje wszystkie wiadomości będące spamem, ale błędnie oznacza jako spam również <span class="math inline">\(25\%\)</span> zwykłych wiadomości.</p>
+<p><strong>a.</strong> Jakie jest prawdopodobieństwo, że losowo wybrana wiadomość zostanie oznaczona jako spam?</p>
+<p><strong>b.</strong> Wiadomość została oznaczona jako spam. Jakie jest prawdopodobieństwo, że rzeczywiście jest spamem?</p>
+<details>
+<summary>
+<p>Odpowiedź</p>
+</summary>
+<p><strong>a.</strong> <span class="math inline">\(0{,}2\cdot 1+0{,}8\cdot0{,}25=0{,}4\)</span></p>
+<p><strong>b.</strong> <span class="math inline">\(\frac{0{,}2\cdot1}{0{,}4}=\frac12\)</span></p>
+</details></li>
+<li><p>Fabryka produkuje śrubki na dwóch maszynach. Maszyna A produkuje <span class="math inline">\(75\%\)</span> wszystkich śrubek, a maszyna B pozostałe <span class="math inline">\(25\%\)</span>. Wśród śrubek produkowanych przez maszynę A <span class="math inline">\(10\%\)</span> jest wadliwych, a wśród śrubek produkowanych przez maszynę B <span class="math inline">\(30\%\)</span> jest wadliwych.</p>
+<p><strong>a.</strong> Jakie jest prawdopodobieństwo, że losowo wybrana śrubka jest wadliwa?</p>
+<p><strong>b.</strong> Wylosowano wadliwą śrubkę. Jakie jest prawdopodobieństwo, że została wyprodukowana przez maszynę B?</p>
+<details>
+<summary>
+<p>Odpowiedź</p>
+</summary>
+<p><strong>a.</strong> <span class="math inline">\(0{,}75\cdot0{,}1+0{,}25\cdot0{,}3=0{,}15\)</span></p>
+<p><strong>b.</strong> <span class="math inline">\(\frac{0{,}25\cdot0{,}3}{0{,}15}=\frac12\)</span></p>
+</details></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

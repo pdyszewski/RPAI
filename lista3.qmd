@@ -2,7 +2,7 @@
 
 Zadania na ćwiczenia 22.10.2026
 
-
+## Zadania na ćwiczenia
 
 1. Dwoje graczy, Maciek i Dawid,  dostało po $13$ kart z $52$.
 Obliczyć prawdopodobieństwo, że Maciek nie ma asa jeżeli 
@@ -72,3 +72,85 @@ Jasiu popełnił $6$ błędów.
 Oblicz prawdopodobieństwo, że jest dyslektykiem. 
 Jakie jest prawdopodobieństwo, że w kolejnym teście też popełni co najmniej $6$ błędów?
 
+## Zadania kartkówkowe
+
+1. W pierwszej urnie znajdują się $3$ kule białe i $1$ czarna,
+   a w drugiej $1$ kula biała i $1$ czarna.
+   Losujemy jedną z urn z jednakowym prawdopodobieństwem,
+   a następnie jedną kulę z wybranej urny.
+
+   **a.** Jakie jest prawdopodobieństwo wylosowania białej kuli?
+
+   **b.** Wylosowano białą kulę. Jakie jest prawdopodobieństwo,
+   że pochodzi ona z pierwszej urny?
+
+   <details><summary>Odpowiedź</summary>
+
+   **a.** $\frac12\cdot\frac34+\frac12\cdot\frac12=\frac58$
+
+   **b.** $\frac{\frac12\cdot\frac34}{\frac58}=\frac35$
+
+   </details>
+
+
+2. Mamy dwie kostki. Pierwsza jest standardową symetryczną
+   kostką sześcienną, natomiast na drugiej ściankach znajdują
+   się liczby $1,2,3,6,6,6$.
+   Losujemy jedną z kostek z jednakowym prawdopodobieństwem
+   i wykonujemy nią jeden rzut.
+
+   **a.** Jakie jest prawdopodobieństwo wyrzucenia szóstki?
+
+   **b.** Wypadła szóstka. Jakie jest prawdopodobieństwo,
+   że rzucano drugą kostką?
+
+   <details><summary>Odpowiedź</summary>
+
+   **a.** $\frac12\cdot\frac16+\frac12\cdot\frac12=\frac13$
+
+   **b.** $\frac{\frac12\cdot\frac12}{\frac13}=\frac34$
+
+   </details>
+
+
+3. W pewnej skrzynce pocztowej $20\%$ wiadomości stanowi spam.
+   Filtr antyspamowy poprawnie rozpoznaje wszystkie wiadomości
+   będące spamem, ale błędnie oznacza jako spam również $25\%$
+   zwykłych wiadomości.
+
+   **a.** Jakie jest prawdopodobieństwo, że losowo wybrana
+   wiadomość zostanie oznaczona jako spam?
+
+   **b.** Wiadomość została oznaczona jako spam.
+   Jakie jest prawdopodobieństwo, że rzeczywiście jest spamem?
+
+   <details><summary>Odpowiedź</summary>
+
+   **a.** $0{,}2\cdot 1+0{,}8\cdot0{,}25=0{,}4$
+
+   **b.** $\frac{0{,}2\cdot1}{0{,}4}=\frac12$
+
+   </details>
+
+
+4. Fabryka produkuje śrubki na dwóch maszynach.
+   Maszyna A produkuje $75\%$ wszystkich śrubek,
+   a maszyna B pozostałe $25\%$.
+   Wśród śrubek produkowanych przez maszynę A $10\%$
+   jest wadliwych, a wśród śrubek produkowanych przez
+   maszynę B $30\%$ jest wadliwych.
+
+   **a.** Jakie jest prawdopodobieństwo, że losowo wybrana
+   śrubka jest wadliwa?
+
+   **b.** Wylosowano wadliwą śrubkę.
+   Jakie jest prawdopodobieństwo, że została wyprodukowana
+   przez maszynę B?
+
+   <details><summary>Odpowiedź</summary>
+
+   **a.** $0{,}75\cdot0{,}1+0{,}25\cdot0{,}3=0{,}15$
+
+   **b.** $\frac{0{,}25\cdot0{,}3}{0{,}15}=\frac12$
+
+   </details>

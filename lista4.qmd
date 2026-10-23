@@ -2,6 +2,8 @@
 
 Zadania na ćwiczenia 29.10.2026
 
+## Zadania na ćwiczenia
+
 1. Maciek rzuca dwiema kośćmi. Pierwsza kość jest dobrze wyważona.
 Na drugiej kości szóstka wypada dwa razy częściej niż każda
 z pozostałych liczb, przy czym wszystkie pozostałe wyniki
@@ -59,3 +61,85 @@ będzie większa niż $10$?
 
 1. Obliczyć prawdopodobieństwo otrzymania parzystej liczby sukcesów w schemacie 
    $n$ prób Bernoulliego z prawdopodobieństwem sukcesu w jednej próbie równym $p$.
+  
+
+## Zadania kartkówkowe  
+
+
+1. Rzucamy czterokrotnie symetryczną kostką.
+   Zakładamy, że wyniki kolejnych rzutów są niezależne.
+
+   **a.** Jakie jest prawdopodobieństwo, że szóstka wypadnie
+   co najmniej raz?
+
+   **b.** Jakie jest prawdopodobieństwo, że szóstka wypadnie
+   dokładnie dwa razy?
+
+   <details><summary>Odpowiedź</summary>
+
+   **a.** $1-\left(\frac56\right)^4=\frac{671}{1296}$
+
+   **b.** $\binom42\left(\frac16\right)^2
+   \left(\frac56\right)^2=\frac{25}{216}$
+
+   </details>
+
+
+3. W meczu piłki nożnej gospodarze wygrywają z prawdopodobieństwem
+   $\frac12$, goście z prawdopodobieństwem $\frac16$,
+   a remis pada z prawdopodobieństwem $\frac13$.
+   Rozpatrujemy trzy niezależne mecze.
+
+   **a.** Jakie jest prawdopodobieństwo, że gospodarze wygrają
+   wszystkie trzy mecze?
+
+   **b.** Jakie jest prawdopodobieństwo, że gospodarze wygrają
+   dokładnie dwa mecze, a trzeci zakończy się remisem?
+
+   <details><summary>Odpowiedź</summary>
+
+   **a.** $\left(\frac12\right)^3=\frac18$
+
+   **b.** $3\cdot\left(\frac12\right)^2\cdot\frac13=\frac14$
+
+   </details>
+
+
+4. Komputer składa się z dwóch podzespołów $A$ i $B$.
+   Podzespół $A$ ulega awarii z prawdopodobieństwem $0{,}2$,
+   natomiast podzespół $B$ z prawdopodobieństwem $0{,}3$.
+   Zakładamy, że awarie obu podzespołów są niezależne.
+
+   **a.** Jakie jest prawdopodobieństwo, że żaden z podzespołów
+   nie ulegnie awarii?
+
+   **b.** Jakie jest prawdopodobieństwo, że dokładnie jeden
+   z podzespołów ulegnie awarii?
+
+   <details><summary>Odpowiedź</summary>
+
+   **a.** $0{,}8\cdot0{,}7=0{,}56$
+
+   **b.** $0{,}2\cdot0{,}7+0{,}8\cdot0{,}3=0{,}38$
+
+   </details>
+
+
+
+6. Rzucamy symetryczną monetą i symetryczną kostką.
+   Wyniki obu eksperymentów są niezależne.
+
+   **a.** Jakie jest prawdopodobieństwo, że na monecie
+   wypadnie orzeł, a na kostce szóstka?
+
+   **b.** Jakie jest prawdopodobieństwo, że na monecie
+   wypadnie orzeł lub na kostce szóstka (dopuszczamy
+   jednoczesne wystąpienie obu zdarzeń)?
+
+   <details><summary>Odpowiedź</summary>
+
+   **a.** $\frac12\cdot\frac16=\frac1{12}$
+
+   **b.** $\frac12+\frac16-\frac1{12}=\frac7{12}$
+
+   </details>

@@ -56,6 +56,345 @@ W przyszłości zobaczymy, że liczby $\mathbb{P}[X=x_k]$ pomogą znaleźć upro
 
 :::
 
+## Rozkład zmiennej losowej
+
+W sytuacjach kiedy nie ma żadnych niejasności nie jest konieczne dokładne 
+konstruowanie przestrzeni probabilistycznej.
+
+::: {#exm-geometryczne-parzyste}
+
+Rzucamy symetryczną monetą aż do momentu otrzymania pierwszego orła.
+Jakie jest prawdopodobieństwo o=wykonania parzystej liczby rzutów?
+Niech $X$ oznacza liczbę wykonanych rzutów. Wówczas
+\begin{equation*}
+  \mathbb{P}[ \mbox{$X$ jest parzyste} ] = \sum_{k=1}^\infty \mathbb{P}[X =2k]
+  =\sum_{k=1}^\infty \frac{1}{2^{2k}} = \frac 13.
+\end{equation*}
+
+:::
+
+Zauważmy, że nie była konieczna konstrukcja przestrzeni probabilistycznej.
+Kluczowa okazała się być znajomość liczb $\mathbb{P}[X=j]$. 
+
+::: {#def-rozklad-dyskretny}
+
+Niech $(\Omega, \mathbb{P})$ będzie dyskretną przestrzenią probabilistyczną.
+Rozkładem zmiennej losowej 
+$X$ nazywamy funkcję $\mu_X \colon \mathbb{R} \cup\{ \pm \infty\} \to [0,1]$ 
+daną przez $\mu_X(x) = \mathbb{P}[X=x]$.
+
+:::
+
+::: {#exm-binomial-distr name="Rozkład dwumianowy"}
+
+Niech $n \in \mathbb{N}$ i $p\in [0,1]$. Powiemy, że zmienna losowa $X$ ma rozkład
+dwumianowy z parametrami $n$ i $p$ jeżeli
+\begin{equation*}
+  \mathbb{P}[X = k] = p^k(1-p)^{n-k} {n \choose k}
+\end{equation*}
+dla $k =0,1, \ldots n$.
+Wówczas $X$ możemy interpretować jako liczbę sukcesów
+w $n$ niezależnych próbach Bernoulliego z 
+prawdopodobieństwem sukcesu $p$.
+
+```{ojs}
+//| echo: false
+
+viewof bernN = Inputs.range([1, 50], {
+  value: 10,
+  step: 1,
+  label: "n"
+})
+
+viewof bernP = Inputs.range([0, 1], {
+  value: 0.5,
+  step: 0.01,
+  label: "p",
+  format: x => x.toFixed(2)
+})
+
+bernChart = {
+  const n = bernN;
+  const p = bernP;
+
+  function binom(n, k) {
+    let result = 1;
+    for (let i = 1; i <= k; i++) {
+      result *= (n - i + 1) / i;
+    }
+    return result;
+  }
+
+  const data = Array.from({length: n + 1}, (_, k) => ({
+    k: k,
+    prob: binom(n, k) * p ** k * (1 - p) ** (n - k)
+  }));
+
+  const maxProb = Math.max(...data.map(d => d.prob));
+
+  const marks = [
+    Plot.barY(data, {
+      x: "k",
+      y: "prob",
+      fill: "var(--bs-primary)",
+      inset: n <= 20 ? 5 : 1,
+      title: d => `k=${d.k}, P(X=k)=${d.prob.toFixed(4)}`
+    })
+  ];
+
+  if (n <= 20) {
+    marks.push(
+      Plot.text(data.filter(d => d.prob >= 0.005), {
+        x: "k",
+        y: "prob",
+        text: d => d.prob.toFixed(2),
+        dy: -10,
+        fontSize: 12,
+        fill: "currentColor"
+      })
+    );
+  }
+
+  marks.push(
+    Plot.ruleY([0], {
+      stroke: "currentColor",
+      strokeOpacity: 0.4
+    })
+  );
+
+  const chart = Plot.plot({
+    width: 720,
+    height: 360,
+    marginTop: 50,
+    marginBottom: 45,
+
+    //title: `Rozkład B(n=${n}, p=${p.toFixed(2)})`,
+
+    x: {
+      type: "band",
+      domain: data.map(d => d.k),
+      tickFormat: k => n > 20 && k % 5 !== 0 ? "" : k,
+      label: "Liczba sukcesów"
+    },
+
+    y: {
+      domain: [0, maxProb * 1.2],
+      label: "Prawdopodobieństwo",
+      grid: true,
+      nice: true
+    },
+
+    marks: marks,
+
+    style: {
+      background: "transparent",
+      color: "var(--bs-body-color)",
+      fontSize: "13px"
+    }
+  });
+
+  chart.style.maxWidth = "100%";
+  chart.style.height = "auto";
+
+  return chart;
+}
+```
+:::
+
+::: {#exm-rozklad-geometryczny}
+
+Niech $p \in (0,1)$. Powiemy, że $X$ ma rozkład geometryczny 
+z prawdopodobieństwem sukcesu $p$ jeżeli
+\begin{equation*}
+  \mathbb{P}[X=k] = (1-p)^{k-1}p
+\end{equation*}
+dla $k=1,2, \ldots$. Zmienną $X$ możemy interpretować
+jako moment pierwszego sukcesu w nieskończonym ciągu prób Bernoulliego.
+
+```{ojs}
+//| echo: false
+
+viewof geoP = Inputs.range([0.01, 1], {
+  value: 0.3,
+  step: 0.01,
+  label: "p",
+  format: x => x.toFixed(2)
+})
+
+geoChart = {
+  const p = geoP;
+  const m = 60;
+
+  const data = Array.from({length: m}, (_, i) => ({
+    k: i + 1,
+    prob: p * (1 - p) ** i
+  }));
+
+  const marks = [
+    Plot.barY(data, {
+      x: "k",
+      y: "prob",
+      fill: "var(--bs-primary)",
+      inset: 1,
+      title: d => `k=${d.k}, P(X=k)=${d.prob.toFixed(4)}`
+    }),
+
+    Plot.ruleY([0], {
+      stroke: "currentColor",
+      strokeOpacity: 0.4
+    })
+  ];
+
+  const chart = Plot.plot({
+    width: 720,
+    height: 360,
+    marginTop: 50,
+    marginBottom: 45,
+
+
+    x: {
+      type: "band",
+      domain: data.map(d => d.k),
+      tickFormat: k => k % 5 === 0 ? k : "",
+      label: "Numer pierwszej udanej próby"
+    },
+
+    y: {
+      domain: [0, p * 1.2],
+      label: "Prawdopodobieństwo",
+      grid: true,
+      nice: true
+    },
+
+    marks: marks,
+
+    style: {
+      background: "transparent",
+      color: "var(--bs-body-color)",
+      fontSize: "13px"
+    }
+  });
+
+  chart.style.maxWidth = "100%";
+  chart.style.height = "auto";
+
+  return chart;
+}
+
+```
+
+:::
+
+Powiedzmy, że wykonujemy $n$ prób Bernoulliego z prawdopodobieństwem sukcesu $p=\lambda/n$ dla
+pewnego $\lambda>0$. Co się dzieje gdy $n \to \infty$? Liczba prób jest coraz większa, ale 
+prawdopodobieństwo sukcesu jest coraz mniejsze.
+Prawdopodobieństwo, że otrzymamy dokładnie $k$ sukcesów wynosi
+\begin{equation*}
+  {n \choose k} \frac{\lambda ^k}{n^k} \left(1-\frac{\lambda}{n}\right)^{n-k} 
+  = \frac{\lambda^k}{k!} \frac{n^{\underline{k}}}{n^k} \left(1- \frac{\lambda}{n} \right)^{n-k}.
+\end{equation*}
+Gdy $n \to \infty$ to
+\begin{equation*}
+  \frac{n^{\underline{k}}}{n^k} \to 1
+\end{equation*}
+oraz
+\begin{equation*}
+  \left(1- \frac{\lambda}{n} \right)^{n-k} \to e^{-\lambda}.
+\end{equation*}
+Zatem prawdopodobieństwo, że otrzymamy dokładnie $k$ sukcesów dąży do
+\begin{equation*}
+  \frac{\lambda^k}{k!} e^{-\lambda}.
+\end{equation*}
+
+::: {#exm-rozklad-poissona}
+  Niech $\lambda>0$. Powiemy, że zmienne losowa $X$ ma rozkład Poissona 
+  z parametrem $\lambda$ jeżeli
+  \begin{equation*}
+    \mathbb{P}[X=k] = \frac{\lambda^k}{k!} e^{-\lambda}
+  \end{equation*}
+  dla $k=0,1, \ldots$.
+
+
+```{ojs}
+//| echo: false
+
+viewof poisLambda = Inputs.range([0.1, 40], {
+  value: 5,
+  step: 0.1,
+  label: "Parametr λ",
+  format: x => x.toFixed(1)
+})
+
+poisChart = {
+  const lambda = poisLambda;
+  const m = 60;
+
+  // Obliczamy prawdopodobieństwa rekurencyjnie
+  const data = [];
+  let prob = Math.exp(-lambda);
+
+  for (let k = 0; k <= m; k++) {
+    data.push({k: k, prob: prob});
+    prob *= lambda / (k + 1);
+  }
+
+  const maxProb = Math.max(...data.map(d => d.prob));
+
+  const marks = [
+    Plot.barY(data, {
+      x: "k",
+      y: "prob",
+      fill: "var(--bs-primary)",
+      inset: 1,
+      title: d => `k=${d.k}, P(X=k)=${d.prob.toFixed(5)}`
+    }),
+
+    Plot.ruleY([0], {
+      stroke: "currentColor",
+      strokeOpacity: 0.4
+    })
+  ];
+
+  const chart = Plot.plot({
+    width: 720,
+    height: 360,
+    marginTop: 50,
+    marginBottom: 45,
+
+    x: {
+      type: "band",
+      domain: data.map(d => d.k),
+      tickFormat: k => k % 5 === 0 ? k : "",
+      label: "Liczba zdarzeń"
+    },
+
+    y: {
+      domain: [0, maxProb * 1.2],
+      label: "Prawdopodobieństwo",
+      grid: true,
+      nice: true
+    },
+
+    marks: marks,
+
+    style: {
+      background: "transparent",
+      color: "var(--bs-body-color)",
+      fontSize: "13px"
+    }
+  });
+
+  chart.style.maxWidth = "100%";
+  chart.style.height = "auto";
+
+  return chart;
+}
+
+```
+
+
+:::
+
 ## Wartość oczekiwana
 
   Najprostszym opisem zmiennej losowej $X$ byłaby jedna liczba. 
@@ -100,7 +439,8 @@ W przyszłości zobaczymy, że liczby $\mathbb{P}[X=x_k]$ pomogą znaleźć upro
 
 :::
 
-  W powyższej definicji, jeżeli $X(\omega_0) =\infty$ oraz $\mathbb{P}[\{\omega_0 \}]=0$ to interpretujemy 
+  W powyższej definicji, jeżeli $X(\omega_0) =\infty$ oraz $\mathbb{P}[\{\omega_0 \}]=0$ to 
+  interpretujemy 
   $X(\omega_0)\mathbb{P}[\{\omega_0 \}]=0$.
   Niebawem przekonamy się, że powyższa definicja wartości oczekiwanej zadaje 
   dokładnie prawą stronę równania @eq-eq-2-approx.
@@ -109,7 +449,8 @@ W przyszłości zobaczymy, że liczby $\mathbb{P}[X=x_k]$ pomogą znaleźć upro
 
   Wróćmy do eksperymentu czekania na pierwszego orła. 
   Tutaj $\Omega = \{R\}^{\mathbb{N}} \cup \bigcup_{k=0}^\infty\{R \}^k \times \{O\}$. 
-  Niech $X$ będzie zmienną losową opisującą liczbę rzutów potrzebnych do otrzymania orła ($X(\omega_k)=k$).
+  Niech $X$ będzie zmienną losową opisującą liczbę rzutów potrzebnych do otrzymania 
+  orła ($X(\omega_k)=k$).
   Wówczas $X$ jest całkowalna, bo
   $$
     \sum_{\omega \in \Omega} |X(\omega)| p(\omega) = \sum_{k=1}^\infty \frac{k}{2^k}<\infty
@@ -128,7 +469,8 @@ W przyszłości zobaczymy, że liczby $\mathbb{P}[X=x_k]$ pomogą znaleźć upro
 
   Niech $X$ oznacza liczbę otrzymanych oczek przy rzucie jedną wyważoną kością. Wówczas
   $$
-    \mathbb{E} [X] = X(1) \frac 16 +  X(2) \frac 16 +  X(3) \frac 16  +  X(4) \frac 16 +  X(5) \frac 16 +  X(6) \frac 16 = \frac 72.
+    \mathbb{E} [X] = X(1) \frac 16 +  X(2) \frac 16 +  X(3) \frac 16  
+    +  X(4) \frac 16 +  X(5) \frac 16 +  X(6) \frac 16 = \frac 72.
   $$
   Ten przykład pokazuje, że nazwa *wartość oczekiwana* jest niefortunna. 
   Przy rzucie kością nie możemy oczekiwać wyniku $7/2$.
@@ -147,7 +489,7 @@ Niech $X$ oznacza wygraną gracza $A$ podczas jednej rundy, wtedy
 \mathbb{E} X = 1\cdot \mathbb{P}[X=1] - 2\cdot \mathbb{P}[X=2] + 3\cdot \mathbb{P}[X=3] \\
 - 4\cdot \mathbb{P}[X=4] + 5\cdot \mathbb{P}[X=5] - 6\cdot \mathbb{P}[X=6]= -\frac 12.
 \end{multline*}
-Jeżeli wykonamy $n$ rzutów i przez #X_j$ oznaczymy wygraną gracza $A$ w $k$tym rzucie, to stan 
+Jeżeli wykonamy $n$ rzutów i przez $X_j$ oznaczymy wygraną gracza $A$ w $k$tym rzucie, to stan 
 portfela gracza $A$ po $n$ rzutach wyniesie
 \begin{equation*}
 	\sum_{k=1}^nX_k.
@@ -368,6 +710,34 @@ dla $1 \leq k \leq n$ oraz $m\geq 0$.
 
 :::
 
+::: {#exm-geometryczny-mean}
+
+Rzucamy wielokrotnie monetą, na której orzeł wypada z prawdopodobieństwem $p$. 
+Ile średnio rzutów należy wykonać, aby otrzymać pierwszego orła?
+Niech $X$ będzie liczbą rzutów potrzebną do otrzymania pierwszego orła.
+Wówczas
+\begin{equation*}
+   \mathbb{P}[X=k] = (1-p)^{k-1}p, \quad k\geq 1.
+\end{equation*}
+Przypomnijmy, że wówczas $X$ ma rozkład geometryczny. 
+Naszym zadaniem jest wyznaczenie wartości
+\begin{equation*}
+  \mathbb{E}[X]=\sum_{k=1}^{\infty} k (1-p)^{k-1}p.
+\end{equation*}
+Dla dowolnego $q \in (0,1)$ mamy
+\begin{equation*}
+  \sum_{k=0}^\infty q^k = \frac{1}{1-q}.
+\end{equation*}
+Różniczkując stronami otrzymujemy
+\begin{equation*}
+  \sum_{k=1}^\infty kq^{k-1} = \frac{1}{(1-q)^2}.
+\end{equation*}
+Mnożąc obustronnie przez $p$ i podstawiając $q=1-p$ otrzymujemy
+\begin{equation*}
+  \mathbb{E}[X]=\sum_{k=1}^{\infty} k (1-p)^{k-1}p = \frac{p}{(1-q)^2} = \frac 1p.
+\end{equation*}
+:::
+
 Wartość oczekiwana na dyskretnej przestrzeni probabilistycznej jest
 zadana przez średnią ważoną. Naturalne więc jest, że dziedziczy wiele jej 
 własności.
@@ -447,27 +817,52 @@ co pokazuje, że $Z$ jest całkowalna. Podobnie
 
 $$
 \begin{aligned}
-\mathbb{E} Z & = \sum_{\omega \in \Omega} Z(\omega) \mathbb{P}[ \{ \omega\}] \\
-& =  \alpha \sum_{\omega \in \Omega} X(\omega) \mathbb{P}[ \{ \omega\}] + \beta \sum_{\omega \in \Omega} Y(\omega) \mathbb{P}[ \{ \omega\}] \\
+\mathbb{E} Z & = \sum_{\omega \in \Omega} Z(\omega) p(\omega) \\
+& =  \alpha \sum_{\omega \in \Omega} X(\omega) p(\omega) + 
+\beta \sum_{\omega \in \Omega} Y(\omega) p(\omega) \\
 &=  \alpha\mathbb{E} X + \beta \mathbb{E} Y.
 \end{aligned}
 $$
-
+czego należało dowieść.
 :::
 
-Zauważmy, że jeżeli $X$ jest zmienną losową a $\varphi \colon \mathbb{R}\cup \{ \infty\} \to \mathbb{R} \cup \{ \infty\}$ to zmienną losową staje się również $Z = \varphi \circ X = \varphi(X)$. Bardzo często przyda nam się sposób na efektywne obliczanie wartości oczekiwanej
+Sprawdzimy teraz jak @prp-fak-2-eliniowe przydaje się w @exm-pd-2-bern.
+
+::: {#exm-pd-2-bern-2}
+
+Wykonujemy $n$ niezależnych prób Bernoulliego 
+z prawdopodobieństwem sukcesu $p$ w pojedynczej próbie. Niech $X$ oznacza liczbę sukcesów.
+Zauważmy, że $X = X_1 + X_2 + \ldots + X_n$, gdzie $X_j=1$ jeżeli w $j$-tej próbie
+był sukces i $X_j=0$ jeżeli była porażka. Wówczas
+\begin{equation*}
+  \mathbb{E}[X_j] = 1 \cdot \mathbb{P}[X_j=1] + 0 \cdot \mathbb{P}[X_j=0]=p.
+\end{equation*}
+Wobec tego
+\begin{equation*}
+  \mathbb{E}[X] = \mathbb{E}[X_1+\ldots +X_n] = \mathbb{E}[X_1] + \ldots + \mathbb{E}[X_n] = n/2.
+\end{equation*}
+:::
+
+Zauważmy, że jeżeli $X$ jest zmienną losową a 
+$\varphi \colon \mathbb{R}\cup \{ \pm \infty\} \to \mathbb{R} \cup \{\pm \infty\}$ 
+to zmienną losową staje się również 
+$Z = \varphi \circ X = \varphi(X)$. Bardzo często przyda nam się sposób na efektywne 
+obliczanie wartości oczekiwanej
 zmiennej losowej $Z$.
 
 ::: {#prp-fak-2-podstawienie}
 
-Niech $(\Omega, \mathbb{P})$ będzie dyskretną przestrzenią probabilistyczną  a $X$ zmienną losową. Niech dodatkowo $\varphi \colon \mathbb{R}\cup \{\infty\} \to \mathbb{R} \cup \{\infty\}$ będzie funkcją taką, że zmienna losowa $Z(\omega) = \varphi(X(\omega ))$
+Niech $(\Omega, \mathbb{P})$ będzie dyskretną przestrzenią probabilistyczną  a $X$ zmienną losową. 
+Niech dodatkowo $\varphi \colon \mathbb{R}\cup \{\pm \infty\} \to \mathbb{R} \cup \{\pm\infty\}$ 
+będzie funkcją taką, że zmienna losowa $Z(\omega) = \varphi(X(\omega ))$
 jest całkowalna. Wówczas
 
 $$
 \mathbb{E} [\varphi(X)]= \mathbb{E}[Z] = \sum_{k=1}^T \varphi(x_k) \mathbb{P}[X=x_k],
 $$
 
-gdzie $\{x_j \: : \: j\leq T\}$, dla $T \in \mathbb{N}\cup \{\infty\}$, jest zbiorem wartości zmiennej losowej $X$.
+gdzie $\{x_j \: : \: j\leq T\}$, dla $T \in \mathbb{N}\cup \{\infty\}$, 
+jest zbiorem wartości zmiennej losowej $X$.
 
 :::
 
@@ -476,76 +871,37 @@ gdzie $\{x_j \: : \: j\leq T\}$, dla $T \in \mathbb{N}\cup \{\infty\}$, jest zbi
 Z @def-df-2-wartosc
 
 $$
-\mathbb{E} [\varphi(X)]=\mathbb{E}[Z] = \sum_{\omega \in \Omega} \varphi(X(\omega)) \mathbb{P}[\{ \omega\}].
+\mathbb{E} [\varphi(X)]=\mathbb{E}[Z] = 
+\sum_{\omega \in \Omega} \varphi(X(\omega)) p(\omega).
 $$
 
-Podobnie jak w dowodzie @prp-fak-2-wzorwartosc, dla zbiorów $E_k = \{ X = x_k\}$ mamy $\Omega = \bigcup_{k=1}^TE_k$ oraz
+Podobnie jak w dowodzie @prp-fak-2-wzorwartosc, dla zbiorów 
+$E_k = \{ X = x_k\}$ mamy $\Omega = \bigcup_{k=1}^TE_k$ oraz
 
 $$
-\mathbb{E} [\varphi(X)] = \sum_{\omega \in \Omega} \varphi(X(\omega)) \mathbb{P}[\{ \omega\}] = \sum_{k=1}^T \sum_{\omega \in E_k} \varphi(X(\omega)) \mathbb{P}[\{ \omega\}].
+\mathbb{E} [\varphi(X)] = \sum_{\omega \in \Omega} \varphi(X(\omega)) p(\omega) 
+= \sum_{k=1}^T \sum_{\omega \in E_k} \varphi(X(\omega)) p(\omega).
 $$
 
 Tutaj skorzystaliśmy z całkowalności zmiennej $Z$.
-Zauważmy, że jeżeli $\omega \in E_k$, to $X(\omega)=x_k$. Korzystając z tej obserwacji możemy napisać
+Zauważmy, że jeżeli $\omega \in E_k$, to $X(\omega)=x_k$. 
+Korzystając z tej obserwacji możemy napisać
 
 $$
-\mathbb{E} [\varphi(X)] = \sum_{k=1}^T \sum_{\omega \in E_k} \varphi(x_k) \mathbb{P}[\{ \omega\}] = \sum_{k=1}^T  \varphi(x_k) \sum_{\omega \in E_k}  \mathbb{P}[\{ \omega\}].
+\mathbb{E} [\varphi(X)] = \sum_{k=1}^T \sum_{\omega \in E_k} \varphi(x_k) p(\omega) 
+= \sum_{k=1}^T  \varphi(x_k) \sum_{\omega \in E_k}  p(\omega).
 $$
 
-Na koniec wystarczy skorzystać z tego, że $\sum_{\omega \in E_k}  \mathbb{P}[\{ \omega\}] = \mathbb{P}[E_k] = \mathbb{P}[X=x_k]$ żeby otrzymać
+Na koniec wystarczy skorzystać z tego, że 
+$\sum_{\omega \in E_k}  p( \omega) = \mathbb{P}[E_k] = \mathbb{P}[X=x_k]$ żeby otrzymać
 
 $$
-\mathbb{E} [\varphi(X)] = \sum_{k=1}^T  \varphi(x_k) \sum_{\omega \in E_k}  \mathbb{P}[\{ \omega\}]= \sum_{k=1}^T \varphi(x_k) \mathbb{P}[X=x_k].
+\mathbb{E} [\varphi(X)] = \sum_{k=1}^T  \varphi(x_k) \sum_{\omega \in E_k} p(\omega)
+= \sum_{k=1}^T \varphi(x_k) \mathbb{P}[X=x_k].
 $$
-
+Czego należało dowieść.
 :::
 
-::: {#exm-pd-2-barntworzaca}
-
-Rzucamy $n$ razy symetryczną monetą. Oznaczmy przez $X$ liczbę uzyskanych orłów (@exm-pd-2-bern). Niech $s \in (0,1]$ znajdziemy zwartą postać dla $\mathbb{E} \left[ s^X \right]$.
-Stosując @prp-fak-2-podstawienie dla funkcji $\varphi(x) = s^x$ otrzymujemy
-
-$$
-\mathbb{E} \left[ s^X \right] = \sum_{k=0}^n s^k \mathbb{P}[X = k].
-$$
-
-Korzystając z otrzymanego wcześniej wzoru $\mathbb{P}[X=k] = {n \choose k} 2^{-n}$ otrzymujemy
-
-$$
-\mathbb{E} \left[ s^X \right] = \sum_{k=0}^n {n \choose k} \left(\frac{s}{2}\right)^k 2^{-n+k} = \left( \frac{s}{2} + \frac 12 \right)^n.
-$$
-
-Powyższy wzór bywa bardzo pomocny. Różniczkując stronami  po zmiennej $s$ otrzymujemy
-
-$$
-\mathbb{E} \left[X s^{X-1} \right] = \sum_{k=0}^n {n \choose k} ks^{k-1}2^{-n} = \frac{n}{2}\left( \frac{s}{2} + \frac 12 \right)^{n-1}.
-$$ {#eq-eq-2-gernbern}
-
-Podstawiając $s=1$ otrzymujemy znany już nam wzór
-
-$$
-\mathbb{E} \left[X\right] = \frac{n}{2}.
-$$
-
-Jeżeli zróżniczkujemy @eq-eq-2-gernbern po zmiennej $s$ otrzymujemy
-
-$$
-\mathbb{E} \left[X(X-1) s^{X-2} \right] = \sum_{k=0}^n {n \choose k} k(k-1)s^{k-2}2^{-n} = \frac{n(n-1)}{4}\left( \frac{s}{2} + \frac 12 \right)^{n-2}.
-$$
-
-Dla $s=1$ daje to
-
-$$
-\mathbb{E}[X(X-1)] = \frac{n(n-1)}{4}.
-$$
-
-Skoro $\mathbb{E}[X(X-1)] = \mathbb{E}[X^2-X] = \mathbb{E}\left[X^2\right] - \mathbb{E}[X]$ otrzymujemy
-
-$$
-\mathbb{E}\left[X^2\right] =  \frac{n(n+1)}{4}.
-$$
-
-:::
 
 ::: {#prp-zmienne-4}
 
@@ -572,18 +928,244 @@ $$
 Jeżeli $X(\omega) = a$ dla wszystkich $\omega \in \Omega$, to
 
 $$
-\mathbb{E}[X] = \sum_{\omega \in \Omega} X(\omega) \mathbb{P}[\{ \omega\}] = \sum_{\omega \in \Omega}a \mathbb{P}[\{ \omega\}] = a \cdot \sum_{\omega \in \Omega} \mathbb{P}[\{ \omega\}] = a \cdot 1=a.
+\mathbb{E}[X] = \sum_{\omega \in \Omega} X(\omega) p(\omega) 
+= \sum_{\omega \in \Omega}a p( \omega) 
+= a \cdot \sum_{\omega \in \Omega} p( \omega) = a \cdot 1=a.
 $$
-\
+
 Jeśli natomiast $X(\omega) \leq Y(\omega)$ dla wszystkich $\omega \in \Omega$, to
 
 $$
-\mathbb{E}[X] = \sum_{\omega \in \Omega} X(\omega) \mathbb{P}[\{ \omega\}] \leq \sum_{\omega \in \Omega} Y(\omega) \mathbb{P}[\{ \omega\}] =\mathbb{E}[Y].
+\mathbb{E}[X] = \sum_{\omega \in \Omega} X(\omega) p( \omega) 
+\leq \sum_{\omega \in \Omega} Y(\omega) p(\omega) =\mathbb{E}[Y].
 $$
+Co dowodzi drugiej własności.
+:::
+
+::: {#exm-top2rand}
+Tasujemy talię 52 kart metodą *Top to random*, tzn.  kartę, która znajduje się na górze 
+wkładamy w losowe miejsce w talii (są 52 możliwości), a następnie powtarzamy czynność.
+Ile należy wykonać tasowań, aby można było uznać talię za potasowaną. 
+Jaka jest średnia liczba tasowań?
+
+Kluczowa jest karta, która początkowo znajduje się na samym dole talii. Oznaczmy ją przez $A$. 
+Zauważmy, że w trakcie tasowania będzie się ona przemieszczać powoli do góry talii. 
+Prawdopodobieństwo, że w pierwszym ruchu karta z góry talii znajdzie się pod $A$ wynosi $1/52$. 
+Jest ono małe, ale z prawdopodobieństwem  1 (Lemat Borela-Cantellego) nastąpi moment, 
+gdy pod $A$ znajdzie się jakaś karta, oznaczmy ją przez $K_1$.
+
+Po wykonaniu  losowej liczby tasowań kolejna karta $K_2$ zostanie wstawiona poniżej $A$. 
+Wzajemne ułożenie kart $K_1$ i $K_2$ jest  losowe (tzn. z prawdopodobieństwem $1/2$ karta $K_1$ 
+jest nad $K_2$ i na odwrót). Kontynuując to rozumowanie w pewnej chwili pod $A$ będzie 
+znajdować się $k$ kart: $K_1, \ldots K_k$. Każde ułożenie tychże kart jest tak samo prawdopodobne 
+(indukcja!). Zatem karty pod $A$ są dobrze potasowane.
+
+Karta $A$ dotrze w końcu na sam szczyt talii i to właśnie ona zostanie wstawiona. 
+W tej chwili wszystkie karty będą dobrze potasowane (każde ich wzajemne ułożenie jest 
+jednakowo prawdopodobne).
+
+Obliczmy ile czasu potrzebuje karta $A$, aby dotrzeć na górę talii. 
+Niech $X_i$ oznacza czas jaki karta $A$ spędza na $i$-tej pozycji od dołu. Prawdopodobieństwo, 
+że karta wstawiona zostanie poniżej $A$ wynosi $1/52$. Czas oczekiwania na sukces $X_1$, 
+zgodnie z poprzednim przykładem jest zmienną
+losową o rozkładzie Geom($1/52$), zatem $\mathbb{E} X_1 = 52$. 
+Podobnie dla każdego $i$: $\mathbb{E} X_i = 52/i$. Podsumowując
+\begin{align*}
+   \mathbb{E} X & = \mathbb{E} \sum_{i=1}^{52 } X_i = \sum_{i=1}^{52} \mathbb{E} X_i \\
+    & = \sum_{i=1}^{52} \frac{52}i = 52 \sum_{i=1}^{52} \frac 1i \\
+    & \sim 52 (\log 52 + \gamma) \sim 235, 
+\end{align*}
+gdzie $\gamma$ jest stałą Eulera–Mascheroniego znaną z wykładu z analizy ($\gamma \sim 0,577$).
+
+
+```{ojs}
+//| echo: false
+
+top2random = {
+  const totalCards = 52;
+  const trackedCard = 52;
+  const maxSteps = 1000;
+  const fps = 15;
+
+  const root = html`<div class="top2random-sim">
+    <style>
+      .top2random-sim {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        color: var(--bs-body-color);
+        margin: 1rem 0;
+      }
+
+      .top2random-stack {
+        width: 160px;
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+        background: var(--bs-secondary-bg);
+        border: 1px solid var(--bs-border-color);
+        border-radius: 8px;
+      }
+
+      .top2random-card {
+        width: 50px;
+        height: 12px;
+        border-radius: 3px;
+        box-sizing: border-box;
+        background: color-mix(
+          in srgb,
+          var(--bs-primary) 35%,
+          var(--bs-body-bg)
+        );
+        color: var(--bs-body-color);
+        text-align: center;
+        line-height: 12px;
+        font-size: 10px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .top2random-card.tracked {
+        background: color-mix(
+          in srgb,
+          var(--bs-warning) 45%,
+          var(--bs-body-bg)
+        );
+        outline: 1px solid var(--bs-warning);
+        font-weight: bold;
+      }
+
+      .top2random-controls {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+      }
+
+      .top2random-counter {
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
+      }
+
+      .top2random-status {
+        max-width: 230px;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+    </style>
+
+    <div class="top2random-stack"></div>
+
+    <div class="top2random-controls">
+      <button class="btn btn-primary" type="button">
+        Resetuj
+      </button>
+      <div class="top2random-counter">Kroki: 0</div>
+      <div class="top2random-status"></div>
+    </div>
+  </div>`;
+
+  const stack = root.querySelector(".top2random-stack");
+  const button = root.querySelector("button");
+  const counter = root.querySelector(".top2random-counter");
+  const status = root.querySelector(".top2random-status");
+
+  let deck = [];
+  let steps = 0;
+  let running = true;
+
+  const cards = Array.from({ length: totalCards }, () => {
+    const card = document.createElement("div");
+    card.className = "top2random-card";
+    stack.appendChild(card);
+    return card;
+  });
+
+  function render() {
+    for (let i = 0; i < totalCards; i++) {
+      cards[i].textContent = deck[i];
+      cards[i].classList.toggle(
+        "tracked",
+        deck[i] === trackedCard
+      );
+    }
+
+    counter.textContent = `Kroki: ${steps}`;
+  }
+
+  function resetDeck() {
+    deck = Array.from(
+      { length: totalCards },
+      (_, i) => i + 1
+    );
+    steps = 0;
+    running = true;
+    status.textContent = "";
+    render();
+  }
+
+  function topToRandom() {
+    const topCard = deck.shift();
+    const randIndex = Math.floor(
+      Math.random() * (deck.length + 1)
+    );
+    deck.splice(randIndex, 0, topCard);
+  }
+
+  function tick() {
+    if (!running) return;
+
+    if (deck[0] === trackedCard) {
+      running = false;
+      status.textContent =
+        `Karta ${trackedCard} dotarła na szczyt po ${steps} krokach.`;
+      return;
+    }
+
+    if (steps >= maxSteps) {
+      running = false;
+      status.textContent =
+        `Osiągnięto limit ${maxSteps} kroków.`;
+      return;
+    }
+
+    topToRandom();
+    steps++;
+    render();
+
+    if (deck[0] === trackedCard) {
+      running = false;
+      status.textContent =
+        `Karta ${trackedCard} dotarła na szczyt po ${steps} krokach.`;
+    }
+  }
+
+  button.addEventListener("click", resetDeck);
+
+  resetDeck();
+
+  const timer = setInterval(tick, 1000 / fps);
+
+  invalidation.then(() => {
+    clearInterval(timer);
+  });
+
+  return root;
+}
+```
+
 
 :::
 
-Za każdym razem kiedy dokonujemy takiego przybliżenia warto jest znać jego błąd. Wartość oczekiwana nie jest tutaj wyjątkiem. W przyszłości bardzo istotna będzie dla nas informacja jak bardzo zmienna losowa $X$ różni się od
+
+
+## Wariancja 
+
+Za każdym razem kiedy dokonujemy takiego przybliżenia warto jest znać jego błąd. 
+Wartość oczekiwana nie jest tutaj wyjątkiem. W przyszłości bardzo istotna będzie dla 
+nas informacja jak bardzo zmienna losowa $X$ różni się od
 swojej wartości oczekiwanej $\mathbb{E} X$.
 
 ::: {#def-df-2-var}
@@ -595,20 +1177,26 @@ $$
 
 :::
 
-Powyższa definicja jest w zupełności ogólna i będzie nam służyć w przyszłości dla przestrzeni probabilistycznych, które nie są dyskretne. Pomijając chwilowo przyszłe zastosowania @def-df-2-var, na dyskretnej przestrzeni probabilistycznej
+@def-df-2-var, na dyskretnej przestrzeni probabilistycznej
 $(\Omega, \mathbb{P})$ zachodzi wzór
 
 $$
-\mathbb{V}[X] = \sum_{\omega \in \Omega} (X(\omega) - \mathbb{E} X)^2 \mathbb{P}[\{\omega\}].
+\mathbb{V}[X] = \sum_{\omega \in \Omega} (X(\omega) - \mathbb{E} X)^2 p(\omega).
 $$ {#eq-eq-2-warzdef}
 
 ::: {#exm-zmienne-9}
 
-Przypuśćmy, że właśnie otrzymaliśmy propozycję nie do odrzucenia; ktoś podarował nam dwa losy na pewną loterię.
-Wygrane mierzymy w milionach dolarów i zakładamy niezależność różnych losowań. Organizatorzy loterii sprzedają $100$ losów na cotygodniowe losowanie. Każdy z losów jest wybierany w jednorodnym procesie losowym, to znaczy, że każdy los może być wybrany z takim samym prawdopodobieństwem—i szczęśliwy
+Przypuśćmy, że właśnie otrzymaliśmy propozycję nie do odrzucenia; ktoś podarował 
+nam dwa losy na pewną loterię.
+Wygrane mierzymy w milionach dolarów i zakładamy niezależność różnych losowań. 
+Organizatorzy loterii sprzedają $100$ losów na cotygodniowe losowanie. 
+Każdy z losów jest wybierany w jednorodnym procesie losowym, to znaczy, 
+że każdy los może być wybrany z takim samym prawdopodobieństwem—i szczęśliwy
 właściciel wybranego losu wygrywa sto milionów dolarów. Pozostałe $99$ losów nic nie wygrywa.
 
-Możemy teraz wykorzystać nasz prezent na dwa sposoby: albo kupujemy dwa losy na to samo losowanie, albo kupimy po jednym losie na dwa różne losowania. Która strategia jest lepsza? Jeżeli przez $X$ oznaczymy wygraną dla pierwszej strategii, to
+Możemy teraz wykorzystać nasz prezent na dwa sposoby: albo kupujemy dwa losy na 
+to samo losowanie, albo kupimy po jednym losie na dwa różne losowania. 
+Która strategia jest lepsza? Jeżeli przez $X$ oznaczymy wygraną dla pierwszej strategii, to
 $$
 \mathbb{E} X = 0 \cdot  \frac{98}{100} + 100 \cdot \frac{2}{100} = 2.
 $$
@@ -616,7 +1204,9 @@ Dla drugiej strategii $Y$ otrzymujemy
 $$
 \mathbb{E} Y = 0 \cdot \frac{99}{100} + 100 \cdot  \frac{1}{100} + 0 \cdot  \frac{99}{100} + 100 \cdot \frac{1}{100} =2.
 $$
-Wartości oczekiwane są takie same. Mimo to obydwie strategie wyglądają różnie. Nie patrzmy jednak na wartości oczekiwane i przeanalizujmy dokładnie rozkłady zmiennych losowych $X$ oraz $Y$
+Wartości oczekiwane są takie same. Mimo to obydwie strategie wyglądają różnie. 
+Nie patrzmy jednak na wartości oczekiwane i przeanalizujmy dokładnie rozkłady 
+zmiennych losowych $X$ oraz $Y$
 $$
 \begin{array}{|c|c|c|c|} \hline
 & 0  & 100  & 200\\ \hline
@@ -624,7 +1214,8 @@ X &  0,98 &  0,02 &  0 \\ \hline
 Y & 0,9801 & 0,0198 & 0,0001 \\\hline
 \end{array}
 $$
-Wariancja ma służyć właśnie do analizy pojęcia rozproszenia zmiennej losowej. W przypadku $X$ wariancja wynosi
+Wariancja ma służyć właśnie do analizy pojęcia rozproszenia zmiennej losowej. 
+W przypadku $X$ wariancja wynosi
 $$
 \mathbb{V} [X] = 0{,}98 \cdot (0 -2 )^2 + 0,02\cdot (100 -2)^2 = 196
 $$
@@ -632,11 +1223,14 @@ a w przypadku $Y$
 $$
 \mathbb{V} [Y] = 0{,}9801 \cdot (0 - 2)^2  +  0{,}0198\cdot (100 -  2)^2 + 0,0001\cdot  (200  - 2)^2 = 198
 $$
-Tak jak oczekiwaliśmy, druga wariancja jest odrobinę większa, ponieważ rozkład losowy w przypadku $Y$ jest odrobinę bardziej rozproszony.
+Tak jak oczekiwaliśmy, druga wariancja jest odrobinę większa, 
+ponieważ rozkład losowy w przypadku $Y$ jest odrobinę bardziej rozproszony.
 
 :::
 
-Wzór @eq-eq-2-warzdef jest w praktyce nieporęczny. Okazuje się, że $\mathbb{V}[X]$ można wyrazić w zgrabny sposób, który jest dodatkowo wygodny w rachunkach.
+Wzór @eq-eq-2-warzdef jest w praktyce nieporęczny. 
+Okazuje się, że $\mathbb{V}[X]$ można wyrazić w zgrabny sposób, który jest 
+dodatkowo wygodny w rachunkach.
 
 ::: {#prp-zmienne-5}
 
@@ -650,15 +1244,15 @@ $$ {#eq-eq-var}
 
 ::: {.proof}
 
-Oznaczmy $ m = \mathbb{E} [X] \in \mathbb{R}$. Wówczas
+Oznaczmy $m = \mathbb{E} [X] \in \mathbb{R}$. Wówczas
 
 $$
 \begin{aligned}
 \mathbb{V}[X] &= \mathbb{E}\left[ X^2 - 2 X m +m^2 \right] = \mathbb{E}\left[ X^2 \right] - \mathbb{E}[2mX] + \mathbb{E}\left[m^2\right] \\
-&= \mathbb{E}\left[ X^2 \right]  - 2m \mathbb{E}[X] + m^2 = \mathbb{E}\left[ X^2 \right]  -m^2.
+&= \mathbb{E}\left[ X^2 \right]  - 2m \mathbb{E}[X] + m^2 = \mathbb{E}\left[ X^2 \right]  -m^2
 \end{aligned}
 $$
-
+co jest jednoznaczne z naszą tezą.
 :::
 
 ::: {#exm-zmienne-10}
