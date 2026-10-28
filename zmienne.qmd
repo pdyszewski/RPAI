@@ -1,6 +1,7 @@
 # Zmienne losowe {#sec-ch-zmienne-losowe}
 
-Często skonstruowana przez nas przestrzeń probabilistyczna staje się zbyt duża do efektywnej analizy. 
+Często skonstruowana przez nas przestrzeń probabilistyczna staje się zbyt 
+duża do efektywnej analizy. 
 Dla przykładu w eksperymencie polegającym na rzucie dużą liczbą kości, powiedzmy siedemnastu, 
 jest aż $6^{17}= 16926659444736$ możliwych wyników. 
 Interesować nas może tylko suma
@@ -9,12 +10,14 @@ zdarzenia elementarne wygodniej jest analizować funkcje tych zdarzeń.
 
 ::: {#def-zmienne-1}
 
-Niech $\Omega$ będzie co najwyżej przeliczalną przestrzenią zdarzeń elementarnych. *Zmienną losową* nazywamy dowolną funkcję 
+Niech $\Omega$ będzie co najwyżej przeliczalną przestrzenią zdarzeń elementarnych. 
+*Zmienną losową* nazywamy dowolną funkcję 
 $X \colon \Omega \to \mathbb{R}\cup\{ \infty\}$ zdefiniowaną na przestrzeni zdarzeń elementarnych.
 
 :::
 
-Zmienne losowe same w sobie nie upraszczają problemów probabilistycznych. Stanowią one jedynie język, którym będziemy się w przyszłości posługiwać.
+Zmienne losowe same w sobie nie upraszczają problemów probabilistycznych. 
+Stanowią one jedynie język, którym będziemy się w przyszłości posługiwać.
 
 ::: {#exm-zmienne-1}
 
@@ -25,19 +28,33 @@ Wówczas $X \colon \Omega \to \mathbb{Z}$ zadane jest wzorem $X(a,b)=a+b$.
 
 :::
 
-Wartości, które może przyjąć zmienna losowa $X \colon \Omega \to \mathbb{R}$ będziemy oznaczać przez $x_k$. 
-Dokładniej $X[\Omega] = \{ x_k\: : \: k \leq T \}$ dla $T \in \mathbb{N}$ jeżeli $\Omega$ jest skończona lub $T =\infty$ jeżeli
-$\Omega$ jest przeliczalna. Dla każdego ustalonego $x_k$ definiujemy zdarzenie, że $X$ jest równe $x_k$ przez
+::: {#def-zmienna-dyskretna}
+
+Powiemy, że zmienna losowa $X$ jest dyskretna, jeżeli może przyjmować co najwyżej 
+przeliczalnie wiele różnych wartości. 
+
+:::
+
+Wszystkie rozważane przez nas przestrzenie probabilistyczne są co najwyżej przeliczalne,
+więc wszystkie aktualnie rozważane zmienne losowe są dyskretne.
+Wartości, które może przyjąć zmienna losowa $X \colon \Omega \to \mathbb{R}$ 
+będziemy oznaczać przez $x_k$. 
+Dokładniej $X[\Omega] = \{ x_k\: : \: k \leq T \}$ dla $T \in \mathbb{N}$ 
+jeżeli $\Omega$ jest skończona lub $T =\infty$ jeżeli
+$\Omega$ jest przeliczalna. Dla każdego ustalonego $x_k$ definiujemy zdarzenie, 
+że $X$ jest równe $x_k$ przez
 
 $$
 \{ X=x_k \}=X^{-1}[\{ x_k \}] = \{ \omega \in \Omega \: | \: X(\omega) = x_k\}.
 $$
 
-W przyszłości zobaczymy, że liczby $\mathbb{P}[X=x_k]$ pomogą znaleźć uproszczony język do opisu zmiennej losowej $X$.
+W przyszłości zobaczymy, że liczby $\mathbb{P}[X=x_k]$ pomogą znaleźć uproszczony 
+język do opisu zmiennej losowej $X$.
 
 ::: {#exm-zmienne-2}
 
-  W grze w kości, dla $X$ równej sumie wyrzuconych oczek mamy $\Omega =[6]\times [6]$ oraz $X(a,b) = a+b$. 
+  W grze w kości, dla $X$ równej sumie wyrzuconych oczek mamy 
+  $\Omega =[6]\times [6]$ oraz $X(a,b) = a+b$. 
   Załóżmy, że wszystkie wyniki są jednakowo prawdopodobne. Wówczas
   $$
     \mathbb{P}[X = 5]= \frac{4}{36}.
@@ -51,7 +68,8 @@ W przyszłości zobaczymy, że liczby $\mathbb{P}[X=x_k]$ pomogą znaleźć upro
   Wówczas $\Omega = \{R\}^{\mathbb{N}} \cup \bigcup_{k=0}^\infty\{R \}^k \times \{O\}$. 
   Niech $X$ oznacza liczbę rzutów w naszym eksperymencie.
   Innymi słowy $X$ jest liczbą rzutów potrzebną do otrzymania orła. 
-  Wówczas $X(O)=1$, $X(RO)=2$ oraz ogólnie $X(\omega_k)=k$ jeżeli $\omega_k$ składa się z $k-1$ reszek i orła. 
+  Wówczas $X(O)=1$, $X(RO)=2$ oraz ogólnie $X(\omega_k)=k$ jeżeli $\omega_k$ 
+  składa się z $k-1$ reszek i orła. 
   W szczególności $X(\omega_\infty)=\infty$.
 
 :::
@@ -400,10 +418,12 @@ poisChart = {
   Najprostszym opisem zmiennej losowej $X$ byłaby jedna liczba. 
   Aby umotywować nasz przyszły wybór rozważmy następujący przykład. 
   Powiedzmy, że mamy do dyspozycji niesymetryczną kostkę sześcienną na której $1$ wypada z
-  prawdopodobieństwem $p_1$, $2$ wypada z prawdopodobieństwem $p_2$ itd. gdzie $p_1+p_2+ \ldots + p_6=1$. 
+  prawdopodobieństwem $p_1$, $2$ wypada z prawdopodobieństwem $p_2$ itd. 
+  gdzie $p_1+p_2+ \ldots + p_6=1$. 
   Rzucamy tą kością $N\in \mathbb{N}$. Jaka będzie średnia z uzyskanych wyników?
   Niech $X_k$ dla $k\leq N$ opisuje wynik $k$-tego rzutu. 
-  Załóżmy, że w naszym eksperymencie $n_1$ razy wpadła $1$, $n_2$ razy wypadła $2$ itd. Szukaną średnią możemy zapisać jako
+  Załóżmy, że w naszym eksperymencie $n_1$ razy wpadła $1$, $n_2$ razy 
+  wypadła $2$ itd. Szukaną średnią możemy zapisać jako
   $$
     \frac{X_1+X_2+\ldots + X_N}{N} = 1\cdot \frac{n_1}{N}
     +2 \cdot \frac{n_2}{N} + 3 \cdot \frac{n_3}{N} 
@@ -414,7 +434,8 @@ poisChart = {
   Na poziomie intuicyjnym jasne jest, że dla dużego $N$, $\frac{n_k}{N} \approx p_k$. 
   W przyszłości ściśle uzasadnimy ten fakt. Mamy
   $$
-    \frac{X_1+X_2+\ldots + X_N}{N} \approx 1\cdot p_1+2 \cdot p_2 + 3 \cdot p_3 +4 \cdot p_4+ 5 \cdot p_5 +6 \cdot p_6.
+    \frac{X_1+X_2+\ldots + X_N}{N} \approx 1\cdot p_1+2 \cdot p_2 + 3 \cdot p_3 +
+    4 \cdot p_4+ 5 \cdot p_5 +6 \cdot p_6.
   $$
   Liczba po prawej stronie to średnia ważona dla rzutu jedną kością. 
   Istotnie, mamy $\mathbb{P}[X_1=1]=p_1$, $\mathbb{P}[X_1=2]=p_2$, \ldots, $\mathbb{P}[X_1=6]=p_6$. 
@@ -423,7 +444,8 @@ poisChart = {
     \frac{X_1+X_2+\ldots + X_N}{N} \approx \sum_{k=1}^6 k \cdot \mathbb{P}[X_1=k].
   $$ {#eq-eq-2-approx}
 
-  Otrzymujemy średnią wartości $X_1$ z wagą, która jest prawdopodobieństwem poszczególnych wyników. Taką średnią nazywamy wartością oczekiwaną $X_1$.
+  Otrzymujemy średnią wartości $X_1$ z wagą, która jest prawdopodobieństwem 
+  poszczególnych wyników. Taką średnią nazywamy wartością oczekiwaną $X_1$.
 
 ::: {#def-df-2-wartosc}
 
@@ -432,7 +454,8 @@ poisChart = {
   $$
     \sum_{\omega \in \Omega} |X(\omega)| p(\omega) <\infty.
   $$
-  Dla całkowalnej zmiennej losowej $X \colon \Omega \to \mathbb{R}$  jej *wartością oczekiwaną* nazywamy
+  Dla całkowalnej zmiennej losowej $X \colon \Omega \to \mathbb{R}$  
+  jej *wartością oczekiwaną* nazywamy
   $$
     \mathbb{E} [X] = \sum_{\omega \in \Omega} X(\omega) p(\omega).
   $$
@@ -673,21 +696,11 @@ Co było do pokazania
 
 ::: {#exm-pd-2-bern}
 
-Rzucamy $n$ razy monetą. Jako przestrzeń zdarzeń elementarnych wybieramy
-
-$$
-\Omega = \{ O, R\}^n  = \{ \omega = (\omega_1, \omega_2, \ldots, \omega_n) \: : \: \omega_k \in \{ O, R\} \}.
-$$
-
-Wówczas $\omega_k$ reprezentuje wynik $k$-tego rzutu. 
-Zbadajmy zmienną losową $X$ która jest liczbą otrzymanych orłów
-Wówczas przykładowo $X(RR \ldots R) =0$, $X(RORR\ldots R) = 1$ oraz ogólnie
-$$
-X((\omega_1, \omega_2, \ldots, \omega_n)) = | \{ j \in [n] \: : \: \omega_j =O \}|.
-$$
+Rzucamy $n$ razy monetą. 
+Zbadajmy zmienną losową $X$ która jest liczbą otrzymanych orłów.
 Zakładając, że każdy wynik jest jednakowo prawdopodobny otrzymujemy, dla $k \leq n$,
 $$
-\mathbb{P}[X=k] =\frac{|\{ X=k\}|}{|\Omega|} = \frac{{n \choose k}}{|\Omega|} = {n \choose k}2^{-n}.
+\mathbb{P}[X=k] = {n \choose k}2^{-n}.
 $$
 Zauważmy, że $X$ jest liczbą sukcesów w schemacie $n$ prób Bernoulliego z prawdopodobieństwem 
 sukcesu $1/2$.
@@ -709,6 +722,20 @@ $$
 dla $1 \leq k \leq n$ oraz $m\geq 0$.
 
 :::
+
+::: {#rem-interpretacja-kombinatoryczna}
+
+  W poprzednim przykładzie udowodniliśmy wzór
+  \begin{equation*}
+    \sum_{k=1}^n k {n \choose k} = n 2^{n-1}.
+  \end{equation*}
+  Ma on bezpośrednią interpretacje kombinatoryczną. Obie strony równości opisują
+  sposób wybrania delegacji wraz z przewodniczącym tejże z grupy $n$ osób. 
+  Dla każdego $k$ możemy wybrać $k$ osobową delegację i z nich wybrać przewodniczącego.
+  Możemy też najpierw wybrać przewodniczącego spośród wszystkich $n$ osób a następnie
+  dobrać resztę delegacji spośród pozostałych $n-1$.
+:::
+
 
 ::: {#exm-geometryczny-mean}
 
@@ -900,6 +927,31 @@ $$
 = \sum_{k=1}^T \varphi(x_k) \mathbb{P}[X=x_k].
 $$
 Czego należało dowieść.
+:::
+
+::: {#exm-bernoulli-sq}
+
+Rzucamy $n$ krotnie symetryczną monetą. Niech $X$ oznacza liczbę wyrzuconych orłów.
+Ile wynosi $\mathbb{E}[X^2]$? Przypomnijmy, że $X$ będzie miało rozkład dwumianowy
+\begin{equation*}
+  \mathbb{P}[X=k] = {n \choose k} 2^{-n}.
+\end{equation*}
+Szukana przez nas wielkość to
+\begin{equation*}
+  \mathbb{E}\left[X^2\right] = \sum_{k=0}^n k^2 {n \choose k}.
+\end{equation*}
+Wychodząc od wzoru dwumianowego
+\begin{equation*}
+  (x+y)^n = \sum_{k=0}^n {n \choose k} x^k y^{n-k}
+\end{equation*}
+i różniczkując względem $x$
+\begin{equation*}
+  n(x+y)^{n-1} = \sum_{k=0}^n {n \choose k} kx^{k-1} y^{n-k}
+\end{equation*}
+Mnożąc przez $x$ i różniczkując względem $x$
+\begin{equation*}
+  n(x+y)^{n-1} + n(n-1)(x+y)^{n-2} = \sum_{k=0}^n {n \choose k} k^2x^{k-2} y^{n-k}
+\end{equation*}
 :::
 
 
@@ -1306,61 +1358,4 @@ $$
 $$
 
 :::
-
-::: {#exm-zmienne-11 name="problem podrzucanych kapeluszy raz jeszcze"}
-
-Grupa $n$ kibiców wygrywającej drużyny piłkarskiej podrzuciła wysoko w powietrze swoje kapelusze. Kapelusze spadły przypadkowo, z tym że każdy z $n$ kibiców złapał jeden kapelusz. Wówczas prawdopodobieństwo, że dokładnie $k$ kibiców złapie swój kapelusz
-wynosi
-$$
-P(n,k) = \frac {1}{n!} {n \choose k} !(n-k) = \frac{!(n-k)}{k!(n-k)!},
-$$
-gdzie $!(n-k)$ jest liczbą nieporządków na $n-k$ elementach opisaną przez wzór na liczbę nieporządków z poprzedniego rozdziału.
-Wyrażając te wyniki w formalizmie, który właśnie poznaliśmy, rozważmy przestrzeń $\Omega=S_n$ wszystkich  permutacji $n$ liczb $\{1 ,2 , . . . , n\}$, gdzie wylosowanie każdej permutacji jest jednakowo prawdopodobne. Wówczas
-$$
-\mathbb{P}[\{ \omega \}] = \frac {1}{n!}, \quad \omega \in S_n.
-$$
-Zmienna losowa
-$$
-F_n(\omega) = \text{ liczba punktów stałych $\omega$}, \qquad \omega \in S_n
-$$
-wyznacza liczbę poprawnie spadających kapeluszy. Wiemy, że
-$$
-\mathbb{P}[F_n =k ] = P(n,k) =  \frac{!(n-k)}{k!(n-k)!}.
-$$
-Ile wynosi wartość średnia $F_n$ i jej odchylenie standardowe? Niech
-$$
-F_{n,k}(\pi) = [\text{pozycja $k$ jest punktem stałym w $\pi$}] = \left\{  \begin{array}{cc}
-1 & \pi(k)=k \\
-0 & \text{poza tym}   \end{array}\right. .
-$$
-Wówczas
-$$
-F_n(\pi) = F_{n,1}(\pi) + F_{n,2}(\pi) + \ldots + F_{n,n}(\pi)
-$$
-a co za tym idzie
-$$
-\mathbb{E} F_n = \mathbb{E} F_{n,1} + \mathbb{E} F_{n,2} + \ldots + \mathbb{E} F_{n,n}.
-$$
-Zauważmy, że
-
-$$
-\mathbb{P}[F_{n,k}=1] = \frac 1n, \qquad \mathbb{P}[F_{n,k}=0] =1-\mathbb{P}[F_{n,k}=1] = \frac {n-1}{n}.
-$$
-
-Stąd $\mathbb{E} F_{n,k}= \frac 1n$ a co za tym idzie $\mathbb{E} F_n = 1$. Tak więc średnio jeden kapelusz będzie na swojej pozycji początkowej. Aby wyznaczyć wariancję dla $n \geq 2$, obliczmy najpierw
-
-$$
-\begin{aligned}
-\mathbb{E} F_n^2 & = \sum_{k=1}^n \mathbb{E} F_{n,k}^2 + \sum_{j\neq k} \mathbb{E}[F_{n,k}F_{n,j}] = \sum_{k=1}^n  \frac 1n + \sum_{j\neq k} \frac{(n-2)!}{n!} \\ &= 1 + {n \choose 2} \frac{2}{n(n-1)} = 2.
-\end{aligned}
-$$
-
-Wariancja wynosi zatem $\mathbb{V}[F_n]=1$. Dla $n \geq 2$, korzystając z nierówności Czebyszewa,
-$$
-\mathbb{P}[|F_n-1| \geq 2] \leq \frac{\mathbb{V} [F_n]}{4}=\frac 14.
-$$
-Z prawdopodobieństwem co najmniej $3/4$ losowa permutacja $n \geq 2$ elementów ma od $0$ do $2$ punktów stałych. Jej odchylenie standardowe wynosi $1$. Dla $n=1$ wariancja wynosi $0$.
-
-:::
-
 

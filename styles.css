@@ -81,6 +81,7 @@ figure img {
 
 .theorem,
 .proposition,
+.remark,
 .corollary,
 .definition,
 .example {
@@ -112,6 +113,7 @@ figure img {
 /* Bez zbędnego odstępu na końcu */
 
 .theorem > :last-child,
+.remark > :last-child,
 .proposition > :last-child,
 .corollary > :last-child,
 .definition > :last-child,
@@ -119,8 +121,7 @@ figure img {
   margin-bottom: 0;
 }
 
-/* Symbol końca dowodu */
-
+/* Dowód kończący się akapitem */
 .proof > p:last-child::after {
   content: "□";
   float: right;
@@ -129,11 +130,21 @@ figure img {
   font-style: normal;
 }
 
-/* Gdy dowód kończy się wzorem lub innym blokiem */
-
-.proof > :last-child:not(p)::after {
+/* Dowód kończący się innym elementem */
+.proof:not(:has(> p:last-child))::after {
   content: "□";
   display: block;
   text-align: right;
   font-size: 1.15em;
+  font-style: normal;
+}
+
+/* Żadnych symboli QED w uwagach */
+.remark::after,
+.remark p:last-child::after,
+.remark > :last-child::after,
+[id^="rem-"]::after,
+[id^="rem-"] p:last-child::after,
+[id^="rem-"] > :last-child::after {
+  content: none !important;
 }

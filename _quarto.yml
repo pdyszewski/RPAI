@@ -24,7 +24,9 @@ book:
         - klasyczne.qmd
         - warunkowe.qmd
         - niezaleznosc.qmd
-        #- zmienne.qmd
+        - zmienne.qmd
+        #- wektory.qmd
+        #- niezaleznosc2.qmd
         #- summary.qmd
         - references.qmd
     - part: "Listy zadań"
@@ -33,6 +35,7 @@ book:
         - lista2.qmd
         - lista3.qmd
         - lista4.qmd
+        - lista5.qmd
 
 bibliography: references.bib
 

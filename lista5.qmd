@@ -1,0 +1,75 @@
+# Lista 5. Zmienne losowe {-}
+
+Na ćwiczenia 5.11.2026
+
+## Zadania na ćwiczenia
+
+1. Losujemy bez zwracania dwie liczby ze zbioru $\{1,2,3,4,5\}$. 
+   Niech $X$ będzie sumą wylosowanych liczb. Wyznacz rozkład oraz wartość oczekiwaną $X$.
+
+3. Oblicz $\mathbb{E}[X]$ jeżeli $X$ jest zmienną o rozkładzie Poi($\lambda$). 
+
+4. Zmienna losowa $X$ ma rozkład jednostajny $\{ 1,2, \ldots n \}$, czyli
+   \begin{equation*}
+      \mathbb{P}[X=j] = \frac 1n, \quad j=1,2,\ldots, n.
+   \end{equation*}
+   Obliczyć $\mathbb{E}[Y]$ jeżeli 
+
+	a. $Y = e^X$, 
+	b. $Y = X^2$.
+
+1. Monika wybrała się do kasyna w Las Vegas mając przy sobie 255\$. 
+   Jako cel postawiła sobie wygranie $1$ dolara w ruletkę i wyjście z kasyna z kwotą 256\$. 
+   Podczas tej wizyty obstawiała kolory. Wszystkie pola poza 0 i 00 są czerwone lub czarne 
+   (po 18 pól). Poprawne wskazanie koloru (z prawdopodobieństwem 18/38) podwaja zaryzykowaną kwotę. 
+   Monika zastosowała następującą strategię: postanowiła, że będzie grać kolejno 
+   o 1\$, 2\$, 4\$, 8\$, 16\$, 32\$, 64\$, 128\$. Jeżeli w jednej z gier wygra, 
+   zabiera nagrodę i opuszcza kasyno z 256 dolarami. 
+   Obliczyć prawdopodobieństwo, że jej się powiodło. Obliczyć wartość oczekiwaną wygranej.
+
+1. Uzasadnij, że
+
+   a. Jeżeli $X(\omega) =a$ dla pewnej $a \in \mathbb{R}$ i wszystkich $\omega \in \Omega$, to $\mathbb{E}[X]=a$.
+   b. Jeżeli zmienne losowe $X$ i $Y$ spełniają $X(\omega) \leq Y(\omega)$ dla każdej $\omega \in \Omega$, to $\mathbb{E}[X] \leq \mathbb{E}[Y]$.
+
+1. Rzucamy kostką tak długo, aż wyrzucimy wszystkie oczka. Znaleźć wartość oczekiwaną 
+   liczby rzutów.
+
+1. Na płaszczyźnie zaznaczono $n$ punktów w taki sposób, że żadne trzy nie są współliniowe. 
+   Każda para punktów, niezależnie od pozostałych,
+   została połączona odcinkiem z prawdopodobieństwem $p$. 
+   Niech $X$ oznacza liczbę powstałych trójkątów. 
+   Oblicz $\mathbb{E}X$.
+
+1. W urnie znajduje się 50 białych kul. Losujemy ze zwracaniem po jednej kuli, 
+   przy czym wyciągniętą kulę malujemy na czerwono, jeśli jest biała. 
+   Niech $X$ będzie liczbą czerwonych kul w urnie po 20 losowaniach. 
+   Obliczyć $\mathbb{E}[X]$.
+
+1. Pokaż, że jeżeli zmienna losowa $X$ przyjmuje tylko wartości całkowite nieujemne, to 
+\begin{equation*}
+        \mathbb{E}[X] = \sum_{k=1}^{\infty} \mathbb{P}[X \geq k].
+\end{equation*}
+
+## Zadania kartkówkowe {-}
+
+1. Rzucamy niezależnie symetryczną sześcienną kostką aż do otrzymania pierwszej jedynki.
+    Zmienna losowa $X$ oznacza liczbę wykonanych rzutów, łącznie z rzutem,
+    w którym wypadła pierwsza jedynka.
+    a. Znajdź $\mathbb{E}[X]$.
+    b. Niech $Y=2^{-X}$. Znajdź $\mathbb{E}[Y]$.
+1. Rzucamy niezależnie dwiema symetrycznymi sześciennymi kostkami.
+    Zmienna losowa $X$ oznacza większy z uzyskanych wyników.
+    a. Znajdź $\mathbb{E}[X]$.
+    b. Niech $Y=(-1)^X$. Znajdź $\mathbb{E}[Y]$.
+1. Zmienna losowa $X$ ma rozkład
+    $$
+    \mathbb{P}[X=k]=\frac{k}{21},\qquad k=1,2,\ldots,6.
+    $$
+    a. Znajdź $\mathbb{E}[X]$.
+    b. Niech $Y=\frac{1}{X}$. Znajdź $\mathbb{E}[Y]$.
+1. Rzucamy trzykrotnie symetryczną monetą. Rzuty są niezależne.
+    Zmienna losowa $X$ oznacza liczbę uzyskanych orłów.
+    a. Znajdź $\mathbb{E}[X]$.
+    b. Niech $Y=2^X$. Znajdź $\mathbb{E}[Y]$.
+
