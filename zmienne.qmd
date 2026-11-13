@@ -929,32 +929,6 @@ $$
 Czego należało dowieść.
 :::
 
-::: {#exm-bernoulli-sq}
-
-Rzucamy $n$ krotnie symetryczną monetą. Niech $X$ oznacza liczbę wyrzuconych orłów.
-Ile wynosi $\mathbb{E}[X^2]$? Przypomnijmy, że $X$ będzie miało rozkład dwumianowy
-\begin{equation*}
-  \mathbb{P}[X=k] = {n \choose k} 2^{-n}.
-\end{equation*}
-Szukana przez nas wielkość to
-\begin{equation*}
-  \mathbb{E}\left[X^2\right] = \sum_{k=0}^n k^2 {n \choose k}.
-\end{equation*}
-Wychodząc od wzoru dwumianowego
-\begin{equation*}
-  (x+y)^n = \sum_{k=0}^n {n \choose k} x^k y^{n-k}
-\end{equation*}
-i różniczkując względem $x$
-\begin{equation*}
-  n(x+y)^{n-1} = \sum_{k=0}^n {n \choose k} kx^{k-1} y^{n-k}
-\end{equation*}
-Mnożąc przez $x$ i różniczkując względem $x$
-\begin{equation*}
-  n(x+y)^{n-1} + n(n-1)(x+y)^{n-2} = \sum_{k=0}^n {n \choose k} k^2x^{k-2} y^{n-k}
-\end{equation*}
-:::
-
-
 ::: {#prp-zmienne-4}
 
 Niech $(\Omega, \mathbb{P})$ będzie dyskretną przestrzenią probabilistyczną.
@@ -1224,7 +1198,7 @@ swojej wartości oczekiwanej $\mathbb{E} X$.
 
 *Wariancję* zmiennej losowej $X$ definiujemy przez
 $$
-\mathbb{V} [X] = \mathbb{E}[ (X-\mathbb{E} X) ^2].
+\mathbb{V}ar [X] = \mathbb{E}[ (X-\mathbb{E} X) ^2].
 $$
 
 :::
@@ -1233,7 +1207,7 @@ $$
 $(\Omega, \mathbb{P})$ zachodzi wzór
 
 $$
-\mathbb{V}[X] = \sum_{\omega \in \Omega} (X(\omega) - \mathbb{E} X)^2 p(\omega).
+\mathbb{V}ar[X] = \sum_{\omega \in \Omega} (X(\omega) - \mathbb{E} X)^2 p(\omega).
 $$ {#eq-eq-2-warzdef}
 
 ::: {#exm-zmienne-9}
@@ -1269,93 +1243,114 @@ $$
 Wariancja ma służyć właśnie do analizy pojęcia rozproszenia zmiennej losowej. 
 W przypadku $X$ wariancja wynosi
 $$
-\mathbb{V} [X] = 0{,}98 \cdot (0 -2 )^2 + 0,02\cdot (100 -2)^2 = 196
+\mathbb{V}ar [X] = 0{,}98 \cdot (0 -2 )^2 + 0,02\cdot (100 -2)^2 = 196
 $$
 a w przypadku $Y$
 $$
-\mathbb{V} [Y] = 0{,}9801 \cdot (0 - 2)^2  +  0{,}0198\cdot (100 -  2)^2 + 0,0001\cdot  (200  - 2)^2 = 198
+\mathbb{V}ar [Y] = 0{,}9801 \cdot (0 - 2)^2  +  0{,}0198\cdot (100 -  2)^2 + 0,0001\cdot  (200  - 2)^2 = 198
 $$
 Tak jak oczekiwaliśmy, druga wariancja jest odrobinę większa, 
 ponieważ rozkład losowy w przypadku $Y$ jest odrobinę bardziej rozproszony.
 
 :::
 
-Wzór @eq-eq-2-warzdef jest w praktyce nieporęczny. 
-Okazuje się, że $\mathbb{V}[X]$ można wyrazić w zgrabny sposób, który jest 
-dodatkowo wygodny w rachunkach.
+Wariancję można też obliczyć z wartości oczekiwanej i drugiego momentu $\mathbb{E}[X^2]$.
 
 ::: {#prp-zmienne-5}
 
 Niech $X$ będzie całkowalną zmienną losową. Wówczas
-
 $$
-\mathbb{V}[X]  = \mathbb{E} \left[ X^2 \right] - (\mathbb{E} X)^2.
+\mathbb{V}ar[X]  = \mathbb{E} \left[ X^2 \right] - (\mathbb{E} X)^2.
 $$ {#eq-eq-var}
+
+Ponadto wariancja ma następujące własności.
+
+1. Dla każdej stałej $a \in \mathbb{R}$ zachodzi
+   $\mathbb{V}ar[aX] = a^2 \mathbb{V}ar[X]$, przy czym przyjmujemy $0 \cdot \infty = 0$.
+2. Dla każdej stałej $b \in \mathbb{R}$ zachodzi
+   $\mathbb{V}ar[X+b] = \mathbb{V}ar[X]$.
+3. $\mathbb{V}ar[X] \geq 0$.
+4. $\mathbb{V}ar[X] = 0$ wtedy i tylko wtedy, gdy istnieje
+   stała $c \in \mathbb{R}$ taka, że $\mathbb{P}[X=c]=1$.
 
 :::
 
 ::: {.proof}
 
-Oznaczmy $m = \mathbb{E} [X] \in \mathbb{R}$. Wówczas
+Udowodnimy tylko pierwszą własność. Pozostałe zostawimy jako ćwiczenie.
+Oznaczmy $m = \mathbb{E}[X]$. Po rozwinięciu kwadratu w definicji wariancji otrzymujemy
+$$
+\mathbb{V}ar[X] = \mathbb{E}[X^2] - 2m\,\mathbb{E}[X] + m^2
+                = \mathbb{E}[X^2] - m^2.
+$$
 
-$$
-\begin{aligned}
-\mathbb{V}[X] &= \mathbb{E}\left[ X^2 - 2 X m +m^2 \right] = \mathbb{E}\left[ X^2 \right] - \mathbb{E}[2mX] + \mathbb{E}\left[m^2\right] \\
-&= \mathbb{E}\left[ X^2 \right]  - 2m \mathbb{E}[X] + m^2 = \mathbb{E}\left[ X^2 \right]  -m^2
-\end{aligned}
-$$
-co jest jednoznaczne z naszą tezą.
 :::
 
 ::: {#exm-zmienne-10}
 
-Niech $X$ oznacza liczbę uzyskanych orłów w serii $n$ rzutów symetryczną monetą. Wiemy, że $\mathbb{E}[X] = \frac n2$ oraz $\mathbb{E} \left[X^2 \right] = \frac{n(n+1)}{4}$ a co za tym idzie
+Niech $X$ oznacza liczbę orłów w serii $n$ niezależnych rzutów symetryczną monetą.
+Zatem $\mathbb{P}[X=k] = {n \choose k} 2^{-n}$ dla $k=0,\ldots,n$.
 
+Szukamy wariancji $\mathbb{V}ar[X]$. Znamy już pierwszy moment $\mathbb{E}[X]=\frac n2$.
+Drugi moment $\mathbb{E}[X^2]$ wyznaczymy na dwa sposoby.
+
+**Różniczkowanie wzoru dwumianowego.** Dla $x,y>0$ mamy
 $$
-\mathbb{V}[X]  = \mathbb{E} \left[ X^2 \right] - (\mathbb{E} X)^2 = \frac{n}4.
+(x+y)^n = \sum_{k=0}^n {n \choose k} x^k y^{n-k}.
 $$
-
-:::
-
-::: {#cor-zmienne-1}
-
-Niech $X$ będzie całkowalną zmienną losową. Wówczas zachodzi nierówność
-
+Różniczkujemy obie strony względem $x$, traktując $y$ jako stałą.
 $$
-\mathbb{E} \left[ X^2 \right] \geq  \left(\mathbb{E} X \right)^2.
+n(x+y)^{n-1} = \sum_{k=1}^n {n \choose k} k x^{k-1}y^{n-k}.
 $$
-
-:::
-
-::: {.proof}
-
-Jako, że $X$ przyjmuje wartości rzeczywiste, $(X(\omega)-\mathbb{E} X) ^2\geq 0$ a co za tym idzie
-
+Mnożymy obie strony przez $x$.
 $$
-\mathbb{V}[X] = \sum_{\omega \in \Omega} (X(\omega)-\mathbb{E} X) ^2 \mathbb{P}[\{ \omega \}] \geq 0.
+nx(x+y)^{n-1} = \sum_{k=1}^n {n \choose k} k x^k y^{n-k}.
 $$
-
-Z drugiej strony $0 \leq \mathbb{V}[X]  = \mathbb{E} \left[ X^2 \right] - (\mathbb{E} X)^2$, co pociąga naszą tezę.
-
-:::
-
-::: {#thm-zmienne-1 name="Nierówność Czebyszewa"}
-
-Niech $(\Omega, \mathbb{P})$ będzie dyskretną przestrzenią probabilistyczną. Dla całkowalnej zmiennej losowej $X$ i dowolnej stałej $c >0$ zachodzi
+Różniczkujemy ponownie względem $x$. Po lewej stronie stosujemy regułę iloczynu,
+a po prawej z pochodnej $x^k$ dostajemy drugi czynnik $k$.
 $$
-\mathbb{P}[ |X - \mathbb{E} X| \geq c] \leq \frac{ \mathbb{V} X}{c^2}.
+n(x+y)^{n-1} + n(n-1)x(x+y)^{n-2}
+= \sum_{k=1}^n {n \choose k} k^2 x^{k-1}y^{n-k}.
 $$
-
-:::
-
-::: {.proof}
-
+Podstawiamy $x=y=1$. Potęgi $x$ i $y$ po prawej stronie są wtedy równe $1$,
+więc po pomnożeniu obu stron przez $2^{-n}$ otrzymujemy
 $$
 \begin{aligned}
-\mathbb{V} X & = \sum_{\omega \in \Omega } (X(\omega) -\mathbb{E} X)^2 \mathbb{P}[\{\omega\}] \geq  \sum_{|X(\omega) - \mathbb{E} X| \geq c } (X(\omega) -\mathbb{E} X)^2 \mathbb{P}[\{\omega\}] \\
-&\geq c^2\sum_{|X(\omega) - \mathbb{E} X| \geq c } \mathbb{P}[\{\omega\}]  \geq c^2 \mathbb{P}[ |X - \mathbb{E} X| \geq c].
+\mathbb{E}[X^2]
+&= 2^{-n}\sum_{k=1}^n k^2 {n \choose k} \\
+&= 2^{-n}\left(n 2^{n-1} + n(n-1)2^{n-2}\right) \\
+&= \frac n2 + \frac{n(n-1)}4 = \frac{n(n+1)}4.
 \end{aligned}
 $$
 
-:::
+**Interpretacja kombinatoryczna.** Klasa liczy $n$ osób i wysyła delegację na
+zebranie samorządu szkolnego. Wśród delegatów trzeba wyznaczyć przewodniczącego
+i skarbnika. Ta sama osoba może pełnić obie funkcje. Liczbę sposobów wyboru składu
+delegacji i obsadzenia obu funkcji opisują obie strony równości
+$$
+\sum_{k=1}^n k^2 {n \choose k} = n2^{n-1} + n(n-1)2^{n-2}.
+$$
 
+- **Najpierw wybieramy skład delegacji.** Skład liczący $k$ osób można wybrać
+  na $\binom{n}{k}$ sposobów. W każdej takiej delegacji mamy $k$ kandydatów na
+  przewodniczącego i $k$ kandydatów na skarbnika, czyli $k^2$ sposobów obsadzenia
+  obu funkcji. Sumujemy po wszystkich możliwych liczebnościach delegacji.
+- **Najpierw obsadzamy funkcje.** Jeśli obie funkcje pełni jedna osoba, wybieramy
+  ją na $n$ sposobów. Każdą z pozostałych $n-1$ osób możemy włączyć do delegacji
+  lub pominąć. Daje to $n2^{n-1}$ możliwości. Jeśli funkcje pełnią różne osoby,
+  mamy $n$ kandydatów na przewodniczącego i $n-1$ na skarbnika. Każdą z pozostałych
+  $n-2$ osób znów możemy włączyć do delegacji lub pominąć. Daje to $n(n-1)2^{n-2}$
+  możliwości.
+
+Aby powiązać ten rachunek z rzutami monetą, numerujemy osoby w klasie i włączamy
+do delegacji te, których numerom odpowiadają rzuty zakończone orłem. Przy $X$ orłach
+mamy $X^2$ sposobów obsadzenia funkcji. Dzieląc łączną liczbę delegacji z obsadzonymi
+funkcjami przez liczbę $2^n$ jednakowo prawdopodobnych wyników serii, otrzymujemy
+$\mathbb{E}[X^2]$.
+
+Podstawiając oba momenty do wzoru @eq-eq-var, otrzymujemy
+$$
+\mathbb{V}ar[X] = \frac{n(n+1)}4 - \left(\frac n2\right)^2 = \frac n4.
+$$
+
+:::

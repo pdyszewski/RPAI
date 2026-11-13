@@ -25,8 +25,9 @@ book:
         - warunkowe.qmd
         - niezaleznosc.qmd
         - zmienne.qmd
-        #- wektory.qmd
+        - wektory.qmd
         #- niezaleznosc2.qmd
+        #- rozklady-warunkowe.qmd
         #- summary.qmd
         - references.qmd
     - part: "Listy zadań"
@@ -36,6 +37,8 @@ book:
         - lista3.qmd
         - lista4.qmd
         - lista5.qmd
+        - lista6.qmd
+        - lista7.qmd
 
 bibliography: references.bib
 

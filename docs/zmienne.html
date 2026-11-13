@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./wektory.html" rel="next">
 <link href="./niezaleznosc.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -240,6 +240,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./wektory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wektory losowe</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -283,6 +289,18 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./lista5.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lista 5. Zmienne losowe</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lista6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lista 6. Wektory losowe</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lista7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lista 7. Powtórka przed kolokwium</span></a>
   </div>
 </li>
       </ul>
@@ -1002,19 +1020,6 @@ X(a,b) = a^2 \qquad Y(a,b) = b.
 = \sum_{k=1}^T \varphi(x_k) \mathbb{P}[X=x_k].
 \]</span> Czego należało dowieść.</p>
 </div>
-<div id="exm-bernoulli-sq" class="theorem example">
-<p><span class="theorem-title"><strong>Przykład 6.16</strong></span> Rzucamy <span class="math inline">\(n\)</span> krotnie symetryczną monetą. Niech <span class="math inline">\(X\)</span> oznacza liczbę wyrzuconych orłów. Ile wynosi <span class="math inline">\(\mathbb{E}[X^2]\)</span>? Przypomnijmy, że <span class="math inline">\(X\)</span> będzie miało rozkład dwumianowy <span class="math display">\[\begin{equation*}
-  \mathbb{P}[X=k] = {n \choose k} 2^{-n}.
-\end{equation*}\]</span> Szukana przez nas wielkość to <span class="math display">\[\begin{equation*}
-  \mathbb{E}\left[X^2\right] = \sum_{k=0}^n k^2 {n \choose k}.
-\end{equation*}\]</span> Wychodząc od wzoru dwumianowego <span class="math display">\[\begin{equation*}
-  (x+y)^n = \sum_{k=0}^n {n \choose k} x^k y^{n-k}
-\end{equation*}\]</span> i różniczkując względem <span class="math inline">\(x\)</span> <span class="math display">\[\begin{equation*}
-  n(x+y)^{n-1} = \sum_{k=0}^n {n \choose k} kx^{k-1} y^{n-k}
-\end{equation*}\]</span> Mnożąc przez <span class="math inline">\(x\)</span> i różniczkując względem <span class="math inline">\(x\)</span> <span class="math display">\[\begin{equation*}
-  n(x+y)^{n-1} + n(n-1)(x+y)^{n-2} = \sum_{k=0}^n {n \choose k} k^2x^{k-2} y^{n-k}
-\end{equation*}\]</span></p>
-</div>
 <div id="prp-zmienne-4" class="theorem proposition">
 <p><span class="theorem-title"><strong>Fakt 6.4</strong></span> Niech <span class="math inline">\((\Omega, \mathbb{P})\)</span> będzie dyskretną przestrzenią probabilistyczną. Wówczas</p>
 <ol type="i">
@@ -1045,7 +1050,7 @@ X(a,b) = a^2 \qquad Y(a,b) = b.
 \]</span> Co dowodzi drugiej własności.</p>
 </div>
 <div id="exm-top2rand" class="theorem example">
-<p><span class="theorem-title"><strong>Przykład 6.17</strong></span> Tasujemy talię 52 kart metodą <em>Top to random</em>, tzn. kartę, która znajduje się na górze wkładamy w losowe miejsce w talii (są 52 możliwości), a następnie powtarzamy czynność. Ile należy wykonać tasowań, aby można było uznać talię za potasowaną. Jaka jest średnia liczba tasowań?</p>
+<p><span class="theorem-title"><strong>Przykład 6.16</strong></span> Tasujemy talię 52 kart metodą <em>Top to random</em>, tzn. kartę, która znajduje się na górze wkładamy w losowe miejsce w talii (są 52 możliwości), a następnie powtarzamy czynność. Ile należy wykonać tasowań, aby można było uznać talię za potasowaną. Jaka jest średnia liczba tasowań?</p>
 <p>Kluczowa jest karta, która początkowo znajduje się na samym dole talii. Oznaczmy ją przez <span class="math inline">\(A\)</span>. Zauważmy, że w trakcie tasowania będzie się ona przemieszczać powoli do góry talii. Prawdopodobieństwo, że w pierwszym ruchu karta z góry talii znajdzie się pod <span class="math inline">\(A\)</span> wynosi <span class="math inline">\(1/52\)</span>. Jest ono małe, ale z prawdopodobieństwem 1 (Lemat Borela-Cantellego) nastąpi moment, gdy pod <span class="math inline">\(A\)</span> znajdzie się jakaś karta, oznaczmy ją przez <span class="math inline">\(K_1\)</span>.</p>
 <p>Po wykonaniu losowej liczby tasowań kolejna karta <span class="math inline">\(K_2\)</span> zostanie wstawiona poniżej <span class="math inline">\(A\)</span>. Wzajemne ułożenie kart <span class="math inline">\(K_1\)</span> i <span class="math inline">\(K_2\)</span> jest losowe (tzn. z prawdopodobieństwem <span class="math inline">\(1/2\)</span> karta <span class="math inline">\(K_1\)</span> jest nad <span class="math inline">\(K_2\)</span> i na odwrót). Kontynuując to rozumowanie w pewnej chwili pod <span class="math inline">\(A\)</span> będzie znajdować się <span class="math inline">\(k\)</span> kart: <span class="math inline">\(K_1, \ldots K_k\)</span>. Każde ułożenie tychże kart jest tak samo prawdopodobne (indukcja!). Zatem karty pod <span class="math inline">\(A\)</span> są dobrze potasowane.</p>
 <p>Karta <span class="math inline">\(A\)</span> dotrze w końcu na sam szczyt talii i to właśnie ona zostanie wstawiona. W tej chwili wszystkie karty będą dobrze potasowane (każde ich wzajemne ułożenie jest jednakowo prawdopodobne).</p>
@@ -1057,179 +1062,179 @@ X(a,b) = a^2 \qquad Y(a,b) = b.
 <div class="cell">
 <details class="code-fold hidden">
 <summary>Pokaż kod</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="1034" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1033;"><span id="cb4-1034"><a href="#cb4-1034" aria-hidden="true" tabindex="-1"></a>top2random <span class="op">=</span> {</span>
-<span id="cb4-1035"><a href="#cb4-1035" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> totalCards <span class="op">=</span> <span class="dv">52</span><span class="op">;</span></span>
-<span id="cb4-1036"><a href="#cb4-1036" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> trackedCard <span class="op">=</span> <span class="dv">52</span><span class="op">;</span></span>
-<span id="cb4-1037"><a href="#cb4-1037" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> maxSteps <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
-<span id="cb4-1038"><a href="#cb4-1038" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> fps <span class="op">=</span> <span class="dv">15</span><span class="op">;</span></span>
-<span id="cb4-1039"><a href="#cb4-1039" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1040"><a href="#cb4-1040" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> <span class="bu">root</span> <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="top2random-sim"&gt;</span></span>
-<span id="cb4-1041"><a href="#cb4-1041" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;style&gt;</span></span>
-<span id="cb4-1042"><a href="#cb4-1042" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-sim {</span></span>
-<span id="cb4-1043"><a href="#cb4-1043" aria-hidden="true" tabindex="-1"></a><span class="vs">        display: flex;</span></span>
-<span id="cb4-1044"><a href="#cb4-1044" aria-hidden="true" tabindex="-1"></a><span class="vs">        align-items: flex-start;</span></span>
-<span id="cb4-1045"><a href="#cb4-1045" aria-hidden="true" tabindex="-1"></a><span class="vs">        gap: 1.5rem;</span></span>
-<span id="cb4-1046"><a href="#cb4-1046" aria-hidden="true" tabindex="-1"></a><span class="vs">        flex-wrap: wrap;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="1008" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 1007;"><span id="cb4-1008"><a href="#cb4-1008" aria-hidden="true" tabindex="-1"></a>top2random <span class="op">=</span> {</span>
+<span id="cb4-1009"><a href="#cb4-1009" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> totalCards <span class="op">=</span> <span class="dv">52</span><span class="op">;</span></span>
+<span id="cb4-1010"><a href="#cb4-1010" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> trackedCard <span class="op">=</span> <span class="dv">52</span><span class="op">;</span></span>
+<span id="cb4-1011"><a href="#cb4-1011" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> maxSteps <span class="op">=</span> <span class="dv">1000</span><span class="op">;</span></span>
+<span id="cb4-1012"><a href="#cb4-1012" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> fps <span class="op">=</span> <span class="dv">15</span><span class="op">;</span></span>
+<span id="cb4-1013"><a href="#cb4-1013" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1014"><a href="#cb4-1014" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> <span class="bu">root</span> <span class="op">=</span> <span class="fu">html</span><span class="vs">`&lt;div class="top2random-sim"&gt;</span></span>
+<span id="cb4-1015"><a href="#cb4-1015" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;style&gt;</span></span>
+<span id="cb4-1016"><a href="#cb4-1016" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-sim {</span></span>
+<span id="cb4-1017"><a href="#cb4-1017" aria-hidden="true" tabindex="-1"></a><span class="vs">        display: flex;</span></span>
+<span id="cb4-1018"><a href="#cb4-1018" aria-hidden="true" tabindex="-1"></a><span class="vs">        align-items: flex-start;</span></span>
+<span id="cb4-1019"><a href="#cb4-1019" aria-hidden="true" tabindex="-1"></a><span class="vs">        gap: 1.5rem;</span></span>
+<span id="cb4-1020"><a href="#cb4-1020" aria-hidden="true" tabindex="-1"></a><span class="vs">        flex-wrap: wrap;</span></span>
+<span id="cb4-1021"><a href="#cb4-1021" aria-hidden="true" tabindex="-1"></a><span class="vs">        color: var(--bs-body-color);</span></span>
+<span id="cb4-1022"><a href="#cb4-1022" aria-hidden="true" tabindex="-1"></a><span class="vs">        margin: 1rem 0;</span></span>
+<span id="cb4-1023"><a href="#cb4-1023" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb4-1024"><a href="#cb4-1024" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1025"><a href="#cb4-1025" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-stack {</span></span>
+<span id="cb4-1026"><a href="#cb4-1026" aria-hidden="true" tabindex="-1"></a><span class="vs">        width: 160px;</span></span>
+<span id="cb4-1027"><a href="#cb4-1027" aria-hidden="true" tabindex="-1"></a><span class="vs">        padding: 20px 0;</span></span>
+<span id="cb4-1028"><a href="#cb4-1028" aria-hidden="true" tabindex="-1"></a><span class="vs">        display: flex;</span></span>
+<span id="cb4-1029"><a href="#cb4-1029" aria-hidden="true" tabindex="-1"></a><span class="vs">        flex-direction: column;</span></span>
+<span id="cb4-1030"><a href="#cb4-1030" aria-hidden="true" tabindex="-1"></a><span class="vs">        align-items: center;</span></span>
+<span id="cb4-1031"><a href="#cb4-1031" aria-hidden="true" tabindex="-1"></a><span class="vs">        gap: 1px;</span></span>
+<span id="cb4-1032"><a href="#cb4-1032" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: var(--bs-secondary-bg);</span></span>
+<span id="cb4-1033"><a href="#cb4-1033" aria-hidden="true" tabindex="-1"></a><span class="vs">        border: 1px solid var(--bs-border-color);</span></span>
+<span id="cb4-1034"><a href="#cb4-1034" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-radius: 8px;</span></span>
+<span id="cb4-1035"><a href="#cb4-1035" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb4-1036"><a href="#cb4-1036" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1037"><a href="#cb4-1037" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-card {</span></span>
+<span id="cb4-1038"><a href="#cb4-1038" aria-hidden="true" tabindex="-1"></a><span class="vs">        width: 50px;</span></span>
+<span id="cb4-1039"><a href="#cb4-1039" aria-hidden="true" tabindex="-1"></a><span class="vs">        height: 12px;</span></span>
+<span id="cb4-1040"><a href="#cb4-1040" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-radius: 3px;</span></span>
+<span id="cb4-1041"><a href="#cb4-1041" aria-hidden="true" tabindex="-1"></a><span class="vs">        box-sizing: border-box;</span></span>
+<span id="cb4-1042"><a href="#cb4-1042" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: color-mix(</span></span>
+<span id="cb4-1043"><a href="#cb4-1043" aria-hidden="true" tabindex="-1"></a><span class="vs">          in srgb,</span></span>
+<span id="cb4-1044"><a href="#cb4-1044" aria-hidden="true" tabindex="-1"></a><span class="vs">          var(--bs-primary) 35%,</span></span>
+<span id="cb4-1045"><a href="#cb4-1045" aria-hidden="true" tabindex="-1"></a><span class="vs">          var(--bs-body-bg)</span></span>
+<span id="cb4-1046"><a href="#cb4-1046" aria-hidden="true" tabindex="-1"></a><span class="vs">        );</span></span>
 <span id="cb4-1047"><a href="#cb4-1047" aria-hidden="true" tabindex="-1"></a><span class="vs">        color: var(--bs-body-color);</span></span>
-<span id="cb4-1048"><a href="#cb4-1048" aria-hidden="true" tabindex="-1"></a><span class="vs">        margin: 1rem 0;</span></span>
-<span id="cb4-1049"><a href="#cb4-1049" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
-<span id="cb4-1050"><a href="#cb4-1050" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1051"><a href="#cb4-1051" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-stack {</span></span>
-<span id="cb4-1052"><a href="#cb4-1052" aria-hidden="true" tabindex="-1"></a><span class="vs">        width: 160px;</span></span>
-<span id="cb4-1053"><a href="#cb4-1053" aria-hidden="true" tabindex="-1"></a><span class="vs">        padding: 20px 0;</span></span>
-<span id="cb4-1054"><a href="#cb4-1054" aria-hidden="true" tabindex="-1"></a><span class="vs">        display: flex;</span></span>
-<span id="cb4-1055"><a href="#cb4-1055" aria-hidden="true" tabindex="-1"></a><span class="vs">        flex-direction: column;</span></span>
-<span id="cb4-1056"><a href="#cb4-1056" aria-hidden="true" tabindex="-1"></a><span class="vs">        align-items: center;</span></span>
-<span id="cb4-1057"><a href="#cb4-1057" aria-hidden="true" tabindex="-1"></a><span class="vs">        gap: 1px;</span></span>
-<span id="cb4-1058"><a href="#cb4-1058" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: var(--bs-secondary-bg);</span></span>
-<span id="cb4-1059"><a href="#cb4-1059" aria-hidden="true" tabindex="-1"></a><span class="vs">        border: 1px solid var(--bs-border-color);</span></span>
-<span id="cb4-1060"><a href="#cb4-1060" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-radius: 8px;</span></span>
-<span id="cb4-1061"><a href="#cb4-1061" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
-<span id="cb4-1062"><a href="#cb4-1062" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1063"><a href="#cb4-1063" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-card {</span></span>
-<span id="cb4-1064"><a href="#cb4-1064" aria-hidden="true" tabindex="-1"></a><span class="vs">        width: 50px;</span></span>
-<span id="cb4-1065"><a href="#cb4-1065" aria-hidden="true" tabindex="-1"></a><span class="vs">        height: 12px;</span></span>
-<span id="cb4-1066"><a href="#cb4-1066" aria-hidden="true" tabindex="-1"></a><span class="vs">        border-radius: 3px;</span></span>
-<span id="cb4-1067"><a href="#cb4-1067" aria-hidden="true" tabindex="-1"></a><span class="vs">        box-sizing: border-box;</span></span>
-<span id="cb4-1068"><a href="#cb4-1068" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: color-mix(</span></span>
-<span id="cb4-1069"><a href="#cb4-1069" aria-hidden="true" tabindex="-1"></a><span class="vs">          in srgb,</span></span>
-<span id="cb4-1070"><a href="#cb4-1070" aria-hidden="true" tabindex="-1"></a><span class="vs">          var(--bs-primary) 35%,</span></span>
-<span id="cb4-1071"><a href="#cb4-1071" aria-hidden="true" tabindex="-1"></a><span class="vs">          var(--bs-body-bg)</span></span>
-<span id="cb4-1072"><a href="#cb4-1072" aria-hidden="true" tabindex="-1"></a><span class="vs">        );</span></span>
-<span id="cb4-1073"><a href="#cb4-1073" aria-hidden="true" tabindex="-1"></a><span class="vs">        color: var(--bs-body-color);</span></span>
-<span id="cb4-1074"><a href="#cb4-1074" aria-hidden="true" tabindex="-1"></a><span class="vs">        text-align: center;</span></span>
-<span id="cb4-1075"><a href="#cb4-1075" aria-hidden="true" tabindex="-1"></a><span class="vs">        line-height: 12px;</span></span>
-<span id="cb4-1076"><a href="#cb4-1076" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-size: 10px;</span></span>
-<span id="cb4-1077"><a href="#cb4-1077" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-variant-numeric: tabular-nums;</span></span>
-<span id="cb4-1078"><a href="#cb4-1078" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
-<span id="cb4-1079"><a href="#cb4-1079" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1080"><a href="#cb4-1080" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-card.tracked {</span></span>
-<span id="cb4-1081"><a href="#cb4-1081" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: color-mix(</span></span>
-<span id="cb4-1082"><a href="#cb4-1082" aria-hidden="true" tabindex="-1"></a><span class="vs">          in srgb,</span></span>
-<span id="cb4-1083"><a href="#cb4-1083" aria-hidden="true" tabindex="-1"></a><span class="vs">          var(--bs-warning) 45%,</span></span>
-<span id="cb4-1084"><a href="#cb4-1084" aria-hidden="true" tabindex="-1"></a><span class="vs">          var(--bs-body-bg)</span></span>
-<span id="cb4-1085"><a href="#cb4-1085" aria-hidden="true" tabindex="-1"></a><span class="vs">        );</span></span>
-<span id="cb4-1086"><a href="#cb4-1086" aria-hidden="true" tabindex="-1"></a><span class="vs">        outline: 1px solid var(--bs-warning);</span></span>
-<span id="cb4-1087"><a href="#cb4-1087" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-weight: bold;</span></span>
-<span id="cb4-1088"><a href="#cb4-1088" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
-<span id="cb4-1089"><a href="#cb4-1089" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1090"><a href="#cb4-1090" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-controls {</span></span>
-<span id="cb4-1091"><a href="#cb4-1091" aria-hidden="true" tabindex="-1"></a><span class="vs">        display: flex;</span></span>
-<span id="cb4-1092"><a href="#cb4-1092" aria-hidden="true" tabindex="-1"></a><span class="vs">        flex-direction: column;</span></span>
-<span id="cb4-1093"><a href="#cb4-1093" aria-hidden="true" tabindex="-1"></a><span class="vs">        gap: 0.75rem;</span></span>
-<span id="cb4-1094"><a href="#cb4-1094" aria-hidden="true" tabindex="-1"></a><span class="vs">        align-items: flex-start;</span></span>
-<span id="cb4-1095"><a href="#cb4-1095" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
-<span id="cb4-1096"><a href="#cb4-1096" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1097"><a href="#cb4-1097" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-counter {</span></span>
-<span id="cb4-1098"><a href="#cb4-1098" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-variant-numeric: tabular-nums;</span></span>
-<span id="cb4-1099"><a href="#cb4-1099" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-weight: 600;</span></span>
-<span id="cb4-1100"><a href="#cb4-1100" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
-<span id="cb4-1101"><a href="#cb4-1101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1102"><a href="#cb4-1102" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-status {</span></span>
-<span id="cb4-1103"><a href="#cb4-1103" aria-hidden="true" tabindex="-1"></a><span class="vs">        max-width: 230px;</span></span>
-<span id="cb4-1104"><a href="#cb4-1104" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-size: 0.9rem;</span></span>
-<span id="cb4-1105"><a href="#cb4-1105" aria-hidden="true" tabindex="-1"></a><span class="vs">        opacity: 0.8;</span></span>
-<span id="cb4-1106"><a href="#cb4-1106" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
-<span id="cb4-1107"><a href="#cb4-1107" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/style&gt;</span></span>
-<span id="cb4-1108"><a href="#cb4-1108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1109"><a href="#cb4-1109" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="top2random-stack"&gt;&lt;/div&gt;</span></span>
-<span id="cb4-1110"><a href="#cb4-1110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1111"><a href="#cb4-1111" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="top2random-controls"&gt;</span></span>
-<span id="cb4-1112"><a href="#cb4-1112" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button class="btn btn-primary" type="button"&gt;</span></span>
-<span id="cb4-1113"><a href="#cb4-1113" aria-hidden="true" tabindex="-1"></a><span class="vs">        Resetuj</span></span>
-<span id="cb4-1114"><a href="#cb4-1114" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/button&gt;</span></span>
-<span id="cb4-1115"><a href="#cb4-1115" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="top2random-counter"&gt;Kroki: 0&lt;/div&gt;</span></span>
-<span id="cb4-1116"><a href="#cb4-1116" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="top2random-status"&gt;&lt;/div&gt;</span></span>
-<span id="cb4-1117"><a href="#cb4-1117" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
-<span id="cb4-1118"><a href="#cb4-1118" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
-<span id="cb4-1119"><a href="#cb4-1119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1120"><a href="#cb4-1120" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> stack <span class="op">=</span> <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".top2random-stack"</span>)<span class="op">;</span></span>
-<span id="cb4-1121"><a href="#cb4-1121" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> button <span class="op">=</span> <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"button"</span>)<span class="op">;</span></span>
-<span id="cb4-1122"><a href="#cb4-1122" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> counter <span class="op">=</span> <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".top2random-counter"</span>)<span class="op">;</span></span>
-<span id="cb4-1123"><a href="#cb4-1123" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> status <span class="op">=</span> <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".top2random-status"</span>)<span class="op">;</span></span>
-<span id="cb4-1124"><a href="#cb4-1124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1125"><a href="#cb4-1125" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> deck <span class="op">=</span> []<span class="op">;</span></span>
-<span id="cb4-1126"><a href="#cb4-1126" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> steps <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-1127"><a href="#cb4-1127" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> running <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb4-1128"><a href="#cb4-1128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1129"><a href="#cb4-1129" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> cards <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> totalCards }<span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
-<span id="cb4-1130"><a href="#cb4-1130" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> card <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span></span>
-<span id="cb4-1131"><a href="#cb4-1131" aria-hidden="true" tabindex="-1"></a>    card<span class="op">.</span><span class="at">className</span> <span class="op">=</span> <span class="st">"top2random-card"</span><span class="op">;</span></span>
-<span id="cb4-1132"><a href="#cb4-1132" aria-hidden="true" tabindex="-1"></a>    stack<span class="op">.</span><span class="fu">appendChild</span>(card)<span class="op">;</span></span>
-<span id="cb4-1133"><a href="#cb4-1133" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> card<span class="op">;</span></span>
-<span id="cb4-1134"><a href="#cb4-1134" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb4-1135"><a href="#cb4-1135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1136"><a href="#cb4-1136" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">render</span>() {</span>
-<span id="cb4-1137"><a href="#cb4-1137" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> totalCards<span class="op">;</span> i<span class="op">++</span>) {</span>
-<span id="cb4-1138"><a href="#cb4-1138" aria-hidden="true" tabindex="-1"></a>      cards[i]<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> deck[i]<span class="op">;</span></span>
-<span id="cb4-1139"><a href="#cb4-1139" aria-hidden="true" tabindex="-1"></a>      cards[i]<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">toggle</span>(</span>
-<span id="cb4-1140"><a href="#cb4-1140" aria-hidden="true" tabindex="-1"></a>        <span class="st">"tracked"</span><span class="op">,</span></span>
-<span id="cb4-1141"><a href="#cb4-1141" aria-hidden="true" tabindex="-1"></a>        deck[i] <span class="op">===</span> trackedCard</span>
-<span id="cb4-1142"><a href="#cb4-1142" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
-<span id="cb4-1143"><a href="#cb4-1143" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-1144"><a href="#cb4-1144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1145"><a href="#cb4-1145" aria-hidden="true" tabindex="-1"></a>    counter<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="vs">`Kroki: </span><span class="sc">${</span>steps<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
-<span id="cb4-1146"><a href="#cb4-1146" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-1147"><a href="#cb4-1147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1148"><a href="#cb4-1148" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">resetDeck</span>() {</span>
-<span id="cb4-1149"><a href="#cb4-1149" aria-hidden="true" tabindex="-1"></a>    deck <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(</span>
-<span id="cb4-1150"><a href="#cb4-1150" aria-hidden="true" tabindex="-1"></a>      { <span class="dt">length</span><span class="op">:</span> totalCards }<span class="op">,</span></span>
-<span id="cb4-1151"><a href="#cb4-1151" aria-hidden="true" tabindex="-1"></a>      (_<span class="op">,</span> i) <span class="kw">=&gt;</span> i <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb4-1152"><a href="#cb4-1152" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span>
-<span id="cb4-1153"><a href="#cb4-1153" aria-hidden="true" tabindex="-1"></a>    steps <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-1154"><a href="#cb4-1154" aria-hidden="true" tabindex="-1"></a>    running <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb4-1155"><a href="#cb4-1155" aria-hidden="true" tabindex="-1"></a>    status<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">""</span><span class="op">;</span></span>
-<span id="cb4-1156"><a href="#cb4-1156" aria-hidden="true" tabindex="-1"></a>    <span class="fu">render</span>()<span class="op">;</span></span>
-<span id="cb4-1157"><a href="#cb4-1157" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-1158"><a href="#cb4-1158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1159"><a href="#cb4-1159" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">topToRandom</span>() {</span>
-<span id="cb4-1160"><a href="#cb4-1160" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> topCard <span class="op">=</span> deck<span class="op">.</span><span class="fu">shift</span>()<span class="op">;</span></span>
-<span id="cb4-1161"><a href="#cb4-1161" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> randIndex <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(</span>
-<span id="cb4-1162"><a href="#cb4-1162" aria-hidden="true" tabindex="-1"></a>      <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> (deck<span class="op">.</span><span class="at">length</span> <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb4-1163"><a href="#cb4-1163" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span>
-<span id="cb4-1164"><a href="#cb4-1164" aria-hidden="true" tabindex="-1"></a>    deck<span class="op">.</span><span class="fu">splice</span>(randIndex<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> topCard)<span class="op">;</span></span>
-<span id="cb4-1165"><a href="#cb4-1165" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-1166"><a href="#cb4-1166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1167"><a href="#cb4-1167" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">tick</span>() {</span>
-<span id="cb4-1168"><a href="#cb4-1168" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>running) <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb4-1169"><a href="#cb4-1169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1170"><a href="#cb4-1170" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (deck[<span class="dv">0</span>] <span class="op">===</span> trackedCard) {</span>
-<span id="cb4-1171"><a href="#cb4-1171" aria-hidden="true" tabindex="-1"></a>      running <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb4-1172"><a href="#cb4-1172" aria-hidden="true" tabindex="-1"></a>      status<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span></span>
-<span id="cb4-1173"><a href="#cb4-1173" aria-hidden="true" tabindex="-1"></a>        <span class="vs">`Karta </span><span class="sc">${</span>trackedCard<span class="sc">}</span><span class="vs"> dotarła na szczyt po </span><span class="sc">${</span>steps<span class="sc">}</span><span class="vs"> krokach.`</span><span class="op">;</span></span>
-<span id="cb4-1174"><a href="#cb4-1174" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb4-1175"><a href="#cb4-1175" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-1176"><a href="#cb4-1176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1177"><a href="#cb4-1177" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (steps <span class="op">&gt;=</span> maxSteps) {</span>
-<span id="cb4-1178"><a href="#cb4-1178" aria-hidden="true" tabindex="-1"></a>      running <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb4-1179"><a href="#cb4-1179" aria-hidden="true" tabindex="-1"></a>      status<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span></span>
-<span id="cb4-1180"><a href="#cb4-1180" aria-hidden="true" tabindex="-1"></a>        <span class="vs">`Osiągnięto limit </span><span class="sc">${</span>maxSteps<span class="sc">}</span><span class="vs"> kroków.`</span><span class="op">;</span></span>
-<span id="cb4-1181"><a href="#cb4-1181" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
-<span id="cb4-1182"><a href="#cb4-1182" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-1183"><a href="#cb4-1183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1184"><a href="#cb4-1184" aria-hidden="true" tabindex="-1"></a>    <span class="fu">topToRandom</span>()<span class="op">;</span></span>
-<span id="cb4-1185"><a href="#cb4-1185" aria-hidden="true" tabindex="-1"></a>    steps<span class="op">++;</span></span>
-<span id="cb4-1186"><a href="#cb4-1186" aria-hidden="true" tabindex="-1"></a>    <span class="fu">render</span>()<span class="op">;</span></span>
-<span id="cb4-1187"><a href="#cb4-1187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1188"><a href="#cb4-1188" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (deck[<span class="dv">0</span>] <span class="op">===</span> trackedCard) {</span>
-<span id="cb4-1189"><a href="#cb4-1189" aria-hidden="true" tabindex="-1"></a>      running <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb4-1190"><a href="#cb4-1190" aria-hidden="true" tabindex="-1"></a>      status<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span></span>
-<span id="cb4-1191"><a href="#cb4-1191" aria-hidden="true" tabindex="-1"></a>        <span class="vs">`Karta </span><span class="sc">${</span>trackedCard<span class="sc">}</span><span class="vs"> dotarła na szczyt po </span><span class="sc">${</span>steps<span class="sc">}</span><span class="vs"> krokach.`</span><span class="op">;</span></span>
-<span id="cb4-1192"><a href="#cb4-1192" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-1193"><a href="#cb4-1193" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb4-1194"><a href="#cb4-1194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1195"><a href="#cb4-1195" aria-hidden="true" tabindex="-1"></a>  button<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"click"</span><span class="op">,</span> resetDeck)<span class="op">;</span></span>
-<span id="cb4-1196"><a href="#cb4-1196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1197"><a href="#cb4-1197" aria-hidden="true" tabindex="-1"></a>  <span class="fu">resetDeck</span>()<span class="op">;</span></span>
-<span id="cb4-1198"><a href="#cb4-1198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1199"><a href="#cb4-1199" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> timer <span class="op">=</span> <span class="pp">setInterval</span>(tick<span class="op">,</span> <span class="dv">1000</span> <span class="op">/</span> fps)<span class="op">;</span></span>
-<span id="cb4-1200"><a href="#cb4-1200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1201"><a href="#cb4-1201" aria-hidden="true" tabindex="-1"></a>  invalidation<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
-<span id="cb4-1202"><a href="#cb4-1202" aria-hidden="true" tabindex="-1"></a>    <span class="pp">clearInterval</span>(timer)<span class="op">;</span></span>
-<span id="cb4-1203"><a href="#cb4-1203" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
-<span id="cb4-1204"><a href="#cb4-1204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-1205"><a href="#cb4-1205" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">root</span><span class="op">;</span></span>
-<span id="cb4-1206"><a href="#cb4-1206" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-1048"><a href="#cb4-1048" aria-hidden="true" tabindex="-1"></a><span class="vs">        text-align: center;</span></span>
+<span id="cb4-1049"><a href="#cb4-1049" aria-hidden="true" tabindex="-1"></a><span class="vs">        line-height: 12px;</span></span>
+<span id="cb4-1050"><a href="#cb4-1050" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-size: 10px;</span></span>
+<span id="cb4-1051"><a href="#cb4-1051" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-variant-numeric: tabular-nums;</span></span>
+<span id="cb4-1052"><a href="#cb4-1052" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb4-1053"><a href="#cb4-1053" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1054"><a href="#cb4-1054" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-card.tracked {</span></span>
+<span id="cb4-1055"><a href="#cb4-1055" aria-hidden="true" tabindex="-1"></a><span class="vs">        background: color-mix(</span></span>
+<span id="cb4-1056"><a href="#cb4-1056" aria-hidden="true" tabindex="-1"></a><span class="vs">          in srgb,</span></span>
+<span id="cb4-1057"><a href="#cb4-1057" aria-hidden="true" tabindex="-1"></a><span class="vs">          var(--bs-warning) 45%,</span></span>
+<span id="cb4-1058"><a href="#cb4-1058" aria-hidden="true" tabindex="-1"></a><span class="vs">          var(--bs-body-bg)</span></span>
+<span id="cb4-1059"><a href="#cb4-1059" aria-hidden="true" tabindex="-1"></a><span class="vs">        );</span></span>
+<span id="cb4-1060"><a href="#cb4-1060" aria-hidden="true" tabindex="-1"></a><span class="vs">        outline: 1px solid var(--bs-warning);</span></span>
+<span id="cb4-1061"><a href="#cb4-1061" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-weight: bold;</span></span>
+<span id="cb4-1062"><a href="#cb4-1062" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb4-1063"><a href="#cb4-1063" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1064"><a href="#cb4-1064" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-controls {</span></span>
+<span id="cb4-1065"><a href="#cb4-1065" aria-hidden="true" tabindex="-1"></a><span class="vs">        display: flex;</span></span>
+<span id="cb4-1066"><a href="#cb4-1066" aria-hidden="true" tabindex="-1"></a><span class="vs">        flex-direction: column;</span></span>
+<span id="cb4-1067"><a href="#cb4-1067" aria-hidden="true" tabindex="-1"></a><span class="vs">        gap: 0.75rem;</span></span>
+<span id="cb4-1068"><a href="#cb4-1068" aria-hidden="true" tabindex="-1"></a><span class="vs">        align-items: flex-start;</span></span>
+<span id="cb4-1069"><a href="#cb4-1069" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb4-1070"><a href="#cb4-1070" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1071"><a href="#cb4-1071" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-counter {</span></span>
+<span id="cb4-1072"><a href="#cb4-1072" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-variant-numeric: tabular-nums;</span></span>
+<span id="cb4-1073"><a href="#cb4-1073" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-weight: 600;</span></span>
+<span id="cb4-1074"><a href="#cb4-1074" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb4-1075"><a href="#cb4-1075" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1076"><a href="#cb4-1076" aria-hidden="true" tabindex="-1"></a><span class="vs">      .top2random-status {</span></span>
+<span id="cb4-1077"><a href="#cb4-1077" aria-hidden="true" tabindex="-1"></a><span class="vs">        max-width: 230px;</span></span>
+<span id="cb4-1078"><a href="#cb4-1078" aria-hidden="true" tabindex="-1"></a><span class="vs">        font-size: 0.9rem;</span></span>
+<span id="cb4-1079"><a href="#cb4-1079" aria-hidden="true" tabindex="-1"></a><span class="vs">        opacity: 0.8;</span></span>
+<span id="cb4-1080"><a href="#cb4-1080" aria-hidden="true" tabindex="-1"></a><span class="vs">      }</span></span>
+<span id="cb4-1081"><a href="#cb4-1081" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/style&gt;</span></span>
+<span id="cb4-1082"><a href="#cb4-1082" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1083"><a href="#cb4-1083" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="top2random-stack"&gt;&lt;/div&gt;</span></span>
+<span id="cb4-1084"><a href="#cb4-1084" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1085"><a href="#cb4-1085" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;div class="top2random-controls"&gt;</span></span>
+<span id="cb4-1086"><a href="#cb4-1086" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;button class="btn btn-primary" type="button"&gt;</span></span>
+<span id="cb4-1087"><a href="#cb4-1087" aria-hidden="true" tabindex="-1"></a><span class="vs">        Resetuj</span></span>
+<span id="cb4-1088"><a href="#cb4-1088" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;/button&gt;</span></span>
+<span id="cb4-1089"><a href="#cb4-1089" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="top2random-counter"&gt;Kroki: 0&lt;/div&gt;</span></span>
+<span id="cb4-1090"><a href="#cb4-1090" aria-hidden="true" tabindex="-1"></a><span class="vs">      &lt;div class="top2random-status"&gt;&lt;/div&gt;</span></span>
+<span id="cb4-1091"><a href="#cb4-1091" aria-hidden="true" tabindex="-1"></a><span class="vs">    &lt;/div&gt;</span></span>
+<span id="cb4-1092"><a href="#cb4-1092" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;/div&gt;`</span><span class="op">;</span></span>
+<span id="cb4-1093"><a href="#cb4-1093" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1094"><a href="#cb4-1094" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> stack <span class="op">=</span> <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".top2random-stack"</span>)<span class="op">;</span></span>
+<span id="cb4-1095"><a href="#cb4-1095" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> button <span class="op">=</span> <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">"button"</span>)<span class="op">;</span></span>
+<span id="cb4-1096"><a href="#cb4-1096" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> counter <span class="op">=</span> <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".top2random-counter"</span>)<span class="op">;</span></span>
+<span id="cb4-1097"><a href="#cb4-1097" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> status <span class="op">=</span> <span class="bu">root</span><span class="op">.</span><span class="fu">querySelector</span>(<span class="st">".top2random-status"</span>)<span class="op">;</span></span>
+<span id="cb4-1098"><a href="#cb4-1098" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1099"><a href="#cb4-1099" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> deck <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb4-1100"><a href="#cb4-1100" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> steps <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-1101"><a href="#cb4-1101" aria-hidden="true" tabindex="-1"></a>  <span class="kw">let</span> running <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb4-1102"><a href="#cb4-1102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1103"><a href="#cb4-1103" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> cards <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({ <span class="dt">length</span><span class="op">:</span> totalCards }<span class="op">,</span> () <span class="kw">=&gt;</span> {</span>
+<span id="cb4-1104"><a href="#cb4-1104" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> card <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">createElement</span>(<span class="st">"div"</span>)<span class="op">;</span></span>
+<span id="cb4-1105"><a href="#cb4-1105" aria-hidden="true" tabindex="-1"></a>    card<span class="op">.</span><span class="at">className</span> <span class="op">=</span> <span class="st">"top2random-card"</span><span class="op">;</span></span>
+<span id="cb4-1106"><a href="#cb4-1106" aria-hidden="true" tabindex="-1"></a>    stack<span class="op">.</span><span class="fu">appendChild</span>(card)<span class="op">;</span></span>
+<span id="cb4-1107"><a href="#cb4-1107" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> card<span class="op">;</span></span>
+<span id="cb4-1108"><a href="#cb4-1108" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb4-1109"><a href="#cb4-1109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1110"><a href="#cb4-1110" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">render</span>() {</span>
+<span id="cb4-1111"><a href="#cb4-1111" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> totalCards<span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb4-1112"><a href="#cb4-1112" aria-hidden="true" tabindex="-1"></a>      cards[i]<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> deck[i]<span class="op">;</span></span>
+<span id="cb4-1113"><a href="#cb4-1113" aria-hidden="true" tabindex="-1"></a>      cards[i]<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">toggle</span>(</span>
+<span id="cb4-1114"><a href="#cb4-1114" aria-hidden="true" tabindex="-1"></a>        <span class="st">"tracked"</span><span class="op">,</span></span>
+<span id="cb4-1115"><a href="#cb4-1115" aria-hidden="true" tabindex="-1"></a>        deck[i] <span class="op">===</span> trackedCard</span>
+<span id="cb4-1116"><a href="#cb4-1116" aria-hidden="true" tabindex="-1"></a>      )<span class="op">;</span></span>
+<span id="cb4-1117"><a href="#cb4-1117" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-1118"><a href="#cb4-1118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1119"><a href="#cb4-1119" aria-hidden="true" tabindex="-1"></a>    counter<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="vs">`Kroki: </span><span class="sc">${</span>steps<span class="sc">}</span><span class="vs">`</span><span class="op">;</span></span>
+<span id="cb4-1120"><a href="#cb4-1120" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-1121"><a href="#cb4-1121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1122"><a href="#cb4-1122" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">resetDeck</span>() {</span>
+<span id="cb4-1123"><a href="#cb4-1123" aria-hidden="true" tabindex="-1"></a>    deck <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>(</span>
+<span id="cb4-1124"><a href="#cb4-1124" aria-hidden="true" tabindex="-1"></a>      { <span class="dt">length</span><span class="op">:</span> totalCards }<span class="op">,</span></span>
+<span id="cb4-1125"><a href="#cb4-1125" aria-hidden="true" tabindex="-1"></a>      (_<span class="op">,</span> i) <span class="kw">=&gt;</span> i <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb4-1126"><a href="#cb4-1126" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span>
+<span id="cb4-1127"><a href="#cb4-1127" aria-hidden="true" tabindex="-1"></a>    steps <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb4-1128"><a href="#cb4-1128" aria-hidden="true" tabindex="-1"></a>    running <span class="op">=</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb4-1129"><a href="#cb4-1129" aria-hidden="true" tabindex="-1"></a>    status<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span> <span class="st">""</span><span class="op">;</span></span>
+<span id="cb4-1130"><a href="#cb4-1130" aria-hidden="true" tabindex="-1"></a>    <span class="fu">render</span>()<span class="op">;</span></span>
+<span id="cb4-1131"><a href="#cb4-1131" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-1132"><a href="#cb4-1132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1133"><a href="#cb4-1133" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">topToRandom</span>() {</span>
+<span id="cb4-1134"><a href="#cb4-1134" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> topCard <span class="op">=</span> deck<span class="op">.</span><span class="fu">shift</span>()<span class="op">;</span></span>
+<span id="cb4-1135"><a href="#cb4-1135" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> randIndex <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">floor</span>(</span>
+<span id="cb4-1136"><a href="#cb4-1136" aria-hidden="true" tabindex="-1"></a>      <span class="bu">Math</span><span class="op">.</span><span class="fu">random</span>() <span class="op">*</span> (deck<span class="op">.</span><span class="at">length</span> <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb4-1137"><a href="#cb4-1137" aria-hidden="true" tabindex="-1"></a>    )<span class="op">;</span></span>
+<span id="cb4-1138"><a href="#cb4-1138" aria-hidden="true" tabindex="-1"></a>    deck<span class="op">.</span><span class="fu">splice</span>(randIndex<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> topCard)<span class="op">;</span></span>
+<span id="cb4-1139"><a href="#cb4-1139" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-1140"><a href="#cb4-1140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1141"><a href="#cb4-1141" aria-hidden="true" tabindex="-1"></a>  <span class="kw">function</span> <span class="fu">tick</span>() {</span>
+<span id="cb4-1142"><a href="#cb4-1142" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="op">!</span>running) <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb4-1143"><a href="#cb4-1143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1144"><a href="#cb4-1144" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (deck[<span class="dv">0</span>] <span class="op">===</span> trackedCard) {</span>
+<span id="cb4-1145"><a href="#cb4-1145" aria-hidden="true" tabindex="-1"></a>      running <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb4-1146"><a href="#cb4-1146" aria-hidden="true" tabindex="-1"></a>      status<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span></span>
+<span id="cb4-1147"><a href="#cb4-1147" aria-hidden="true" tabindex="-1"></a>        <span class="vs">`Karta </span><span class="sc">${</span>trackedCard<span class="sc">}</span><span class="vs"> dotarła na szczyt po </span><span class="sc">${</span>steps<span class="sc">}</span><span class="vs"> krokach.`</span><span class="op">;</span></span>
+<span id="cb4-1148"><a href="#cb4-1148" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb4-1149"><a href="#cb4-1149" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-1150"><a href="#cb4-1150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1151"><a href="#cb4-1151" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (steps <span class="op">&gt;=</span> maxSteps) {</span>
+<span id="cb4-1152"><a href="#cb4-1152" aria-hidden="true" tabindex="-1"></a>      running <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb4-1153"><a href="#cb4-1153" aria-hidden="true" tabindex="-1"></a>      status<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span></span>
+<span id="cb4-1154"><a href="#cb4-1154" aria-hidden="true" tabindex="-1"></a>        <span class="vs">`Osiągnięto limit </span><span class="sc">${</span>maxSteps<span class="sc">}</span><span class="vs"> kroków.`</span><span class="op">;</span></span>
+<span id="cb4-1155"><a href="#cb4-1155" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb4-1156"><a href="#cb4-1156" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-1157"><a href="#cb4-1157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1158"><a href="#cb4-1158" aria-hidden="true" tabindex="-1"></a>    <span class="fu">topToRandom</span>()<span class="op">;</span></span>
+<span id="cb4-1159"><a href="#cb4-1159" aria-hidden="true" tabindex="-1"></a>    steps<span class="op">++;</span></span>
+<span id="cb4-1160"><a href="#cb4-1160" aria-hidden="true" tabindex="-1"></a>    <span class="fu">render</span>()<span class="op">;</span></span>
+<span id="cb4-1161"><a href="#cb4-1161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1162"><a href="#cb4-1162" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (deck[<span class="dv">0</span>] <span class="op">===</span> trackedCard) {</span>
+<span id="cb4-1163"><a href="#cb4-1163" aria-hidden="true" tabindex="-1"></a>      running <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb4-1164"><a href="#cb4-1164" aria-hidden="true" tabindex="-1"></a>      status<span class="op">.</span><span class="at">textContent</span> <span class="op">=</span></span>
+<span id="cb4-1165"><a href="#cb4-1165" aria-hidden="true" tabindex="-1"></a>        <span class="vs">`Karta </span><span class="sc">${</span>trackedCard<span class="sc">}</span><span class="vs"> dotarła na szczyt po </span><span class="sc">${</span>steps<span class="sc">}</span><span class="vs"> krokach.`</span><span class="op">;</span></span>
+<span id="cb4-1166"><a href="#cb4-1166" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb4-1167"><a href="#cb4-1167" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-1168"><a href="#cb4-1168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1169"><a href="#cb4-1169" aria-hidden="true" tabindex="-1"></a>  button<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">"click"</span><span class="op">,</span> resetDeck)<span class="op">;</span></span>
+<span id="cb4-1170"><a href="#cb4-1170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1171"><a href="#cb4-1171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">resetDeck</span>()<span class="op">;</span></span>
+<span id="cb4-1172"><a href="#cb4-1172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1173"><a href="#cb4-1173" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> timer <span class="op">=</span> <span class="pp">setInterval</span>(tick<span class="op">,</span> <span class="dv">1000</span> <span class="op">/</span> fps)<span class="op">;</span></span>
+<span id="cb4-1174"><a href="#cb4-1174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1175"><a href="#cb4-1175" aria-hidden="true" tabindex="-1"></a>  invalidation<span class="op">.</span><span class="fu">then</span>(() <span class="kw">=&gt;</span> {</span>
+<span id="cb4-1176"><a href="#cb4-1176" aria-hidden="true" tabindex="-1"></a>    <span class="pp">clearInterval</span>(timer)<span class="op">;</span></span>
+<span id="cb4-1177"><a href="#cb4-1177" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb4-1178"><a href="#cb4-1178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-1179"><a href="#cb4-1179" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">root</span><span class="op">;</span></span>
+<span id="cb4-1180"><a href="#cb4-1180" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Kopiuj do schowka" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="ojs-cell-4" data-nodetype="declaration">
@@ -1244,15 +1249,15 @@ X(a,b) = a^2 \qquad Y(a,b) = b.
 <p>Za każdym razem kiedy dokonujemy takiego przybliżenia warto jest znać jego błąd. Wartość oczekiwana nie jest tutaj wyjątkiem. W przyszłości bardzo istotna będzie dla nas informacja jak bardzo zmienna losowa <span class="math inline">\(X\)</span> różni się od swojej wartości oczekiwanej <span class="math inline">\(\mathbb{E} X\)</span>.</p>
 <div id="def-df-2-var" class="theorem definition">
 <p><span class="theorem-title"><strong>Definicja 6.5</strong></span> <em>Wariancję</em> zmiennej losowej <span class="math inline">\(X\)</span> definiujemy przez <span class="math display">\[
-\mathbb{V} [X] = \mathbb{E}[ (X-\mathbb{E} X) ^2].
+\mathbb{V}ar [X] = \mathbb{E}[ (X-\mathbb{E} X) ^2].
 \]</span></p>
 </div>
 <p><a href="#def-df-2-var" class="quarto-xref">Definicja&nbsp;<span>6.5</span></a>, na dyskretnej przestrzeni probabilistycznej <span class="math inline">\((\Omega, \mathbb{P})\)</span> zachodzi wzór</p>
 <p><span id="eq-eq-2-warzdef"><span class="math display">\[
-\mathbb{V}[X] = \sum_{\omega \in \Omega} (X(\omega) - \mathbb{E} X)^2 p(\omega).
+\mathbb{V}ar[X] = \sum_{\omega \in \Omega} (X(\omega) - \mathbb{E} X)^2 p(\omega).
 \tag{6.2}\]</span></span></p>
 <div id="exm-zmienne-9" class="theorem example">
-<p><span class="theorem-title"><strong>Przykład 6.18</strong></span> Przypuśćmy, że właśnie otrzymaliśmy propozycję nie do odrzucenia; ktoś podarował nam dwa losy na pewną loterię. Wygrane mierzymy w milionach dolarów i zakładamy niezależność różnych losowań. Organizatorzy loterii sprzedają <span class="math inline">\(100\)</span> losów na cotygodniowe losowanie. Każdy z losów jest wybierany w jednorodnym procesie losowym, to znaczy, że każdy los może być wybrany z takim samym prawdopodobieństwem—i szczęśliwy właściciel wybranego losu wygrywa sto milionów dolarów. Pozostałe <span class="math inline">\(99\)</span> losów nic nie wygrywa.</p>
+<p><span class="theorem-title"><strong>Przykład 6.17</strong></span> Przypuśćmy, że właśnie otrzymaliśmy propozycję nie do odrzucenia; ktoś podarował nam dwa losy na pewną loterię. Wygrane mierzymy w milionach dolarów i zakładamy niezależność różnych losowań. Organizatorzy loterii sprzedają <span class="math inline">\(100\)</span> losów na cotygodniowe losowanie. Każdy z losów jest wybierany w jednorodnym procesie losowym, to znaczy, że każdy los może być wybrany z takim samym prawdopodobieństwem—i szczęśliwy właściciel wybranego losu wygrywa sto milionów dolarów. Pozostałe <span class="math inline">\(99\)</span> losów nic nie wygrywa.</p>
 <p>Możemy teraz wykorzystać nasz prezent na dwa sposoby: albo kupujemy dwa losy na to samo losowanie, albo kupimy po jednym losie na dwa różne losowania. Która strategia jest lepsza? Jeżeli przez <span class="math inline">\(X\)</span> oznaczymy wygraną dla pierwszej strategii, to <span class="math display">\[
 \mathbb{E} X = 0 \cdot  \frac{98}{100} + 100 \cdot \frac{2}{100} = 2.
 \]</span> Dla drugiej strategii <span class="math inline">\(Y\)</span> otrzymujemy <span class="math display">\[
@@ -1264,57 +1269,60 @@ X &amp;  0,98 &amp;  0,02 &amp;  0 \\ \hline
 Y &amp; 0,9801 &amp; 0,0198 &amp; 0,0001 \\\hline
 \end{array}
 \]</span> Wariancja ma służyć właśnie do analizy pojęcia rozproszenia zmiennej losowej. W przypadku <span class="math inline">\(X\)</span> wariancja wynosi <span class="math display">\[
-\mathbb{V} [X] = 0{,}98 \cdot (0 -2 )^2 + 0,02\cdot (100 -2)^2 = 196
+\mathbb{V}ar [X] = 0{,}98 \cdot (0 -2 )^2 + 0,02\cdot (100 -2)^2 = 196
 \]</span> a w przypadku <span class="math inline">\(Y\)</span> <span class="math display">\[
-\mathbb{V} [Y] = 0{,}9801 \cdot (0 - 2)^2  +  0{,}0198\cdot (100 -  2)^2 + 0,0001\cdot  (200  - 2)^2 = 198
+\mathbb{V}ar [Y] = 0{,}9801 \cdot (0 - 2)^2  +  0{,}0198\cdot (100 -  2)^2 + 0,0001\cdot  (200  - 2)^2 = 198
 \]</span> Tak jak oczekiwaliśmy, druga wariancja jest odrobinę większa, ponieważ rozkład losowy w przypadku <span class="math inline">\(Y\)</span> jest odrobinę bardziej rozproszony.</p>
 </div>
-<p>Wzór <a href="#eq-eq-2-warzdef" class="quarto-xref">Równanie&nbsp;<span>6.2</span></a> jest w praktyce nieporęczny. Okazuje się, że <span class="math inline">\(\mathbb{V}[X]\)</span> można wyrazić w zgrabny sposób, który jest dodatkowo wygodny w rachunkach.</p>
+<p>Wariancję można też obliczyć z wartości oczekiwanej i drugiego momentu <span class="math inline">\(\mathbb{E}[X^2]\)</span>.</p>
 <div id="prp-zmienne-5" class="theorem proposition">
-<p><span class="theorem-title"><strong>Fakt 6.5</strong></span> Niech <span class="math inline">\(X\)</span> będzie całkowalną zmienną losową. Wówczas</p>
-<p><span id="eq-eq-var"><span class="math display">\[
-\mathbb{V}[X]  = \mathbb{E} \left[ X^2 \right] - (\mathbb{E} X)^2.
+<p><span class="theorem-title"><strong>Fakt 6.5</strong></span> Niech <span class="math inline">\(X\)</span> będzie całkowalną zmienną losową. Wówczas <span id="eq-eq-var"><span class="math display">\[
+\mathbb{V}ar[X]  = \mathbb{E} \left[ X^2 \right] - (\mathbb{E} X)^2.
 \tag{6.3}\]</span></span></p>
+<p>Ponadto wariancja ma następujące własności.</p>
+<ol type="1">
+<li>Dla każdej stałej <span class="math inline">\(a \in \mathbb{R}\)</span> zachodzi <span class="math inline">\(\mathbb{V}ar[aX] = a^2 \mathbb{V}ar[X]\)</span>, przy czym przyjmujemy <span class="math inline">\(0 \cdot \infty = 0\)</span>.</li>
+<li>Dla każdej stałej <span class="math inline">\(b \in \mathbb{R}\)</span> zachodzi <span class="math inline">\(\mathbb{V}ar[X+b] = \mathbb{V}ar[X]\)</span>.</li>
+<li><span class="math inline">\(\mathbb{V}ar[X] \geq 0\)</span>.</li>
+<li><span class="math inline">\(\mathbb{V}ar[X] = 0\)</span> wtedy i tylko wtedy, gdy istnieje stała <span class="math inline">\(c \in \mathbb{R}\)</span> taka, że <span class="math inline">\(\mathbb{P}[X=c]=1\)</span>.</li>
+</ol>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Dowód</em>. </span>Oznaczmy <span class="math inline">\(m = \mathbb{E} [X] \in \mathbb{R}\)</span>. Wówczas</p>
-<p><span class="math display">\[
-\begin{aligned}
-\mathbb{V}[X] &amp;= \mathbb{E}\left[ X^2 - 2 X m +m^2 \right] = \mathbb{E}\left[ X^2 \right] - \mathbb{E}[2mX] + \mathbb{E}\left[m^2\right] \\
-&amp;= \mathbb{E}\left[ X^2 \right]  - 2m \mathbb{E}[X] + m^2 = \mathbb{E}\left[ X^2 \right]  -m^2
-\end{aligned}
-\]</span> co jest jednoznaczne z naszą tezą.</p>
+<p><span class="proof-title"><em>Dowód</em>. </span>Udowodnimy tylko pierwszą własność. Pozostałe zostawimy jako ćwiczenie. Oznaczmy <span class="math inline">\(m = \mathbb{E}[X]\)</span>. Po rozwinięciu kwadratu w definicji wariancji otrzymujemy <span class="math display">\[
+\mathbb{V}ar[X] = \mathbb{E}[X^2] - 2m\,\mathbb{E}[X] + m^2
+                = \mathbb{E}[X^2] - m^2.
+\]</span></p>
 </div>
 <div id="exm-zmienne-10" class="theorem example">
-<p><span class="theorem-title"><strong>Przykład 6.19</strong></span> Niech <span class="math inline">\(X\)</span> oznacza liczbę uzyskanych orłów w serii <span class="math inline">\(n\)</span> rzutów symetryczną monetą. Wiemy, że <span class="math inline">\(\mathbb{E}[X] = \frac n2\)</span> oraz <span class="math inline">\(\mathbb{E} \left[X^2 \right] = \frac{n(n+1)}{4}\)</span> a co za tym idzie</p>
-<p><span class="math display">\[
-\mathbb{V}[X]  = \mathbb{E} \left[ X^2 \right] - (\mathbb{E} X)^2 = \frac{n}4.
-\]</span></p>
-</div>
-<div id="cor-zmienne-1" class="theorem corollary">
-<p><span class="theorem-title"><strong>Wniosek 6.1</strong></span> Niech <span class="math inline">\(X\)</span> będzie całkowalną zmienną losową. Wówczas zachodzi nierówność</p>
-<p><span class="math display">\[
-\mathbb{E} \left[ X^2 \right] \geq  \left(\mathbb{E} X \right)^2.
-\]</span></p>
-</div>
-<div class="proof">
-<p><span class="proof-title"><em>Dowód</em>. </span>Jako, że <span class="math inline">\(X\)</span> przyjmuje wartości rzeczywiste, <span class="math inline">\((X(\omega)-\mathbb{E} X) ^2\geq 0\)</span> a co za tym idzie</p>
-<p><span class="math display">\[
-\mathbb{V}[X] = \sum_{\omega \in \Omega} (X(\omega)-\mathbb{E} X) ^2 \mathbb{P}[\{ \omega \}] \geq 0.
-\]</span></p>
-<p>Z drugiej strony <span class="math inline">\(0 \leq \mathbb{V}[X]  = \mathbb{E} \left[ X^2 \right] - (\mathbb{E} X)^2\)</span>, co pociąga naszą tezę.</p>
-</div>
-<div id="thm-zmienne-1" class="theorem">
-<p><span class="theorem-title"><strong>Twierdzenie 6.1 (Nierówność Czebyszewa)</strong></span> Niech <span class="math inline">\((\Omega, \mathbb{P})\)</span> będzie dyskretną przestrzenią probabilistyczną. Dla całkowalnej zmiennej losowej <span class="math inline">\(X\)</span> i dowolnej stałej <span class="math inline">\(c &gt;0\)</span> zachodzi <span class="math display">\[
-\mathbb{P}[ |X - \mathbb{E} X| \geq c] \leq \frac{ \mathbb{V} X}{c^2}.
-\]</span></p>
-</div>
-<div class="proof">
-<p><span class="proof-title"><em>Dowód</em>. </span><span class="math display">\[
+<p><span class="theorem-title"><strong>Przykład 6.18</strong></span> Niech <span class="math inline">\(X\)</span> oznacza liczbę orłów w serii <span class="math inline">\(n\)</span> niezależnych rzutów symetryczną monetą. Zatem <span class="math inline">\(\mathbb{P}[X=k] = {n \choose k} 2^{-n}\)</span> dla <span class="math inline">\(k=0,\ldots,n\)</span>.</p>
+<p>Szukamy wariancji <span class="math inline">\(\mathbb{V}ar[X]\)</span>. Znamy już pierwszy moment <span class="math inline">\(\mathbb{E}[X]=\frac n2\)</span>. Drugi moment <span class="math inline">\(\mathbb{E}[X^2]\)</span> wyznaczymy na dwa sposoby.</p>
+<p><strong>Różniczkowanie wzoru dwumianowego.</strong> Dla <span class="math inline">\(x,y&gt;0\)</span> mamy <span class="math display">\[
+(x+y)^n = \sum_{k=0}^n {n \choose k} x^k y^{n-k}.
+\]</span> Różniczkujemy obie strony względem <span class="math inline">\(x\)</span>, traktując <span class="math inline">\(y\)</span> jako stałą. <span class="math display">\[
+n(x+y)^{n-1} = \sum_{k=1}^n {n \choose k} k x^{k-1}y^{n-k}.
+\]</span> Mnożymy obie strony przez <span class="math inline">\(x\)</span>. <span class="math display">\[
+nx(x+y)^{n-1} = \sum_{k=1}^n {n \choose k} k x^k y^{n-k}.
+\]</span> Różniczkujemy ponownie względem <span class="math inline">\(x\)</span>. Po lewej stronie stosujemy regułę iloczynu, a po prawej z pochodnej <span class="math inline">\(x^k\)</span> dostajemy drugi czynnik <span class="math inline">\(k\)</span>. <span class="math display">\[
+n(x+y)^{n-1} + n(n-1)x(x+y)^{n-2}
+= \sum_{k=1}^n {n \choose k} k^2 x^{k-1}y^{n-k}.
+\]</span> Podstawiamy <span class="math inline">\(x=y=1\)</span>. Potęgi <span class="math inline">\(x\)</span> i <span class="math inline">\(y\)</span> po prawej stronie są wtedy równe <span class="math inline">\(1\)</span>, więc po pomnożeniu obu stron przez <span class="math inline">\(2^{-n}\)</span> otrzymujemy <span class="math display">\[
 \begin{aligned}
-\mathbb{V} X &amp; = \sum_{\omega \in \Omega } (X(\omega) -\mathbb{E} X)^2 \mathbb{P}[\{\omega\}] \geq  \sum_{|X(\omega) - \mathbb{E} X| \geq c } (X(\omega) -\mathbb{E} X)^2 \mathbb{P}[\{\omega\}] \\
-&amp;\geq c^2\sum_{|X(\omega) - \mathbb{E} X| \geq c } \mathbb{P}[\{\omega\}]  \geq c^2 \mathbb{P}[ |X - \mathbb{E} X| \geq c].
+\mathbb{E}[X^2]
+&amp;= 2^{-n}\sum_{k=1}^n k^2 {n \choose k} \\
+&amp;= 2^{-n}\left(n 2^{n-1} + n(n-1)2^{n-2}\right) \\
+&amp;= \frac n2 + \frac{n(n-1)}4 = \frac{n(n+1)}4.
 \end{aligned}
+\]</span></p>
+<p><strong>Interpretacja kombinatoryczna.</strong> Klasa liczy <span class="math inline">\(n\)</span> osób i wysyła delegację na zebranie samorządu szkolnego. Wśród delegatów trzeba wyznaczyć przewodniczącego i skarbnika. Ta sama osoba może pełnić obie funkcje. Liczbę sposobów wyboru składu delegacji i obsadzenia obu funkcji opisują obie strony równości <span class="math display">\[
+\sum_{k=1}^n k^2 {n \choose k} = n2^{n-1} + n(n-1)2^{n-2}.
+\]</span></p>
+<ul>
+<li><strong>Najpierw wybieramy skład delegacji.</strong> Skład liczący <span class="math inline">\(k\)</span> osób można wybrać na <span class="math inline">\(\binom{n}{k}\)</span> sposobów. W każdej takiej delegacji mamy <span class="math inline">\(k\)</span> kandydatów na przewodniczącego i <span class="math inline">\(k\)</span> kandydatów na skarbnika, czyli <span class="math inline">\(k^2\)</span> sposobów obsadzenia obu funkcji. Sumujemy po wszystkich możliwych liczebnościach delegacji.</li>
+<li><strong>Najpierw obsadzamy funkcje.</strong> Jeśli obie funkcje pełni jedna osoba, wybieramy ją na <span class="math inline">\(n\)</span> sposobów. Każdą z pozostałych <span class="math inline">\(n-1\)</span> osób możemy włączyć do delegacji lub pominąć. Daje to <span class="math inline">\(n2^{n-1}\)</span> możliwości. Jeśli funkcje pełnią różne osoby, mamy <span class="math inline">\(n\)</span> kandydatów na przewodniczącego i <span class="math inline">\(n-1\)</span> na skarbnika. Każdą z pozostałych <span class="math inline">\(n-2\)</span> osób znów możemy włączyć do delegacji lub pominąć. Daje to <span class="math inline">\(n(n-1)2^{n-2}\)</span> możliwości.</li>
+</ul>
+<p>Aby powiązać ten rachunek z rzutami monetą, numerujemy osoby w klasie i włączamy do delegacji te, których numerom odpowiadają rzuty zakończone orłem. Przy <span class="math inline">\(X\)</span> orłach mamy <span class="math inline">\(X^2\)</span> sposobów obsadzenia funkcji. Dzieląc łączną liczbę delegacji z obsadzonymi funkcjami przez liczbę <span class="math inline">\(2^n\)</span> jednakowo prawdopodobnych wyników serii, otrzymujemy <span class="math inline">\(\mathbb{E}[X^2]\)</span>.</p>
+<p>Podstawiając oba momenty do wzoru <a href="#eq-eq-var" class="quarto-xref">Równanie&nbsp;<span>6.3</span></a>, otrzymujemy <span class="math display">\[
+\mathbb{V}ar[X] = \frac{n(n+1)}4 - \left(\frac n2\right)^2 = \frac n4.
 \]</span></p>
 </div>
 
@@ -1740,8 +1748,8 @@ window._ojs.runtime.interpretFromScriptTags();
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./wektory.html" class="pagination-link" aria-label="Wektory losowe">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Wektory losowe</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

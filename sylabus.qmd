@@ -41,7 +41,7 @@ Wstępny plan tematów poruszanych na poszczególnych wykładach:
 4. Niezależność zdarzeń (21.10.2026)
 7. Zmienne losowe i ich rozkłady. Wartośc oczekiwana (28.10.2026)
 6. Wariancja. Wektory losowe (4.11.2026)
-1. niezależność zmiennych losowych (18.11.2026)
+1. Niezależność zmiennych losowych. Macierz kowariancji (18.11.2026)
 1. Rozkłady warunkowe, warunkowa wartość oczekiwana i niezależność warunkowa.
 1. Regresja liniowa, ilorazy wiarygodności
 8. Nierówności związane z momentami, nierówności koncentracyjne, słabe prawo wielkich liczb

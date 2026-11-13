@@ -1,0 +1,105 @@
+# Lista 6. Wektory losowe {-}
+
+Na ćwiczenia 19.11.2026
+
+## Zadania na ćwiczenia
+
+1. Zmienne losowe $X$ i $Y$ spełniają warunki $\mathbb{V}ar[X]=3$,
+   $\operatorname{Cov}[X,Y]=-1$ oraz $\mathbb{V}ar[Y]=2$.
+   Oblicz $\mathbb{V}ar[4X-3Y]$ oraz $\operatorname{Cov}[2X-Y,2X+Y]$.
+
+2. Wektor losowy $(X_1,X_2)$ przyjmuje wartości w zbiorze
+   $\{0,1,2\}\times\{1,2,3\}$. Jego rozkład łączny na tym zbiorze jest dany wzorem
+   $$
+   \mathbb{P}[X_1=x_1,\,X_2=x_2]=Cx_2(7-x_1x_2).
+   $$
+
+   a. Wyznacz stałą $C$.
+   b. Oblicz $\mathbb{P}[1\leq X_1\leq 2,\,1\leq X_2\leq 2]$.
+   c. Wyznacz rozkłady $X_1$ i $X_2$.
+   d. Wyznacz macierz kowariancji $\Sigma=(\Sigma_{i,j})$, gdzie
+      $\Sigma_{i,j}=\operatorname{Cov}[X_i,X_j]$ dla $i,j\in\{1,2\}$.
+
+3. Wykaż następujące własności wariancji zmiennej losowej $X$ całkowalnej z kwadratem.
+
+   a. $\mathbb{V}ar[cX]=c^2\mathbb{V}ar[X]$ dla każdego $c\in\mathbb{R}$.
+   b. $\mathbb{V}ar[X+a]=\mathbb{V}ar[X]$ dla każdego $a\in\mathbb{R}$.
+   c. $\mathbb{V}ar[X]=0$ wtedy i tylko wtedy, gdy $X$ jest stała
+      z prawdopodobieństwem $1$.
+
+4. Niech $X$, $Y$ i $Z$ będą zmiennymi losowymi całkowalnymi z kwadratem.
+   Wykaż następujące własności kowariancji.
+
+   a. $\operatorname{Cov}[X,X]=\mathbb{V}ar[X]$.
+   b. $\operatorname{Cov}[X,Y]=\operatorname{Cov}[Y,X]$.
+   c. Kowariancja jest dwuliniowa. W szczególności dla dowolnych $a,b\in\mathbb{R}$ zachodzi
+      $$
+      \operatorname{Cov}[aX+bY,Z]
+      =a\,\operatorname{Cov}[X,Z]+b\,\operatorname{Cov}[Y,Z].
+      $$
+
+5. Niech $\vec X=(X_1,\ldots,X_n)^{\mathsf T}$ będzie wektorem losowym
+   o skończonych drugich momentach i macierzy kowariancji $\Sigma_X = (\operatorname{Cov}[X_i,X_j])$.
+   Dla ustalonej macierzy $A\in\mathbb{R}^{m\times n}$ połóżmy
+   $\vec Y=A\vec X = (Y_1, \ldots, Y_m)^{\mathsf T}$.
+   Wykaż, że macierz kowariancji $\Sigma_Y = (\operatorname{Cov}[Y_i, Y_j])$ wektora $\vec Y$ spełnia
+   $$
+   \Sigma_Y=A\Sigma_X A^{\mathsf T}.
+   $$
+
+6. Losujemy jednostajnie punkt $(X,Y)$ ze zbioru punktów koła, których obie
+   współrzędne są wielokrotnościami $\tfrac12$, czyli ze zbioru
+   $$
+   \left\{(x,y)\in\left(\tfrac12\mathbb{Z}\right)^2
+   \colon x^2+y^2-2x-4y\leq -4\right\}.
+   $$
+   Oblicz $\operatorname{Cov}[X,Y]$.
+
+7. Niech $q\in(0,1)$. Wektor losowy $(X,Y)$ przyjmuje wartości w parach liczb
+   całkowitych $(x,y)$ spełniających $0\leq x\leq y$. Na tym zbiorze
+   $$
+   \mathbb{P}[X=x,\,Y=y]=Cq^{x+y}.
+   $$
+
+   a. Wyznacz stałą $C$.
+   b. Oblicz $\mathbb{P}[X\leq 1,\,Y\geq 2]$.
+   c. Wyznacz rozkłady $X$ i $Y$.
+
+8. Niech $S=\{\tfrac14,\tfrac12,\tfrac34,1\}$. Wektor losowy $(X,Y)$ przyjmuje
+   wartości w $S\times S$, a jego rozkład łączny jest dany wzorem
+   $$
+   \mathbb{P}[X=x,\,Y=y]=Cxy,\qquad x,y\in S.
+   $$
+
+   a. Wyznacz stałą $C$.
+   b. Oblicz $\mathbb{P}[X+Y\leq 1]$.
+   c. Wyznacz rozkład ilorazu $X/Y$, podając wzór na $\mathbb{P}[X/Y=a/b]$
+      dla dowolnego dodatniego ułamka nieskracalnego $a/b$.
+
+9. Znajdź wariancję zmiennej losowej $X$ o rozkładzie
+
+   a. Poissona $\mathrm{Pois}(\lambda)$, gdzie $\lambda>0$.
+   b. jednostajnym na zbiorze $\{a,a+1,\ldots,b\}$, gdzie $a,b\in\mathbb{Z}$ i $a<b$.
+   c. geometrycznym $\mathrm{Geom}(p)$, gdzie $0<p<1$.
+
+10. Rzucamy niezależnie symetryczną kostką aż do otrzymania pierwszej jedynki.
+    Niech $X$ oznacza sumę oczek ze wszystkich wykonanych rzutów, wliczając ostatni.
+    Znajdź $\mathbb{E}[X]$ oraz $\mathbb{V}ar[X]$.
+
+## Zadania kartkówkowe {-}
+
+1. Losujemy jednostajnie punkt $(X,Y)$ ze zbioru $\{0,\tfrac12,1\}^2$.
+   Oblicz $\mathbb{V}ar[X]$, $\mathbb{V}ar[Y]$ oraz $\operatorname{Cov}[X,Y]$.
+
+2. Rzucamy trzy razy kostką. Niech $X_1$ będzie liczbą wyrzuconych jedynek,
+   a $X_2$ liczbą wyrzuconych dwójek.
+
+   a. Znajdź rozkład wektora losowego $\vec{X}=(X_1,X_2)$.
+   b. Znajdź $\mathbb{P}[X_1=1,\,X_2=2\mid X_1+X_2=3]$.
+
+3. Wektor losowy $(X,Y)$ przyjmuje wartości w parach $(x,y)$ takich, że
+   $x,y\in\{0,\tfrac12,1\}$ oraz $y\leq x$. Dla tych par zachodzi
+   $$
+   \mathbb{P}[X=x,\,Y=y]=C(x+y).
+   $$
+   Wyznacz stałą $C$ oraz rozkłady $X$ i $Y$.

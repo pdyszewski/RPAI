@@ -1,0 +1,144 @@
+# Lista 7. Powtórka przed kolokwium {-}
+
+Zadania powtórkowe do samodzielnego przerobienia przed kolokwium 24.11.2026.
+
+1. Ile dzielników ma liczba $36000$?
+
+2. Sekretarka pracuje w budynku położonym $9$ przecznic na wschód i $7$ na północ od swojego domu.
+   Codziennie przechodząc do pracy przechodzi $16$ odcinków ulic. Ile jest możliwych tras?
+   Załóżmy, że odcinek ulicy w kierunku wschodnim, zaczynający się $4$ przecznice na wschód i $3$
+   na północ, został zalany, a sekretarka nie umie (lub nie chce) pływać. Ile jest wtedy możliwych tras?
+
+3. Ile jest sposobów zapisania liczby $2400$ jako sumy pięciu liczb naturalnych?
+
+4. Na ile sposobów można podzielić $12$ nierozróżnialnych pączków między $4$ osoby tak,
+   aby każda osoba dostała
+
+   a. co najmniej jednego pączka?
+   b. co najmniej dwa pączki?
+
+5. a. Wykaż, że dla całkowitych $m,n\geq 0$ zachodzi
+      $$
+      \sum_{k=0}^{n-1} k^{\underline{m}} = \frac{n^{\underline{m+1}}}{m+1}.
+      $$
+   b. Wykaż, że dla całkowitych $n\geq 0$ zachodzi
+      $$
+      \sum_{k=0}^{n-1} k^3 =
+      \frac{n^{\underline{4}}}{4} + n^{\underline{3}} + \frac{n^{\underline{2}}}{2}.
+      $$
+
+6. a. Niech $(a_k)_{k\geq 0}$ i $(b_k)_{k\geq 0}$ będą ciągami liczb rzeczywistych.
+      Wykaż, że dla każdej liczby całkowitej $n\geq 0$ zachodzi wzór na sumowanie przez części
+      $$
+      \sum_{k=0}^{n-1} (a_{k+1}-a_k)b_k
+      = a_nb_n-a_0b_0 - \sum_{k=0}^{n-1} a_{k+1}(b_{k+1}-b_k).
+      $$
+   b. Korzystając z sumowania przez części, znajdź postać zwartą sumy
+      $$
+      \sum_{k=0}^{n}(-1)^k k^2.
+      $$
+
+7. Zdarzenia $A$ i $B$ mają równe prawdopodobieństwa, a ponadto
+   $\mathbb{P}[A]=2\mathbb{P}[A\cap B]$. Udowodnij, że $\mathbb{P}[B]\leq \frac{2}{3}$.
+
+8. W dziesięciopiętrowym budynku windą jedzie siedem osób. Każda z nich wybiera
+   piętro niezależnie i z jednakowym prawdopodobieństwem dla każdego piętra.
+   Jakie jest prawdopodobieństwo, że wszyscy wysiądą na różnych piętrach?
+
+9. Ze zbioru $\{0,1,2,\ldots,9\}$ losujemy kolejno bez zwracania cztery cyfry $a,b,c,d$.
+   Oblicz prawdopodobieństwo każdego z poniższych zdarzeń.
+
+   a. $a$ jest największą z wylosowanych cyfr.
+   b. Ciąg $(a,b,c,d)$ jest rosnący.
+
+10. Litery A, A, A, B, B, R, R, R ustawiamy losowo w ciąg.
+    Jakie jest prawdopodobieństwo otrzymania wyrazu RABARBAR?
+
+11. Przy okrągłym stole losowo zajmuje miejsca dziesięć dziewcząt i dziesięciu chłopców.
+    Jakie jest prawdopodobieństwo, że żadne dwie osoby tej samej płci nie siedzą obok siebie?
+
+12. Losujemy bez zwracania pięć kart z talii $24$ kart, po cztery karty każdej z sześciu wartości.
+    Jakie jest prawdopodobieństwo otrzymania dokładnie dwóch par? Każda para ma inną wartość,
+    a piąta karta ma wartość różną od wartości obu par.
+
+13. Rzucamy niezależnie trzy razy symetryczną sześcienną kostką.
+    Jakie jest prawdopodobieństwo, że pewien wynik wystąpi dokładnie dwa razy?
+
+14. Zdarzenia $A$ i $B$ spełniają warunki
+    $$
+    \mathbb{P}[A\mid B]=\mathbb{P}[B\mid A],\qquad
+    \mathbb{P}[A\cup B]=1,\qquad
+    \mathbb{P}[A\cap B]>0.
+    $$
+    Dla jakich liczb rzeczywistych $a$ z tych warunków zawsze wynika, że $\mathbb{P}[A]>a$?
+
+16. Niech $A$, $B$ i $C$ będą zdarzeniami, dla których $\mathbb{P}[A\cap B]>0$.
+    Uzasadnij, że
+    $$
+    \mathbb{P}[A\cap B\cap C]
+    = \mathbb{P}[A]\,\mathbb{P}[B\mid A]\,\mathbb{P}[C\mid A\cap B].
+    $$
+
+17. Podaj przykład zdarzeń $A$, $B$ i $D$ takich, że $\mathbb{P}[D]>0$ oraz
+    $$
+    \mathbb{P}[A\mid D]>\mathbb{P}[A],\qquad
+    \mathbb{P}[B\mid D]>\mathbb{P}[B],\qquad
+    \mathbb{P}[A\cap B\mid D]\leq\mathbb{P}[A\cap B].
+    $$
+
+18. Rzucamy symetryczną sześcienną kostką. Jeżeli w pierwszym rzucie nie wypadnie szóstka,
+    wykonujemy drugi, niezależny rzut. Jakie jest prawdopodobieństwo, że w którymś
+    z wykonanych rzutów wypadnie piątka?
+
+19. W urnie jest sześć zwykłych sześciennych kostek i jedna fałszywa, która ma dwie ścianki
+    z szóstką i cztery z jedynką. Losujemy jednostajnie jedną kostkę i rzucamy nią $10$ razy.
+    Dla ustalonej kostki rzuty są niezależne, a każda ścianka wypada z jednakowym prawdopodobieństwem.
+
+    a. Jakie jest prawdopodobieństwo, że w każdym rzucie wypadnie jedynka lub szóstka?
+    b. Wiadomo, że w każdym rzucie wypadła jedynka lub szóstka. Jakie jest prawdopodobieństwo,
+       że wylosowana kostka jest fałszywa?
+
+20. Rzucamy niezależnie symetryczną monetą $1999$ razy.
+    Jakie jest prawdopodobieństwo otrzymania parzystej liczby orłów?
+
+21. Wyniki rzutów symetrycznymi sześciennymi kostkami są niezależne.
+    Czy bardziej prawdopodobne jest wyrzucenie co najmniej jednej jedynki w rzucie czterema kostkami,
+    czy uzyskanie co najmniej raz jedynki na obu kostkach w $24$ rzutach parą kostek?
+
+22. Wielokrotnie rzucamy parą symetrycznych sześciennych kostek. Wszystkie wyniki na kostkach są niezależne.
+    Jakie jest prawdopodobieństwo, że suma oczek $8$ wypadnie wcześniej niż suma oczek $7$?
+
+23. W urnie znajduje się $10$ kul ponumerowanych od $1$ do $10$. Losujemy $20$ razy
+    po jednej kuli ze zwracaniem. Niech $X$ oznacza najmniejszy z wylosowanych numerów.
+    Wyznacz rozkłady zmiennych losowych $X$ i $X^2$.
+
+24. Zmienna losowa $X$ ma rozkład zadany przez równości
+    $$
+    \mathbb{P}[X=-1]=\mathbb{P}[X=0]=\frac{1}{4},\qquad
+    \mathbb{P}[X=3]=\frac{1}{3},\qquad
+    \mathbb{P}[X=5]=\frac{1}{6}.
+    $$
+    Oblicz $\mathbb{E}[X]$, $\mathbb{E}[2X-1]$ oraz $\mathbb{V}ar[X]$.
+
+25. W grupie jest $n$ studentów. Prowadzący losowo rozdaje im sprawdzone kartkówki,
+    po jednej każdemu studentowi. Niech $X$ oznacza liczbę studentów, którzy otrzymali
+    własną kartkówkę. Oblicz $\mathbb{E}[X]$ oraz $\mathbb{V}ar[X]$.
+
+26. Rzucamy niezależnie dwa razy symetryczną sześcienną kostką. Niech $X$ oznacza liczbę
+    wyrzuconych szóstek, a $Y$ liczbę wyrzuconych piątek. Na jakim zbiorze jest skoncentrowany
+    wektor losowy $(X,Y)$? Oblicz $\mathbb{P}[X>Y]$ oraz $\operatorname{Cov}[X,Y]$.
+
+27. Wektor losowy $(X,Y)$ ma rozkład zadany wzorem
+    $$
+    \mathbb{P}[(X,Y)=(k,\ell)]=\frac{4k\ell}{n^2(n+1)^2},\qquad k,\ell=1,2,\ldots,n.
+    $$
+
+    a. Oblicz $\mathbb{P}[X+Y=n+1]$.
+    b. Wyznacz rozkład zmiennej losowej $X$.
+    c. Oblicz $\operatorname{Cov}[X,Y]$.
+
+28. Rzucamy niezależnie symetryczną sześcienną kostką aż do wyrzucenia parzystej liczby oczek.
+    Niech $X$ oznacza liczbę wykonanych rzutów, a $Y$ liczbę oczek w ostatnim rzucie.
+
+    a. Wyznacz rozkład wektora losowego $(X,Y)$.
+    b. Oblicz $\operatorname{Cov}[X,Y]$.

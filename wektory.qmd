@@ -1,1 +1,309 @@
 # Wektory losowe
+
+::: {#exm-wariancja-sumy}
+
+Losujemy bez zwracania dwie liczby ze zbioru $\{1,2,3\}$. 
+$X$ będzie iloczynem wylosowanych liczb. Jaka wartość oczekiwana $X$? 
+Mamy
+\begin{equation*}
+  \mathbb{E}[X] =  2 \mathbb{P}[X=2] + 3 \mathbb{P}[X=3] + 6 \mathbb{P}[X=6].
+\end{equation*}
+Zauważmy, że $X = X_1 \cdot X_2$, gdzie $X_1$ i $X_2$ to pierwsza i druga wylosowana liczba. Mamy
+$$
+   \mathbb{P} [X = 2] = \mathbb{P}[X_1=1, \: X_2 =2] + \mathbb{P}[X_1=2, \: X_2=1] = 1/3.
+$$ {#eq-do-wektorow}
+Podobnie wyliczamy
+\begin{equation*}
+   \mathbb{P}[X=3] = \mathbb{P}[X=6]=1/3.
+\end{equation*}
+Stąd ostatecznie $\mathbb{E}[X] = 11/3$.
+
+:::
+
+Zwróćmy uwagę, że w powyższym przykładzie najistotniejszy moment
+znajduje się w @eq-do-wektorow. Istotna była znajomość liczb $\mathbb{P}[X_1=k, X_2=j]$
+przy czym na ogół nie jest prawdą, że
+\begin{equation*}
+   \mathbb{P}[X_1 = k, \:X_2=j] = \mathbb{P}[X_1=k] \mathbb{P}[X_2=j].
+\end{equation*}
+Oznacza to, że sama znajomość liczb $\mathbb{P}[X_1=k]$ oraz $\mathbb{P}[X_2=j]$ nie wystarcza.
+Nie wystarcza zatem rozpatrywać zmiennych $X_1$ i $X_2$ osobno. 
+Konieczna jest znajomość pary $(X_1, X_2)$.
+
+::: {#def-wektory-losowe}
+   Wektorem losowym $d$-wymiarowym nazywamy $\vec{X} = (X_1, \ldots, X_d)$, 
+   gdzie dla każdego $j\leq d$,
+   $X_j$ jest zmienną losową. 
+:::
+
+::: {#exm-wektor1}
+  Wylosowano 13 kart z 52.
+  Niech $X_1$ oznacza liczbę pików, a $X_2$ liczbę kierów.
+  Wówczas $\vec{X}=(X_1,X_2)$ jest 2-wymiarowym wektorem losowym.
+:::
+
+
+::: {#def-wektor-dyskretny-rozklad}
+   Powiemy, że wektor losowy $\vec{X} = (X_1, \ldots, X_d)$ jest dyskretny, 
+   jeżeli wszystkie zmienne $X_j$ są dyskretne. Rozkładem dyskretnego wektora losowego nazywamy
+   $\mu_{\vec{X}} \colon \mathbb{R}^d \to [0,1]$ zadane przez 
+   \begin{equation*}
+     \mu_{\vec{X}}(x_1, \ldots , x_d) = \mathbb{P}[X_1=x_1, \: X_2= x_2, \ldots , X_d=x_d]
+   \end{equation*}
+:::
+
+::: {#exm-urny-wektory}
+W urnie są 2 kule czerwone, 5 białych i 3 zielone. Wybieramy losowo 3 kule (jednocześnie). Niech $X_1$ oznacza liczbę kul białych, a $X_2$ liczbę kul czerwonych. Wówczas $(X_1,X_2)$ jest 2-wymiarową zmienną losową i ma rozkład dyskretny:
+  $$
+  \begin{array}{c|c|c|c|c}
+    X_1\setminus X_2 & 0 & 1 & 2 & \mathbb{P}[X_1 = x] \\[2mm] \hline
+    0 & \frac{1}{120} & \frac{6}{120} & \frac{3}{120} & \frac{10}{120} \\[2mm] \hline
+    1 & \frac{15}{120} & \frac{30}{120} & \frac{5}{120} & \frac{50}{120} \\[2mm] \hline
+    2 & \frac{30}{120} & \frac{20}{120} & 0 & \frac{50}{120} \\[2mm] \hline
+    3 & \frac{10}{120} & 0 & 0 & \frac{10}{120} \\[2mm] \hline
+    \mathbb{P}[X_2 = y] & \frac{56}{120} & \frac{56}{120} & \frac{8}{120} & 1
+  \end{array}
+  $$
+  Mając dany powyższy rozkład możemy  obliczyć:
+  \begin{align*}
+    \mathbb{P}[X_1\le X_2] & =\frac{45}{120} = \frac 38 \\
+    \mathbb{P}[X_1=1|X_1 \le X_2] & =
+    \frac{\mathbb{P}[X_1=1 \mbox{ i } X_1\le X_2]}{\mathbb{P}[X_1 \le X_2]} = \frac{35/120}{45/120} = \frac{7}{9}.
+  \end{align*}
+:::
+
+::: {#exm-rozklad-wielomianowy name="Rozkład wielomianowy"}
+
+Z urny z poprzedniego przykładu losujemy kolejno trzy kule, za każdym razem
+zwracając wylosowaną kulę do urny. Losowania są niezależne, a w każdym z nich
+kula jest biała z prawdopodobieństwem $\frac{5}{10}$, czerwona z prawdopodobieństwem
+$\frac{2}{10}$ i zielona z prawdopodobieństwem $\frac{3}{10}$.
+Niech $X_1$, $X_2$ i $X_3$ oznaczają liczby wylosowanych kul odpowiednio białych,
+czerwonych i zielonych.
+
+Aby otrzymać $\vec{X}=(2,1,0)$, wybieramy, w którym z trzech losowań
+wypadnie kula czerwona. W pozostałych dwóch muszą wypaść kule białe.
+Każda z tych trzech kolejności ma to samo prawdopodobieństwo, więc
+$$
+\mathbb{P}[X_1=2,\,X_2=1,\,X_3=0]
+= 3\left(\frac{5}{10}\right)^2\frac{2}{10}
+= \frac{3}{20}.
+$$
+
+Ogólnie w każdej z $n$ niezależnych prób wynik należy do jednej z $d$ kategorii
+z prawdopodobieństwami $p_1,\ldots,p_d$, gdzie $p_1+\cdots+p_d=1$.
+Niech $X_j$ oznacza liczbę prób, w których wynik należy do kategorii $j$.
+Dla całkowitych $k_1,\ldots,k_d\geq 0$ o sumie $n$ mamy
+$$
+\mu_{\vec{X}}(k_1,\ldots,k_d)
+= \mathbb{P}[X_1=k_1,\ldots,X_d=k_d]
+= \frac{n!}{k_1!\cdots k_d!}\,p_1^{k_1}\cdots p_d^{k_d}.
+$$
+Iloczyn potęg to prawdopodobieństwo jednej ustalonej kolejności wyników
+o tych liczebnościach. Czynnik z wykładnikiem $k_j=0$ przyjmujemy równy $1$.
+Dla pierwszej kategorii wybieramy $k_1$ spośród $n$ pozycji na
+$\binom{n}{k_1}$ sposobów. Dla drugiej wybieramy $k_2$ spośród pozostałych
+$n-k_1$ pozycji na $\binom{n-k_1}{k_2}$ sposobów. Tak samo postępujemy
+dla kolejnych kategorii. Ostatniej kategorii przypada dokładnie $k_d$ wolnych pozycji.
+Liczba kolejności wynosi więc
+$$
+\begin{aligned}
+&\binom{n}{k_1}\binom{n-k_1}{k_2}\cdots
+  \binom{n-k_1-\cdots-k_{d-1}}{k_d}\\
+&\quad= \frac{n!}{k_1!(n-k_1)!}\,
+  \frac{(n-k_1)!}{k_2!(n-k_1-k_2)!}\cdots
+  \frac{k_d!}{k_d!\,0!}
+= \frac{n!}{k_1!\cdots k_d!}.
+\end{aligned}
+$$
+W iloczynie skracają się silnie liczby wolnych pozycji po kolejnych wyborach.
+Poza wskazanymi wektorami liczebności $\mu_{\vec{X}}$ przyjmuje wartość $0$.
+
+Jest to **rozkład wielomianowy** z parametrami $n$ oraz $p_1,\ldots,p_d$.
+Przy dwóch kategoriach $X_1$ ma rozkład dwumianowy z parametrami $n$ i $p_1$,
+a $X_2=n-X_1$.
+
+:::
+
+## Kowariancja
+
+Niech $X$ i $Y$ będą zmiennymi losowymi o skończonych drugich momentach.
+Oznaczmy $m_X=\mathbb{E}[X]$ i $m_Y=\mathbb{E}[Y]$. Z liniowości wartości
+oczekiwanej mamy $\mathbb{E}[X+Y]=m_X+m_Y$. Rozwijając kwadrat w definicji
+wariancji, otrzymujemy
+$$
+\begin{aligned}
+\mathbb{V}ar[X+Y]
+&= \mathbb{E}\bigl[((X-m_X)+(Y-m_Y))^2\bigr]\\
+&= \mathbb{E}[(X-m_X)^2]+\mathbb{E}[(Y-m_Y)^2]
+   +2\mathbb{E}[(X-m_X)(Y-m_Y)]\\
+&= \mathbb{V}ar[X]+\mathbb{V}ar[Y]+2\mathbb{E}[(X-m_X)(Y-m_Y)].
+\end{aligned}
+$$
+
+Iloczyn odchyleń $(X-m_X)(Y-m_Y)$ jest dodatni, gdy obie zmienne znajdują się
+po tej samej stronie swoich średnich, a ujemny, gdy znajdują się po przeciwnych
+stronach. Jego wartość oczekiwaną możemy obliczyć z rozkładu łącznego pary
+$(X,Y)$.
+
+::: {#def-kowariancja}
+
+Dla zmiennych losowych $X$ i $Y$ o skończonych drugich momentach
+ich *kowariancję* definiujemy przez
+$$
+\operatorname{Cov}[X,Y]
+= \mathbb{E}\bigl[(X-\mathbb{E}[X])(Y-\mathbb{E}[Y])\bigr].
+$$
+
+:::
+
+Wzór na wariancję sumy możemy teraz zapisać jako
+$$
+\mathbb{V}ar[X+Y]
+= \mathbb{V}ar[X]+\mathbb{V}ar[Y]+2\operatorname{Cov}[X,Y].
+$$
+
+::: {#prp-wlasnosci-kowariancji}
+
+Niech $X,Y,Z$ będą zmiennymi losowymi o skończonych drugich momentach,
+a $a,b\in\mathbb{R}$. Wówczas zachodzą następujące własności.
+
+1. $\operatorname{Cov}[X,Y]=\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y]$.
+2. $\operatorname{Cov}[X,Y]=\operatorname{Cov}[Y,X]$.
+3. $\operatorname{Cov}[X,X]=\mathbb{V}ar[X]$.
+4. $\operatorname{Cov}[aX+bY,Z]
+   =a\operatorname{Cov}[X,Z]+b\operatorname{Cov}[Y,Z],\\
+   $
+
+:::
+
+::: {.proof}
+
+Oznaczmy $m_X=\mathbb{E}[X]$ i $m_Y=\mathbb{E}[Y]$. Rozwijamy iloczyn
+w definicji kowariancji i korzystamy z liniowości wartości oczekiwanej.
+$$
+\begin{aligned}
+\operatorname{Cov}[X,Y]
+&=\mathbb{E}[XY]-m_X\mathbb{E}[Y]-m_Y\mathbb{E}[X]+m_Xm_Y\\
+&=\mathbb{E}[XY]-m_Xm_Y.
+\end{aligned}
+$$
+
+:::
+
+::: {#exm-kowariancja-wielomianowy}
+
+W rozkładzie wielomianowym (@exm-rozklad-wielomianowy) niech $X_i$ i $X_j$
+zliczają wyniki dwóch różnych kategorii $i$ i $j$ w $n$ niezależnych próbach.
+Prawdopodobieństwa tych kategorii w jednej próbie wynoszą odpowiednio $p_i$ i $p_j$.
+
+Niech $I_{t,i}$ przyjmuje wartość $1$, gdy wynik $t$-tej próby należy do
+kategorii $i$, oraz $0$ w pozostałych przypadkach. Analogicznie określamy
+$I_{t,j}$. Wtedy $X_i=\sum_{t=1}^n I_{t,i}$ oraz $X_j=\sum_{t=1}^n I_{t,j}$.
+Mamy $\mathbb{E}[I_{t,i}]=p_i$ i $\mathbb{E}[I_{t,j}]=p_j$.
+Ze wzoru obliczeniowego i dwuliniowości kowariancji otrzymujemy
+$$
+\operatorname{Cov}[X_i,X_j]
+=\sum_{s=1}^n\sum_{t=1}^n
+\bigl(\mathbb{E}[I_{s,i}I_{t,j}]-p_i p_j\bigr).
+$$
+
+Gdy $s\ne t$, niezależność prób daje $\mathbb{E}[I_{s,i}I_{t,j}]=p_i p_j$.
+Gdy $s=t$, iloczyn $I_{t,i}I_{t,j}$ jest równy $0$, bo wynik jednej próby
+należy do dokładnie jednej kategorii. Pozostaje więc $n$ składników
+równych $-p_i p_j$, skąd
+$$
+\operatorname{Cov}[X_i,X_j]=-np_i p_j \qquad (i\ne j).
+$$
+
+Przy trzech losowaniach z urny ze zwracaniem kowariancja liczby kul białych
+i liczby kul czerwonych wynosi
+$$
+\operatorname{Cov}[X_1,X_2]
+=-3\cdot\frac{5}{10}\cdot\frac{2}{10}
+=-\frac{3}{10}.
+$$
+
+:::
+
+::: {#thm-wariancja-sumy}
+
+Niech $X_1,\ldots,X_n$ będą zmiennymi losowymi o skończonych drugich momentach.
+Wówczas
+$$
+\mathbb{V}ar[X_1+\cdots+X_n]
+= \sum_{k=1}^n \mathbb{V}ar[X_k]
+  + 2\sum_{1\le k<l\le n}\operatorname{Cov}[X_k,X_l].
+$$
+Jeżeli zmienne są parami nieskorelowane, czyli $\operatorname{Cov}[X_k,X_l]=0$
+dla $k\ne l$, to
+$$
+\mathbb{V}ar[X_1+\cdots+X_n]=\sum_{k=1}^n\mathbb{V}ar[X_k].
+$$
+
+:::
+
+::: {.proof}
+
+Oznaczmy $Y_j=X_j-\mathbb{E}[X_j]$. Z liniowości wartości oczekiwanej
+i rozwinięcia kwadratu dostajemy
+$$
+\begin{aligned}
+\mathbb{V}ar[X_1+\cdots+X_n]
+&=\mathbb{E}\left[\left(\sum_{j=1}^n Y_j\right)^2\right]\\
+&=\sum_{j=1}^n\mathbb{E}[Y_j^2]
+  + 2\sum_{1\le k<l\le n}\mathbb{E}[Y_kY_l]\\
+&=\sum_{k=1}^n\mathbb{V}ar[X_k]
+  + 2\sum_{1\le k<l\le n}\operatorname{Cov}[X_k,X_l].
+\end{aligned}
+$$
+Dla zmiennych parami nieskorelowanych druga suma jest równa zeru.
+
+:::
+
+::: {#exm-punkty-stale-wariancja}
+
+Niech $\sigma$ będzie permutacją wylosowaną jednostajnie spośród wszystkich
+permutacji zbioru $\{1,\ldots,n\}$, a $X$ liczbą jej punktów stałych. Szukamy
+$\mathbb{V}ar[X]$. Dla $n=1$ mamy $X=1$ z prawdopodobieństwem $1$, więc
+$\mathbb{V}ar[X]=0$. Przyjmijmy dalej, że $n\ge 2$.
+
+Dla każdego $i$ niech
+$$
+X_i=\begin{cases}
+1, & \text{gdy } \sigma(i)=i,\\
+0, & \text{w pozostałych przypadkach}.
+\end{cases}
+$$
+Wtedy $X=\sum_{i=1}^n X_i$. Warunek $\sigma(i)=i$ spełnia $(n-1)!$ permutacji.
+Dla $i\ne j$ oba warunki $\sigma(i)=i$ i $\sigma(j)=j$ spełnia $(n-2)!$
+permutacji. Zatem
+$$
+\begin{aligned}
+\mathbb{E}[X_i]&=\frac{(n-1)!}{n!}=\frac1n,
+& \mathbb{E}[X]&=1,\\
+\mathbb{E}[X_iX_j]&=\frac{(n-2)!}{n!}=\frac1{n(n-1)}
+& &\text{dla }i\ne j.
+\end{aligned}
+$$
+Ponieważ $X_i^2=X_i$, otrzymujemy
+$$
+\mathbb{V}ar[X_i]=\frac1n-\frac1{n^2}=\frac{n-1}{n^2}.
+$$
+Dla różnych $i,j$ mamy
+$$
+\operatorname{Cov}[X_i,X_j]=\frac1{n(n-1)}-\frac1{n^2}
+=\frac1{n^2(n-1)}.
+$$
+
+Stosując @thm-wariancja-sumy, dostajemy
+$$
+\begin{aligned}
+\mathbb{V}ar[X]
+&=n\cdot\frac{n-1}{n^2}
+  +2\binom{n}{2}\cdot\frac1{n^2(n-1)}\\
+&=\frac{n-1}{n}+\frac1n=1.
+\end{aligned}
+$$
+
+:::

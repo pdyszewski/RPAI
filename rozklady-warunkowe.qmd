@@ -1,0 +1,645 @@
+# Rozkłady warunkowe
+
+Gdy w trakcie eksperymentu losowego dowiadujemy się, że zaszło zdarzenie
+$B$ o dodatnim prawdopodobieństwie, uwzględniamy tę informację za pomocą
+prawdopodobieństwa warunkowego $\mathbb{P}[\cdot\mid B]$
+(@def-prawdopodobienstwo-warunkowe). Jeżeli w ten sposób zmieniają się
+prawdopodobieństwa zdarzeń $\{X=x\}$, zmienia się też rozkład zmiennej $X$.
+
+::: {#def-rozklad-warunkowy-zdarzenie}
+
+Niech $X$ będzie dyskretną zmienną losową na przestrzeni probabilistycznej
+$(\Omega,\mathbb{P})$, a $B\subseteq\Omega$ zdarzeniem takim, że
+$\mathbb{P}[B]>0$. **Rozkładem warunkowym** $X$ pod warunkiem $B$ nazywamy
+rozkład $X$ względem prawdopodobieństwa warunkowego $\mathbb{P}[\cdot\mid B]$.
+Dla każdej wartości $x$ mamy
+$$
+\mu_{X\mid B}(x)
+=\mathbb{P}[X=x\mid B]
+=\frac{\mathbb{P}[\{X=x\}\cap B]}{\mathbb{P}[B]}.
+$$
+
+:::
+
+Jeśli informacją jest zaobserwowana wartość $Z=z$ innej zmiennej losowej,
+bierzemy $B=\{Z=z\}$, o ile $\mathbb{P}[Z=z]>0$. W ten sam sposób
+otrzymujemy warunkowy rozkład łączny wektora $\vec X=(X_1,\ldots,X_d)$,
+obliczając $\mathbb{P}[\vec X=\vec x\mid Z=z]$ dla jego kolejnych wartości
+$\vec x$.
+
+::: {#exm-rozklad-warunkowy-co-najmniej-jeden-orzel}
+
+Rzucamy niezależnie symetryczną monetą. Niech $X$ oznacza liczbę rzutów
+potrzebnych do otrzymania pierwszego orła. Dla ustalonego $n\geq 1$ niech
+$A$ będzie zdarzeniem, że w pierwszych $n$ rzutach wypadł co najmniej jeden
+orzeł. Mamy $A=\{X\leq n\}$. Zdarzenie przeciwne oznacza, że pierwsze $n$
+rzutów dało same reszki, więc $\mathbb{P}[A]=1-2^{-n}$.
+
+Dla $1\leq k\leq n$ zdarzenie $\{X=k\}$ zawiera się w $A$. Aby pierwszy
+orzeł wypadł w $k$-tym rzucie, potrzeba $k-1$ reszek, a po nich orła.
+Stąd $\mathbb{P}[\{X=k\}\cap A]=2^{-k}$. Pod warunkiem $A$ otrzymujemy
+$$
+\mathbb{P}[X=k\mid A]
+=
+\begin{cases}
+\dfrac{2^{-k}}{1-2^{-n}}, & k\in\{1,\ldots,n\},\\[6pt]
+0, & \text{w pozostałych przypadkach}.
+\end{cases}
+$$
+
+:::
+
+::: {#exm-rozklad-warunkowy-dokladnie-jeden-orzel}
+
+Ponownie niech $X$ oznacza numer rzutu, w którym wypada pierwszy orzeł.
+Tym razem niech $A$ będzie zdarzeniem, że w pierwszych $n$ rzutach wypadł
+dokładnie jeden orzeł. Jest $n$ takich ciągów wyników, po jednym dla
+każdego możliwego położenia orła. Każdy ma prawdopodobieństwo $2^{-n}$,
+więc $\mathbb{P}[A]=n2^{-n}$.
+
+Dla $1\leq k\leq n$ zdarzeniu $\{X=k\}\cap A$ odpowiada jeden z tych
+ciągów. W $k$-tym rzucie wypada orzeł, a w pozostałych spośród pierwszych
+$n$ rzutów wypadają reszki. Zatem
+$$
+\mathbb{P}[X=k\mid A]=\frac{2^{-n}}{n2^{-n}}=\frac{1}{n}.
+$$
+Pod warunkiem $A$ zmienna $X$ ma więc rozkład jednostajny na
+$\{1,\ldots,n\}$.
+
+:::
+
+## Warunkowa niezależność
+
+::: {#def-niezaleznosc-warunkowa}
+
+Niech $X$ i $Y$ będą dyskretnymi zmiennymi losowymi, a $B$ zdarzeniem
+o dodatnim prawdopodobieństwie. Zmienne $X$ i $Y$ są **niezależne pod
+warunkiem $B$**, jeśli dla wszystkich wartości $x$ i $y$ zachodzi
+$$
+\mathbb{P}[X=x,\,Y=y\mid B]
+=\mathbb{P}[X=x\mid B]\,\mathbb{P}[Y=y\mid B].
+$$
+Jeśli $Z$ jest dyskretną zmienną losową, to $X$ i $Y$ są **warunkowo
+niezależne względem $Z$**, gdy są niezależne pod warunkiem $\{Z=z\}$
+dla każdej wartości $z$ o $\mathbb{P}[Z=z]>0$.
+
+:::
+
+::: {#exm-niezaleznosc-warunkowa-dwie-monety}
+
+Losujemy z jednakowym prawdopodobieństwem jedną z dwóch monet. Dla
+pierwszej prawdopodobieństwo orła wynosi $1/4$, a dla drugiej $3/4$.
+Wylosowaną monetą rzucamy dwa razy, niezależnie przy ustalonym wyborze.
+Przyjmijmy
+$$
+\Omega=\left\{\tfrac14,\tfrac34\right\}\times\{0,1\}\times\{0,1\}.
+$$
+Wynik elementarny $\omega=(z,x,y)$ zapisuje prawdopodobieństwo orła $z$
+dla wybranej monety i wyniki obu rzutów, gdzie $1$ oznacza orła, a $0$
+reszkę. Zmienne losowe odczytują współrzędne tej trójki
+$$
+Z(\omega)=z,\qquad X(\omega)=x,\qquad Y(\omega)=y.
+$$
+Zdarzeniami są wszystkie podzbiory $\Omega$. Prawdopodobieństwo wyniku
+elementarnego jest iloczynem prawdopodobieństwa wyboru monety i
+prawdopodobieństw obu rzutów przy tym wyborze
+$$
+\mathbb{P}[\{(z,x,y)\}]
+=\frac12\,z^x(1-z)^{1-x}\,z^y(1-z)^{1-y}.
+$$
+
+Dzieląc przez $\mathbb{P}[Z=z]=1/2$, dostajemy
+$$
+\begin{aligned}
+\mathbb{P}[X=x,\,Y=y\mid Z=z]
+&=z^x(1-z)^{1-x}\,z^y(1-z)^{1-y}\\
+&=\mathbb{P}[X=x\mid Z=z]\,\mathbb{P}[Y=y\mid Z=z].
+\end{aligned}
+$$
+Zatem $X$ i $Y$ są warunkowo niezależne względem $Z$.
+
+Ze wzoru na prawdopodobieństwo całkowite otrzymujemy
+$$
+\mathbb{P}[X=1]=\mathbb{P}[Y=1]
+=\frac12\cdot\frac14+\frac12\cdot\frac34=\frac12.
+$$
+Zdarzenie dwóch orłów składa się z dwóch wyników elementarnych
+$(\tfrac14,1,1)$ oraz $(\tfrac34,1,1)$. W obu przypadkach obserwujemy
+$X=Y=1$. Pierwsza trójka odpowiada monecie rzadziej dającej orła i ma
+prawdopodobieństwo $1/32$, druga odpowiada monecie częściej dającej
+orła i ma prawdopodobieństwo $9/32$. Zatem
+$$
+\mathbb{P}[X=1,\,Y=1]=\frac{1}{32}+\frac{9}{32}=\frac{5}{16}.
+$$
+Ponieważ $5/16\ne (1/2)(1/2)$, zmienne $X$ i $Y$ są zależne.
+Orzeł w pierwszym rzucie przemawia za tym, że wybraliśmy monetę
+częściej dającą orła. Po tej obserwacji prawdopodobieństwo orła
+w drugim rzucie wzrasta z $1/2$ do
+$\mathbb{P}[Y=1\mid X=1]=(5/16)/(1/2)=5/8$.
+
+:::
+
+## Naiwny klasyfikator Bayesa
+
+Czasem chcemy napisać program komputerowy do zadania tak złożonego,
+że trudno z góry zapisać funkcję, która każdemu wejściu przypisuje
+właściwy wynik. 
+Matematycznie oznacza to, że interesuje nas funkcja 
+określona na pewnym niewyobrażalnie dużym zbiorze $\mathcal{D}_0$.
+
+Możemy nauczyć program wykonywania tego zadania,
+pokazując mu przykłady. Takie podejście nazywamy **uczeniem maszynowym**.
+Jednym z najprostszych przykładów jest **naiwny klasyfikator Bayesa**.
+
+Każdemu obiektowi $D$ przypisujemy wektor cech
+$(X_1(D),\ldots,X_m(D))$. W naiwnym klasyfikatorze Bayesa zakładamy,
+że w każdej ustalonej klasie cechy $X_1,\ldots,X_m$ są łącznie
+niezależne.
+
+Aby nauczyć klasyfikator, pokazujemy programowi obiekty wraz z ich
+prawidłowymi klasami. Takie przykłady nazywamy **danymi uczącymi**.
+Zapiszmy je jako ciąg $n$ par
+$$
+\mathcal D=\bigl((D_1,c(D_1)),(D_2,c(D_2)),\ldots,(D_n,c(D_n))\bigr).
+$$
+Dla obiektu uczącego $D_i$ zapisujemy wektor cech
+$\vec x^{\,i}=(x_1^i,\ldots,x_m^i)$, gdzie $x_k^i=X_k(D_i)$, a $F_k$
+oznacza skończony zbiór wartości cechy $X_k$. Dla dokumentów tekstowych
+możemy ustalić listę słów kluczowych, przyjąć
+$F_k=\{0,1\}$ i zapisać $x_k^i=1$, gdy $k$-te słowo występuje w $D_i$,
+oraz $x_k^i=0$ w przeciwnym razie. Niech $C=\{c_1,\ldots,c_t\}$
+będzie zbiorem możliwych klas. Etykieta $c(D_i)\in C$ wskazuje klasę
+obiektu. W filtrowaniu poczty klasami są na przykład spam i zwykła
+wiadomość.
+
+Zakładamy, że dane uczące są próbą z tego samego nieznanego rozkładu co
+nowy obiekt $D^*$. Obserwujemy jego wektor cech
+$\vec x^{\,*}=(x_1^*,\ldots,x_m^*)$ i chcemy oszacować prawdopodobieństwo
+każdej klasy. Oznaczmy przez $\vec X$ losowy wektor cech tego obiektu,
+a przez $Z=c(D^*)$ jego klasę. Wynikiem może być cały wektor
+$(q_1,\ldots,q_t)$, gdzie $q_j$ szacuje
+$\mathbb{P}[Z=c_j\mid\vec X=\vec x^{\,*}]$.
+
+Przy bardzo dużym zbiorze uczącym moglibyśmy przygotować tablicę
+częstości. Dla każdego wektora cech $\vec y$ występującego w danych
+i każdej klasy $c_j$ obliczalibyśmy
+$$
+p_{\vec y,j}
+=\frac{\bigl|\{i\colon \vec x^{\,i}=\vec y,\ c(D_i)=c_j\}\bigr|}
+       {\bigl|\{i\colon \vec x^{\,i}=\vec y\}\bigr|}.
+$$
+Po odczytaniu cech nowego obiektu zwracalibyśmy wiersz
+$(p_{\vec x^{\,*},1},\ldots,p_{\vec x^{\,*},t})$. Już przy $m$ cechach
+binarnych tablica ma jednak $2^m$ możliwych wierszy po $t$ komórek.
+Żeby każda para wektora cech i klasy wystąpiła choć raz, potrzeba co
+najmniej $t2^m$ przykładów. Przy rzadkich kombinacjach wiersz opiera
+się na małej liczbie obiektów, a dla nieobserwowanych kombinacji
+mianownik wynosi zero.
+
+Dla wektora $\vec x^{\,*}$ o dodatnim prawdopodobieństwie wzór Bayesa
+(@thm-bayes) i niezależność cech pod warunkiem klasy $Z=c_j$ dają
+$$
+\begin{aligned}
+\mathbb{P}[Z=c_j\mid\vec X=\vec x^{\,*}]
+&=\frac{\mathbb{P}[\vec X=\vec x^{\,*}\mid Z=c_j]\,\mathbb{P}[Z=c_j]}
+        {\mathbb{P}[\vec X=\vec x^{\,*}]}\\
+&=\frac{\displaystyle\prod_{k=1}^m\mathbb{P}[X_k=x_k^*\mid Z=c_j]\,
+                       \mathbb{P}[Z=c_j]}
+        {\mathbb{P}[\vec X=\vec x^{\,*}]}.
+\end{aligned}
+$$
+Mianownik jest wspólny dla wszystkich klas. W liczniku potrzebujemy
+rozkładu klas oraz rozkładu każdej cechy w każdej klasie. Jeśli liczba
+wartości cechy jest ograniczona stałą, wystarcza $O(mt)$ oszacowań.
+Dla cech binarnych w każdej klasie wystarczy znać prawdopodobieństwo
+wartości $1$ dla każdej cechy.
+[Materiały Stanford CS229](https://cs229.stanford.edu/notes2021fall/lecture5-live-notes.pdf)
+
+::: {.callout-note title="Algorytm naiwnego klasyfikatora Bayesa" icon=false}
+
+Dany jest zbiór klas $C$, zbiory wartości cech $F_1,\ldots,F_m$
+i zbiór uczący $\mathcal D$. Zakładamy, że każda klasa występuje w danych.
+
+**Faza uczenia**
+
+1. Dla klasy $z\in C$, cechy $k\in\{1,\ldots,m\}$ i wartości $a\in F_k$
+   oszacuj prawdopodobieństwo tej wartości w klasie
+   $$
+   \widehat p_{k,z}(a)
+   =\frac{\bigl|\{i\colon c(D_i)=z,\ x_k^i=a\}\bigr|}
+          {\bigl|\{i\colon c(D_i)=z\}\bigr|}.
+   $$
+2. Dla każdej klasy $z\in C$ oszacuj jej prawdopodobieństwo a priori
+   $$
+   \widehat\pi_z=\frac{\bigl|\{i\colon c(D_i)=z\}\bigr|}{n}.
+   $$
+
+**Klasyfikacja nowego obiektu**
+
+1. Dla zaobserwowanego wektora $\vec x^{\,*}$ oblicz dla każdej klasy
+   $$
+   s_z(\vec x^{\,*})=\widehat\pi_z\prod_{k=1}^m\widehat p_{k,z}(x_k^*).
+   $$
+   Jako $\widehat c(D^*)$ wybierz jedną z klas o największym wyniku $s_z$.
+2. Aby zwrócić rozkład klas, podziel każdy wynik przez sumę wszystkich
+   wyników. Dla dodatniej sumy otrzymujemy
+   $$
+   q_j=\widehat{\mathbb{P}}[Z=c_j\mid\vec X=\vec x^{\,*}]
+      =\frac{s_{c_j}(\vec x^{\,*})}
+             {\sum_{\ell=1}^t s_{c_\ell}(\vec x^{\,*})}.
+   $$
+
+:::
+
+Suma wyników klas jest oszacowaniem $\mathbb{P}[\vec X=\vec x^{\,*}]$
+uzyskanym ze wzoru na prawdopodobieństwo całkowite. Warunkujemy przy
+tym względem klasy. Po uśrednieniu po klasach cechy mogą być zależne,
+jak wyniki rzutów po wylosowaniu jednej z dwóch monet
+(@exm-niezaleznosc-warunkowa-dwie-monety).
+
+W fazie uczenia można zastosować **wygładzanie addytywne**. Jeśli $n_z$
+oznacza liczebność klasy $z$, a $n_{k,z}(a)$ liczebność wartości $a$
+w tej klasie, przyjmujemy dla $\alpha>0$
+$$
+\widehat p_{k,z}(a)=\frac{n_{k,z}(a)+\alpha}{n_z+\alpha|F_k|}.
+$$
+Na przykład $\alpha=1/2$ oznacza dodanie wagi $1/2$ do liczności każdej
+możliwej wartości cechy. Mianownik uwzględnia wszystkie te dodatki.
+Dzięki temu wartość cechy o zerowej częstości w danych nie zeruje
+wiarygodności całej klasy.
+
+Iloczyny wielu małych prawdopodobieństw mogą zostać zaokrąglone do zera.
+Przy dodatnich oszacowaniach obliczamy więc bezpośrednio
+$$
+\log s_z(\vec x^{\,*})
+=\log\widehat\pi_z+\sum_{k=1}^m\log\widehat p_{k,z}(x_k^*).
+$$
+Największy logarytm daje ten sam wybór klasy. Aby odzyskać rozkład klas,
+można odjąć od wszystkich logarytmów największy z nich, zastosować
+funkcję wykładniczą i znormalizować otrzymane wartości.
+
+::: {#exm-naiwny-bayes-kombinacja-cech}
+
+Każdy obiekt ma dwie cechy binarne $X_1$ i $X_2$. Etykieta klasy to $A$,
+gdy $X_1=X_2$, i $B$, gdy $X_1\ne X_2$. Załóżmy, że każda z czterech
+par cech występuje w zbiorze uczącym tyle samo razy. Klasa $A$ obejmuje
+pary $(0,0)$ i $(1,1)$, a klasa $B$ pary $(0,1)$ i $(1,0)$.
+Otrzymujemy więc $\widehat\pi_A=\widehat\pi_B=1/2$ oraz
+$$
+\widehat p_{k,A}(a)=\widehat p_{k,B}(a)=\frac12,
+\qquad k\in\{1,2\},\quad a\in\{0,1\}.
+$$
+Dla dowolnej pary cech naiwny klasyfikator obliczy
+$s_A=s_B=(1/2)^3=1/8$, więc po normalizacji da obu klasom
+prawdopodobieństwo $1/2$. Jeśli nowe obiekty również mają cztery pary
+cech z jednakowym prawdopodobieństwem, stałe rozstrzyganie remisu na
+korzyść jednej klasy daje trafność $1/2$. Tymczasem znajomość pary
+$(X_1,X_2)$ wyznacza klasę jednoznacznie. W klasie $A$ druga cecha
+jest równa pierwszej, a w klasie $B$ jest jej dopełnieniem.
+
+:::
+
+## Wartość oczekiwana pod warunkiem zdarzenia
+
+::: {#def-wartosc-oczekiwana-warunkowa-zdarzenie}
+
+Niech $X$ będzie dyskretną zmienną losową o zbiorze wartości $S$, a $B$
+zdarzeniem o dodatnim prawdopodobieństwie. Jeśli
+$\sum_{x\in S}|x|\,\mathbb{P}[X=x\mid B]<\infty$,
+to **wartością oczekiwaną $X$ pod warunkiem $B$** nazywamy wartość oczekiwaną
+względem rozkładu warunkowego
+$$
+\mathbb{E}[X\mid B]=\sum_{x\in S} x\,\mathbb{P}[X=x\mid B].
+$$
+
+:::
+
+::: {#exm-wartosc-oczekiwana-warunkowa-dwie-kostki}
+
+Rzucamy niezależnie dwiema symetrycznymi sześciennymi kostkami. Niech
+$X_1$ i $X_2$ oznaczają liczby oczek na pierwszej i drugiej kostce,
+a $X=X_1+X_2$ ich sumę.
+
+Pod warunkiem $X_1=2$ mamy $X=2+X_2$. Z niezależności rzutów wynika,
+że każda z wartości $3,\ldots,8$ ma wtedy prawdopodobieństwo $1/6$.
+Stąd
+$$
+\mathbb{E}[X\mid X_1=2]
+=\sum_{x=3}^8 x\,\mathbb{P}[X=x\mid X_1=2]
+=\sum_{x=3}^8 x\cdot\frac{1}{6}
+=\frac{11}{2}.
+$$
+
+Rozważmy teraz wartość oczekiwaną $X_1$ pod warunkiem $X=5$. Sumę $5$
+dają cztery pary wyników $(1,4)$, $(2,3)$, $(3,2)$ i $(4,1)$, każda
+z prawdopodobieństwem $1/36$. Dla każdego $x\in\{1,2,3,4\}$ zdarzenie
+$\{X_1=x\}\cap\{X=5\}$ odpowiada parze $(x,5-x)$. Zatem
+$$
+\mathbb{P}[X_1=x\mid X=5]
+=\frac{\mathbb{P}[\{X_1=x\}\cap\{X=5\}]}{\mathbb{P}[X=5]}
+=\frac{1/36}{4/36}
+=\frac{1}{4}.
+$$
+Otrzymujemy
+$$
+\mathbb{E}[X_1\mid X=5]
+=\sum_{x=1}^4 x\,\mathbb{P}[X_1=x\mid X=5]
+=\sum_{x=1}^4 x\cdot\frac{1}{4}
+=\frac{5}{2}.
+$$
+
+:::
+
+::: {#lem-calkowita-wartosc-oczekiwana}
+
+Niech $X$ i $Y$ będą dyskretnymi zmiennymi losowymi i załóżmy, że $X$
+jest całkowalna. Oznaczmy przez $S_Y=\{y\colon\mathbb{P}[Y=y]>0\}$ zbiór
+wartości $Y$ o dodatnim prawdopodobieństwie. Wówczas
+$$
+\mathbb{E}[X]
+=\sum_{y\in S_Y}\mathbb{P}[Y=y]\,\mathbb{E}[X\mid Y=y].
+$$
+
+:::
+
+::: {.proof}
+
+Niech $S_X$ będzie zbiorem wartości $X$ o dodatnim prawdopodobieństwie.
+Najpierw rozpatrzmy sumę o nieujemnych wyrazach. Mamy
+$$
+\begin{aligned}
+\sum_{y\in S_Y}\mathbb{P}[Y=y]\sum_{x\in S_X}|x|\,\mathbb{P}[X=x\mid Y=y]
+&=\sum_{y\in S_Y}\sum_{x\in S_X}|x|\,\mathbb{P}[X=x,\,Y=y]\\
+&=\sum_{x\in S_X}|x|\,\mathbb{P}[X=x]
+=\mathbb{E}[|X|]<\infty.
+\end{aligned}
+$$
+Ponieważ każda waga $\mathbb{P}[Y=y]$ jest dodatnia, każda z wewnętrznych
+sum jest skończona. Istnieją więc wartości oczekiwane
+$\mathbb{E}[X\mid Y=y]$ dla $y\in S_Y$. Bezwzględna zbieżność pozwala
+zamienić kolejność sumowania w następującym rachunku
+$$
+\begin{aligned}
+\sum_{y\in S_Y}\mathbb{P}[Y=y]\,\mathbb{E}[X\mid Y=y]
+&=\sum_{y\in S_Y}\sum_{x\in S_X}
+   x\,\mathbb{P}[X=x\mid Y=y]\,\mathbb{P}[Y=y]\\
+&=\sum_{y\in S_Y}\sum_{x\in S_X} x\,\mathbb{P}[X=x,\,Y=y]\\
+&=\sum_{x\in S_X} x\sum_{y\in S_Y}\mathbb{P}[X=x,\,Y=y]\\
+&=\sum_{x\in S_X}x\,\mathbb{P}[X=x]
+=\mathbb{E}[X].
+\end{aligned}
+$$
+
+:::
+
+## Warunkowa wartość oczekiwana
+
+Gdy zmienne losowe $X$ i $Y$ są zależne, informacja o tym, jaką wartość
+przyjęła $Y$, może zmienić rozkład $X$. Po przyjęciu warunku $Y=y$
+prawdopodobieństwa poszczególnych wartości $X$ to
+$\mathbb{P}[X=x\mid Y=y]$. Wartość oczekiwana $X$ jest średnią ważoną
+tymi prawdopodobieństwami, więc również może się zmienić.
+
+Niech $X$ i $Y$ będą dyskretne, a $X$ niech będzie całkowalna. Dla każdej
+wartości $y$ takiej, że $\mathbb{P}[Y=y]>0$, określamy
+$$
+m(y)=\mathbb{E}[X\mid Y=y].
+$$
+Liczba $m(y)$ mówi, ile będzie wynosić wartość oczekiwana $X$ po
+uwzględnieniu informacji, że $Y=y$. Na razie rozważamy $y$ jako możliwy
+wynik obserwacji, zanim poznamy wartość $Y$.
+
+Gdy sprawdzimy, jaką wartość przyjęła $Y$, podstawiamy ją do funkcji $m$.
+
+::: {#def-wartosc-oczekiwana-warunkowa-zmienna}
+
+**Warunkową wartością oczekiwaną $X$ względem $Y$** nazywamy zmienną
+losową
+$$
+\mathbb{E}[X\mid Y]=m(Y).
+$$
+Każdemu wynikowi $\omega\in\Omega$ zmienna ta przypisuje liczbę
+$m(Y(\omega))$. Dla wartości $y$ o zerowym prawdopodobieństwie
+możemy przyjąć $m(y)=0$.
+
+:::
+
+::: {#exm-wartosc-oczekiwana-warunkowa-pierwsza-kostka}
+
+Wróćmy do sumy oczek $X=X_1+X_2$ w rzucie dwiema kostkami
+(@exm-wartosc-oczekiwana-warunkowa-dwie-kostki). Dla ustalonego
+$y\in\{1,\ldots,6\}$ i pod warunkiem $X_1=y$ suma $X$ przyjmuje wartości
+$y+1,\ldots,y+6$, każdą z prawdopodobieństwem $1/6$. Stąd
+$$
+m(y)=\mathbb{E}[X\mid X_1=y]
+=\sum_{x=y+1}^{y+6}x\cdot\frac16
+=y+\frac72.
+$$
+Podstawiając $X_1$ w miejsce $y$, dostajemy
+$$
+\mathbb{E}[X\mid X_1]=m(X_1)=X_1+\frac72.
+$$
+Jeśli na pierwszej kostce wypadnie $2$, ta zmienna losowa przyjmie
+obliczoną wcześniej wartość $11/2$.
+
+:::
+
+W kontekście ostatniego przykładu próba rozpisania $m(Y)$ wprost
+z definicji funkcji $m$ może przyprawić o zawrót głowy. Dla ustalonego
+$\omega\in\Omega$, dla którego $\mathbb{P}[Y=Y(\omega)]>0$,
+otrzymujemy bowiem
+$$
+\begin{aligned}
+m(Y(\omega))
+&=\mathbb{E}\bigl[X\mid\{\omega'\in\Omega\colon
+                          Y(\omega')=Y(\omega)\}\bigr]\\
+&=\mathbb{E}\bigl[X\mid Y^{-1}[\{Y(\omega)\}]\bigr].
+\end{aligned}
+$$
+Zapis skrótowy stosowany w rachunku prawdopodobieństwa jest tutaj mylący,
+bo prowadzi do
+$$
+m(Y)=\mathbb{E}[X\mid Y=Y].
+$$
+Źródłem nieporozumienia są dwie role $Y$. W zapisie
+$m(y)=\mathbb{E}[X\mid Y=y]$ rozważamy hipotetycznie ustaloną wartość $y$.
+Przy obliczaniu $m(Y)$ dla konkretnego wyniku $\omega$ argumentem funkcji
+$m$ jest zaobserwowana wartość $Y(\omega)$. Dosłownie odczytane zdarzenie
+
+::: {#prp-calkowita-wartosc-oczekiwana}
+
+Jeśli $X$ i $Y$ są dyskretnymi zmiennymi losowymi, a $X$ jest całkowalna,
+to $\mathbb{E}[X\mid Y]$ jest całkowalna i zachodzi
+$$
+\mathbb{E}\bigl[\mathbb{E}[X\mid Y]\bigr]=\mathbb{E}[X].
+$$
+
+:::
+
+::: {.proof}
+
+Niech $m(y)=\mathbb{E}[X\mid Y=y]$ dla $y\in S_Y$, gdzie
+$S_Y=\{y\colon\mathbb{P}[Y=y]>0\}$. Z nierówności trójkąta mamy
+$|m(y)|\leq\mathbb{E}[|X|\mid Y=y]$. Stosując
+@lem-calkowita-wartosc-oczekiwana do $|X|$, otrzymujemy
+$$
+\begin{aligned}
+\mathbb{E}[|m(Y)|]
+&=\sum_{y\in S_Y}\mathbb{P}[Y=y]\,|m(y)|\\
+&\leq\sum_{y\in S_Y}\mathbb{P}[Y=y]\,\mathbb{E}[|X|\mid Y=y]
+=\mathbb{E}[|X|]<\infty.
+\end{aligned}
+$$
+Z definicji $\mathbb{E}[X\mid Y]=m(Y)$ i z tego samego lematu
+zastosowanego do $X$ dostajemy
+$$
+\begin{aligned}
+\mathbb{E}\bigl[\mathbb{E}[X\mid Y]\bigr]
+&=\sum_{y\in S_Y}\mathbb{P}[Y=y]\,\mathbb{E}[X\mid Y=y]\\
+&=\mathbb{E}[X].
+\end{aligned}
+$$
+
+:::
+
+::: {#exm-calkowita-wartosc-oczekiwana-dwa-losowania}
+
+Losujemy jednostajnie liczbę $N$ ze zbioru $\{1,\ldots,10\}$. Po wylosowaniu
+$N=n$ losujemy jednostajnie liczbę $M$ ze zbioru $\{1,\ldots,n\}$.
+Jaka jest wartość oczekiwana $M$?
+
+Dla ustalonego $n\in\{1,\ldots,10\}$ mamy
+$$
+m(n)=\mathbb{E}[M\mid N=n]=\frac{1}{n}\sum_{k=1}^n k=\frac{n+1}{2}.
+$$
+Stąd $\mathbb{E}[M\mid N]=m(N)=(N+1)/2$. Ponieważ
+$\mathbb{E}[N]=(1+10)/2=11/2$, wzór na całkowitą wartość oczekiwaną
+(@prp-calkowita-wartosc-oczekiwana) daje
+$$
+\mathbb{E}[M]
+=\mathbb{E}\bigl[\mathbb{E}[M\mid N]\bigr]
+=\mathbb{E}\left[\frac{N+1}{2}\right]
+=\frac{\mathbb{E}[N]+1}{2}
+=\frac{13}{4}.
+$$
+
+:::
+
+## Oczekiwana liczba porównań w algorytmie Quicksort
+
+Koszt sortowania możemy mierzyć liczbą porównań elementów. W algorytmie
+Quicksort liczba ta zależy od wyboru elementu dzielącego, zwanego pivotem.
+Załóżmy, że lista wejściowa $S=(x_1,\ldots,x_n)$ składa się z różnych liczb.
+
+1. Jeśli $S$ ma co najwyżej jeden element, zwróć $S$.
+2. Wybierz z $S$ element dzielący $x$.
+3. Porównaj każdy pozostały element z $x$. Zachowując kolejność z listy $S$,
+   umieść liczby mniejsze od $x$ w podliście $S_1$, a większe w podliście $S_2$.
+4. Posortuj rekurencyjnie $S_1$ i $S_2$.
+5. Zwróć kolejno posortowaną listę $S_1$, element $x$ i posortowaną listę $S_2$.
+
+Załóżmy, że jako pivot wybieramy pierwszy element listy. Dla wejścia
+$(n,n-1,\ldots,1)$ pierwszym pivotem jest $n$. Wykonujemy $n-1$
+porównań i otrzymujemy pustą podlistę oraz podlistę $(n-1,\ldots,1)$.
+W kolejnym wywołaniu pivotem jest $n-1$ i wykonujemy $n-2$ porównań.
+Ponieważ w każdym kroku pivot jest największym elementem aktualnej listy,
+łączna liczba porównań wynosi
+$$
+(n-1)+(n-2)+\cdots+1=\frac{n(n-1)}{2}.
+$$
+Jest to koszt najgorszego przypadku. Każdą parę można porównać co najwyżej
+raz, ponieważ po porównaniu pivot wypada z dalszej rekursji.
+
+Jeśli natomiast w każdym wywołaniu dla listy długości $m$ obie podlisty
+mają co najwyżej $\lceil m/2\rceil$ elementów, koszt maleje do $O(n\log n)$.
+Dla maksymalnej liczby porównań $C(n)$ na listach długości co najwyżej
+$n$ przy takich podziałach mamy
+$$
+C(n)\leq 2C(\lceil n/2\rceil)+(n-1),\qquad n\geq 2.
+$$
+Na każdym poziomie rekursji podlisty są rozłączne, więc łącznie wykonujemy
+co najwyżej $n$ porównań. Po $k$ podziałach na jednej ścieżce rekursji
+lista ma co najwyżej $\lceil n/2^k\rceil$ elementów, więc wystarcza
+$O(\log n)$ poziomów. Ten sam rząd kosztu otrzymamy, gdy większa z dwóch
+podlist ma w każdym kroku co najwyżej ustaloną część $q<1$ elementów
+dzielonej listy.
+
+W losowej wersji algorytmu ustalamy listę wejściową $S$. W każdym wywołaniu
+wybieramy pivot jednostajnie spośród elementów aktualnej listy, korzystając
+z nowego, niezależnego losowania. Możemy w ten sposób losować samą rangę
+pivota. Wylosowane rangi wyznaczają rozmiary kolejnych podlist oraz liczbę
+porównań w każdym wywołaniu. Rozkład całkowitej liczby porównań $T_n$ zależy
+więc tylko od długości $n$ listy. Niech $a_n=\mathbb{E}[T_n]$.
+Mamy $a_0=a_1=0$.
+
+Dla $n\geq 2$ niech $K$ oznacza rangę pierwszego pivota, czyli jego
+pozycję w porządku rosnącym. Niech $L_n$ i $R_n$ oznaczają liczby
+porównań przy sortowaniu lewej podlisty $S_1$ i prawej podlisty $S_2$.
+Pierwszy podział kosztuje $n-1$ porównań, więc $T_n=n-1+L_n+R_n$.
+
+Pod warunkiem $K=k$ rozkład pary $(S_1,S_2)$ jest skupiony na jednej
+parze list. Lewą tworzy $k-1$ elementów mniejszych od pivota, a prawą
+$n-k$ większych, w kolejności odziedziczonej z $S$. Koszty sortowania
+tych podlist mają odpowiednio rozkłady $T_{k-1}$ i $T_{n-k}$.
+Dalsze losowania w obu podlistach są niezależne. Koszty $L_n$ i $R_n$
+są zatem warunkowo niezależne względem $K$ (@def-niezaleznosc-warunkowa)
+i mamy
+$$
+\begin{aligned}
+\mathbb{P}[L_n=u,\,R_n=v\mid K=k]
+&=\mathbb{P}[L_n=u\mid K=k]\,\mathbb{P}[R_n=v\mid K=k]\\
+&=\mathbb{P}[T_{k-1}=u]\,\mathbb{P}[T_{n-k}=v].
+\end{aligned}
+$$
+
+Dla $n=4$ koszt lewej podlisty jest dodatni, gdy $K\in\{3,4\}$, a koszt
+prawej, gdy $K\in\{1,2\}$. Każde z tych zdarzeń ma prawdopodobieństwo
+$1/2$, a ich część wspólna jest pusta. Zatem $L_4$ i $R_4$ są zależne
+w rozkładzie bezwarunkowym.
+
+Z liniowości wartości oczekiwanej pod warunkiem $K=k$ dostajemy
+$$
+\begin{aligned}
+m(k)=\mathbb{E}[T_n\mid K=k]
+&=n-1+\mathbb{E}[L_n\mid K=k]+\mathbb{E}[R_n\mid K=k]\\
+&=n-1+a_{k-1}+a_{n-k}.
+\end{aligned}
+$$
+Liczba $m(k)$ jest średnią dla ustalonego pierwszego podziału.
+Po podstawieniu losowej rangi $K$ otrzymujemy warunkową wartość
+oczekiwaną jako zmienną losową
+$$
+\mathbb{E}[T_n\mid K]=m(K)=n-1+a_{K-1}+a_{n-K}.
+$$
+Teraz uśredniamy po wszystkich możliwych rangach pierwszego pivota.
+Prawo całkowitej wartości oczekiwanej (@prp-calkowita-wartosc-oczekiwana)
+i jednostajny rozkład $K$ na $\{1,\ldots,n\}$ dają
+$$
+\begin{aligned}
+a_n
+&=\mathbb{E}\bigl[\mathbb{E}[T_n\mid K]\bigr]\\
+&=\frac{1}{n}\sum_{k=1}^n (n-1+a_{k-1}+a_{n-k})\\
+&=n-1+\frac{2}{n}\sum_{j=0}^{n-1}a_j.
+\end{aligned}
+$$
+
+Rekurencja zachodzi również dla $n=1$, bo $a_0=a_1=0$. Mnożymy ją przez $n$
+i odejmujemy rekurencję dla $n-1$ pomnożoną przez $n-1$. Otrzymujemy
+$n a_n=(n+1)a_{n-1}+2(n-1)$, a stąd
+$$
+\frac{a_n}{n+1}-\frac{a_{n-1}}{n}
+=\frac{2(n-1)}{n(n+1)}
+=\frac2n-4\left(\frac1n-\frac1{n+1}\right).
+$$
+Oznaczmy przez $H_n=\sum_{k=1}^n 1/k$ $n$-tą liczbę harmoniczną.
+Sumując powyższe równości dla indeksów od $2$ do $n$ i używając $a_1=0$,
+dostajemy
+$$
+\frac{a_n}{n+1}=2(H_n-1)-4\left(\frac12-\frac1{n+1}\right).
+$$
+Zatem
+$$
+a_n=2(n+1)H_n-4n.
+$$
+Ponieważ $H_n=\log n+O(1)$, dla dowolnej listy $n$ różnych liczb losowy
+Quicksort wykonuje średnio $\Theta(n\log n)$ porównań.

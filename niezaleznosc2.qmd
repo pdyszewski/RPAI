@@ -1,1 +1,194 @@
 # Niezależne zmienne losowe
+
+::: {#def-niezalezne-zmienne-losowe}
+
+Niech $X_1,\ldots,X_d$ będą dyskretnymi zmiennymi losowymi na tej samej
+przestrzeni probabilistycznej. Nazywamy je **niezależnymi**, gdy dla każdego
+wyboru wartości $x_1,\ldots,x_d$ zachodzi
+$$
+\mathbb{P}[X_1=x_1,\ldots,X_d=x_d]
+=\prod_{j=1}^d \mathbb{P}[X_j=x_j].
+$$
+
+:::
+
+::: {#exm-niezalezne-wyniki-rzutow}
+
+Rzucamy dwa razy symetryczną sześcienną kostką. Niech $X$ i $Y$ oznaczają
+liczbę oczek odpowiednio w pierwszym i drugim rzucie. Każda z $36$ par
+wyników jest jednakowo prawdopodobna. Dla dowolnych $x,y\in\{1,\ldots,6\}$
+mamy więc
+$$
+\mathbb{P}[X=x,\,Y=y]=\frac{1}{36}
+=\frac16\cdot\frac16=\mathbb{P}[X=x]\mathbb{P}[Y=y].
+$$
+Zatem $X$ i $Y$ są niezależne.
+
+:::
+
+::: {#exm-czekanie-na-dwa-orly}
+
+Rzucamy niezależnie monetą, na której orzeł wypada z prawdopodobieństwem
+$p\in(0,1)$. Oznaczmy przez $X$ liczbę rzutów do pierwszego orła, a przez
+$Y$ liczbę dalszych rzutów od pierwszego do drugiego orła. Do każdego
+czasu wliczamy rzut, w którym wypada oczekiwany orzeł. Jeśli więc dwa
+pierwsze rzuty dadzą orły, to $X=1$ i $Y=1$.
+
+Niech $q=1-p$. Dla liczb całkowitych $m,n\geq 1$ zdarzenie
+$\{X=m,\,Y=n\}$ oznacza, że pierwsze $m+n$ rzutów układa się w ciąg
+$$
+\underbrace{R\cdots R}_{m-1}\,O\,
+\underbrace{R\cdots R}_{n-1}\,O,
+$$
+gdzie $R$ oznacza reszkę, a $O$ orła. Z niezależności rzutów wynika, że
+$$
+\mathbb{P}[X=m,\,Y=n]
+=q^{m-1}p\,q^{n-1}p.
+$$
+Sumując osobno po $n$ i po $m$, otrzymujemy
+odpowiednio rozkłady
+$$
+\mathbb{P}[X=m]=q^{m-1}p,\qquad
+\mathbb{P}[Y=n]=q^{n-1}p.
+$$
+Zatem $X$ i $Y$ mają rozkład geometryczny z parametrem $p$ i są niezależne.
+
+Całkowita liczba rzutów do drugiego orła to $S=X+Y$. Czasy $X$ i $S$
+są zależne. Mamy $\mathbb{P}[X=2]=qp>0$ oraz $\mathbb{P}[S=2]=p^2>0$,
+ale $\mathbb{P}[X=2,\,S=2]=0$, bo przy $X=2$ drugi orzeł może wypaść
+najwcześniej w trzecim rzucie.
+
+:::
+
+::: {#exm-niezalezne-czas-i-wynik-gry}
+
+Zaczynamy z wynikiem $0$. Rzucamy niezależnie monetą, na której orzeł wypada
+z prawdopodobieństwem $2/3$. Orzeł zwiększa wynik o $1$, a reszka zmniejsza
+go o $1$. Kończymy grę, gdy wynik po raz pierwszy osiągnie $3$ lub $-3$.
+Niech $T$ oznacza liczbę rzutów do końca gry, a $Z$ jej końcowy wynik.
+Czy $T$ i $Z$ są niezależne?
+
+Gra kończy się z prawdopodobieństwem $1$. Jeśli w którymś bloku sześciu
+kolejnych rzutów wypadną same orły, to gra zakończy się najpóźniej w tym
+bloku. Prawdopodobieństwo, że w $k$ rozłącznych blokach po sześć rzutów
+nie ma takiego bloku, wynosi $(1-(2/3)^6)^k$ i dąży do zera.
+
+Ustalmy $t$ i rozważmy ciąg $t$ rzutów, w którym gra kończy się wynikiem
+$3$ w chwili $t$. Zamieńmy każdy orzeł na reszkę i każdą reszkę na orła.
+Wynik po każdym rzucie zmienia znak, więc odbity ciąg kończy grę wynikiem
+$-3$ w tej samej chwili. Odbicie jest odwracalne, zatem łączy w pary
+ciągi kończące się w chwili $t$ z przeciwnymi wynikami.
+
+Jeśli pierwotny ciąg zawiera $h$ orłów i $r$ reszek, to $h-r=3$. Iloraz
+prawdopodobieństwa tego ciągu i prawdopodobieństwa jego odbicia wynosi
+$$
+\frac{(2/3)^h(1/3)^r}{(2/3)^r(1/3)^h}=2^{h-r}=8.
+$$
+Sumując po wszystkich parach dla danego $t$, dostajemy
+$\mathbb{P}[T=t,\,Z=3]=8\,\mathbb{P}[T=t,\,Z=-3]$. Stąd
+$$
+\mathbb{P}[T=t,\,Z=3]=\frac89\mathbb{P}[T=t],
+\qquad
+\mathbb{P}[T=t,\,Z=-3]=\frac19\mathbb{P}[T=t].
+$$
+Sumując po $t$, otrzymujemy $\mathbb{P}[Z=3]=8/9$ i
+$\mathbb{P}[Z=-3]=1/9$. W obu przypadkach prawdopodobieństwo łączne
+jest iloczynem prawdopodobieństw brzegowych, więc $T$ i $Z$ są niezależne.
+
+:::
+
+::: {#prp-niezaleznosc-faktoryzacja name="Faktoryzacja wartości oczekiwanej"}
+
+Niech $X_1,\ldots,X_d$ będą dyskretnymi zmiennymi losowymi, a $S_i$
+niech oznacza zbiór wartości $X_i$. Zmienne $X_1,\ldots,X_d$ są
+niezależne wtedy i tylko wtedy, gdy dla każdego wyboru funkcji
+$f_i\colon S_i\to\mathbb{R}$ spełniających $\mathbb{E}[|f_i(X_i)|]<\infty$
+iloczyn $\prod_{i=1}^d f_i(X_i)$ jest całkowalny i zachodzi równość
+$$
+\mathbb{E}\left[\prod_{i=1}^d f_i(X_i)\right]
+=\prod_{i=1}^d \mathbb{E}[f_i(X_i)].
+$$
+
+:::
+
+::: {.proof}
+
+Załóżmy, że $X_1,\ldots,X_d$ są niezależne. Oznaczmy
+$p_i(x)=\mathbb{P}[X_i=x]$ oraz $S=S_1\times\cdots\times S_d$.
+Korzystając z niezależności i rozdzielając sumy o nieujemnych wyrazach,
+otrzymujemy
+$$
+\begin{aligned}
+\mathbb{E}\left[\left|\prod_{i=1}^d f_i(X_i)\right|\right]
+&=\sum_{(x_1,\ldots,x_d)\in S}\prod_{i=1}^d |f_i(x_i)|p_i(x_i)\\
+&=\prod_{i=1}^d\left(\sum_{x_i\in S_i}|f_i(x_i)|p_i(x_i)\right)
+=\prod_{i=1}^d\mathbb{E}[|f_i(X_i)|]<\infty.
+\end{aligned}
+$$
+Szereg dla wartości oczekiwanej iloczynu jest zatem bezwzględnie
+zbieżny. Możemy rozdzielić sumy w ten sam sposób dla $f_i$ i otrzymujemy
+żądaną równość.
+
+Odwrotnie, załóżmy, że równość zachodzi dla wszystkich takich funkcji.
+Dla dowolnych $a_i\in S_i$ wybierzmy $f_i(x)=\mathbf{1}_{\{a_i\}}(x)$.
+Iloczyn $\prod_{i=1}^d f_i(X_i)$ jest wskaźnikiem zdarzenia
+$\{X_1=a_1,\ldots,X_d=a_d\}$, a $\mathbb{E}[f_i(X_i)]=\mathbb{P}[X_i=a_i]$.
+Równość daje więc warunek niezależności z @def-niezalezne-zmienne-losowe.
+
+:::
+
+::: {#cor-niezaleznosc-kowariancja}
+
+Jeśli zmienne losowe $X$ i $Y$ o skończonych drugich momentach
+są niezależne, to są nieskorelowane, czyli $\operatorname{Cov}[X,Y]=0$.
+
+:::
+
+::: {.proof}
+
+Stosujemy @prp-niezaleznosc-faktoryzacja do funkcji tożsamościowych
+i otrzymujemy $\mathbb{E}[XY]=\mathbb{E}[X]\mathbb{E}[Y]$. Ze wzoru na
+kowariancję (@prp-wlasnosci-kowariancji) wynika
+$$
+\operatorname{Cov}[X,Y]
+=\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y]=0.
+$$
+
+:::
+
+::: {#cor-niezaleznosc-wariancja-sumy}
+
+Jeśli $X_1,\ldots,X_n$ są niezależnymi zmiennymi losowymi o skończonych
+drugich momentach, to
+$$
+\mathbb{V}ar[X_1+\cdots+X_n]=\sum_{i=1}^n \mathbb{V}ar[X_i].
+$$
+
+:::
+
+::: {.proof}
+
+Dla $i\ne j$ zmienne $X_i$ i $X_j$ są niezależne, więc ich kowariancja
+jest równa zeru (@cor-niezaleznosc-kowariancja). Teza wynika ze wzoru
+na wariancję sumy (@thm-wariancja-sumy).
+
+:::
+
+::: {#exm-nieskorelowane-zalezne}
+
+Niech $X$ przyjmuje każdą z wartości $-1,0,1$ z prawdopodobieństwem $1/3$
+i niech $Y=X^2$. Z symetrii rozkładu $X$ mamy $\mathbb{E}[X]=0$
+oraz $\mathbb{E}[XY]=\mathbb{E}[X^3]=0$. Stąd
+$$
+\operatorname{Cov}[X,Y]
+=\mathbb{E}[XY]-\mathbb{E}[X]\mathbb{E}[Y]=0.
+$$
+
+Zdarzenia $\{X=0\}$ i $\{Y=0\}$ są równe, więc
+$$
+\mathbb{P}[X=0,\,Y=0]=\frac13
+\ne \frac19=\mathbb{P}[X=0]\mathbb{P}[Y=0].
+$$
+Zatem $X$ i $Y$ są zależne.
+
+:::
